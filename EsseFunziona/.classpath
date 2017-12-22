@@ -13,6 +13,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Users/lucaq/Downloads/apache-tomcat-9.0.2/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="libs/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="libs/postgresql-9.4.1208.jar"/>
+	<classpathentry kind="lib" path="libs/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
