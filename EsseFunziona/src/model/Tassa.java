@@ -6,17 +6,15 @@ public class Tassa {
 	private String nome;
 	private String descrizione;
 	private Studente intestatario;
-	private boolean pagata;
 	private Admin admin;
 	
-	public Tassa(long id, float importo, String nome, String descrizione, Studente intestatario, boolean pagata, Admin admin) {
+	public Tassa(long id, float importo, String nome, String descrizione, Studente intestatario, Admin admin) {
 		super();
 		this.id = id;
 		this.importo = importo;
 		this.nome = nome;
 		this.descrizione = descrizione;
 		this.intestatario = intestatario;
-		this.pagata = pagata;
 		this.admin=admin;
 	}
 
@@ -58,14 +56,6 @@ public class Tassa {
 
 	public void setIntestatario(Studente intestatario) {
 		this.intestatario = intestatario;
-	}
-
-	public boolean isPagata() {
-		return pagata;
-	}
-
-	public void setPagata(boolean pagata) {
-		this.pagata = pagata;
 	}
 
 	public Admin getAdmin() {
