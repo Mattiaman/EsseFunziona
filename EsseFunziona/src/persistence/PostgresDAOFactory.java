@@ -1,5 +1,10 @@
 package persistence;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.util.Scanner;
+
 import persistence.dao.AdminDAO;
 import persistence.dao.AppelloDAO;
 import persistence.dao.CorsoDAO;
@@ -11,6 +16,21 @@ import persistence.dao.StudenteDAO;
 import persistence.dao.TassaDAO;
 
 public class PostgresDAOFactory implements DAOFactory {
+
+	private static DatabaseData databaseData;
+	
+	static {
+		try {
+			//da mettere in un file
+			Class.forName("org.postgresql.Driver").newInstance();
+			databaseData=new DatabaseData("jdbc:postgresql://localhost:5432/Segreteria","postgres","postgres");
+		} 
+		catch (Exception e) {
+			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n"+e);
+			e.printStackTrace();
+		}
+	}
+
 
 	@Override
 	public AdminDAO getAdminDAO() {
@@ -44,7 +64,7 @@ public class PostgresDAOFactory implements DAOFactory {
 
 	@Override
 	public StudenteDAO getStudenteDAO() {
-		return new StudenteJDBC();
+		return new StudenteJDBC(databaseData);
 	}
 
 	@Override

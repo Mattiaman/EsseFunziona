@@ -9,11 +9,16 @@ public class Studente extends Utente {
 	private CorsoDiLaurea corsoDiLaurea;
 	private PianoDiStudi pianoDiStudi;
 	private Set<Tassa> tasse;
+
+	public Studente() {
+		
+	}
 	
 	public Studente(String matricola, String nome, String cognome, Date dataDiNascita, String email) {
 		super(nome, cognome, dataDiNascita, email);
 		this.matricola=matricola;
 	}
+
 
 	public String getMatricola() {
 		return matricola;

@@ -7,6 +7,12 @@ import persistence.dao.TassaDAO;
 
 public class TassaJDBC implements TassaDAO {
 
+	private DatabaseData databaseData;
+	
+	public TassaJDBC(DatabaseData databaseData) {
+		this.databaseData = databaseData;
+	}
+
 	@Override
 	public void save(Tassa tassa) {
 		// TODO Auto-generated method stub

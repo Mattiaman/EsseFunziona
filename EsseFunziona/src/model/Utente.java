@@ -8,6 +8,10 @@ public abstract class Utente {
 	private Date dataDiNascita;
 	private String email;
 	
+	public Utente() {
+		
+	}
+	
 	public Utente(String nome, String cognome, Date dataDiNascita, String email) {
 		this.nome = nome;
 		this.cognome = cognome;
