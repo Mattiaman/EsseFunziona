@@ -54,34 +54,45 @@
     		</ul>
   		</div>
 	</nav>	
-
-
-
 	
-	<br><div class="container">
-	  <div class="table-responsive">          
-	  <table class="table">
-	    <thead>
-	      <tr>
-	        <th>IDAppello</th>
-	        <th>DataAppello</th>
-	        <th>ProfessoreAppello</th>
-	        <th>CorsoAppello</th>
-	        <th>NumeroIscritti</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-	        <td>123</td>
-	        <td>27/01/18</td>
-	        <td>Giovanni Grasso</td>
-	        <td>SIW</td>
-	        <td>50</td>
-	      </tr>
-	    </tbody>
-	  </table>
-	  </div>
-	</div>
-
+	<h4>Da qui compilando i campi necessari potrete aggiungere nuove tasse</h4>
+	
+	
+	<section class="moduloAppelli" class="row">
+		<div class="col-lg-3">
+		
+			<form class="form-horizontal" method="post" action="aggiuntaAppello">
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="idAppello">IDAppello:</label>
+			    <div class="col-sm-4">
+			     <input name="idAppello" type="text" class="form-control" /> 
+			    </div> 
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="dataAppello">dataAppello:</label>
+			    	<div class="col-sm-4"> 
+			      <input name="dataAppello" type="date" class="form-control" />
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="corsoAppello">Corso:</label>    	
+			    <select name="indirizzo" class="control-label col-sm-4" class="form-control"  >
+						<option value="1">Fondamenti Informatica</option>
+						<option value="2">Programmazione ad oggetti</option>		
+				</select>
+			  </div>
+			  <div class="form-group"> 
+			    <div class="col-sm-offset-2 col-sm-10">
+			      <button type="submit" class="btn btn-default">Submit</button>
+			    </div>
+			  </div>
+			</form>
+			
+		</div>
+	</section>
+	
+	
+	
+	
 </body>
 </html>
