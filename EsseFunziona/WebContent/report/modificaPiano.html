@@ -61,6 +61,7 @@
 		          		<li><a href="verbalizzareEsami.html">Verbalizzare</a></li>
 		          		<li><a href="esiti.html">Bacheca Esiti</a></li>
 		          		<li><a href="prenotazioni.html">Bacheca Prenotazioni</a></li>
+		          		<li><a href="chiedereRicevimento.html">Chiedere un Ricevimento</a></li>
 		        	</ul>
       			</li>
     		</ul>
@@ -68,7 +69,53 @@
 	</nav>
 	
 
+	<br><section class="moduloModificaPiano" class="row">
+		<div class="col-lg-3">
 
+			<form class="form-horizontal" method="post" action="modificaPiano">
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="matricola">Matricola:</label>
+					<div class="col-sm-4">
+						<input name="matricola" type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label  class="control-label col-sm-2" for="nome">Nome:</label>
+					<div class="col-sm-4">
+						<input name="nome" type="text"class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2"  for="cognome">Cognome:</label>
+					 <div class="col-sm-4">
+						<input name="cognome" type="text"class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="corsoDaRimuovere">Corso da rimuovere:</label>
+					<select name="corsoDaRimuovere" class="control-label col-sm-4" class="form-control"  >
+						<option value="0"></option>
+						<option value="1">Fondamenti d'Informatica</option>
+						<option value="2">Programmazione ad oggetti</option>	
+					</select>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="corsoDaAggiungere">Corso da aggiungere:</label>
+					<select name="corsoDaAggiungere" class="control-label col-sm-4" class="form-control">
+						<option value="0"></option>
+						<option value="1">Fondamenti d'Informatica</option>
+						<option value="2">Programmazione ad oggetti</option>	
+					</select>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default">Submit</button>
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</section>
 
 	
 

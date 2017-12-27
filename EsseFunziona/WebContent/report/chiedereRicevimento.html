@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Area Professore</title>
+<title>Area Studente</title>
 </head>
 
 <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -17,11 +17,11 @@
 		<figcaption>Servizi online per lo studente</figcaption>		
 	</figure>
 
-	<h3>Professore</h3>
+	<h3>Studente</h3>
 	<nav class="menu" style="background: darkblue" >
   		<div class="container-fluid">
     		<div class="navbar-header">
-      			<a class="navbar-brand" href="../profMenu.html">EsseFunziona</a>
+      			<a class="navbar-brand" href="../studentMenu.html">EsseFunziona</a>
     		</div>
     		<ul class="nav navbar-nav">
      			<li class="dropdown">
@@ -34,56 +34,66 @@
 		          		<li><a href="documentiCorsi.html">Documenti corsi</a></li>
 		          		<li><a href="bandiNews.html">Bandi/News</a></li>
 		        	</ul>
-		        </li>
+		        </li>	
       			<li class="dropdown">
-        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Studenti<span class="caret"></span></a>
+        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Segreteria<span class="caret"></span></a>
+		        	<ul class="dropdown-menu">
+		          		<li><a href="tasse.html">Situazione Tasse</a></li>
+		        	</ul>
+      			</li>
+      			<li class="dropdown">
+        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Carriera<span class="caret"></span></a>
+		        	<ul class="dropdown-menu">
+		          		<li><a href="libretto.html">Libretto</a></li>
+		        	</ul>
+      			</li>
+      			<li class="dropdown">
+        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Piano di Studio<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
 		          		<li><a href="pianoDiStudio.html">Piano Carriera</a></li>
-		          		<li><a href="richiesteRicevimento.html">Richieste Ricevimento</a></li>
+		          		<li><a href="modificaPiano.html">Modifica Piano</a></li>
 		        	</ul>
       			</li>
       			<li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#"  style="background: darkblue">Esami<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
 		          		<li><a href="appelli.html">Appelli</a></li>
-		          		<li><a href="aggiuntaAppelli.html">Aggiunta Appelli</a></li>
-		          		<li><a href="aggiuntaMateriale.html">Aggiunta Documenti corsi</a></li>
 		          		<li><a href="verbalizzareEsami.html">Verbalizzare</a></li>
 		          		<li><a href="esiti.html">Bacheca Esiti</a></li>
 		          		<li><a href="prenotazioni.html">Bacheca Prenotazioni</a></li>
+		          		<li><a href="chiedereRicevimento.html">Chiedere un Ricevimento</a></li>
 		        	</ul>
       			</li>
     		</ul>
   		</div>
-	</nav>	
+	</nav>
 
-
-
-	
-	<br><div class="container">
-	  <div class="table-responsive">          
-	  <table class="table">
-	    <thead>
-	      <tr>
-	        <th>IDAppello</th>
-	        <th>DataAppello</th>
-	        <th>ProfessoreAppello</th>
-	        <th>CorsoAppello</th>
-	        <th>NumeroIscritti</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-	        <td>123</td>
-	        <td>27/01/18</td>
-	        <td>Giovanni Grasso</td>
-	        <td>SIW</td>
-	        <td>50</td>
-	      </tr>
-	    </tbody>
-	  </table>
-	  </div>
-	</div>
+	<br><section class="moduloRicevimento" class="row">
+		<div class="col-lg-3">
+		
+			<form class="form-horizontal" method="post" action="richiestaRicevimento">
+			  <div class="form-group">
+				<label class="control-label col-sm-2" for="professoreRicevimento">Professore:</label>
+				<select name="indirizzo" class="control-label col-sm-4" class="form-control"  >
+					<option value="0"></option>
+					<option value="1">Ricca Francesco</option>
+					<option value="2">Grasso Giovanni</option>	
+				</select>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="dataRicevimento">Data:</label>
+			    <div class="col-sm-4">
+			     <input name="idMateriale" type="date" class="form-control" /> 
+			    </div> 
+			  </div>
+			  </form>	
+			  <div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default">Submit</button>
+					</div>
+			  </div>
+		</div>
+	</section>
 
 </body>
 </html>

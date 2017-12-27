@@ -39,6 +39,7 @@
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Studenti<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
 		          		<li><a href="pianoDiStudio.html">Piano Carriera</a></li>
+		          		<li><a href="richiesteRicevimento.html">Richieste Ricevimento</a></li>
 		        	</ul>
       			</li>
       			<li class="dropdown">
@@ -57,9 +58,62 @@
 	</nav>	
 
 
-
+	<br><div class="container">
+	  <div class="table-responsive">          
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th>#</th>
+	        <th>Mittente</th>
+	        <th>Oggetto</th>
+	        <th>Contenuto</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td>1</td>
+	        <td>Ciccio Pasticcio</td>
+	        <td>Miagolo</td>
+	        <td>Sto miagolando tantissimo che non puoi capire ciao</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	  </div>
+	</div>
 	
-
+	
+	<h3>Inviare una e-mail</h3>
+	
+	<br><section class="moduloE-mail" class="row">
+		<div class="col-lg-3">
+		
+			<form class="form-horizontal" method="post" action="invioE-mail">
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="destinatarioE-mail">Destinatario:</label>
+			    <div class="col-sm-4">
+			     <input name="destinatarioE-mail" type="text" class="form-control" /> 
+			    </div> 
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="oggettoE-mail">Oggetto:</label>
+			    <div class="col-sm-4">
+			     <input name="oggettoE-mail" type="text" class="form-control" /> 
+			    </div> 
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="contenutoE-mail">Contenuto:</label>
+			    <div class="col-sm-4">
+			     <input name="contenutoE-mail" type="text" class="form-control" /> 
+			    </div> 
+			  </div>
+			  <div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">Submit</button>
+				</div>
+			  </div>	
+			  </form>	
+		</div>
+	</section>
 
 </body>
 </html>
