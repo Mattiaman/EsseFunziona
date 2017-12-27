@@ -44,54 +44,29 @@
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Segreteria<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
 		          		<li><a href="aggiuntaTasse.html">Aggiungere Tasse</a></li>
-		          		<li><a href="aggiuntaBandi.html">Pubblicare Bandi/News</a></li>
+		          		<li><a href="bandiNews.html">Pubblicare Bandi/News</a></li>
 		        	</ul>
       			</li>
     		</ul>
   		</div>
 	</nav>	
 	
-	<br><section class="moduloTasse" class="row">
+	<br><section class="moduloBando" class="row">
 		<div class="col-lg-3">
 		
-			<form class="form-horizontal" method="post" action="aggiuntaTassa">
+			<form class="form-horizontal" method="post" action="aggiuntaBando">
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="idTassa">IDTassa:</label>
+			    <label class="control-label col-sm-2" for="idBando">IDBando:</label>
 			    <div class="col-sm-4">
-			     <input name="idTassa" type="text" class="form-control" /> 
+			     <input name="idBando" type="text" class="form-control" /> 
 			    </div> 
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="importoTassa">Importo:</label>
+			    <label class="control-label col-sm-2" for="contenutoBando">ContenutoBando:</label>
 			    	<div class="col-sm-4"> 
-			      <input name="importoTassa" type="text" class="form-control" />
+			      <input name="contenutoBando" type="file" class="form-control" />
 			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="nomeTassa">Nome:</label>
-			    	<div class="col-sm-4"> 
-			      <input name="nomeTassa" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="descrizioneTassa">Descrizione:</label>
-			    	<div class="col-sm-4"> 
-			      <input name="descrizioneTassa" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="intestatarioTassa">Intestatario:</label>
-			    	<div class="col-sm-4"> 
-			      <input name="intestatarioTassa" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group"> 
-			    <div class="col-sm-offset-2 col-sm-10">
-			      <button type="submit" class="btn btn-default">Submit</button>
-			    </div>
-			  </div>
-			</form>
-			
+			  </div>		
 		</div>
 	</section>
 	

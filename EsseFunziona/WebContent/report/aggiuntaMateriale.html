@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Area Professore</title>
+<title>Area Amministratore</title>
 </head>
 
 <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -51,38 +51,24 @@
       			</li>
     		</ul>
   		</div>
-	</nav>	
+	</nav>
 	
-	<br><section class="moduloAppelli" class="row">
+	<br><section class="moduloMateriale" class="row">
 		<div class="col-lg-3">
 		
-			<form class="form-horizontal" method="post" action="aggiuntaAppello">
+			<form class="form-horizontal" method="post" action="aggiuntaMateriale">
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="idAppello">IDAppello:</label>
+			    <label class="control-label col-sm-2" for="idMateriale">IDMateriale:</label>
 			    <div class="col-sm-4">
-			     <input name="idAppello" type="text" class="form-control" /> 
+			     <input name="idMateriale" type="text" class="form-control" /> 
 			    </div> 
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="dataAppello">dataAppello:</label>
+			    <label class="control-label col-sm-2" for="contenutoMateriale">ContenutoMateriale:</label>
 			    	<div class="col-sm-4"> 
-			      <input name="dataAppello" type="date" class="form-control" />
+			      <input name="contenutoMateriale" type="file" class="form-control" />
 			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="corsoAppello">Corso:</label>    	
-			    <select name="indirizzo" class="control-label col-sm-4" class="form-control"  >
-						<option value="1">Fondamenti Informatica</option>
-						<option value="2">Programmazione ad oggetti</option>		
-				</select>
-			  </div>
-			  <div class="form-group"> 
-			    <div class="col-sm-offset-2 col-sm-10">
-			      <button type="submit" class="btn btn-default">Submit</button>
-			    </div>
-			  </div>
-			</form>
-			
+			  </div>		
 		</div>
 	</section>
 	
