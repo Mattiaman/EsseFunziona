@@ -20,7 +20,7 @@ public class IdGenerator {
 			resultSet.next();
 			id = resultSet.getLong("id");
 		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
+			e.printStackTrace();
 		}
 		return id;
 	}

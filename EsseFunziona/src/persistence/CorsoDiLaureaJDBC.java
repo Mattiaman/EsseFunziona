@@ -26,7 +26,12 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 
 		if ( (corsoDiLaurea.getCorsi() == null) 
 				|| corsoDiLaurea.getCorsi().isEmpty()){
-			throw new PersistenceException("Corso di laurea non memorizzato: un corso di laurea deve avere almeno un corso");
+			try {
+				throw new SQLException("Corso di laurea non memorizzato: un corso di laurea deve avere almeno un corso");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		Connection connection = this.databaseData.getConnection();
@@ -72,12 +77,12 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 				corsoDiLaurea.setName(resultSet.getString("name"));
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
+			e.printStackTrace();
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 		return corsoDiLaurea;
@@ -99,12 +104,12 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 				corsidilaurea.add(corsoDiLaurea);
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
+			e.printStackTrace();
 		}	 finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 		return corsidilaurea;
@@ -127,14 +132,14 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 				try {
 					connection.rollback();
 				} catch(SQLException excep) {
-					throw new PersistenceException(e.getMessage());
+					e.printStackTrace();
 				}
 			} 
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 	}
@@ -162,7 +167,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 		

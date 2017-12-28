@@ -69,12 +69,12 @@ public class PostgresDAOFactory implements DAOFactory {
 
 	@Override
 	public CorsoDAO getCorsoDAO() {
-		return new CorsoJDBC();
+		return new CorsoJDBC(databaseData);
 	}
 
 	@Override
 	public CorsoDiLaureaDAO getCorsoDiLaureaDAO() {
-		return new CorsoDiLaureaJDBC();
+		return new CorsoDiLaureaJDBC(databaseData);
 	}
 
 	@Override
