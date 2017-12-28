@@ -1,8 +1,11 @@
 package model;
 
+import java.util.Set;
+
 public class PianoDiStudi {
 	private long id;
 	private String nome;
+	private Set<Corso> corsi;
 	
 	public PianoDiStudi(long id, String nome) {
 		super();
@@ -26,5 +29,12 @@ public class PianoDiStudi {
 		this.nome = nome;
 	}
 	
-	
+	public Set<Corso> getCorsi() {
+		return corsi;
+	}
+
+	public void setCorsi(Set<Corso> corsi) {
+		this.corsi = corsi;
+	}
+
 }

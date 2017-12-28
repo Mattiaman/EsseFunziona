@@ -5,16 +5,14 @@ public class Tassa {
 	private float importo;
 	private String nome;
 	private String descrizione;
-	private Studente intestatario;
 	private Admin admin;
 	
-	public Tassa(long id, float importo, String nome, String descrizione, Studente intestatario, Admin admin) {
+	public Tassa(long id, float importo, String nome, String descrizione, Admin admin) {
 		super();
 		this.id = id;
 		this.importo = importo;
 		this.nome = nome;
 		this.descrizione = descrizione;
-		this.intestatario = intestatario;
 		this.admin=admin;
 	}
 
@@ -48,14 +46,6 @@ public class Tassa {
 
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
-	}
-
-	public Studente getIntestatario() {
-		return intestatario;
-	}
-
-	public void setIntestatario(Studente intestatario) {
-		this.intestatario = intestatario;
 	}
 
 	public Admin getAdmin() {
