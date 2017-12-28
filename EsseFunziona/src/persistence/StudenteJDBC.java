@@ -204,7 +204,6 @@ public class StudenteJDBC implements StudenteDAO {
 				statementAggiungi.setLong(1, id);
 				statementAggiungi.setLong(2, tassa.getId());
 				statementAggiungi.setString(3, studente.getMatricola());
-				statementAggiungi.setBoolean(4, tassa.isPagata());
 				statementAggiungi.executeUpdate();
 			}
 		}

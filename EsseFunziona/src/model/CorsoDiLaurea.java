@@ -15,6 +15,10 @@ public class CorsoDiLaurea {
 		this.corsi = corsi;
 	}
 
+	public CorsoDiLaurea() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public long getId() {
 		return id;
 	}

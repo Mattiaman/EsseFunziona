@@ -7,6 +7,10 @@ import persistence.dao.CorsoDAO;
 
 public class CorsoJDBC implements CorsoDAO {
 
+	public CorsoJDBC(DatabaseData databaseData) {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void save(Corso corso) {
 		// TODO Auto-generated method stub
