@@ -8,9 +8,7 @@
 <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-
-<LINK rel="stylesheet" href="../css/tableStyle.css" type="text/css">
-
+  
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
 		<a href="../images/logo_unical.png"><img class="img-responsive" src="../images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
@@ -50,37 +48,29 @@
     		</ul>
   		</div>
 	</nav>	
-
-
-
 	
-	<br><div class="container">
-	  <div class="table-responsive">          
-	  <table class="table">
-	    <thead>
-	      <tr>
-	        <th>Nome</th>
-	        <th>Cognome</th>
-	        <th>Data di Nascita</th>
-	        <th>E-mail</th>
-	        <th>Nome Utente</th>
-	        <th>CdL</th>
-	      </tr>
-	    </thead>
-	    <tbody>
-	      <tr>
-	        <td>Pinco</td>
-	        <td>Pallino</td>
-	        <td>01/01/01</td>
-	        <td>pallino@mat.unical.it</td>
-	        <td>PincoPallo</td>
-	        <td>Informatica</td>	
-	      </tr>
-	    </tbody>
-	  </table>
-	  </div>
-	</div>
-
-
+	<br><section class="moduloBando" class="row">
+		<div class="col-lg-3">
+		
+			<form class="form-horizontal" method="post" action="aggiuntaBando">
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="idBando">IDBando:</label>
+			    <div class="col-sm-4">
+			     <input name="idBando" type="text" class="form-control" /> 
+			    </div> 
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="contenutoBando">ContenutoBando:</label>
+			    	<div class="col-sm-4"> 
+			      <input name="contenutoBando" type="file" class="form-control" />
+			    </div>
+			  </div>
+			 </form>		
+		</div>
+	</section>
+	
+	
+	
+	
 </body>
 </html>
