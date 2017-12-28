@@ -34,7 +34,7 @@ public class PostgresDAOFactory implements DAOFactory {
 
 	@Override
 	public AdminDAO getAdminDAO() {
-		return new AdminJDBC();
+		return new AdminJDBC(databaseData);
 	}
 
 	@Override
@@ -69,12 +69,12 @@ public class PostgresDAOFactory implements DAOFactory {
 
 	@Override
 	public CorsoDAO getCorsoDAO() {
-		return new CorsoJDBC();
+		return new CorsoJDBC(databaseData);
 	}
 
 	@Override
 	public CorsoDiLaureaDAO getCorsoDiLaureaDAO() {
-		return new CorsoDiLaureaJDBC();
+		return new CorsoDiLaureaJDBC(databaseData);
 	}
 
 	@Override

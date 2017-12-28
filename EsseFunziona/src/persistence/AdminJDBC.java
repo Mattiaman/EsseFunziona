@@ -7,6 +7,13 @@ import persistence.dao.AdminDAO;
 
 public class AdminJDBC implements AdminDAO {
 
+	private DatabaseData databaseData;
+	
+	public AdminJDBC(DatabaseData databaseData) {
+		// TODO Auto-generated constructor stub
+		this.databaseData=databaseData;
+	}
+
 	@Override
 	public void save(Admin admin) {
 		// TODO Auto-generated method stub

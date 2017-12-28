@@ -16,6 +16,10 @@ public class Tassa {
 		this.admin=admin;
 	}
 
+	public Tassa() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public long getId() {
 		return id;
 	}
