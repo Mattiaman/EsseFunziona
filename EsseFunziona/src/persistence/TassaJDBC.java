@@ -1,5 +1,8 @@
 package persistence;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 import model.Tassa;
@@ -15,8 +18,16 @@ public class TassaJDBC implements TassaDAO {
 
 	@Override
 	public void save(Tassa tassa) {
-		// TODO Auto-generated method stub
-
+		Connection connection=this.databaseData.getConnection();
+		try {
+			String insert="insert into tassa(id, importo, nome, descrizione, nomeUtenteAdmin) values(?,?,?,?,?)";
+			
+			PreparedStatement statement=connection.prepareStatement(insert);
+			statement.setLong(1, IdGenerator.getId());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

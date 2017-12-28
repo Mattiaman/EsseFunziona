@@ -59,7 +59,7 @@ public class PostgresDAOFactory implements DAOFactory {
 
 	@Override
 	public TassaDAO getTassaDAO() {
-		return new TassaJDBC();
+		return new TassaJDBC(databaseData);
 	}
 
 	@Override
@@ -78,8 +78,8 @@ public class PostgresDAOFactory implements DAOFactory {
 	}
 
 	@Override
-	public UtilityDAO getUtilityDAO() {
-		return new UtilityJDBC();
+	public UtilityJDBC getUtilityJDBC() {
+		return new UtilityJDBC(databaseData);
 	}
 
 }

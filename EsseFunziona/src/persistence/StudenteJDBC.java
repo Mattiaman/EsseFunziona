@@ -198,13 +198,12 @@ public class StudenteJDBC implements StudenteDAO {
 				statement.executeUpdate();
 			}
 			else {
-				String aggiungi="insert into afferisce(id, idTassa, matricolaStudente, pagata) values(?,?,?,?)";
+				String aggiungi="insert into afferisce(id, idTassa, matricolaStudente) values(?,?,?)";
 				Long id=IdGenerator.getId(connection);
 				PreparedStatement statementAggiungi=connection.prepareStatement(aggiungi);
 				statementAggiungi.setLong(1, id);
 				statementAggiungi.setLong(2, tassa.getId());
 				statementAggiungi.setString(3, studente.getMatricola());
-				statementAggiungi.setBoolean(4, tassa.isPagata());
 				statementAggiungi.executeUpdate();
 			}
 		}

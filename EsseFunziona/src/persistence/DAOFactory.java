@@ -30,7 +30,7 @@ public interface DAOFactory {
 	
 	public abstract CorsoDiLaureaDAO getCorsoDiLaureaDAO();
 	
-	public abstract UtilityDAO getUtilityDAO();
+	public abstract UtilityJDBC getUtilityJDBC();
 
 	
 }
