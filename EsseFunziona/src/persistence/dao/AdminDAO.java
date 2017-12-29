@@ -3,6 +3,7 @@ package persistence.dao;
 import java.util.List;
 
 import model.Admin;
+import model.Studente;
 
 public interface AdminDAO {
 
@@ -12,4 +13,5 @@ public interface AdminDAO {
 	public void update(Admin admin);
 	public void delete(Admin admin);	
 
+	public void setPassword(Admin admin, String password);
 }

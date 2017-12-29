@@ -176,7 +176,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 	
 	private void removeForeignKeyFromCorso(CorsoDiLaurea corsodilaurea, Connection connection) throws SQLException {
 		for (Corso corso : corsodilaurea.getCorsi()) {
-			String update = "update afferisce SET corsodilaurea_codice = NULL WHERE corso_codice = ?";
+			String update = "update appartieneA SET corsodilaurea_codice = NULL WHERE corso_codice = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setLong(1, corso.getId());
 			statement.executeUpdate();
@@ -189,19 +189,19 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 			if (corsodao.findByPrimaryKey(corso.getId()) == null){
 				corsodao.save(corso);
 			}
-			String afferisce = "select id from afferisce where corso_codice=? AND corsodilaurea_codice=?";
+			String afferisce = "select id from appartieneA where corso_codice=? AND corsodilaurea_codice=?";
 			PreparedStatement statementAfferisce = connection.prepareStatement(afferisce);
 			statementAfferisce.setLong(1, corso.getId());
 			statementAfferisce.setLong(2, corsodilaurea.getId());
 			ResultSet result = statementAfferisce.executeQuery();
 			if(result.next()){
-				String update = "update afferisce SET corsodilaurea_codice = ? WHERE id = ?";
+				String update = "update appartieneA SET corsodilaurea_codice = ? WHERE id = ?";
 				PreparedStatement statement = connection.prepareStatement(update);
 				statement.setLong(1, corsodilaurea.getId());
 				statement.setLong(2, result.getLong("id"));
 				statement.executeUpdate();
 			}else{			
-				String iscrivi = "insert into afferisce(id, corso_codice, corsodilaurea_codice) values (?,?,?)";
+				String iscrivi = "insert into appartieneA(id, corso_codice, corsodilaurea_codice) values (?,?,?)";
 				PreparedStatement statementIscrivi = connection.prepareStatement(iscrivi);
 				Long id = IdGenerator.getId(connection);
 				statementIscrivi.setLong(1, id);

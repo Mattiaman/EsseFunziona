@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Admin;
+import model.Studente;
 import persistence.dao.AdminDAO;
 
 public class AdminJDBC implements AdminDAO {
@@ -153,5 +154,12 @@ public class AdminJDBC implements AdminDAO {
 			}
 		}
 	}
+	
+	@Override
+	public void setPassword(Admin admin, String password) {
+		// TODO Auto-generated method stub
+
+	}
+	
 
 }
