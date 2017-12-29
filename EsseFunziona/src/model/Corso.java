@@ -11,6 +11,9 @@ public class Corso {
 		this.nome = nome;
 	}
 
+	public Corso() {
+	}
+
 	public long getId() {
 		return id;
 	}

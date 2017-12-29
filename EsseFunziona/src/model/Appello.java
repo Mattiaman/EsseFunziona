@@ -20,6 +20,10 @@ public class Appello {
 		this.studentiIscritti = studentiIscritti;
 	}
 
+	public Appello() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public long getId() {
 		return id;
 	}

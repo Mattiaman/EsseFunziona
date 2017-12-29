@@ -25,7 +25,7 @@ public class UtilityJDBC {
 					"create table pianoDiStudi(\"id\" bigint primary key, nome VARCHAR(255));"+
 					"create table corso(\"id\" bigint primary key, nome VARCHAR(255));"+
 					"create table materiale(\"id\" bigint primary key, contenuto bytea, nomeUtenteProfessore VARCHAR(20) REFERENCES professore(\"nomeUtente\"));"+
-					"create table appello(\"id\" bigint primary key, nomeUtenteProfessore VARCHAR(20) REFERENCES professore(\"nomeUtente\"), corsoId bigint REFERENCES corso(\"id\"));"+
+					"create table appello(\"id\" bigint primary key, dataAppello DATE, nomeUtenteProfessore VARCHAR(20) REFERENCES professore(\"nomeUtente\"), corsoId bigint REFERENCES corso(\"id\"));"+
 					"create table devePagare(\"id\" bigint primary key, matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"), idTassa bigint REFERENCES tassa(\"id\"), pagata boolean);"+
 					"create table appartieneA(\"id\" bigint primary key, idCorso bigint REFERENCES corso(\"id\"), idCorsoDiLaurea bigint REFERENCES corsoDiLaurea(\"id\"));"+
 					"create table contiene(\"id\" bigint primary key, idCorso bigint REFERENCES corso(\"id\"), idPianoDiStudi bigint REFERENCES pianoDiStudi(\"id\"));"+

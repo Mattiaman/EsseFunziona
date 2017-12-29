@@ -11,6 +11,10 @@ public class Admin extends Utente {
 		this.nomeUtente = nomeUtente;
 	}
 
+	public Admin() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getNomeUtente() {
 		return nomeUtente;
 	}

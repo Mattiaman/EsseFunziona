@@ -17,7 +17,6 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 	private DatabaseData databaseData;
 	
 	public CorsoDiLaureaJDBC(DatabaseData databaseData) {
-		super();
 		this.databaseData = databaseData;
 	}
 
@@ -26,7 +25,12 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 
 		if ( (corsoDiLaurea.getCorsi() == null) 
 				|| corsoDiLaurea.getCorsi().isEmpty()){
-			throw new PersistenceException("Corso di laurea non memorizzato: un corso di laurea deve avere almeno un corso");
+			try {
+				throw new SQLException("Corso di laurea non memorizzato: un corso di laurea deve avere almeno un corso");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		Connection connection = this.databaseData.getConnection();
@@ -62,7 +66,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 		CorsoDiLaurea corsoDiLaurea = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * from corsodilaurea where codice = ?";
+			String query = "select * from corsodilaurea where id = ?";
 			statement = connection.prepareStatement(query);
 			statement.setLong(1, id);
 			ResultSet resultSet = statement.executeQuery();
@@ -72,12 +76,12 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 				corsoDiLaurea.setName(resultSet.getString("name"));
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
+			e.printStackTrace();
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 		return corsoDiLaurea;
@@ -99,12 +103,12 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 				corsidilaurea.add(corsoDiLaurea);
 			}
 		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
+			e.printStackTrace();
 		}	 finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 		return corsidilaurea;
@@ -115,7 +119,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 
 		Connection connection = this.databaseData.getConnection();
 		try {
-			String update = "update corso SET nome = ? WHERE codice = ?";
+			String update = "update corso SET nome = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, corsoDiLaurea.getName());
 			statement.setLong(2, corsoDiLaurea.getId());
@@ -127,14 +131,14 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 				try {
 					connection.rollback();
 				} catch(SQLException excep) {
-					throw new PersistenceException(e.getMessage());
+					e.printStackTrace();
 				}
 			} 
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 	}
@@ -144,7 +148,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 
 		Connection connection = this.databaseData.getConnection();
 		try {
-			String delete = "delete FROM corsodilaurea WHERE codice = ?";
+			String delete = "delete FROM corsodilaurea WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setLong(2, corsoDiLaurea.getId());
 
@@ -162,7 +166,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 		
@@ -172,7 +176,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 	
 	private void removeForeignKeyFromCorso(CorsoDiLaurea corsodilaurea, Connection connection) throws SQLException {
 		for (Corso corso : corsodilaurea.getCorsi()) {
-			String update = "update afferisce SET corsodilaurea_codice = NULL WHERE corso_codice = ?";
+			String update = "update appartieneA SET corsodilaurea_codice = NULL WHERE corso_codice = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setLong(1, corso.getId());
 			statement.executeUpdate();
@@ -185,19 +189,19 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 			if (corsodao.findByPrimaryKey(corso.getId()) == null){
 				corsodao.save(corso);
 			}
-			String afferisce = "select id from afferisce where corso_codice=? AND corsodilaurea_codice=?";
+			String afferisce = "select id from appartieneA where idCorso=? AND idCorsodilaurea=?";
 			PreparedStatement statementAfferisce = connection.prepareStatement(afferisce);
 			statementAfferisce.setLong(1, corso.getId());
 			statementAfferisce.setLong(2, corsodilaurea.getId());
 			ResultSet result = statementAfferisce.executeQuery();
 			if(result.next()){
-				String update = "update afferisce SET corsodilaurea_codice = ? WHERE id = ?";
+				String update = "update appartieneA SET idCorsodilaurea = ? WHERE id = ?";
 				PreparedStatement statement = connection.prepareStatement(update);
 				statement.setLong(1, corsodilaurea.getId());
 				statement.setLong(2, result.getLong("id"));
 				statement.executeUpdate();
 			}else{			
-				String iscrivi = "insert into afferisce(id, corso_codice, corsodilaurea_codice) values (?,?,?)";
+				String iscrivi = "insert into appartieneA(id, idCorso, idCorsodilaurea) values (?,?,?)";
 				PreparedStatement statementIscrivi = connection.prepareStatement(iscrivi);
 				Long id = IdGenerator.getId(connection);
 				statementIscrivi.setLong(1, id);
