@@ -39,22 +39,22 @@ public class PostgresDAOFactory implements DAOFactory {
 
 	@Override
 	public AppelloDAO getAppelloDAO() {
-		return new AppelloJDBC();
+		return new AppelloJDBC(databaseData);
 	}
 
 	@Override
 	public MaterialeDAO getMaterialeDAO() {
-		return new MaterialeJDBC();
+		return new MaterialeJDBC(databaseData);
 	}
 
 	@Override
 	public PianoDiStudiDAO getPianoDiStudiDAO() {
-		return new PianoDiStudiJDBC();
+		return new PianoDiStudiJDBC(databaseData);
 	}
 
 	@Override
 	public ProfessoreDAO getProfessoreDAO() {
-		return new ProfessoreJDBC();
+		return new ProfessoreJDBC(databaseData);
 	}
 
 	@Override

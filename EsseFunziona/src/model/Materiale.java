@@ -15,6 +15,10 @@ public class Materiale {
 		this.professore=professore;
 	}
 
+	public Materiale() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public File getContenuto() {
 		return contenuto;
 	}

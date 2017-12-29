@@ -17,9 +17,9 @@ public class UtilityJDBC {
 		try {
 			String create=
 					"create SEQUENCE idSequenza;"+
-					"create table studente (matricola CHARACTER(6), nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), corsoDiLaureaId bigint REFERENCES corsoDiLaurea(\"id\"), pianoDiStudiId bigint REFERENCES pianoDiStudi(\"id\"));"+
-					"create table professore (nomeUtente VARCHAR(20), nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255));"+
-					"create table admin (nomeUtente VARCHAR(20), nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255));"+
+					"create table studente (matricola CHARACTER(6), nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), corsoDiLaureaId bigint REFERENCES corsoDiLaurea(\"id\"), pianoDiStudiId bigint REFERENCES pianoDiStudi(\"id\"), password VARCHAR(20));"+
+					"create table professore (nomeUtente VARCHAR(20), nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), password VARCHAR(20));"+
+					"create table admin (nomeUtente VARCHAR(20), nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), password VARCHAR(20));"+
 					"create table tassa(\"id\" bigint primary key, \"importo\" real, nome VARCHAR(255), descrizione VARCHAR(255), nomeUtenteAdmin VARCHAR(20) REFERENCES admin(\"nomeUtente\"));"+
 					"create table corsoDiLaurea(\"id\" bigint primary key, nome VARCHAR(255));"+
 					"create table pianoDiStudi(\"id\" bigint primary key, nome VARCHAR(255));"+

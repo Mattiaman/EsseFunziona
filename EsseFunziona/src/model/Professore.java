@@ -11,6 +11,10 @@ public class Professore extends Utente {
 		this.nomeUtente = nomeUtente;
 	}
 
+	public Professore() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getNomeUtente() {
 		return nomeUtente;
 	}
