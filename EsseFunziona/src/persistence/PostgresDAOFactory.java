@@ -34,12 +34,12 @@ public class PostgresDAOFactory implements DAOFactory {
 
 	@Override
 	public AdminDAO getAdminDAO() {
-		return new AdminJDBC();
+		return new AdminJDBC(databaseData);
 	}
 
 	@Override
 	public AppelloDAO getAppelloDAO() {
-		return new AppelloJDBC();
+		return new AppelloJDBC(databaseData);
 	}
 
 	@Override
