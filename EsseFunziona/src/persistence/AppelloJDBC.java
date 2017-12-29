@@ -113,7 +113,7 @@ public class AppelloJDBC implements AppelloDAO {
 	public void update(Appello appello) {
 		Connection connection=this.databaseData.getConnection();
 		try {	
-			String update="UPDATE appello SET id=?, data=? nomeUtenteProfessore=?, corsoId=? WHERE id=?";
+			String update="UPDATE appello SET data=? nomeUtenteProfessore=?, corsoId=? WHERE id=?";
 			PreparedStatement statement=connection.prepareStatement(update);
 			statement.setLong(1, appello.getId());
 			statement.setDate(2,  new Date(appello.getData().getTime()));
