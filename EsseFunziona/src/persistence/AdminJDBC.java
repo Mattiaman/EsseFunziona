@@ -25,15 +25,14 @@ public class AdminJDBC implements AdminDAO {
 	
 		Connection connection=this.databaseData.getConnection();
 		
-		String insert="insert into admin (nome, cognome, dataDiNascita, email, nomeUtente) values (?,?,?,?,?)";
+		String insert="insert into admin (nomeUtente, nome, cognome, dataDiNascita, email) values (?,?,?,?,?)";
 		try {			
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setString(1, admin.getNome());
-			statement.setString(2, admin.getCognome());
-			statement.setDate(3, new Date(admin.getDataDiNascita().getTime()));
-			statement.setString(4, admin.getEmail());
-			statement.setString(5, admin.getNomeUtente());		
-				
+			statement.setString(1, admin.getNomeUtente());	
+			statement.setString(2, admin.getNome());
+			statement.setString(3, admin.getCognome());
+			statement.setDate(4, new Date(admin.getDataDiNascita().getTime()));
+			statement.setString(5, admin.getEmail());				
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -58,11 +57,11 @@ public class AdminJDBC implements AdminDAO {
 			ResultSet result=statement.executeQuery();
 			if(result.next()) {
 				admin=new Admin();
+				admin.setNomeUtente(result.getString("nomeUtente"));
 				admin.setNome(result.getString("nome"));
 				admin.setCognome(result.getString("cognome"));
 				admin.setEmail(result.getString("email"));
 				admin.setDataDiNascita(result.getDate("dataDiNascita"));
-				admin.setNomeUtente(result.getString("nomeUtente"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -135,7 +134,7 @@ public class AdminJDBC implements AdminDAO {
 	public void delete(Admin admin) {
 		Connection connection=this.databaseData.getConnection();
 		try {
-			String delete="DELETE FROM admin WHERE matricola=?";
+			String delete="DELETE FROM admin WHERE nomeUtente=?";
 			PreparedStatement statement=connection.prepareStatement(delete);
 			statement.setString(1, admin.getNomeUtente());
 			connection.setAutoCommit(false);

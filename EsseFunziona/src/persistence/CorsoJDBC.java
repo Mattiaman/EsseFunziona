@@ -25,7 +25,7 @@ public class CorsoJDBC implements CorsoDAO {
 		try {
 			Long id = IdGenerator.getId(connection);
 			corso.setId(id); 
-			String insert = "insert into corso(codice, nome) values (?,?)";
+			String insert = "insert into corso(id, nome) values (?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, corso.getId());
 			statement.setString(2, corso.getNome());
@@ -56,13 +56,13 @@ public class CorsoJDBC implements CorsoDAO {
 		Corso corso = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * from corso where codice = ?";
+			String query = "select * from corso where id = ?";
 			statement = connection.prepareStatement(query);
 			statement.setLong(1, id);
 			ResultSet result = statement.executeQuery();
 			if (result.next()) {
 				corso = new Corso();
-				corso.setId(result.getLong("codice"));				
+				corso.setId(result.getLong("id"));				
 				corso.setNome(result.getString("nome"));
 			}
 		} catch (SQLException e) {
@@ -88,7 +88,7 @@ public class CorsoJDBC implements CorsoDAO {
 			statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
-				corso = findByPrimaryKey(result.getLong("codice"));
+				corso = findByPrimaryKey(result.getLong("id"));
 				corsi.add(corso);
 			}
 		} catch (SQLException e) {
@@ -107,7 +107,7 @@ public class CorsoJDBC implements CorsoDAO {
 	public void update(Corso corso) {
 		Connection connection = this.databaseData.getConnection();
 		try {
-			String update = "update corso SET nome = ? WHERE codice = ?";
+			String update = "update corso SET nome = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, corso.getNome());
 			statement.setLong(2, corso.getId());
@@ -134,7 +134,7 @@ public class CorsoJDBC implements CorsoDAO {
 	public void delete(Corso corso) {
 		Connection connection = this.databaseData.getConnection();
 		try {
-			String delete = "delete FROM corso WHERE codice = ? ";
+			String delete = "delete FROM corso WHERE id = ? ";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setLong(1, corso.getId());
 
