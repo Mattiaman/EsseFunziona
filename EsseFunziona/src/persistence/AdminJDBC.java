@@ -17,9 +17,10 @@ public class AdminJDBC implements AdminDAO {
 	private DatabaseData databaseData;
 	
 	public AdminJDBC(DatabaseData databaseData) {
-		this.databaseData = databaseData;
+		// TODO Auto-generated constructor stub
+		this.databaseData=databaseData;
 	}
-
+	
 	@Override
 	public void save(Admin admin) {
 	
