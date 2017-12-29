@@ -17,7 +17,6 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 	private DatabaseData databaseData;
 	
 	public CorsoDiLaureaJDBC(DatabaseData databaseData) {
-		super();
 		this.databaseData = databaseData;
 	}
 

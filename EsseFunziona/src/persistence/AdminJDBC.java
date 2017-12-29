@@ -1,5 +1,11 @@
 package persistence;
 
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import model.Admin;
@@ -7,34 +13,145 @@ import persistence.dao.AdminDAO;
 
 public class AdminJDBC implements AdminDAO {
 
+	private DatabaseData databaseData;
+	
+	public AdminJDBC(DatabaseData databaseData) {
+		this.databaseData = databaseData;
+	}
+
 	@Override
 	public void save(Admin admin) {
-		// TODO Auto-generated method stub
-
+	
+		Connection connection=this.databaseData.getConnection();
+		
+		String insert="insert into admin (nome, cognome, dataDiNascita, email, nomeUtente) values (?,?,?,?,?)";
+		try {			
+			PreparedStatement statement = connection.prepareStatement(insert);
+			statement.setString(1, admin.getNome());
+			statement.setString(2, admin.getCognome());
+			statement.setDate(3, new Date(admin.getDataDiNascita().getTime()));
+			statement.setString(4, admin.getEmail());
+			statement.setString(5, admin.getNomeUtente());		
+				
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 	@Override
 	public Admin findByPrimaryKey(String nomeUtente) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection=this.databaseData.getConnection();
+		Admin admin=null;
+		try {
+			PreparedStatement statement;
+			String find="SELECT * FROM admin WHERE nomeUtente=?";
+			statement=connection.prepareStatement(find);
+			statement.setString(1,nomeUtente);
+			ResultSet result=statement.executeQuery();
+			if(result.next()) {
+				admin=new Admin();
+				admin.setNome(result.getString("nome"));
+				admin.setCognome(result.getString("cognome"));
+				admin.setEmail(result.getString("email"));
+				admin.setDataDiNascita(result.getDate("dataDiNascita"));
+				admin.setNomeUtente(result.getString("nomeUtente"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return admin;
 	}
 
 	@Override
 	public List<Admin> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection=this.databaseData.getConnection();
+		List<Admin> allAdmin=new ArrayList<>();
+		try {
+			Admin admin;
+			PreparedStatement statement;
+			String query="SELECT * FROM admin";
+			statement=connection.prepareStatement(query);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				admin=findByPrimaryKey(result.getString("nomeUtente"));
+				allAdmin.add(admin);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return allAdmin;
 	}
 
 	@Override
 	public void update(Admin admin) {
-		// TODO Auto-generated method stub
-
+		Connection connection=this.databaseData.getConnection();
+		try {	
+			String update="UPDATE admin SET nome=?, cognome=?, email=?, dataDiNascita=? WHERE nomeUtente=?";
+			PreparedStatement statement=connection.prepareStatement(update);
+			statement.setString(1, admin.getNome());
+			statement.setString(2, admin.getCognome());
+			statement.setString(3, admin.getEmail());
+			statement.setDate(4, new Date(admin.getDataDiNascita().getTime()));
+			statement.setString(5, admin.getNomeUtente());
+			statement.executeQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
 	public void delete(Admin admin) {
-		// TODO Auto-generated method stub
-
+		Connection connection=this.databaseData.getConnection();
+		try {
+			String delete="DELETE FROM admin WHERE matricola=?";
+			PreparedStatement statement=connection.prepareStatement(delete);
+			statement.setString(1, admin.getNomeUtente());
+			connection.setAutoCommit(false);
+			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+			statement.executeUpdate();
+			connection.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
