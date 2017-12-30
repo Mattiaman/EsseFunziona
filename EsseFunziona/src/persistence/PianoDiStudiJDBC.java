@@ -24,11 +24,12 @@ public class PianoDiStudiJDBC implements PianoDiStudiDAO {
 		// TODO Auto-generated method stub
 		Connection connection=this.databaseData.getConnection();
 		try {
-			String insert="insert into pianoDiStudi(id, nome) values(?,?)";
+			String insert="insert into pianoDiStudi(id, nome, corsoDiLaureaId) values(?,?,?)";
 			pianoDiStudi.setId(IdGenerator.getId(connection));
 			PreparedStatement statement=connection.prepareStatement(insert);
 			statement.setLong(1, pianoDiStudi.getId());
-			statement.setString(1, pianoDiStudi.getNome());
+			statement.setString(2, pianoDiStudi.getNome());
+			statement.setLong(3, pianoDiStudi.getCorsoDiLaurea().getId());
 			statement.executeUpdate();
 			
 			this.mappaCorsi(pianoDiStudi, connection);

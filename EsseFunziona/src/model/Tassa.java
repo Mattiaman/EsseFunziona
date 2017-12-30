@@ -20,6 +20,16 @@ public class Tassa {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
+	public Tassa(float importo, String nome, String descrizione, Admin admin) {
+		super();
+		this.importo = importo;
+		this.nome = nome;
+		this.descrizione = descrizione;
+		this.admin = admin;
+	}
+
 	public long getId() {
 		return id;
 	}

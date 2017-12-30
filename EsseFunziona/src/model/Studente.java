@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Studente extends Utente {
@@ -52,6 +53,11 @@ public class Studente extends Utente {
 		this.tasse = tasse;
 	}
 	
-	
+	public void addTassa(Tassa tassa) {
+		if(this.tasse== null) {
+			tasse=new HashSet<Tassa>();
+		}
+		tasse.add(tassa);
+	}
 	
 }

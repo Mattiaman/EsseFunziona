@@ -26,14 +26,16 @@ public class AdminJDBC implements AdminDAO {
 	
 		Connection connection=this.databaseData.getConnection();
 		
-		String insert="insert into admin (nomeUtente, nome, cognome, dataDiNascita, email) values (?,?,?,?,?)";
+		String insert="insert into admin (\"nomeUtente\", nome, cognome, dataDiNascita, email) values (?,?,?,?,?)";
 		try {			
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, admin.getNomeUtente());	
 			statement.setString(2, admin.getNome());
 			statement.setString(3, admin.getCognome());
 			statement.setDate(4, new Date(admin.getDataDiNascita().getTime()));
-			statement.setString(5, admin.getEmail());				
+			statement.setString(5, admin.getEmail());	
+			statement.executeUpdate();
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally {

@@ -8,9 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Appello;
 import model.Professore;
 import model.Studente;
 import persistence.dao.ProfessoreDAO;
+import persistence.dao.StudenteDAO;
 
 public class ProfessoreJDBC implements ProfessoreDAO {
 	
@@ -25,7 +27,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		// TODO Auto-generated method stub
 		Connection connection=this.databaseData.getConnection();
 		try {		
-			String insert="insert into profesore(nomeUtente, nome, cognome, dataDiNascita, email) values (?,?,?,?,?)";
+			String insert="insert into professore(\"nomeUtente\", nome, cognome, dataDiNascita, email) values (?,?,?,?,?)";
 			PreparedStatement statement=connection.prepareStatement(insert);
 			statement.setString(1, professore.getNomeUtente());
 			statement.setString(2, professore.getNome());
@@ -33,6 +35,11 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			statement.setDate(4, new Date(professore.getDataDiNascita().getTime()));
 			statement.setString(5, professore.getEmail());
 			statement.executeUpdate();
+			
+			
+			if(professore.getStudentiRicevimento()!=null)
+				if(!professore.getStudentiRicevimento().isEmpty()) 
+					this.mappaStudenti(professore, connection);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -125,6 +132,10 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			statement.setString(4, professore.getEmail());
 			statement.setString(5, professore.getNomeUtente());
 			statement.executeUpdate();
+			
+			if(professore.getStudentiRicevimento()!=null)
+				if(!professore.getStudentiRicevimento().isEmpty()) 
+					this.mappaStudenti(professore, connection);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -183,6 +194,37 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			}
 		}
 	}		
-
+	
+	private void mappaStudenti(Professore professore, Connection connection) throws SQLException {
+		
+		StudenteDAO studenteDAO=new StudenteJDBC(databaseData);
+		for(Studente studente: professore.getStudentiRicevimento()) {
+			if(studenteDAO.findByPrimaryKey(studente.getMatricola())==null) {
+				studenteDAO.save(studente);
+			}
+			String prenota="select id from riceve where nomeUtenteProfessore=? AND matricolaStudente=?";
+			PreparedStatement statementPrenota=connection.prepareStatement(prenota);
+			statementPrenota.setString(1,professore.getNomeUtente());
+			statementPrenota.setString(2, studente.getMatricola());
+			ResultSet result=statementPrenota.executeQuery();
+			if(result.next()) {
+				String update="update riceve SET nomeUtenteProfessore=? WHERE id=?";
+				PreparedStatement statement=connection.prepareStatement(update);				
+				statementPrenota.setString(1, professore.getNomeUtente());;
+				statementPrenota.setLong(2, result.getLong("id"));
+				statement.executeUpdate();
+			}
+			else {
+				String aggiungi="insert into riceve(id, matricolaStudente, nomeUtenteProfessore, dataRicevimento, accettato) values(?,?,?,NULL,FALSE)";
+				Long id=IdGenerator.getId(connection);
+				PreparedStatement statementAggiungi=connection.prepareStatement(aggiungi);
+				statementAggiungi.setLong(1, id);
+				statementAggiungi.setString(2, studente.getMatricola());
+				statementAggiungi.setString(3, professore.getNomeUtente());
+				statementAggiungi.executeUpdate();
+			}
+		}
+		
+	}
 
 }

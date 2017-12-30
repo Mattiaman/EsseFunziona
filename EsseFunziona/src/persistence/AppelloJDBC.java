@@ -38,6 +38,7 @@ public class AppelloJDBC implements AppelloDAO {
 			statement.setString(3, appello.getProfessore().getNomeUtente());
 			statement.setLong(4, appello.getCorso().getId());
 			
+			statement.executeUpdate();
 			this.mappaStudenti(appello, connection);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

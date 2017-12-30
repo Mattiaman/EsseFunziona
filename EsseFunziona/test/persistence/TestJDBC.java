@@ -2,6 +2,8 @@ package persistence;
 
 import persistence.dao.*;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,6 +25,7 @@ public class TestJDBC {
 		CorsoDAO corsoDAO=factory.getCorsoDAO();
 		MaterialeDAO materialeDAO=factory.getMaterialeDAO();
 		AppelloDAO appelloDAO=factory.getAppelloDAO();
+		TassaDAO tassaDAO=factory.getTassaDAO();
 		
 		//creazione Corsi
 		Corso fondamentiDiInformatica=new Corso("Fondamenti di Informatica");
@@ -39,5 +42,72 @@ public class TestJDBC {
 		CorsoDiLaurea cdlStoria=new CorsoDiLaurea("Corso di Laurea in Storia");
 		cdlStoria.addCorso(storiaRomana);
 		cdlStoria.addCorso(inglese);
+		
+		//creazione piano di studi
+		PianoDiStudi pianoDiStudi1=new PianoDiStudi("piano1");
+		pianoDiStudi1.setCorsoDiLaurea(cdlInformatica);
+		pianoDiStudi1.addCorso(programmazioneAdOggetti);
+		pianoDiStudi1.addCorso(fondamentiDiInformatica);
+		pianoDiStudi1.addCorso(inglese);
+		pianoDiStudi1.setCorsoDiLaurea(cdlInformatica);
+		PianoDiStudi pianoDiStudi=new PianoDiStudi("piano2", cdlStoria);
+		pianoDiStudi.addCorso(inglese);
+		pianoDiStudi.addCorso(storiaRomana);
+		
+		//Creazione Admin
+		Calendar calendar1 = Calendar.getInstance();
+		calendar1.set(1990, Calendar.APRIL, 1);
+		Date date3 = calendar1.getTime();
+		
+		Admin admin1= new Admin ("Snoopy","pecorella",date3,"baubau@sonofigo.it","baubau");
+		
+	
+		//Creazione Tasse	
+		Tassa tassa1= new Tassa(500,"tassa1","tassaIscrizione1",admin1);
+		Tassa tassa2= new Tassa(400,"tassa2","tassaIscrizione2",admin1);
+		Tassa tassa3= new Tassa(300,"tassa3","tassaIscrizione3",admin1);
+		
+		//Creazione Professore
+		Professore prof1= new Professore("francesco","ricca",date3,"ricca@unical.it","CiccioRicca");
+		
+		
+		//Creazione studente
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(1996, Calendar.APRIL, 13);
+		Date date1 = calendar.getTime();
+
+		Studente mettiuFigo=new Studente("000000","Mattia","Cava",date1,"robmat56@hotmail.it");
+		mettiuFigo.setCorsoDiLaurea(cdlInformatica);
+		mettiuFigo.setPianoDiStudi(pianoDiStudi);
+
+		calendar.set(1996, Calendar.AUGUST, 28);
+		Date date2=calendar.getTime();
+		Studente ciuskiScemo=new Studente("000009","Luca","Quarta",date2,"ciuskifacagare@tanto.schifosamente");
+		ciuskiScemo.setCorsoDiLaurea(cdlStoria);
+		ciuskiScemo.setPianoDiStudi(pianoDiStudi1);
+		
+		//insert
+		corsoDAO.save(fondamentiDiInformatica);
+		corsoDAO.save(programmazioneAdOggetti);
+		corsoDAO.save(storiaRomana);
+		corsoDAO.save(inglese);
+		
+		corsoDiLaureaDAO.save(cdlInformatica);
+		corsoDiLaureaDAO.save(cdlStoria);
+		
+		pianoDiStudiDAO.save(pianoDiStudi);
+		pianoDiStudiDAO.save(pianoDiStudi1);
+		
+		adminDAO.save(admin1);
+
+		tassaDAO.save(tassa1);
+		tassaDAO.save(tassa2);
+		tassaDAO.save(tassa3);
+		
+		studenteDAO.save(mettiuFigo);
+		studenteDAO.save(ciuskiScemo);
+		
+		professoreDAO.save(prof1);	
+		
 	}
 }

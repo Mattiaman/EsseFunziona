@@ -38,7 +38,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 		try {
 			Long id = IdGenerator.getId(connection);
 			corsoDiLaurea.setId(id);
-			String insert="insert into corso di laurea(id, name) values (?,?)";
+			String insert="insert into corsoDiLaurea(id, nome) values (?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, corsoDiLaurea.getId());
 			statement.setString(2, corsoDiLaurea.getName());
@@ -66,14 +66,14 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 		CorsoDiLaurea corsoDiLaurea = null;
 		try {
 			PreparedStatement statement;
-			String query = "select * from corsodilaurea where id = ?";
+			String query = "select * from corsoDiLaurea where id = ?";
 			statement = connection.prepareStatement(query);
 			statement.setLong(1, id);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
 				corsoDiLaurea = new CorsoDiLaurea();
 				corsoDiLaurea.setId(resultSet.getLong("id"));
-				corsoDiLaurea.setName(resultSet.getString("name"));
+				corsoDiLaurea.setName(resultSet.getString("nome"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -95,7 +95,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 		try {			
 			CorsoDiLaurea corsoDiLaurea;
 			PreparedStatement statement;
-			String query = "select * from corsodilaurea";
+			String query = "select * from corsoDiLaurea";
 			statement = connection.prepareStatement(query);
 			ResultSet result = statement.executeQuery();
 			while (result.next()) {
@@ -148,7 +148,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 
 		Connection connection = this.databaseData.getConnection();
 		try {
-			String delete = "delete FROM corsodilaurea WHERE id = ?";
+			String delete = "delete FROM corsoDiLaurea WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setLong(2, corsoDiLaurea.getId());
 
@@ -173,10 +173,10 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 		
 	}
 
-	
+
 	private void removeForeignKeyFromCorso(CorsoDiLaurea corsodilaurea, Connection connection) throws SQLException {
 		for (Corso corso : corsodilaurea.getCorsi()) {
-			String update = "update appartieneA SET corsodilaurea_codice = NULL WHERE corso_codice = ?";
+			String update = "update appartieneA SET idCorsodilaurea = NULL WHERE idCorso = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setLong(1, corso.getId());
 			statement.executeUpdate();

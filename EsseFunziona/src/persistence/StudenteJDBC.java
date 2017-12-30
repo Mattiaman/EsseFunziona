@@ -37,7 +37,11 @@ public class StudenteJDBC implements StudenteDAO {
 				statement.setLong(6, studente.getCorsoDiLaurea().getId());
 				statement.setLong(7, studente.getPianoDiStudi().getId());
 				
-				this.mappaTasse(studente, connection);
+				statement.executeUpdate();
+				
+				if(studente.getTasse()!=null)
+					if(!(studente.getTasse().isEmpty()))
+						this.mappaTasse(studente, connection);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -123,8 +127,10 @@ public class StudenteJDBC implements StudenteDAO {
 			statement.setDate(4, new Date(studente.getDataDiNascita().getTime()));
 			statement.setString(5, studente.getMatricola());
 			statement.executeQuery();
-				
-			this.mappaTasse(studente, connection);
+			
+			if(studente.getTasse()!=null)
+				if(!(studente.getTasse().isEmpty()))
+					this.mappaTasse(studente, connection);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

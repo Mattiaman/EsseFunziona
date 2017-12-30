@@ -10,7 +10,7 @@ public class IdGenerator {
 	
 	
 	
-	private static final String query = "Seleziona prossimo valore come un id";
+	private static final String query = "SELECT nextval('idSequenza') AS id";
 
 	public static Long getId(Connection c) {
 		Long id = null;
