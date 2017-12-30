@@ -23,7 +23,7 @@ public class PostgresDAOFactory implements DAOFactory {
 		try {
 			//da mettere in un file
 			Class.forName("org.postgresql.Driver").newInstance();
-			databaseData=new DatabaseData("jdbc:postgresql://localhost:5432/Segreteria","postgres","postgres");
+			databaseData=new DatabaseData("jdbc:postgresql://localhost:5432/Test","postgres","postgres");
 		} 
 		catch (Exception e) {
 			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n"+e);

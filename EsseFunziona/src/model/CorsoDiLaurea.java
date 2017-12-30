@@ -1,5 +1,6 @@
 package model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class CorsoDiLaurea {
@@ -8,11 +9,15 @@ public class CorsoDiLaurea {
 	private String name;
 	private Set<Corso> corsi;
 	
-	public CorsoDiLaurea(int id, String name, Set<Corso> corsi) {
+	public CorsoDiLaurea(String name, Set<Corso> corsi) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.corsi = corsi;
+	}
+
+	public CorsoDiLaurea(String name) {
+		super();
+		this.name = name;
 	}
 
 	public CorsoDiLaurea() {
@@ -43,5 +48,9 @@ public class CorsoDiLaurea {
 		this.corsi = corsi;
 	}
 	
-	
+	public void addCorso(Corso corso) {
+		if(this.corsi==null)
+			corsi=new HashSet<Corso>();
+		corsi.add(corso);
+	}
 }

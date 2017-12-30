@@ -5,9 +5,8 @@ public class Corso {
 	private long id;
 	private String nome;
 	
-	public Corso(long id, String nome) {
+	public Corso(String nome) {
 		super();
-		this.id = id;
 		this.nome = nome;
 	}
 
