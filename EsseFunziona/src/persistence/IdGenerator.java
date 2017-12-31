@@ -22,7 +22,7 @@ public class IdGenerator {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return id;
+		return id+1;
 	}
 	
 }

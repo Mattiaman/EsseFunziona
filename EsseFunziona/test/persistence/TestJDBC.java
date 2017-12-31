@@ -129,7 +129,7 @@ public class TestJDBC {
 		professoreDAO.save(prof1);
 		
 		materialeDAO.save(materiale);
-		
+
 		appelloDAO.save(appello);
 		
 		//find
@@ -155,7 +155,7 @@ public class TestJDBC {
 		
 		System.out.println("\n");
 		
-		CorsoDiLaurea cdlTrovato=corsoDiLaureaDAO.findByPrimaryKey(5);
+		CorsoDiLaurea cdlTrovato=corsoDiLaureaDAO.findByPrimaryKey(6);
 		if(cdlTrovato!=null) {
 			System.out.println("Id: "+cdlTrovato.getId());
 			System.out.println("Nome: "+cdlTrovato.getName());//correggere variabile da name a nome
@@ -165,7 +165,7 @@ public class TestJDBC {
 		
 		System.out.println("\n");
 		
-		Corso corsoTrovato=corsoDAO.findByPrimaryKey(1);
+		Corso corsoTrovato=corsoDAO.findByPrimaryKey(2);
 		if(corsoTrovato!=null) {
 			System.out.println("Id: "+corsoTrovato.getId());
 			System.out.println("Nome: "+corsoTrovato.getNome());			
@@ -199,7 +199,7 @@ public class TestJDBC {
 
 		System.out.println("\n");
 		
-		PianoDiStudi pdsTrovato=pianoDiStudiDAO.findByPrimaryKey(12);
+		PianoDiStudi pdsTrovato=pianoDiStudiDAO.findByPrimaryKey(13);
 		if(pdsTrovato!=null) {
 			System.out.println("Id: "+pdsTrovato.getId());
 			System.out.println("Nome: "+pdsTrovato.getNome());
@@ -210,7 +210,7 @@ public class TestJDBC {
 
 		System.out.println("\n");
 		
-		Materiale materialeTrovato=materialeDAO.findByPrimaryKey(22);
+		Materiale materialeTrovato=materialeDAO.findByPrimaryKey(23);
 		if(materialeTrovato!=null) {
 			System.out.println("Id: "+materialeTrovato.getId());
 			System.out.println("File: "+materialeTrovato.getContenuto().getName());
@@ -235,14 +235,14 @@ public class TestJDBC {
 
 		System.out.println("\n");
 		
-		Appello appelloTrovato=appelloDAO.findByPrimaryKey(12);
+		Appello appelloTrovato=appelloDAO.findByPrimaryKey(24);
 		if(appelloTrovato!=null) {
 			System.out.println("Id: "+appelloTrovato.getId());
 			System.out.println("Esame: "+appelloTrovato.getCorso().getNome());
 			System.out.println("Caricato da "+appelloTrovato.getProfessore().getNome());
 			System.out.println("Da sostenere il: "+appelloTrovato.getData().toString());
 		}else {
-			System.out.println("PianoDiStudi non trovato");
+			System.out.println("Appello non trovato");
 		}
 		
 	}

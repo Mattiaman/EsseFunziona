@@ -14,6 +14,7 @@ import model.Professore;
 import model.Studente;
 import model.Tassa;
 import persistence.dao.AppelloDAO;
+import persistence.dao.CorsoDAO;
 import persistence.dao.StudenteDAO;
 import persistence.dao.TassaDAO;
 
@@ -33,12 +34,15 @@ public class AppelloJDBC implements AppelloDAO {
 		
 		try {
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setLong(1, IdGenerator.getId(connection));
+			Long id=IdGenerator.getId(connection);
+			appello.setId(id);
+			statement.setLong(1, id);
 			statement.setDate(2, new Date(appello.getData().getTime()));
 			statement.setString(3, appello.getProfessore().getNomeUtente());
 			statement.setLong(4, appello.getCorso().getId());
 			
 			statement.executeUpdate();
+			
 			this.mappaStudenti(appello, connection);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -67,6 +71,8 @@ public class AppelloJDBC implements AppelloDAO {
 				appello=new Appello();
 				appello.setId(result.getLong("id"));
 				appello.setData(result.getDate("dataAppello"));
+				CorsoDAO corsoDAO=new CorsoJDBC(this.databaseData);
+				appello.setCorso(corsoDAO.findByPrimaryKey(result.getLong("corsoId")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
