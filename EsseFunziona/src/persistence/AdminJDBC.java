@@ -54,7 +54,7 @@ public class AdminJDBC implements AdminDAO {
 		Admin admin=null;
 		try {
 			PreparedStatement statement;
-			String find="SELECT * FROM admin WHERE nomeUtente=?";
+			String find="SELECT * FROM admin WHERE \"nomeUtente\"=?";
 			statement=connection.prepareStatement(find);
 			statement.setString(1,nomeUtente);
 			ResultSet result=statement.executeQuery();

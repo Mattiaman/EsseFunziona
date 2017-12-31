@@ -32,6 +32,10 @@ public class PianoDiStudi {
 		this.nome = nome;
 	}
 
+	public PianoDiStudi() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public long getId() {
 		return id;
 	}

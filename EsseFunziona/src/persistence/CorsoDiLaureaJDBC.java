@@ -161,7 +161,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 			connection.commit();
 			
 		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
+			e.printStackTrace();
 		} finally {
 			try {
 				connection.close();

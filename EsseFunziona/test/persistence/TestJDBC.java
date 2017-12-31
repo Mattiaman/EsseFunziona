@@ -109,5 +109,81 @@ public class TestJDBC {
 		
 		professoreDAO.save(prof1);	
 		
+		//find
+		Studente studenteTrovato=studenteDAO.findByPrimaryKey("000000");
+		if(studenteTrovato!=null) {
+			System.out.println("Nome: "+studenteTrovato.getNome());
+			System.out.println("Cognome: "+studenteTrovato.getCognome());
+			System.out.println("email: "+studenteTrovato.getEmail());
+		}else {
+			System.out.println("Studente non trovato");
+		}
+		
+		System.out.println("\n");
+		
+		Professore professoreTrovato=professoreDAO.findByPrimaryKey("CiccioRicca");
+		if(professoreTrovato!=null) {
+			System.out.println("Nome: "+professoreTrovato.getNome());
+			System.out.println("Cognome: "+professoreTrovato.getCognome());
+			System.out.println("email: "+professoreTrovato.getEmail());
+		}else {
+			System.out.println("Professore non trovato");
+		}
+		
+		System.out.println("\n");
+		
+		CorsoDiLaurea cdlTrovato=corsoDiLaureaDAO.findByPrimaryKey(5);
+		if(cdlTrovato!=null) {
+			System.out.println("Id: "+cdlTrovato.getId());
+			System.out.println("Nome: "+cdlTrovato.getName());//correggere variabile da name a nome
+		}else {
+			System.out.println("CorsoDiLaurea non trovato");
+		}
+		
+		System.out.println("\n");
+		
+		Corso corsoTrovato=corsoDAO.findByPrimaryKey(1);
+		if(corsoTrovato!=null) {
+			System.out.println("Id: "+corsoTrovato.getId());
+			System.out.println("Nome: "+corsoTrovato.getNome());			
+		}else {
+			System.out.println("Corso non trovato");
+		}
+
+		System.out.println("\n");
+		
+		Tassa tassaTrovato=tassaDAO.findByPrimaryKey(20);
+		if(tassaTrovato!=null) {
+			System.out.println("Id: "+tassaTrovato.getId());
+			System.out.println("Nome: "+tassaTrovato.getNome());
+			System.out.println("Importo: "+tassaTrovato.getImporto());
+			System.out.println("Descrizione: "+tassaTrovato.getDescrizione());
+			System.out.println("Caricata da "+ tassaTrovato.getAdmin().getNome()+" "+tassaTrovato.getAdmin().getCognome());
+		}else {
+			System.out.println("Tassa non trovata");
+		}
+
+		System.out.println("\n");
+		
+		Admin adminTrovato=adminDAO.findByPrimaryKey("baubau");
+		if(adminTrovato!=null) {
+			System.out.println("Nome: "+adminTrovato.getNome());
+			System.out.println("Cognome: "+adminTrovato.getCognome());
+			System.out.println("email: "+adminTrovato.getEmail());
+		}else {
+			System.out.println("Admin non trovato");
+		}
+
+		System.out.println("\n");
+		
+		PianoDiStudi pdsTrovato=pianoDiStudiDAO.findByPrimaryKey(12);
+		if(pdsTrovato!=null) {
+			System.out.println("Id: "+pdsTrovato.getId());
+			System.out.println("Nome: "+pdsTrovato.getNome());
+			System.out.println("appartiene al "+pdsTrovato.getCorsoDiLaurea().getName());
+		}else {
+			System.out.println("PianoDiStudi non trovato");
+		}
+		
 	}
 }

@@ -61,7 +61,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		Connection connection=this.databaseData.getConnection();
 		Professore professore=null;
 		try {
-			String query="select * from professore where nomeUtente=?";
+			String query="select * from professore where \"nomeUtente\"=?";
 			PreparedStatement statement=connection.prepareStatement(query);
 			statement.setString(1, nomeUtente);
 			ResultSet result=statement.executeQuery();
@@ -86,7 +86,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			}
 		}
 		
-		return null;
+		return professore;
 	}
 
 	@Override
