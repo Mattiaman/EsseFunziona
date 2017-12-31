@@ -2,6 +2,11 @@ package persistence;
 
 import persistence.dao.*;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
@@ -86,6 +91,20 @@ public class TestJDBC {
 		ciuskiScemo.setCorsoDiLaurea(cdlStoria);
 		ciuskiScemo.setPianoDiStudi(pianoDiStudi1);
 		
+		//Creazione materiale
+		Materiale materiale=new Materiale();
+		File file=new File(TestJDBC.class.getResource("materialeaaa.txt").getPath());
+		materiale.setContenuto(file);
+		materiale.setProfessore(prof1);
+		
+		//Creazione appello
+		Appello appello=new Appello();
+		appello.setCorso(programmazioneAdOggetti);
+		appello.setData(date2);
+		appello.setProfessore(prof1);
+		appello.addStudente(mettiuFigo);
+		appello.addStudente(ciuskiScemo);
+		
 		//insert
 		corsoDAO.save(fondamentiDiInformatica);
 		corsoDAO.save(programmazioneAdOggetti);
@@ -107,7 +126,11 @@ public class TestJDBC {
 		studenteDAO.save(mettiuFigo);
 		studenteDAO.save(ciuskiScemo);
 		
-		professoreDAO.save(prof1);	
+		professoreDAO.save(prof1);
+		
+		materialeDAO.save(materiale);
+		
+		appelloDAO.save(appello);
 		
 		//find
 		Studente studenteTrovato=studenteDAO.findByPrimaryKey("000000");
@@ -181,6 +204,43 @@ public class TestJDBC {
 			System.out.println("Id: "+pdsTrovato.getId());
 			System.out.println("Nome: "+pdsTrovato.getNome());
 			System.out.println("appartiene al "+pdsTrovato.getCorsoDiLaurea().getName());
+		}else {
+			System.out.println("PianoDiStudi non trovato");
+		}
+
+		System.out.println("\n");
+		
+		Materiale materialeTrovato=materialeDAO.findByPrimaryKey(22);
+		if(materialeTrovato!=null) {
+			System.out.println("Id: "+materialeTrovato.getId());
+			System.out.println("File: "+materialeTrovato.getContenuto().getName());
+			System.out.println("Caricato da "+materialeTrovato.getProfessore().getNome());
+			File content=materialeTrovato.getContenuto();
+			String text="Il contenuto è:\n";
+			try {
+				BufferedReader reader=new BufferedReader(new FileReader(file));
+				String line=null;
+				while((line=reader.readLine())!=null) {
+					text+=line;
+					text+="\n";
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(text);
+		}else {
+			System.out.println("Materiale non trovato");
+		}
+
+		System.out.println("\n");
+		
+		Appello appelloTrovato=appelloDAO.findByPrimaryKey(12);
+		if(appelloTrovato!=null) {
+			System.out.println("Id: "+appelloTrovato.getId());
+			System.out.println("Esame: "+appelloTrovato.getCorso().getNome());
+			System.out.println("Caricato da "+appelloTrovato.getProfessore().getNome());
+			System.out.println("Da sostenere il: "+appelloTrovato.getData().toString());
 		}else {
 			System.out.println("PianoDiStudi non trovato");
 		}

@@ -33,7 +33,7 @@ public class AppelloJDBC implements AppelloDAO {
 		
 		try {
 			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setLong(1, appello.getId());
+			statement.setLong(1, IdGenerator.getId(connection));
 			statement.setDate(2, new Date(appello.getData().getTime()));
 			statement.setString(3, appello.getProfessore().getNomeUtente());
 			statement.setLong(4, appello.getCorso().getId());
@@ -222,4 +222,6 @@ public class AppelloJDBC implements AppelloDAO {
 		}
 		
 	}
+	
+	
 }

@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Appello {
@@ -64,4 +65,10 @@ public class Appello {
 		this.studentiIscritti = studentiIscritti;
 	}
 	
+	public void addStudente(Studente studente) {
+		if(studentiIscritti==null) {
+			studentiIscritti=new HashSet<Studente>();
+		}
+		studentiIscritti.add(studente);
+	}
 }

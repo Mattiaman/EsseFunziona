@@ -31,7 +31,7 @@ public class MaterialeJDBC implements MaterialeDAO {
 			String insert="insert into materiale(id, contenuto, nomeUtenteProfessore) values(?,?,?)";
 			PreparedStatement statement;
 			statement = connection.prepareStatement(insert);
-			statement.setLong(1, materiale.getId());
+			statement.setLong(1,IdGenerator.getId(connection));
 			try {
 				statement.setBinaryStream(2, new FileInputStream(materiale.getContenuto()), materiale.getContenuto().length());
 			} catch (FileNotFoundException e) {
@@ -99,7 +99,7 @@ public class MaterialeJDBC implements MaterialeDAO {
 			}
 		}
 		
-		return null;
+		return materiale;
 	}
 
 	@Override
