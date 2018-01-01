@@ -15,6 +15,7 @@ import model.Studente;
 import model.Tassa;
 import persistence.dao.AppelloDAO;
 import persistence.dao.CorsoDAO;
+import persistence.dao.ProfessoreDAO;
 import persistence.dao.StudenteDAO;
 import persistence.dao.TassaDAO;
 
@@ -73,6 +74,8 @@ public class AppelloJDBC implements AppelloDAO {
 				appello.setData(result.getDate("dataAppello"));
 				CorsoDAO corsoDAO=new CorsoJDBC(this.databaseData);
 				appello.setCorso(corsoDAO.findByPrimaryKey(result.getLong("corsoId")));
+				ProfessoreDAO professoreDAO=new ProfessoreJDBC(this.databaseData);
+				appello.setProfessore(professoreDAO.findByPrimaryKey(result.getString("nomeUtenteProfessore")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

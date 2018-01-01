@@ -239,7 +239,7 @@ public class TestJDBC {
 		if(appelloTrovato!=null) {
 			System.out.println("Id: "+appelloTrovato.getId());
 			System.out.println("Esame: "+appelloTrovato.getCorso().getNome());
-			System.out.println("Caricato da "+appelloTrovato.getProfessore().getNome());
+			System.out.println("Caricato da "+appelloTrovato.getProfessore().getNome()+" "+appelloTrovato.getProfessore().getCognome());
 			System.out.println("Da sostenere il: "+appelloTrovato.getData().toString());
 		}else {
 			System.out.println("Appello non trovato");
