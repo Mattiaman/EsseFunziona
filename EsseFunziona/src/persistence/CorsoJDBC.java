@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Corso;
+import model.CorsoDiLaurea;
 import persistence.dao.CorsoDAO;
 
 public class CorsoJDBC implements CorsoDAO {
@@ -138,17 +139,35 @@ public class CorsoJDBC implements CorsoDAO {
 			PreparedStatement statement = connection.prepareStatement(delete);
 			statement.setLong(1, corso.getId());
 
+			connection.setAutoCommit(false);
+			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+			
+			removeForeignKeyFromAppartieneA(corso, connection);
+			removeForeignKeyFromContiene(corso, connection);
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
+			e.printStackTrace();
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 	}
 
+	private void removeForeignKeyFromAppartieneA(Corso corso, Connection connection) throws SQLException {
+			String update = "update appartieneA SET idCorso = NULL WHERE idCorso = ?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setLong(1, corso.getId());
+			statement.executeUpdate();	
+	}
+	
+	private void removeForeignKeyFromContiene(Corso corso, Connection connection) throws SQLException {
+		String update = "update contiene SET idCorso = NULL WHERE idCorso = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setLong(1, corso.getId());
+		statement.executeUpdate();	
+	}
 }

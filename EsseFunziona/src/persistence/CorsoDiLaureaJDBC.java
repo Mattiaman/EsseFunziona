@@ -155,12 +155,15 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 		try {
 			String delete = "delete FROM corsoDiLaurea WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(delete);
-			statement.setLong(2, corsoDiLaurea.getId());
+			statement.setLong(1, corsoDiLaurea.getId());
 
 			connection.setAutoCommit(false);
 			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 			
 			this.removeForeignKeyFromCorso(corsoDiLaurea, connection);
+			this.removeForeignKeyFromPianoDiStudi(corsoDiLaurea, connection);
+			this.removeForeignKeyFromStudente(corsoDiLaurea, connection);
+			this.removeForeignKeyFromAppartieneA(corsoDiLaurea, connection);
 			
 			statement.executeUpdate();
 			connection.commit();
@@ -180,14 +183,34 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 
 
 	private void removeForeignKeyFromCorso(CorsoDiLaurea corsodilaurea, Connection connection) throws SQLException {
-		for (Corso corso : corsodilaurea.getCorsi()) {
-			String update = "update appartieneA SET idCorsodilaurea = NULL WHERE idCorso = ?";
-			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setLong(1, corso.getId());
-			statement.executeUpdate();
-		}	
+		String update = "update appartieneA SET idCorsodilaurea = NULL WHERE idCorso = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setLong(1, corsodilaurea.getId());
+		statement.executeUpdate();	
 	}
 	
+	private void removeForeignKeyFromPianoDiStudi(CorsoDiLaurea corsodilaurea, Connection connection) throws SQLException {
+		String update = "update pianoDiStudi SET corsoDiLaureaId = NULL WHERE corsoDiLaureaId = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setLong(1, corsodilaurea.getId());
+		statement.executeUpdate();	
+	}
+
+	private void removeForeignKeyFromStudente(CorsoDiLaurea corsodilaurea, Connection connection) throws SQLException {
+		String update = "update studente SET corsoDiLaureaId = NULL WHERE corsoDiLaureaId = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setLong(1, corsodilaurea.getId());
+		statement.executeUpdate();	
+	}
+	
+	private void removeForeignKeyFromAppartieneA(CorsoDiLaurea corsodilaurea, Connection connection) throws SQLException {
+		String update = "update appartieneA SET idCorsoDiLaurea = NULL WHERE idCorsoDiLaurea = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setLong(1, corsodilaurea.getId());
+		statement.executeUpdate();	
+	}
+
+
 	private void mappaCorsi(CorsoDiLaurea corsodilaurea, Connection connection) throws SQLException {
 		CorsoDAO corsodao = new CorsoJDBC(databaseData);
 		for (Corso corso : corsodilaurea.getCorsi()) {

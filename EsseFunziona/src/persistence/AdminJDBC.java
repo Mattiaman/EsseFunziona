@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Admin;
+import model.CorsoDiLaurea;
 import model.Studente;
 import persistence.dao.AdminDAO;
 
@@ -138,11 +139,14 @@ public class AdminJDBC implements AdminDAO {
 	public void delete(Admin admin) {
 		Connection connection=this.databaseData.getConnection();
 		try {
-			String delete="DELETE FROM admin WHERE nomeUtente=?";
+			String delete="DELETE FROM admin WHERE \"nomeUtente\"=?";
 			PreparedStatement statement=connection.prepareStatement(delete);
 			statement.setString(1, admin.getNomeUtente());
 			connection.setAutoCommit(false);
 			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+			
+			this.removeForeignKeyFromTassa(admin, connection);
+			
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -156,6 +160,13 @@ public class AdminJDBC implements AdminDAO {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	private void removeForeignKeyFromTassa(Admin admin, Connection connection) throws SQLException {
+		String update = "update tassa SET nomeUtenteAdmin = NULL WHERE nomeUtenteAdmin = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setString(1, admin.getNomeUtente());
+		statement.executeUpdate();	
 	}
 	
 	@Override

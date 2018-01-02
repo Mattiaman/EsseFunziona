@@ -46,6 +46,9 @@ public class Studente extends Utente {
 	}
 
 	public Set<Tassa> getTasse() {
+		if(this.tasse== null) {
+			tasse=new HashSet<Tassa>();
+		}
 		return tasse;
 	}
 
