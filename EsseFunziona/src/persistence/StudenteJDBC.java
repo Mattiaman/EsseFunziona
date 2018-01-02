@@ -187,7 +187,23 @@ public class StudenteJDBC implements StudenteDAO {
 	@Override
 	public void setPassword(Studente studente, String password) {
 		// TODO Auto-generated method stub
-
+		Connection connection = this.databaseData.getConnection();
+		try {
+			String update = "update studente SET password = ? WHERE matricola=?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setString(1, password);
+			statement.setString(2, studente.getMatricola());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		
 	}
 
 	private void mappaTasse(Studente studente, Connection connection) throws SQLException {

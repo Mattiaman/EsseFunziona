@@ -161,7 +161,25 @@ public class AdminJDBC implements AdminDAO {
 	@Override
 	public void setPassword(Admin admin, String password) {
 		// TODO Auto-generated method stub
-
+		Connection connection = this.databaseData.getConnection();
+		try {
+			String update = "update admin SET password = ? WHERE \"nomeUtente\"=?";
+			PreparedStatement statement;
+			statement = connection.prepareStatement(update);
+			statement.setString(1, password);
+			statement.setString(2, admin.getNomeUtente());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 

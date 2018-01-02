@@ -176,7 +176,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 	public void setPassword(Professore professore, String password) {
 		Connection connection = this.databaseData.getConnection();
 		try {
-			String update = "update professore SET password = ? WHERE nomeUtente=?";
+			String update = "update professore SET password = ? WHERE \"nomeUtente\"=?";
 			PreparedStatement statement;
 			statement = connection.prepareStatement(update);
 			statement.setString(1, password);
