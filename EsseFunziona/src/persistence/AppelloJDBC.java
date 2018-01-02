@@ -172,7 +172,6 @@ public class AppelloJDBC implements AppelloDAO {
 		}
 	}
 
-	/*
 	private void removeForeignKeyFromProfessore(Appello appello, Connection connection) throws SQLException {
 		Professore professore = appello.getProfessore();
 		String update="update pubblica SET idAppello=NULL WHERE nomeUtenteProfessore=?";
@@ -190,14 +189,12 @@ public class AppelloJDBC implements AppelloDAO {
 		statement.executeUpdate();
 		
 	}	
-*/
+
 	private void removeForeignKeyFromStudenti(Appello appello, Connection connection) throws SQLException {
-		for(Studente studente: appello.getStudentiIscritti()) {
-			String update="update prenota SET idAppello=NULL WHERE matricolaStudente=?";
+			String update="update prenota SET idAppello=NULL WHERE idAppello=?";
 			PreparedStatement statement=connection.prepareStatement(update);
-			statement.setString(1, studente.getMatricola());
+			statement.setLong(1, appello.getId());
 			statement.executeUpdate();
-		}
 	}
 
 	private void mappaStudenti(Appello appello, Connection connection) throws SQLException {

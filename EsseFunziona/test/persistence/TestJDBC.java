@@ -415,6 +415,47 @@ public class TestJDBC {
 		System.out.println("Corso Appello: "+appello.getCorso().getNome());
 		System.out.println("");
 		
+		//delete
+		int c=1;
+		corsoDAO.delete(inglese);
+		System.out.println("delete "+(c++));
+
+		corsoDAO.delete(programmazioneAdOggetti);
+		System.out.println("delete "+(c++));
+		
+		corsoDiLaureaDAO.delete(cdlInformatica);
+		System.out.println("delete "+(c++));
+		
+		pianoDiStudiDAO.delete(pianoDiStudi);
+		System.out.println("delete "+(c++));
+
+		pianoDiStudiDAO.delete(pianoDiStudi1);
+		System.out.println("delete "+(c++));
+		
+		adminDAO.delete(admin1);
+		System.out.println("delete "+(c++));
+
+		tassaDAO.delete(tassa1);
+		System.out.println("delete "+(c++));
+		
+		tassaDAO.delete(tassa2);
+		System.out.println("delete "+(c++));
+		
+		tassaDAO.delete(tassa3);
+		System.out.println("delete "+(c++));
+		
+		professoreDAO.delete(prof1);
+		System.out.println("delete "+(c++));
+		
+		studenteDAO.delete(ciuskiScemo);
+		System.out.println("delete "+(c++));
+		
+		materialeDAO.delete(materiale);
+		System.out.println("delete "+(c++));
+
+		appelloDAO.delete(appello);
+		System.out.println("delete "+(c++));
+		
 	}
 	
 }	

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Corso;
+import model.CorsoDiLaurea;
 import model.PianoDiStudi;
 import persistence.dao.CorsoDiLaureaDAO;
 import persistence.dao.PianoDiStudiDAO;
@@ -154,6 +155,7 @@ public class PianoDiStudiJDBC implements PianoDiStudiDAO {
 			connection.setAutoCommit(false);
 			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 			this.removeForeignKeyFromCorso(pianoDiStudi, connection);
+			this.removeForeignKeyFromStudente(pianoDiStudi, connection);
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -165,13 +167,19 @@ public class PianoDiStudiJDBC implements PianoDiStudiDAO {
 
 	private void removeForeignKeyFromCorso(PianoDiStudi pianoDiStudi, Connection connection) throws SQLException {
 		// TODO Auto-generated method stub
-		for (Corso corso : pianoDiStudi.getCorsi()) {
-			String update = "update contiene SET idPianoDiStudi = NULL WHERE idCorso = ?";
-			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setLong(1, corso.getId());
-			statement.executeUpdate();
-		}	
+		String update = "update contiene SET idPianoDiStudi = NULL WHERE idPianoDiStudi = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setLong(1, pianoDiStudi.getId());
+		statement.executeUpdate();
 	}
+	
+	private void removeForeignKeyFromStudente(PianoDiStudi pianoDiStudi, Connection connection) throws SQLException {
+		String update = "update studente SET pianoDiStudiId = NULL WHERE pianoDiStudiId = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setLong(1, pianoDiStudi.getId());
+		statement.executeUpdate();	
+	}
+
 
 	private void mappaCorsi(PianoDiStudi pianoDiStudi, Connection connection) throws SQLException {
 

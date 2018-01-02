@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Appello;
+import model.CorsoDiLaurea;
 import model.Professore;
 import model.Studente;
 import persistence.dao.ProfessoreDAO;
@@ -155,10 +156,14 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		// TODO Auto-generated method stub
 		Connection connection=this.databaseData.getConnection();
 		try {
-			String delete="delete from professore where nomeUtente=?";
+			String delete="delete from professore where \"nomeUtente\"=?";
 			PreparedStatement statement=connection.prepareStatement(delete);
 			statement.setString(1, professore.getNomeUtente());
-			statement.executeQuery();
+			connection.setAutoCommit(false);
+			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+			this.removeForeignKeyFromMateriale(professore, connection);
+			this.removeForeignKeyFromAppello(professore, connection);
+			statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -173,6 +178,20 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		
 	}
 	
+	private void removeForeignKeyFromAppello(Professore professore, Connection connection) throws SQLException {
+		String update = "update appello SET nomeUtenteProfessore = NULL WHERE nomeUtenteProfessore = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setString(1, professore.getNomeUtente());
+		statement.executeUpdate();	
+	}
+
+	private void removeForeignKeyFromMateriale(Professore professore, Connection connection) throws SQLException {
+		String update = "update materiale SET nomeUtenteProfessore = NULL WHERE nomeUtenteProfessore = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setString(1, professore.getNomeUtente());
+		statement.executeUpdate();	
+	}
+
 	public void setPassword(Professore professore, String password) {
 		Connection connection = this.databaseData.getConnection();
 		try {
