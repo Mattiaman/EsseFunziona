@@ -159,8 +159,8 @@ public class AppelloJDBC implements AppelloDAO {
 			connection.setAutoCommit(false);
 			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 			this.removeForeignKeyFromStudenti(appello, connection);
-			//this.removeForeignKeyFromProfessore(appello, connection);
-			//this.removeForeignKeyFromCorso(appello, connection);
+			this.removeForeignKeyFromProfessore(appello, connection);
+			this.removeForeignKeyFromCorso(appello, connection);
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
