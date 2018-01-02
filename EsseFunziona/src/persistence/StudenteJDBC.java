@@ -126,7 +126,7 @@ public class StudenteJDBC implements StudenteDAO {
 			statement.setString(3, studente.getEmail());
 			statement.setDate(4, new Date(studente.getDataDiNascita().getTime()));
 			statement.setString(5, studente.getMatricola());
-			statement.executeQuery();
+			statement.executeUpdate();
 			
 			if(studente.getTasse()!=null)
 				if(!(studente.getTasse().isEmpty()))

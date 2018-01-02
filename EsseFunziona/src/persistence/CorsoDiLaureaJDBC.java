@@ -44,7 +44,9 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 			statement.setString(2, corsoDiLaurea.getNome());
 			statement.executeUpdate();
 			
-			this.mappaCorsi(corsoDiLaurea, connection);
+			if(corsoDiLaurea.getCorsi()!=null)
+				if(!(corsoDiLaurea.getCorsi().isEmpty()))
+					this.mappaCorsi(corsoDiLaurea, connection);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -125,7 +127,10 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 			statement.setLong(2, corsoDiLaurea.getId());
 
 			statement.executeUpdate();
-			this.mappaCorsi(corsoDiLaurea, connection);
+			
+			if(corsoDiLaurea.getCorsi()!=null)
+				if(!(corsoDiLaurea.getCorsi().isEmpty()))
+					this.mappaCorsi(corsoDiLaurea, connection);
 		} catch (SQLException e) {
 			if (connection != null) {
 				try {

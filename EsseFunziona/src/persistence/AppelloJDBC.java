@@ -44,7 +44,9 @@ public class AppelloJDBC implements AppelloDAO {
 			
 			statement.executeUpdate();
 			
-			this.mappaStudenti(appello, connection);
+			if(appello.getStudentiIscritti()!=null)
+				if(!(appello.getStudentiIscritti().isEmpty()))
+					this.mappaStudenti(appello, connection);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -129,9 +131,11 @@ public class AppelloJDBC implements AppelloDAO {
 			statement.setString(2, appello.getProfessore().getNomeUtente());
 			statement.setLong(3, appello.getCorso().getId());
 			statement.setLong(4, appello.getId());
-			statement.executeQuery();
+			statement.executeUpdate();
 				
-			this.mappaStudenti(appello, connection);
+			if(appello.getStudentiIscritti()!=null)
+				if(!(appello.getStudentiIscritti().isEmpty()))
+					this.mappaStudenti(appello, connection);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

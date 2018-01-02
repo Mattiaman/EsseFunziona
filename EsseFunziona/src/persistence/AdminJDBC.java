@@ -120,7 +120,7 @@ public class AdminJDBC implements AdminDAO {
 			statement.setString(3, admin.getEmail());
 			statement.setDate(4, new Date(admin.getDataDiNascita().getTime()));
 			
-			statement.executeQuery();
+			statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
