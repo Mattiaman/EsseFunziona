@@ -218,9 +218,9 @@ public class AppelloJDBC implements AppelloDAO {
 			ResultSet result=statementPrenota.executeQuery();
 			if(result.next()) {
 				String update="update prenota SET idAppello=? WHERE id=?";
-				PreparedStatement statement=connection.prepareStatement(update);				
-				statementPrenota.setLong(1, appello.getId());
-				statementPrenota.setLong(2, result.getLong("id"));
+				PreparedStatement statement=connection.prepareStatement(update);		
+				statement.setLong(1, appello.getId());
+				statement.setLong(2, result.getLong("id"));
 				statement.executeUpdate();
 			}
 			else {

@@ -202,16 +202,16 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			if(studenteDAO.findByPrimaryKey(studente.getMatricola())==null) {
 				studenteDAO.save(studente);
 			}
-			String prenota="select id from riceve where nomeUtenteProfessore=? AND matricolaStudente=?";
-			PreparedStatement statementPrenota=connection.prepareStatement(prenota);
-			statementPrenota.setString(1,professore.getNomeUtente());
-			statementPrenota.setString(2, studente.getMatricola());
-			ResultSet result=statementPrenota.executeQuery();
+			String riceve="select id from riceve where nomeUtenteProfessore=? AND matricolaStudente=?";
+			PreparedStatement statementRiceve=connection.prepareStatement(riceve);
+			statementRiceve.setString(1,professore.getNomeUtente());
+			statementRiceve.setString(2, studente.getMatricola());
+			ResultSet result=statementRiceve.executeQuery();
 			if(result.next()) {
 				String update="update riceve SET nomeUtenteProfessore=? WHERE id=?";
 				PreparedStatement statement=connection.prepareStatement(update);				
-				statementPrenota.setString(1, professore.getNomeUtente());;
-				statementPrenota.setLong(2, result.getLong("id"));
+				statement.setString(1, professore.getNomeUtente());;
+				statement.setLong(2, result.getLong("id"));
 				statement.executeUpdate();
 			}
 			else {
