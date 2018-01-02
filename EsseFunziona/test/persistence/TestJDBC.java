@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import model.*;
@@ -158,7 +159,7 @@ public class TestJDBC {
 		CorsoDiLaurea cdlTrovato=corsoDiLaureaDAO.findByPrimaryKey(6);
 		if(cdlTrovato!=null) {
 			System.out.println("Id: "+cdlTrovato.getId());
-			System.out.println("Nome: "+cdlTrovato.getName());//correggere variabile da name a nome
+			System.out.println("Nome: "+cdlTrovato.getNome());//correggere variabile da name a nome
 		}else {
 			System.out.println("CorsoDiLaurea non trovato");
 		}
@@ -203,7 +204,7 @@ public class TestJDBC {
 		if(pdsTrovato!=null) {
 			System.out.println("Id: "+pdsTrovato.getId());
 			System.out.println("Nome: "+pdsTrovato.getNome());
-			System.out.println("appartiene al "+pdsTrovato.getCorsoDiLaurea().getName());
+			System.out.println("appartiene al "+pdsTrovato.getCorsoDiLaurea().getNome());
 		}else {
 			System.out.println("PianoDiStudi non trovato");
 		}
@@ -244,6 +245,176 @@ public class TestJDBC {
 		}else {
 			System.out.println("Appello non trovato");
 		}
+		System.out.println("\n");
+ 
+		//find_all
+		
+		List<Studente> studenti=studenteDAO.findAll();
+		for(Studente std:studenti) {
+			System.out.println("Nome: "+std.getNome());
+			System.out.println("Cognome: "+std.getCognome());
+			System.out.println("email: "+std.getEmail());
+			System.out.println("\n");
+		}
+		
+		System.out.println("\n");
+		
+		List<Professore> professori=professoreDAO.findAll();
+		for(Professore prof:professori) {
+			System.out.println("Nome: "+prof.getNome());
+			System.out.println("Cognome: "+prof.getCognome());
+			System.out.println("email: "+prof.getEmail());
+			System.out.println("\n");
+		}
+		
+		System.out.println("\n");
+		
+		List<CorsoDiLaurea> cdl=corsoDiLaureaDAO.findAll();
+		for(CorsoDiLaurea corsoDiLaurea:cdl) {
+			System.out.println("Nome: "+corsoDiLaurea.getNome());
+			System.out.println("\n");
+		}
+		
+		System.out.println("\n");
+		
+		List<Corso> corsi=corsoDAO.findAll();
+		for(Corso crs:corsi) {
+			System.out.println("Nome: "+crs.getNome());
+			System.out.println("\n");
+		}
+		
+		System.out.println("\n");
+		
+		List<Tassa> tasse=tassaDAO.findAll();
+		for(Tassa tss:tasse) {
+			System.out.println("Importo: "+tss.getImporto());
+			System.out.println("Nome: "+tss.getNome());
+			System.out.println("Descrizione: "+tss.getDescrizione());
+			System.out.println("admin: "+tss.getAdmin().getNomeUtente());
+			System.out.println("\n");
+		}
+		
+		System.out.println("\n");
+		
+		List<Admin> admin=adminDAO.findAll();
+		for(Admin adm:admin) {
+			System.out.println("Nome: "+adm.getNome());
+			System.out.println("Cognome: "+adm.getCognome());
+			System.out.println("email: "+adm.getEmail());
+			System.out.println("\n");
+		}
+		
+		System.out.println("\n");
+		
+		List<PianoDiStudi> pds=pianoDiStudiDAO.findAll();
+		for(PianoDiStudi piano:pds) {
+			System.out.println("Nome: "+piano.getNome());
+			System.out.println("Corso di laurea: "+piano.getCorsoDiLaurea());
+			System.out.println("\n");
+		}
+		
+		System.out.println("\n");
+		
+		List<Materiale> materiali=materialeDAO.findAll();
+		for(Materiale mtl:materiali) {
+			System.out.println("File: "+mtl.getContenuto().getName());
+			System.out.println("Caricato da "+mtl.getProfessore().getNome());
+			File content=materialeTrovato.getContenuto();
+			String text="Il contenuto è:\n";
+			try {
+				BufferedReader reader=new BufferedReader(new FileReader(file));
+				String line=null;
+				while((line=reader.readLine())!=null) {
+					text+=line;
+					text+="\n";
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(text);
+		}
+	
+		System.out.println("\n");
+		
+		List<Appello> appelli=appelloDAO.findAll();
+		for(Appello app:appelli) {
+			System.out.println("Esame: "+app.getCorso().getNome());
+			System.out.println("Caricato da "+app.getProfessore().getNome()+" "+app.getProfessore().getCognome());
+			System.out.println("Da sostenere il: "+app.getData().toString());
+			System.out.println("");
+		}
+	
+	
+		//Update
+		
+		String cdlpds=pianoDiStudi1.getCorsoDiLaurea().getNome();
+		String profMtl=materiale.getProfessore().getCognome();
+		String corsoApp=appello.getCorso().getNome();
+		
+		//Corsi
+		System.out.println("Nome: "+fondamentiDiInformatica.getNome());
+		fondamentiDiInformatica.setNome("fondamenti aggiornato");
+		corsoDAO.update(fondamentiDiInformatica);
+		System.out.println("Nome: "+fondamentiDiInformatica.getNome());
+		System.out.println("");
+		
+		//Corsi Di Laurea
+		System.out.println("Nome: "+cdlInformatica.getNome());
+		cdlInformatica.setNome("corso di miagolatori");
+		corsoDiLaureaDAO.update(cdlInformatica);
+		System.out.println("Nome: "+cdlInformatica.getNome());
+		System.out.println("");
+		
+		//piano di studi
+		System.out.println("Nome corso di laurea: "+cdlpds);
+		pianoDiStudi1.setCorsoDiLaurea(cdlInformatica);
+		pianoDiStudiDAO.update(pianoDiStudi1);
+		System.out.println("Nome corso di laurea: "+pianoDiStudi1.getCorsoDiLaurea().getNome());
+		System.out.println("");
+		
+		//Admin
+		System.out.println("Cognome: "+admin1.getCognome());
+		admin1.setCognome("piculapecorella");
+		adminDAO.update(admin1);
+		System.out.println("Cognome: "+admin1.getCognome());
+		System.out.println("");
+		
+		//Tasse	
+		System.out.println("Importo: "+tassa1.getImporto());
+		tassa1.setImporto(1000);
+		tassaDAO.update(tassa1);
+		System.out.println("Importo: "+tassa1.getImporto());
+		System.out.println("");
+		
+		//Professore
+		System.out.println("Cognome: "+prof1.getCognome());
+		prof1.setCognome("rich");
+		professoreDAO.update(prof1);
+		System.out.println("Cognome: "+prof1.getCognome());
+		System.out.println("");
+		
+		//studente
+		System.out.println("E-mail: "+mettiuFigo.getEmail());
+		mettiuFigo.setEmail("ciuskifigo@tantissimo.it");
+		studenteDAO.update(mettiuFigo);
+		System.out.println("E-mail: "+mettiuFigo.getEmail());
+		System.out.println("");
+		
+		//materiale
+		System.out.println("Prof materiale: "+profMtl);
+		materiale.setProfessore(prof1);
+		materialeDAO.update(materiale);
+		System.out.println("Prof materiale: "+materiale.getProfessore().getCognome());
+		System.out.println("");
+		
+		//appello
+		System.out.println("Corso Appello: "+corsoApp);
+		appello.setCorso(storiaRomana);
+		appelloDAO.update(appello);
+		System.out.println("Corso Appello: "+appello.getCorso().getNome());
+		System.out.println("");
 		
 	}
-}
+	
+}	

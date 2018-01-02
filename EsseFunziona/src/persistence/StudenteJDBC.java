@@ -132,8 +132,13 @@ public class StudenteJDBC implements StudenteDAO {
 				if(!(studente.getTasse().isEmpty()))
 					this.mappaTasse(studente, connection);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			if (connection != null) {
+				try {
+					connection.rollback();
+				} catch(SQLException excep) {
+					e.printStackTrace();
+				}
+			} 
 		}finally {
 			try {
 				connection.close();

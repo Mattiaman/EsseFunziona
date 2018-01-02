@@ -123,12 +123,12 @@ public class AppelloJDBC implements AppelloDAO {
 	public void update(Appello appello) {
 		Connection connection=this.databaseData.getConnection();
 		try {	
-			String update="UPDATE appello SET data=? nomeUtenteProfessore=?, corsoId=? WHERE id=?";
+			String update="UPDATE appello SET dataAppello=?, nomeUtenteProfessore=?, corsoId=? WHERE id=?";
 			PreparedStatement statement=connection.prepareStatement(update);
-			statement.setLong(1, appello.getId());
-			statement.setDate(2,  new Date(appello.getData().getTime()));
-			statement.setString(3, appello.getProfessore().getNomeUtente());
-			statement.setLong(4, appello.getCorso().getId());
+			statement.setDate(1,  new Date(appello.getData().getTime()));
+			statement.setString(2, appello.getProfessore().getNomeUtente());
+			statement.setLong(3, appello.getCorso().getId());
+			statement.setLong(4, appello.getId());
 			statement.executeQuery();
 				
 			this.mappaStudenti(appello, connection);

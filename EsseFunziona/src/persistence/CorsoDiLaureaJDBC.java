@@ -41,7 +41,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 			String insert="insert into corsoDiLaurea(id, nome) values (?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, corsoDiLaurea.getId());
-			statement.setString(2, corsoDiLaurea.getName());
+			statement.setString(2, corsoDiLaurea.getNome());
 			statement.executeUpdate();
 			
 			this.mappaCorsi(corsoDiLaurea, connection);
@@ -73,7 +73,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 			if (resultSet.next()) {
 				corsoDiLaurea = new CorsoDiLaurea();
 				corsoDiLaurea.setId(resultSet.getLong("id"));
-				corsoDiLaurea.setName(resultSet.getString("nome"));
+				corsoDiLaurea.setNome(resultSet.getString("nome"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -119,9 +119,9 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 
 		Connection connection = this.databaseData.getConnection();
 		try {
-			String update = "update corso SET nome = ? WHERE id = ?";
+			String update = "update corsoDiLaurea SET nome = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
-			statement.setString(1, corsoDiLaurea.getName());
+			statement.setString(1, corsoDiLaurea.getNome());
 			statement.setLong(2, corsoDiLaurea.getId());
 
 			statement.executeUpdate();

@@ -112,13 +112,14 @@ public class AdminJDBC implements AdminDAO {
 	public void update(Admin admin) {
 		Connection connection=this.databaseData.getConnection();
 		try {	
-			String update="UPDATE admin SET nome=?, cognome=?, email=?, dataDiNascita=? WHERE nomeUtente=?";
+			String update="UPDATE admin SET nome=?, cognome=?, email=?, dataDiNascita=? WHERE \"nomeUtente\"=?";
 			PreparedStatement statement=connection.prepareStatement(update);
-			statement.setString(1, admin.getNomeUtente());
-			statement.setString(2, admin.getNome());
-			statement.setString(3, admin.getCognome());
+			statement.setString(5, admin.getNomeUtente());
+			statement.setString(1, admin.getNome());
+			statement.setString(2, admin.getCognome());
+			statement.setString(3, admin.getEmail());
 			statement.setDate(4, new Date(admin.getDataDiNascita().getTime()));
-			statement.setString(5, admin.getEmail());
+			
 			statement.executeQuery();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

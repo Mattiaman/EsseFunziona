@@ -6,18 +6,18 @@ import java.util.Set;
 public class CorsoDiLaurea {
 
 	private long id;
-	private String name;
+	private String nome;
 	private Set<Corso> corsi;
 	
-	public CorsoDiLaurea(String name, Set<Corso> corsi) {
+	public CorsoDiLaurea(String nome, Set<Corso> corsi) {
 		super();
-		this.name = name;
+		this.nome = nome;
 		this.corsi = corsi;
 	}
 
-	public CorsoDiLaurea(String name) {
+	public CorsoDiLaurea(String nome) {
 		super();
-		this.name = name;
+		this.nome = nome;
 	}
 
 	public CorsoDiLaurea() {
@@ -32,12 +32,12 @@ public class CorsoDiLaurea {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNome(String name) {
+		this.nome = name;
 	}
 
 	public Set<Corso> getCorsi() {

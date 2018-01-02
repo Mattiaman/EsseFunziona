@@ -124,7 +124,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		Connection connection=this.databaseData.getConnection();
 		
 		try {
-			String update="update professore SET nome=?, cognome=?, dataDiNascita=?, email=? where nomeUtente=?";
+			String update="update professore SET nome=?, cognome=?, dataDiNascita=?, email=? where \"nomeUtente\"=?";
 			PreparedStatement statement=connection.prepareStatement(update);
 			statement.setString(1, professore.getNome());
 			statement.setString(2, professore.getCognome());
