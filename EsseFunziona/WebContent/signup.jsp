@@ -1,7 +1,13 @@
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<jsp:useBean id="stud" class="model.Studente" scope="request" />
+<jsp:setProperty name="stud" property="nome" value="un Nome"/>
+
+
+
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>SignUp</title>
 </head>
 
@@ -18,7 +24,7 @@
 		style="background: darkblue">
 		<ul class="nav navbar-nav">
 			<li><a href="startMenu.html">Home</a></li>
-			<li><a href="signup.html">SignUp</a></li>
+			<li><a href="signup.jsp">SignUp</a></li>
 			<li><a href="login.html">Login</a></li>
 		</ul>
 	</nav>
