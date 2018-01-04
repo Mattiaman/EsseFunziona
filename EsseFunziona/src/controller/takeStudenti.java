@@ -22,7 +22,7 @@ public class takeStudenti extends HttpServlet{
 		List<Studente> studs = studenteDAO.findAll();
 		req.setAttribute("studenti", studs);
 
-		RequestDispatcher dispacher = req.getRequestDispatcher("report/studenti.jsp");
+		RequestDispatcher dispacher = req.getRequestDispatcher("studenti.jsp");
 		dispacher.forward(req, resp);
 		
 	}
