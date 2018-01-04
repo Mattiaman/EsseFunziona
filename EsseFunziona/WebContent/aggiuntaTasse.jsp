@@ -56,10 +56,23 @@
   		</div>
 	</nav>
 	
+	
+	<c:if test="${tassa != null}">
+		<h1>Ho caricato la seguente Tassa</h1>
+		<p>${tassa.id}</p>
+		<p>${tassa.importo}</p>
+		<p>${tassa.nome}</p>
+		<p>${tassa.descrizione}</p>
+		<p>${tassa.admin}</p>
+	</c:if>
+	<c:if test="${tassa == null}">
+		<h3>Aggiungi una tassa</h3>
+		<h4>Compila i seguente form per aggiungere una tassa</h4>
+	
 	<br><section class="moduloTasse" class="row">
 		<div>
 		
-			<form class="form-horizontal" method="post" action="aggiuntaTassa">
+			<form class="form-horizontal" method="post" action="aggiuntaTasse">
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="idTassa">IDTassa:</label>
 			    <div class="col-sm-3">
@@ -102,7 +115,7 @@
 		</div>
 	</section>
 	
-	
+	</c:if>
 	
 	
 </body>

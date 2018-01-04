@@ -70,7 +70,6 @@
 	<c:if test="${studente == null}">
 		<h3>Iscrivi un nuovo Studente</h3>
 		<h4>Compila i seguente form per registrare un nuovo studente</h4>
-	</c:if>
 
 	<section class="moduloRegistrazione" class="row">
 		<div>
@@ -143,6 +142,8 @@
 
 		</div>
 	</section>
+	</c:if>
+	
 
 </body>
 </html>
