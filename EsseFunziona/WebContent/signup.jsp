@@ -20,16 +20,43 @@
 		<a href="images/logo_unical.png"><img class="img-responsive" src="images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
 		<figcaption>Servizi online per lo studente</figcaption>
 	</figure>
-	<nav id="cssmenu" role="navigation" class="navbar navbar-inverse"
-		style="background: darkblue">
-		<ul class="nav navbar-nav">
-			<li><a href="startMenu.html">Home</a></li>
-			<li><a href="signup.jsp">SignUp</a></li>
-			<li><a href="login.html">Login</a></li>
-		</ul>
-	</nav>
+	
+	<h3>Amministratore</h3>
 
-
+	<nav class="menu" style="background: darkblue" >
+  		<div class="container-fluid">
+    		<div class="navbar-header">
+      			<a class="navbar-brand" href="#">EsseFunziona</a>
+    		</div>
+    		<ul class="nav navbar-nav">
+     			<li class="dropdown">
+        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Home<span class="caret"></span></a>
+		        	<ul class="dropdown-menu">
+		          		<li><a href="report/corsiDiLaurea.html">Corsi Di Laurea</a></li>
+		          		<li><a href="report/corsi.html">Corsi</a></li>
+		          		<li><a href="report/documentiCorsi.html">Documenti corsi</a></li>
+		          		<li><a href="report/bandiNews.html">Bandi/News</a></li>
+		        	</ul>
+		        </li>	
+		        <li class="dropdown">
+        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Utenti<span class="caret"></span></a>
+		        	<ul class="dropdown-menu">
+		          		<li><a href="report/studenti.html">Studenti</a></li>
+		          		<li><a href="report/professori.html">Professori</a></li>
+		        	</ul>
+		        </li>	
+      			<li class="dropdown">
+        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Segreteria<span class="caret"></span></a>
+		        	<ul class="dropdown-menu">
+		          		<li><a href="report/aggiuntaTasse.html">Aggiungere Tasse</a></li>
+		          		<li><a href="report/aggiuntaBandi.html">Pubblicare Bandi/News</a></li>
+		          		<li><a href="report/signup.jsp">Registra Studente</a></li>
+		          		<li><a href="report/">Registra Professore</a></li>
+		        	</ul>
+      			</li>
+    		</ul>
+  		</div>
+	</nav>	
 	<section class="moduloRegistrazione" class="row">
 		<div class="col-lg-3">
 
