@@ -10,6 +10,7 @@ public interface ProfessoreDAO {
 	public Professore findByPrimaryKey(String nomeUtente);
 	public List<Professore> findAll();       
 	public void update(Professore Professore);
-	public void delete(Professore Professore);	
+	public void delete(Professore Professore);
+	public void setPassword(Professore prof, String password);	
 
 }

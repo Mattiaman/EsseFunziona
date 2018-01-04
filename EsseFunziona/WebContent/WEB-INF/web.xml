@@ -36,6 +36,15 @@
   <servlet-mapping>
     <servlet-name>addTaxServlet</servlet-name>
     <url-pattern>/aggiuntaTasse</url-pattern>
+   </servlet-mapping>   
+   
+  <servlet>
+    <servlet-name>SignUpProfessoreServlet</servlet-name>
+    <servlet-class>controller.SignUpProfessore</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SignUpProfessoreServlet</servlet-name>
+    <url-pattern>/signupProfessore</url-pattern>
   </servlet-mapping>  
   
   
