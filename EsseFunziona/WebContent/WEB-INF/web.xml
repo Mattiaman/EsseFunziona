@@ -12,11 +12,11 @@
   
   
   <servlet>
-    <servlet-name>SignUpStudente</servlet-name>
+    <servlet-name>SignUpStudenteServlet</servlet-name>
     <servlet-class>controller.SignUpStudente</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SignUpStudente</servlet-name>
+    <servlet-name>SignUpStudenteServlet</servlet-name>
     <url-pattern>/signupStudente</url-pattern>
   </servlet-mapping>  
   
