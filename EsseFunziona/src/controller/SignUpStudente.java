@@ -19,13 +19,13 @@ import persistence.DatabaseManager;
 import persistence.dao.CorsoDiLaureaDAO;
 import persistence.dao.StudenteDAO;
 
-public class SignUp extends HttpServlet{
+public class SignUpStudente extends HttpServlet{
 
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		RequestDispatcher dispacher = 
-				req.getRequestDispatcher(".jsp");
+				req.getRequestDispatcher("signupStudente.jsp");
 		dispacher.forward(req, resp);
 	}	
 	
@@ -51,7 +51,7 @@ public class SignUp extends HttpServlet{
 					DatabaseManager.getInstance()
 					.getDaoFactory().getCorsoDiLaureaDAO();
 			CorsoDiLaurea cdl = corsoDiLaureaDAO.findByPrimaryKey(Long.parseLong(corsoDiLaurea));
-			stud.setCorsoDiLaurea(cdl);;
+			stud.setCorsoDiLaurea(cdl);
 			
 			StudenteDAO studenteDao = 
 					DatabaseManager.getInstance()
