@@ -68,54 +68,54 @@
 		<p>${studente.dataNascita}</p>
 	</c:if>
 	<c:if test="${studente == null}">
-		<h1>Iscrivi un nuovo Studente</h1>
-		<h2>Compila i seguente form per registrare un nuovo studente</h2>
+		<h3>Iscrivi un nuovo Studente</h3>
+		<h4>Compila i seguente form per registrare un nuovo studente</h4>
 	</c:if>
 
 	<section class="moduloRegistrazione" class="row">
-		<div class="col-lg-3">
+		<div>
 
 			<form class="form-horizontal" method="post" action="registrazione">
 				<div class="form-group">
-					<label class="control-label col-sm-5" for="matricola">Matricola:</label>
-					<div class="col-sm-7">
+					<label class="control-label col-sm-2" for="matricola">Matricola:</label>
+					<div class="col-sm-3">
 						<input name="matricola" type="text" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label  class="control-label col-sm-5" for="nome">Nome:</label>
-					<div class="col-sm-7">
+					<label  class="control-label col-sm-2" for="nome">Nome:</label>
+					<div class="col-sm-3">
 						<input name="nome" type="text"class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-5"  for="cognome">Cognome:</label>
-					 <div class="col-sm-7">
+					<label class="control-label col-sm-2"  for="cognome">Cognome:</label>
+					 <div class="col-sm-3">
 						<input name="cognome" type="text"class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-5"  for="dataNascita">Data di Nascita:</label> 
-					<div class="col-sm-7">
+					<label class="control-label col-sm-2"  for="dataNascita">Data di Nascita:</label> 
+					<div class="col-sm-3">
 						<input name="dataNascita" type="date" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-5" for="password">Password:</label>
-					<div class="col-sm-7">
+					<label class="control-label col-sm-2" for="password">Password:</label>
+					<div class="col-sm-3">
 						<input name="password" type="password" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-5" for="confermapassword">Conferma Password:</label>
-					<div class="col-sm-7">
+					<label class="control-label col-sm-2" for="confermapassword">Conferma Password:</label>
+					<div class="col-sm-3">
 						<input name="confermapassword" type="password" class="form-control" />
 					</div>
 				</div>
 		
 				<div class="form-group">
-					<label class="control-label col-sm-5" for="corsoDiLaurea">Corso di Laurea:</label>
-					<select name="corsoDiLaurea" class="control-label col-sm-7" class="form-control"  >
+					<label class="control-label col-sm-2" for="corsoDiLaurea">Corso di Laurea:</label>
+					<select name="corsoDiLaurea" class="control-label col-sm-3" class="form-control"  >
 						<c:forEach var="corsoDiLaurea" items="${corsiDiLaurea}" >
 							<option>${corsoDiLaurea.nome}</option>
 						</c:forEach>
@@ -123,7 +123,7 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<div class="col-sm-offset-5 col-sm-12">
+					<div class="col-sm-offset-2 col-sm-6">
 						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
 						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>
 						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>

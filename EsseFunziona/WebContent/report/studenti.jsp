@@ -1,8 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<jsp:useBean id="stud" class="model.Studente" scope="request" />
-<jsp:setProperty name="stud" property="nome" value="un Nome"/>
 
 <html>
 <head lang="it">
@@ -22,7 +20,7 @@
 		<a href="../images/logo_unical.png"><img class="img-responsive" src="../images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
 		<figcaption>Servizi online per lo studente</figcaption>		
 	</figure>
-	<jsp:getProperty name="stud" property="matricola"/>
+
 	<h3>Amministratore</h3>
 		<nav class="menu" style="background: darkblue" >
   		<div class="container-fluid">
@@ -59,9 +57,6 @@
   		</div>
 	</nav>	
 
-
-
-	
 	<br><div class="container">
 	  <div class="table-responsive">          
 	  <table class="table">
@@ -74,18 +69,16 @@
 			<th>Data di Nascita</td>
 		</tr>
 		</thead>
-		
-		<tbody id="elencoStudenti">
-		
+		<tbody>
 		<c:forEach var="studente" items="${studenti}">
-			<tr class="success studente">
+			<tr>
 				<td>${studente.matricola}</td>
 				<td>${studente.nome}</td>
 				<td>${studente.cognome}</td>
-				<td><time>${studente.dataNascita}</time></td>
+				<td><time>${studente.dataDiNascita}</time></td>
 			</tr>			
 		</c:forEach>
-
+		</tbody>
 
 </body>
 </html>

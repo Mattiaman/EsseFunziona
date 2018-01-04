@@ -57,41 +57,41 @@
 	</nav>
 	
 	<br><section class="moduloTasse" class="row">
-		<div class="col-lg-3">
+		<div>
 		
 			<form class="form-horizontal" method="post" action="aggiuntaTassa">
 			  <div class="form-group">
-			    <label class="control-label col-sm-5" for="idTassa">IDTassa:</label>
-			    <div class="col-sm-7">
+			    <label class="control-label col-sm-2" for="idTassa">IDTassa:</label>
+			    <div class="col-sm-3">
 			     <input name="idTassa" type="text" class="form-control" /> 
 			    </div> 
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-5" for="importoTassa">Importo:</label>
-			    	<div class="col-sm-7"> 
+			    <label class="control-label col-sm-2" for="importoTassa">Importo:</label>
+			    	<div class="col-sm-3"> 
 			      <input name="importoTassa" type="text" class="form-control" />
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-5" for="nomeTassa">Nome:</label>
-			    	<div class="col-sm-7"> 
+			    <label class="control-label col-sm-2" for="nomeTassa">Nome:</label>
+			    	<div class="col-sm-3"> 
 			      <input name="nomeTassa" type="text" class="form-control" />
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-5" for="descrizioneTassa">Descrizione:</label>
-			    	<div class="col-sm-7"> 
+			    <label class="control-label col-sm-2" for="descrizioneTassa">Descrizione:</label>
+			    	<div class="col-sm-3"> 
 			      <input name="descrizioneTassa" type="text" class="form-control" />
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-5" for="adminTassa">Nome utente admin:</label>
-			    	<div class="col-sm-7"> 
+			    <label class="control-label col-sm-2" for="adminTassa">Nome utente admin:</label>
+			    	<div class="col-sm-3"> 
 			      <input name="adminTassa" type="text" class="form-control" />
 			    </div>
 			  </div>
 			  <div class="form-group"> 
-			    	<div class="col-sm-offset-5 col-sm-12">
+			    	<div class="col-sm-offset-2 col-sm-6">
 						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
 						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>
 						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
