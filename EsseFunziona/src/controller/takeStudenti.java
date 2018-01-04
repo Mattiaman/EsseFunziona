@@ -29,11 +29,4 @@ public class takeStudenti extends HttpServlet{
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
 }

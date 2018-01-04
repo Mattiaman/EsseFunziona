@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.CorsoDiLaurea;
+import model.PianoDiStudi;
 import model.Studente;
 import persistence.DatabaseManager;
 import persistence.dao.CorsoDiLaureaDAO;
+import persistence.dao.PianoDiStudiDAO;
 import persistence.dao.StudenteDAO;
 
 public class SignUpStudente extends HttpServlet{
@@ -29,7 +31,7 @@ public class SignUpStudente extends HttpServlet{
 		CorsoDiLaureaDAO cdlDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
 		List<CorsoDiLaurea> cldList = cdlDAO.findAll();
 		req.setAttribute("corsiDiLaurea", cldList);
-		RequestDispatcher dispacher = req.getRequestDispatcher("report/signupStudente.jsp");
+		RequestDispatcher dispacher = req.getRequestDispatcher("signupStudente.jsp");
 		dispacher.forward(req, resp);
 	}	
 	
@@ -39,19 +41,25 @@ public class SignUpStudente extends HttpServlet{
 		String matricola = req.getParameter("matricola");
 		String nome = req.getParameter("nome");
 		String cognome = req.getParameter("cognome");
+		String email = req.getParameter("email");
 		String dataNascita = req.getParameter("dataNascita");
 		String password = req.getParameter("password");
 		String corsoDiLaurea = req.getParameter("corsoDiLaurea");
+		String pianoDiStudi = req.getParameter("pianoDiStudi");
 	
-		DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
+		DateFormat format = new SimpleDateFormat("dd-mm-yyyy", Locale.ITALIAN);
 		Date date;
 		try {
 			date = format.parse(dataNascita);
-			Studente stud = new Studente(matricola, nome, cognome, date);
-
+			Studente stud = new Studente(matricola, nome, cognome, date, email);
+			
 			CorsoDiLaureaDAO corsoDiLaureaDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
 			CorsoDiLaurea cdl = corsoDiLaureaDAO.findByPrimaryKey(Long.parseLong(corsoDiLaurea));
 			stud.setCorsoDiLaurea(cdl);
+			
+			PianoDiStudiDAO pianoDiStudiDAO = DatabaseManager.getInstance().getDaoFactory().getPianoDiStudiDAO();
+			PianoDiStudi pds = pianoDiStudiDAO.findByPrimaryKey(Long.parseLong(pianoDiStudi));
+			stud.setPianoDiStudi(pds);
 
 			StudenteDAO studenteDao = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
 			studenteDao.save(stud);
@@ -59,7 +67,7 @@ public class SignUpStudente extends HttpServlet{
 
 			req.setAttribute("studente", stud);
 
-			RequestDispatcher dispacher = req.getRequestDispatcher("report/signupStudente.jsp");
+			RequestDispatcher dispacher = req.getRequestDispatcher("signupStudente.jsp");
 			dispacher.forward(req, resp);
 
 		} catch (ParseException e) {

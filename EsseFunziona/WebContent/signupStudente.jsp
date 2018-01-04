@@ -3,22 +3,19 @@
 <jsp:useBean id="stud" class="model.Studente" scope="request" />
 <jsp:setProperty name="stud" property="nome" value="un Nome"/>
 
-<jsp:useBean id="corsoDiLaurea" class="model.CorsoDiLaurea" scope="request" />
-<jsp:setProperty name="corsoDiLaurea" property="nome" value="un Nome"/>
-
 <html>
 <head lang="it">
 <meta charset="utf-8">
 <title>SignUp Studente</title>
 </head>
 
-<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-<script src="../js/jquery-3.2.1.min.js"></script>
-<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 <body style="background: lightblue">
 	<figure style="text-align: left">
-		<a href="images/logo_unical.png"><img class="img-responsive" src="../images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
+		<a href="images/logo_unical.png"><img class="img-responsive" src="images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
 		<figcaption>Servizi online per lo studente</figcaption>
 	</figure>
 	
@@ -49,7 +46,7 @@
       			<li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Segreteria<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
-		          		<li><a href="report/aggiuntaTasse.html">Aggiungere Tasse</a></li>
+		          		<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>
 		          		<li><a href="report/aggiuntaBandi.html">Pubblicare Bandi/News</a></li>
 		          		<li><a href="signupStudente.jsp">Registra Studente</a></li>
 		          		<li><a href="signupProfessore.jsp">Registra Professore</a></li>
@@ -65,7 +62,10 @@
 		<p>${studente.matricola}</p>
 		<p>${studente.nome}</p>
 		<p>${studente.cognome}</p>
-		<p>${studente.dataNascita}</p>
+		<p>${studente.dataDiNascita}</p>
+		<p>${studente.email}</p>
+		<p>${studente.corsoDiLaurea}</p>
+		<p>${studente.pianoDiStudi}</p>
 	</c:if>
 	<c:if test="${studente == null}">
 		<h3>Iscrivi un nuovo Studente</h3>
@@ -75,7 +75,7 @@
 	<section class="moduloRegistrazione" class="row">
 		<div>
 
-			<form class="form-horizontal" method="post" action="registrazione">
+			<form class="form-horizontal" method="post" action="signupStudente">
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="matricola">Matricola:</label>
 					<div class="col-sm-3">
@@ -101,6 +101,12 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="control-label col-sm-2"  for="email">Email:</label>
+					 <div class="col-sm-3">
+						<input name="email" type="email"class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="control-label col-sm-2" for="password">Password:</label>
 					<div class="col-sm-3">
 						<input name="password" type="password" class="form-control" />
@@ -112,16 +118,20 @@
 						<input name="confermapassword" type="password" class="form-control" />
 					</div>
 				</div>
-		
+				
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="corsoDiLaurea">Corso di Laurea:</label>
-					<select name="corsoDiLaurea" class="control-label col-sm-3" class="form-control"  >
-						<c:forEach var="corsoDiLaurea" items="${corsiDiLaurea}" >
-							<option>${corsoDiLaurea.nome}</option>
-						</c:forEach>
-								
-					</select>
+					<div class="col-sm-3">
+						<input name="corsoDiLaurea" class="control-label col-sm-3"  type="text" class="form-control" />
+					</div>
 				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="pianoDiStudi">Piano Di Studi:</label>
+					<div class="col-sm-3">
+						<input name="pianoDiStudi" class="control-label col-sm-3"  type="text" class="form-control" />
+					</div>
+				</div>
+				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-6">
 						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>

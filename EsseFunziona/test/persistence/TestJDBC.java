@@ -429,11 +429,11 @@ public class TestJDBC {
 		pianoDiStudiDAO.delete(pianoDiStudi);
 		System.out.println("delete "+(c++));
 
-		pianoDiStudiDAO.delete(pianoDiStudi1);
-		System.out.println("delete "+(c++));
+		//pianoDiStudiDAO.delete(pianoDiStudi1);
+		//System.out.println("delete "+(c++));
 		
-		adminDAO.delete(admin1);
-		System.out.println("delete "+(c++));
+		//adminDAO.delete(admin1);
+		//System.out.println("delete "+(c++));
 
 		tassaDAO.delete(tassa1);
 		System.out.println("delete "+(c++));

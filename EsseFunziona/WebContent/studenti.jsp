@@ -8,16 +8,16 @@
 <meta charset="utf-8">
 </head>
 
-<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-<script src="../js/jquery-3.2.1.min.js"></script>
-<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
-<LINK rel="stylesheet" href="../css/tableStyle.css" type="text/css">
+<LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
 
 
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
-		<a href="../images/logo_unical.png"><img class="img-responsive" src="../images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
+		<a href="images/logo_unical.png"><img class="img-responsive" src="images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
 		<figcaption>Servizi online per lo studente</figcaption>		
 	</figure>
 
@@ -47,7 +47,7 @@
       			<li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Segreteria<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
-		          		<li><a href="report/aggiuntaTasse.html">Aggiungere Tasse</a></li>
+		          		<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>
 		          		<li><a href="report/aggiuntaBandi.html">Pubblicare Bandi/News</a></li>
 		          		<li><a href="signupStudente.jsp">Registra Studente</a></li>
 		          		<li><a href="signupProfessore.jsp">Registra Professore</a></li>
@@ -57,28 +57,35 @@
   		</div>
 	</nav>	
 
-	<br><div class="container">
+	<br>
+	<div class="container">
 	  <div class="table-responsive">          
-	  <table class="table">
-	    <caption>Nominativo degli studenti iscritti</caption>
-		<thead>
-		<tr>
-			<th>Matricola</th>
-			<th>Nome</th>
-			<th>Cognome</th>
-			<th>Data di Nascita</td>
-		</tr>
-		</thead>
-		<tbody>
-		<c:forEach var="studente" items="${studenti}">
+		  <table class="table">
+		    <caption>Nominativo degli studenti iscritti</caption>
+			<thead>
+			<tr>
+				<th>Matricola</th>
+				<th>Nome</th>
+				<th>Cognome</th>
+				<th>Data di Nascita</th>
+			</tr>
+			</thead>
+			<tbody>
+			<c:forEach var="studente" items="${studenti}">
 			<tr>
 				<td>${studente.matricola}</td>
 				<td>${studente.nome}</td>
 				<td>${studente.cognome}</td>
 				<td><time>${studente.dataDiNascita}</time></td>
+				<td>${studente.email}</td>
+				<td>${studente.corsoDiLaurea}</td>
+				<td>${studente.pianoDiStudi}</td>
 			</tr>			
-		</c:forEach>
-		</tbody>
+			</c:forEach>
+			</tbody>
+		</table>
+	  </div>
+	</div>
 
 </body>
 </html>
