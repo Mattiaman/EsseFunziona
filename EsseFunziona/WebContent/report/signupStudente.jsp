@@ -1,14 +1,14 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <jsp:useBean id="stud" class="model.Studente" scope="request" />
 <jsp:setProperty name="stud" property="nome" value="un Nome"/>
 
 
 
 <html>
-<head>
+<head lang="it">
 <meta charset="utf-8">
-<title>SignUp</title>
+<title>SignUp Studente</title>
 </head>
 
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -56,7 +56,21 @@
       			</li>
     		</ul>
   		</div>
-	</nav>	
+	</nav>
+
+
+	<c:if test="${studente != null}">
+		<h1>Ho caricato il seguente studente</h1>
+		<p>${studente.matricola}</p>
+		<p>${studente.nome}</p>
+		<p>${studente.cognome}</p>
+		<p>${studente.dataNascita}</p>
+	</c:if>
+	<c:if test="${studente == null}">
+		<h1>Iscrivi un nuovo Studente</h1>
+		<h2>Compila i seguente form per registrare un nuovo studente</h2>
+	</c:if>
+
 	<section class="moduloRegistrazione" class="row">
 		<div class="col-lg-3">
 
@@ -92,6 +106,12 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label class="control-label col-sm-2" for="confermapassword">Conferma Password:</label>
+					<div class="col-sm-10">
+						<input name="confermapassword" type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
 					<label class="control-label col-sm-2" for="indirizzo">Indirizzo:</label>
 					<select name="indirizzo" class="control-label col-sm-10" class="form-control"  >
 						<option value="1">Informatica</option>
@@ -101,7 +121,13 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-default">Submit</button>
+						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
+					</div>
+					<div class="col-sm-offset-2 col-sm-10">
+						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-danger"/>
+					</div>
+					<div class="col-sm-offset-2 col-sm-10">
+						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-success"/>
 					</div>
 				</div>
 			</form>

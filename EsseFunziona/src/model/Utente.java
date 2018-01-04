@@ -19,6 +19,13 @@ public abstract class Utente {
 		this.email = email;
 	}
 
+	public Utente(String nome, String cognome, Date dataDiNascita) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.dataDiNascita = dataDiNascita;
+		this.email = "";
+	}
+
 	public String getNome() {
 		return nome;
 	}

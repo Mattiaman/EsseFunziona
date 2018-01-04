@@ -21,6 +21,14 @@ public class Studente extends Utente {
 	}
 
 
+	
+
+	public Studente(String matricola, String nome, String cognome, Date dataDiNascita) {
+		super(nome, cognome, dataDiNascita);
+		this.matricola = matricola;
+		this.corsoDiLaurea = corsoDiLaurea;
+	}
+
 	public String getMatricola() {
 		return matricola;
 	}
