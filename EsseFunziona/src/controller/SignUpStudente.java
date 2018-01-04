@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
@@ -24,8 +25,11 @@ public class SignUpStudente extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		RequestDispatcher dispacher = 
-				req.getRequestDispatcher("signupStudente.jsp");
+		
+		CorsoDiLaureaDAO cdlDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
+		List<CorsoDiLaurea> cldList = cdlDAO.findAll();
+		req.setAttribute("corsiDiLaurea", cldList);
+		RequestDispatcher dispacher = req.getRequestDispatcher("report/signupStudente.jsp");
 		dispacher.forward(req, resp);
 	}	
 	
@@ -39,32 +43,24 @@ public class SignUpStudente extends HttpServlet{
 		String password = req.getParameter("password");
 		String corsoDiLaurea = req.getParameter("corsoDiLaurea");
 	
-		DateFormat format = new SimpleDateFormat
-							("yyyy-mm-dd", Locale.ITALIAN);
+		DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
 		Date date;
 		try {
 			date = format.parse(dataNascita);
-			Studente stud = 
-					new Studente(matricola, nome, cognome, date);
-			
-			CorsoDiLaureaDAO corsoDiLaureaDAO = 
-					DatabaseManager.getInstance()
-					.getDaoFactory().getCorsoDiLaureaDAO();
+			Studente stud = new Studente(matricola, nome, cognome, date);
+
+			CorsoDiLaureaDAO corsoDiLaureaDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
 			CorsoDiLaurea cdl = corsoDiLaureaDAO.findByPrimaryKey(Long.parseLong(corsoDiLaurea));
 			stud.setCorsoDiLaurea(cdl);
-			
-			StudenteDAO studenteDao = 
-					DatabaseManager.getInstance()
-					.getDaoFactory().getStudenteDAO();
+
+			StudenteDAO studenteDao = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
 			studenteDao.save(stud);
 			studenteDao.setPassword(stud, password);
-			
+
 			req.setAttribute("studente", stud);
-			
-			RequestDispatcher dispacher = 
-					req.getRequestDispatcher("signupStudente.jsp");
+
+			RequestDispatcher dispacher = req.getRequestDispatcher("report/signupStudente.jsp");
 			dispacher.forward(req, resp);
-			
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

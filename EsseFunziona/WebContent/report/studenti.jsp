@@ -1,22 +1,30 @@
-<!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<jsp:useBean id="stud" class="model.Studente" scope="request" />
+<jsp:setProperty name="stud" property="nome" value="un Nome"/>
+
 <html>
-<head>
-<meta charset="ISO-8859-1">
+<head lang="it">
 <title>Area Amministratore</title>
+<meta charset="utf-8">
 </head>
 
 <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-  
+
+<LINK rel="stylesheet" href="../css/tableStyle.css" type="text/css">
+
+
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
 		<a href="../images/logo_unical.png"><img class="img-responsive" src="../images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
 		<figcaption>Servizi online per lo studente</figcaption>		
 	</figure>
-
+	<jsp:getProperty name="stud" property="matricola"/>
 	<h3>Amministratore</h3>
-	<nav class="menu" style="background: darkblue" >
+		<nav class="menu" style="background: darkblue" >
   		<div class="container-fluid">
     		<div class="navbar-header">
       			<a class="navbar-brand" href="#">EsseFunziona</a>
@@ -34,14 +42,14 @@
 		        <li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Utenti<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
-		          		<li><a href="studenti.html">Studenti</a></li>
+		          		<li><a href="studenti.jsp">Studenti</a></li>
 		          		<li><a href="professori.html">Professori</a></li>
 		        	</ul>
 		        </li>	
       			<li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Segreteria<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
-		          		<li><a href="aggiuntaTasse.html">Aggiungere Tasse</a></li>
+		          		<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>
 		          		<li><a href="aggiuntaBandi.html">Pubblicare Bandi/News</a></li>
 		          		<li><a href="signupStudente.jsp">Registra Studente</a></li>
 		          		<li><a href="">Registra Professore</a></li>
@@ -49,54 +57,35 @@
       			</li>
     		</ul>
   		</div>
-	</nav>
+	</nav>	
+
+
+
 	
-	<br><section class="moduloTasse" class="row">
-		<div class="col-lg-3">
+	<br><div class="container">
+	  <div class="table-responsive">          
+	  <table class="table">
+	    <caption>Nominativo degli studenti iscritti</caption>
+		<thead>
+		<tr>
+			<th>Matricola</th>
+			<th>Nome</th>
+			<th>Cognome</th>
+			<th>Data di Nascita</td>
+		</tr>
+		</thead>
 		
-			<form class="form-horizontal" method="post" action="aggiuntaTassa">
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="idTassa">IDTassa:</label>
-			    <div class="col-sm-4">
-			     <input name="idTassa" type="text" class="form-control" /> 
-			    </div> 
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="importoTassa">Importo:</label>
-			    	<div class="col-sm-4"> 
-			      <input name="importoTassa" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="nomeTassa">Nome:</label>
-			    	<div class="col-sm-4"> 
-			      <input name="nomeTassa" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="descrizioneTassa">Descrizione:</label>
-			    	<div class="col-sm-4"> 
-			      <input name="descrizioneTassa" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="intestatarioTassa">Intestatario:</label>
-			    	<div class="col-sm-4"> 
-			      <input name="intestatarioTassa" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group"> 
-			    <div class="col-sm-offset-2 col-sm-10">
-			      <button type="submit" class="btn btn-default">Submit</button>
-			    </div>
-			  </div>
-			</form>
-			
-		</div>
-	</section>
-	
-	
-	
-	
+		<tbody id="elencoStudenti">
+		
+		<c:forEach var="studente" items="${studenti}">
+			<tr class="success studente">
+				<td>${studente.matricola}</td>
+				<td>${studente.nome}</td>
+				<td>${studente.cognome}</td>
+				<td><time>${studente.dataNascita}</time></td>
+			</tr>			
+		</c:forEach>
+
+
 </body>
 </html>

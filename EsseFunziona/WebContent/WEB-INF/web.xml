@@ -20,6 +20,23 @@
     <url-pattern>/signupStudente</url-pattern>
   </servlet-mapping>  
   
+  <servlet>
+    <servlet-name>takeStudentiServlet</servlet-name>
+    <servlet-class>controller.takeStudenti</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeStudentiServlet</servlet-name>
+    <url-pattern>/studenti</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+    <servlet-name>addTaxServlet</servlet-name>
+    <servlet-class>controller.addTax</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addTaxServlet</servlet-name>
+    <url-pattern>/aggiuntaTasse</url-pattern>
+  </servlet-mapping>  
   
   
 </web-app>

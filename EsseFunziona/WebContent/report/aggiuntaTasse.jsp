@@ -1,4 +1,9 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<jsp:useBean id="tax" class="model.Tassa" scope="request" />
+<jsp:setProperty name="tax" property="nome" value="un Nome"/>
+
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -34,7 +39,7 @@
 		        <li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Utenti<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
-		          		<li><a href="studenti.html">Studenti</a></li>
+		          		<li><a href="studenti.jsp">Studenti</a></li>
 		          		<li><a href="professori.html">Professori</a></li>
 		        	</ul>
 		        </li>	
@@ -51,23 +56,49 @@
   		</div>
 	</nav>
 	
-	<br><section class="moduloBando" class="row">
+	<br><section class="moduloTasse" class="row">
 		<div class="col-lg-3">
 		
-			<form class="form-horizontal" method="post" action="aggiuntaBando">
+			<form class="form-horizontal" method="post" action="aggiuntaTassa">
 			  <div class="form-group">
-			    <label class="control-label col-sm-5" for="idBando">IDBando:</label>
+			    <label class="control-label col-sm-5" for="idTassa">IDTassa:</label>
 			    <div class="col-sm-7">
-			     <input name="idBando" type="text" class="form-control" /> 
+			     <input name="idTassa" type="text" class="form-control" /> 
 			    </div> 
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-5" for="contenutoBando">ContenutoBando:</label>
+			    <label class="control-label col-sm-5" for="importoTassa">Importo:</label>
 			    	<div class="col-sm-7"> 
-			      <input name="contenutoBando" type="file" class="form-control" />
+			      <input name="importoTassa" type="text" class="form-control" />
 			    </div>
 			  </div>
-			 </form>		
+			  <div class="form-group">
+			    <label class="control-label col-sm-5" for="nomeTassa">Nome:</label>
+			    	<div class="col-sm-7"> 
+			      <input name="nomeTassa" type="text" class="form-control" />
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-5" for="descrizioneTassa">Descrizione:</label>
+			    	<div class="col-sm-7"> 
+			      <input name="descrizioneTassa" type="text" class="form-control" />
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-5" for="adminTassa">Nome utente admin:</label>
+			    	<div class="col-sm-7"> 
+			      <input name="adminTassa" type="text" class="form-control" />
+			    </div>
+			  </div>
+			  <div class="form-group"> 
+			    	<div class="col-sm-offset-5 col-sm-12">
+						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
+						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>
+						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
+					</div>
+			  </div>
+			</form>
+			
 		</div>
 	</section>
 	

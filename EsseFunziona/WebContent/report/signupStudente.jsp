@@ -3,7 +3,8 @@
 <jsp:useBean id="stud" class="model.Studente" scope="request" />
 <jsp:setProperty name="stud" property="nome" value="un Nome"/>
 
-
+<jsp:useBean id="corsoDiLaurea" class="model.CorsoDiLaurea" scope="request" />
+<jsp:setProperty name="corsoDiLaurea" property="nome" value="un Nome"/>
 
 <html>
 <head lang="it">
@@ -41,14 +42,14 @@
 		        <li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Utenti<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
-		          		<li><a href="studenti.html">Studenti</a></li>
+		          		<li><a href="studenti.jsp">Studenti</a></li>
 		          		<li><a href="professori.html">Professori</a></li>
 		        	</ul>
 		        </li>	
       			<li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Segreteria<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
-		          		<li><a href="aggiuntaTasse.html">Aggiungere Tasse</a></li>
+		          		<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>
 		          		<li><a href="aggiuntaBandi.html">Pubblicare Bandi/News</a></li>
 		          		<li><a href="signupStudente.jsp">Registra Studente</a></li>
 		          		<li><a href="">Registra Professore</a></li>
@@ -76,51 +77,53 @@
 
 			<form class="form-horizontal" method="post" action="registrazione">
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="matricola">Matricola:</label>
-					<div class="col-sm-9">
+					<label class="control-label col-sm-5" for="matricola">Matricola:</label>
+					<div class="col-sm-7">
 						<input name="matricola" type="text" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label  class="control-label col-sm-3" for="nome">Nome:</label>
-					<div class="col-sm-9">
+					<label  class="control-label col-sm-5" for="nome">Nome:</label>
+					<div class="col-sm-7">
 						<input name="nome" type="text"class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3"  for="cognome">Cognome:</label>
-					 <div class="col-sm-9">
+					<label class="control-label col-sm-5"  for="cognome">Cognome:</label>
+					 <div class="col-sm-7">
 						<input name="cognome" type="text"class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3"  for="dataNascita">Data di Nascita:</label> 
-					<div class="col-sm-9">
+					<label class="control-label col-sm-5"  for="dataNascita">Data di Nascita:</label> 
+					<div class="col-sm-7">
 						<input name="dataNascita" type="date" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="password">Password:</label>
-					<div class="col-sm-9">
-						<input name="password" type="text" class="form-control" />
+					<label class="control-label col-sm-5" for="password">Password:</label>
+					<div class="col-sm-7">
+						<input name="password" type="password" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="confermapassword">Conferma Password:</label>
-					<div class="col-sm-9">
-						<input name="confermapassword" type="text" class="form-control" />
+					<label class="control-label col-sm-5" for="confermapassword">Conferma Password:</label>
+					<div class="col-sm-7">
+						<input name="confermapassword" type="password" class="form-control" />
 					</div>
 				</div>
+		
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="indirizzo">Indirizzo:</label>
-					<select name="indirizzo" class="control-label col-sm-9" class="form-control"  >
-						<option value="1">Informatica</option>
-						<option value="2">Ingegneria Informatica</option>
-						<option value="3">Matematica</option>		
+					<label class="control-label col-sm-5" for="corsoDiLaurea">Corso di Laurea:</label>
+					<select name="corsoDiLaurea" class="control-label col-sm-7" class="form-control"  >
+						<c:forEach var="corsoDiLaurea" items="${corsiDiLaurea}" >
+							<option>${corsoDiLaurea.nome}</option>
+						</c:forEach>
+								
 					</select>
 				</div>
 				<div class="form-group">
-					<div class="col-sm-offset-3 col-sm-12">
+					<div class="col-sm-offset-5 col-sm-12">
 						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
 						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>
 						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
@@ -130,7 +133,6 @@
 
 		</div>
 	</section>
-
 
 </body>
 </html>
