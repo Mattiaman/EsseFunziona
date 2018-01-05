@@ -1,7 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<jsp:useBean id="tax" class="model.Tassa" scope="request" />
-<jsp:setProperty name="tax" property="nome" value="un Nome"/>
+<jsp:useBean id="corso" class="model.Corso" scope="request" />
+<jsp:setProperty name="corso" property="nome" value="un Nome"/>
 
 
 <html>
@@ -47,7 +47,7 @@
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Segreteria<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
 		          		<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>
-		          		<li><a href="aggiuntaBandi.jsp">Pubblicare Bandi/News</a></li>
+		          		<li><a href="aggiuntaBandi.html">Pubblicare Bandi/News</a></li>
 		          		<li><a href="aggiuntaCorso.jsp">Aggiungere Corsi</a></li>
 		          		<li><a href="aggiuntaCorsoDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>
 		          		<li><a href="signupStudente.jsp">Registra Studente</a></li>
@@ -57,68 +57,13 @@
     		</ul>
   		</div>
 	</nav>
-	
-	
-	<c:if test="${tassa != null}">
-		<h1>Ho caricato la seguente Tassa</h1>
-		<p>${tassa.id}</p>
-		<p>${tassa.importo}</p>
-		<p>${tassa.nome}</p>
-		<p>${tassa.descrizione}</p>
-		<p>${tassa.admin}</p>
-	</c:if>
-	<c:if test="${tassa == null}">
-		<h3>Aggiungi una tassa</h3>
-		<h4>Compila i seguente form per aggiungere una tassa</h4>
-	
-	<br><section class="moduloTasse" class="row">
-		<div>
-		
-			<form class="form-horizontal" method="post" action="aggiuntaTasse">
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="idTassa">IDTassa:</label>
-			    <div class="col-sm-3">
-			     <input name="idTassa" type="text" class="form-control" /> 
-			    </div> 
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="importoTassa">Importo:</label>
-			    	<div class="col-sm-3"> 
-			      <input name="importoTassa" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="nomeTassa">Nome:</label>
-			    	<div class="col-sm-3"> 
-			      <input name="nomeTassa" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="descrizioneTassa">Descrizione:</label>
-			    	<div class="col-sm-3"> 
-			      <input name="descrizioneTassa" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="adminTassa">Nome utente admin:</label>
-			    	<div class="col-sm-3"> 
-			      <input name="adminTassa" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group"> 
-			    	<div class="col-sm-offset-2 col-sm-6">
-						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
-						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>
-						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
-					</div>
-			  </div>
-			</form>
-			
-		</div>
-	</section>
-	
-	</c:if>
-	
-	
+
+
+
+
+
+
+
+
 </body>
 </html>

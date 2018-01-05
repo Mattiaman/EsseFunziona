@@ -1,17 +1,22 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<jsp:useBean id="corso" class="model.Corso" scope="request" />
+<jsp:setProperty name="corso" property="nome" value="un Nome"/>
+
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Area Amministratore</title>
 </head>
 
-<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-<script src="../js/jquery-3.2.1.min.js"></script>
-<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
   
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
-		<a href="../images/logo_unical.png"><img class="img-responsive" src="../images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
+		<a href="images/logo_unical.png"><img class="img-responsive" src="images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
 		<figcaption>Servizi online per lo studente</figcaption>		
 	</figure>
 
@@ -34,7 +39,7 @@
 		        <li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Utenti<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
-		          		<li><a href="studenti.html">Studenti</a></li>
+		          		<li><a href="studenti.jsp">Studenti</a></li>
 		          		<li><a href="professori.html">Professori</a></li>
 		        	</ul>
 		        </li>	
@@ -43,36 +48,17 @@
 		        	<ul class="dropdown-menu">
 		          		<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>
 		          		<li><a href="aggiuntaBandi.html">Pubblicare Bandi/News</a></li>
+		          		<li><a href="aggiuntaCorso.jsp">Aggiungere Corsi</a></li>
+		          		<li><a href="aggiuntaCorsoDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>
 		          		<li><a href="signupStudente.jsp">Registra Studente</a></li>
-		          		<li><a href="">Registra Professore</a></li>
+		          		<li><a href="signupProfessore.jsp">Registra Professore</a></li>        		
 		        	</ul>
       			</li>
     		</ul>
   		</div>
 	</nav>
 	
-	<br><section class="moduloBando" class="row">
-		<div class="col-lg-3">
-		
-			<form class="form-horizontal" method="post" action="aggiuntaBando">
-			  <div class="form-group">
-			    <label class="control-label col-sm-5" for="idBando">IDBando:</label>
-			    <div class="col-sm-7">
-			     <input name="idBando" type="text" class="form-control" /> 
-			    </div> 
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-5" for="contenutoBando">ContenutoBando:</label>
-			    	<div class="col-sm-7"> 
-			      <input name="contenutoBando" type="file" class="form-control" />
-			    </div>
-			  </div>
-			 </form>		
-		</div>
-	</section>
 	
 	
 	
 	
-</body>
-</html>
