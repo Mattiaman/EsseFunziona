@@ -48,7 +48,7 @@
       			<li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Segreteria<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
-		          		<li><a href="report/aggiuntaTasse.html">Aggiungere Tasse</a></li>
+		          		<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>
 		          		<li><a href="report/aggiuntaBandi.html">Pubblicare Bandi/News</a></li>
 		          		<li><a href="signupStudente.jsp">Registra Studente</a></li>
 		          		<li><a href="signupProfessore.jsp">Registra Professore</a></li>
@@ -72,53 +72,53 @@
 		<h2>Compila i seguente form per registrare un nuovo professore</h2>
 	
 	<section class="moduloRegistrazione" class="row">
-		<div class="col-lg-3">
+		<div>
 
 			<form class="form-horizontal" method="post" action="signupProfessore">
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="nomeUtente">Nome Utente:</label>
-					<div class="col-sm-9">
+					<label class="control-label col-sm-2" for="nomeUtente">Nome Utente:</label>
+					<div class="col-sm-10">
 						<input name="nomeUtente" type="text" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label  class="control-label col-sm-3" for="nome">Nome:</label>
-					<div class="col-sm-9">
+					<label  class="control-label col-sm-2" for="nome">Nome:</label>
+					<div class="col-sm-10">
 						<input name="nome" type="text"class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3"  for="cognome">Cognome:</label>
-					 <div class="col-sm-9">
+					<label class="control-label col-sm-2"  for="cognome">Cognome:</label>
+					 <div class="col-sm-10">
 						<input name="cognome" type="text"class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3"  for="dataNascita">Data di Nascita:</label> 
-					<div class="col-sm-9">
+					<label class="control-label col-sm-2"  for="dataNascita">Data di Nascita:</label> 
+					<div class="col-sm-10">
 						<input name="dataNascita" type="date" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label  class="control-label col-sm-3" for="email">Email:</label>
-					<div class="col-sm-9">
+					<label  class="control-label col-sm-2" for="email">Email:</label>
+					<div class="col-sm-10">
 						<input name="email" type="email"class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="password">Password:</label>
-					<div class="col-sm-9">
+					<label class="control-label col-sm-2" for="password">Password:</label>
+					<div class="col-sm-10">
 						<input name="password" type="password" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="confermapassword">Conferma Password:</label>
-					<div class="col-sm-9">
+					<label class="control-label col-sm-2" for="confermapassword">Conferma Password:</label>
+					<div class="col-sm-10">
 						<input name="confermapassword" type="password" class="form-control" />
 					</div>
 				</div>
 				<div class="form-group">
-					<div class="col-sm-offset-3 col-sm-12">
+					<div class="col-sm-offset-2 col-sm-12">
 						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
 						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>
 						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
