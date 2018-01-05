@@ -1,7 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<jsp:useBean id="bandi" class="model.Materiale" scope="request" />
-<jsp:setProperty name="bandi" property="nome" value="un Nome"/>
+<jsp:useBean id="bando" class="model.Materiale" scope="request" />
 
 
 
@@ -73,17 +72,23 @@
 	<br><section class="moduloBando" class="row">
 		<div>
 		
-			<form class="form-horizontal" method="post" action="aggiuntaBando">
+			<form class="form-horizontal" method="post" action="aggiuntaBandi">
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="idBando">IDBando:</label>
-			    <div class="col-sm-10">
+			    <div class="col-sm-3">
 			     <input name="idBando" type="text" class="form-control" /> 
 			    </div> 
 			  </div>
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="contenutoBando">ContenutoBando:</label>
-			    	<div class="col-sm-10"> 
+			    	<div class="col-sm-3"> 
 			      <input name="contenutoBando" type="file" class="form-control" />
+			    </div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="nomeUtenteProfessore">Nome Utente Professore:</label>
+			    	<div class="col-sm-3"> 
+			      <input name="nomeUtenteProfessore" type="text" class="form-control" />
 			    </div>
 			  </div>
 			  <div class="form-group"> 

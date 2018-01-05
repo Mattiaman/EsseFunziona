@@ -39,6 +39,15 @@
    </servlet-mapping>   
    
   <servlet>
+    <servlet-name>addBandiServlet</servlet-name>
+    <servlet-class>controller.addBandi</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addBandiServlet</servlet-name>
+    <url-pattern>/aggiuntaBandi</url-pattern>
+   </servlet-mapping>  
+   
+  <servlet>
     <servlet-name>SignUpProfessoreServlet</servlet-name>
     <servlet-class>controller.SignUpProfessore</servlet-class>
   </servlet>
