@@ -41,7 +41,7 @@ public class addCorsoDiLaurea extends HttpServlet{
 
 		req.setAttribute("corsoDL", cdl);
 
-		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaCorsi.jsp");
+		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaCorsiDiLaurea.jsp");
 		dispacher.forward(req, resp);
 	
 	}
