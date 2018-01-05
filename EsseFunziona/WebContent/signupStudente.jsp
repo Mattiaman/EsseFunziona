@@ -48,8 +48,8 @@
 		        	<ul class="dropdown-menu">
 		          		<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>
 		          		<li><a href="aggiuntaBandi.jsp">Pubblicare Bandi/News</a></li>
-		          		<li><a href="aggiuntaCorso.jsp">Aggiungere Corsi</a></li>
-		          		<li><a href="aggiuntaCorsoDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>
+		          		<li><a href="aggiuntaCorsi.jsp">Aggiungere Corsi</a></li>
+		          		<li><a href="aggiuntaCorsiDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>
 		          		<li><a href="signupStudente.jsp">Registra Studente</a></li>
 		          		<li><a href="signupProfessore.jsp">Registra Professore</a></li>        		
 		        	</ul>

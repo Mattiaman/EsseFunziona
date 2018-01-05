@@ -1,7 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<jsp:useBean id="bando" class="model.Materiale" scope="request" />
-
+<jsp:useBean id="bnd" class="model.Materiale" scope="request" />
+<jsp:setProperty name="bnd" property="id" value="1"/>
 
 
 <html>
@@ -21,7 +21,7 @@
 	</figure>
 
 	<h3>Amministratore</h3>
-	<nav class="menu" style="background: darkblue" >
+    <nav class="menu" style="background: darkblue" >
   		<div class="container-fluid">
     		<div class="navbar-header">
       			<a class="navbar-brand" href="#">EsseFunziona</a>
@@ -48,8 +48,8 @@
 		        	<ul class="dropdown-menu">
 		          		<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>
 		          		<li><a href="aggiuntaBandi.jsp">Pubblicare Bandi/News</a></li>
-		          		<li><a href="aggiuntaCorso.jsp">Aggiungere Corsi</a></li>
-		          		<li><a href="aggiuntaCorsoDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>
+		          		<li><a href="aggiuntaCorsi.jsp">Aggiungere Corsi</a></li>
+		          		<li><a href="aggiuntaCorsiDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>
 		          		<li><a href="signupStudente.jsp">Registra Studente</a></li>
 		          		<li><a href="signupProfessore.jsp">Registra Professore</a></li>        		
 		        	</ul>
@@ -59,26 +59,20 @@
 	</nav>
 	
 	
-	<c:if test="${materiale != null}">
+	<c:if test="${bando != null}">
 		<h1>Ho caricato il seguente Bando</h1>
-		<p>${materiale.id}</p>
-		<p>${materiale.contenuto}</p>
-		<p>${materiale.nomeUtenteProfessore}</p>
+		<p>${bando.id}</p>
+		<p>${bando.contenuto}</p>
+		<p>${bando.professore}</p>
 	</c:if>
-	<c:if test="${materiale == null}">
+	<c:if test="${bando == null}">
 		<h3>Aggiungi un Bando</h3>
-		<h4>Compila i seguente form per aggiungere un bando</h4>
+		<h4>Compila il seguente form per aggiungere un bando</h4>
 	
 	<br><section class="moduloBando" class="row">
 		<div>
 		
 			<form class="form-horizontal" method="post" action="aggiuntaBandi">
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="idBando">IDBando:</label>
-			    <div class="col-sm-3">
-			     <input name="idBando" type="text" class="form-control" /> 
-			    </div> 
-			  </div>
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="contenutoBando">ContenutoBando:</label>
 			    	<div class="col-sm-3"> 
@@ -86,9 +80,9 @@
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="nomeUtenteProfessore">Nome Utente Professore:</label>
+			    <label class="control-label col-sm-2" for="nomeUtente">Nome Utente:</label>
 			    	<div class="col-sm-3"> 
-			      <input name="nomeUtenteProfessore" type="text" class="form-control" />
+			      <input name="nomeUtente" type="text" class="form-control" />
 			    </div>
 			  </div>
 			  <div class="form-group"> 

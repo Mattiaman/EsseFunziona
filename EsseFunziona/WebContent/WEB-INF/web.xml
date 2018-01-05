@@ -46,6 +46,25 @@
     <servlet-name>addBandiServlet</servlet-name>
     <url-pattern>/aggiuntaBandi</url-pattern>
    </servlet-mapping>  
+
+  <servlet>
+    <servlet-name>addCorsoServlet</servlet-name>
+    <servlet-class>controller.addCorso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addCorsoServlet</servlet-name>
+    <url-pattern>/aggiuntaCorsi</url-pattern>
+   </servlet-mapping>
+   
+   
+  <servlet>
+    <servlet-name>addCorsoDiLaureaServlet</servlet-name>
+    <servlet-class>controller.addCorsoDiLaurea</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addCorsoDiLaureaServlet</servlet-name>
+    <url-pattern>/aggiuntaCorsiDiLaurea</url-pattern>
+   </servlet-mapping>
    
   <servlet>
     <servlet-name>SignUpProfessoreServlet</servlet-name>

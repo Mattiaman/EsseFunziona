@@ -1,7 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<jsp:useBean id="corso" class="model.Corso" scope="request" />
-<jsp:setProperty name="corso" property="nome" value="un Nome"/>
+<jsp:useBean id="crs" class="model.Corso" scope="request" />
+<jsp:setProperty name="crs" property="nome" value="un Nome"/>
 
 
 <html>
@@ -47,9 +47,9 @@
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Segreteria<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
 		          		<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>
-		          		<li><a href="aggiuntaBandi.html">Pubblicare Bandi/News</a></li>
-		          		<li><a href="aggiuntaCorso.jsp">Aggiungere Corsi</a></li>
-		          		<li><a href="aggiuntaCorsoDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>
+		          		<li><a href="aggiuntaBandi.jsp">Pubblicare Bandi/News</a></li>
+		          		<li><a href="aggiuntaCorsi.jsp">Aggiungere Corsi</a></li>
+		          		<li><a href="aggiuntaCorsiDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>
 		          		<li><a href="signupStudente.jsp">Registra Studente</a></li>
 		          		<li><a href="signupProfessore.jsp">Registra Professore</a></li>        		
 		        	</ul>
@@ -59,6 +59,38 @@
 	</nav>
 	
 	
+	<c:if test="${corso != null}">
+		<h1>Ho caricato il seguente corso</h1>
+		<p>${corso.id}</p>
+		<p>${corso.nome}</p>
+	</c:if>
+	<c:if test="${corso == null}">
+		<h3>Aggiungi un corso</h3>
+		<h4>Compila il seguente form per aggiungere un corso</h4>
+	
+	<br><section class="moduloCorsi" class="row">
+		<div>
+		
+			<form class="form-horizontal" method="post" action="aggiuntaCorsi">
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="nomeCorso">Nome Corso:</label>
+			    	<div class="col-sm-3"> 
+			      <input name="nomeCorso" type="text" class="form-control" />
+			    </div>
+			  </div>
+			  <div class="form-group"> 
+			    	<div class="col-sm-offset-2 col-sm-10">
+						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
+						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>
+						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
+					</div>
+			  </div>
+			 </form>		
+		</div>
+	</section>
+	</c:if>
 	
 	
-	
+		
+</body>
+</html>

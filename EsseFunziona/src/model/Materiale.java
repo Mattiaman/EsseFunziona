@@ -15,19 +15,15 @@ public class Materiale {
 		this.professore=professore;
 	}
 
-	
-	 
-	public Materiale(File contenuto, long id) {
-		super();
-		this.contenuto = contenuto;
-		this.id = id;
-	}
-
-
-
 	public Materiale() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public Materiale(File contenuto) {
+		this.contenuto = contenuto;
+	}
+
+
 
 	public File getContenuto() {
 		return contenuto;

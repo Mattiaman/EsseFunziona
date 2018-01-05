@@ -31,31 +31,33 @@
      			<li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Home<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
-		          		<li><a href="report/corsiDiLaurea.html">Corsi Di Laurea</a></li>
-		          		<li><a href="report/corsi.html">Corsi</a></li>
-		          		<li><a href="report/documentiCorsi.html">Documenti corsi</a></li>
-		          		<li><a href="report/bandiNews.html">Bandi/News</a></li>
+		          		<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>
+		          		<li><a href="corsi.html">Corsi</a></li>
+		          		<li><a href="documentiCorsi.html">Documenti corsi</a></li>
+		          		<li><a href="bandiNews.html">Bandi/News</a></li>
 		        	</ul>
 		        </li>	
 		        <li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Utenti<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
 		          		<li><a href="studenti.jsp">Studenti</a></li>
-		          		<li><a href="report/professori.html">Professori</a></li>
+		          		<li><a href="professori.html">Professori</a></li>
 		        	</ul>
 		        </li>	
       			<li class="dropdown">
         			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Segreteria<span class="caret"></span></a>
 		        	<ul class="dropdown-menu">
 		          		<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>
-		          		<li><a href="report/aggiuntaBandi.html">Pubblicare Bandi/News</a></li>
+		          		<li><a href="aggiuntaBandi.jsp">Pubblicare Bandi/News</a></li>
+		          		<li><a href="aggiuntaCorsi.jsp">Aggiungere Corsi</a></li>
+		          		<li><a href="aggiuntaCorsiDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>
 		          		<li><a href="signupStudente.jsp">Registra Studente</a></li>
-		          		<li><a href="signupProfessore.jsp">Registra Professore</a></li>
+		          		<li><a href="signupProfessore.jsp">Registra Professore</a></li>        		
 		        	</ul>
       			</li>
     		</ul>
   		</div>
-	</nav>	
+	</nav>
 
 	<br>
 	<div class="container">

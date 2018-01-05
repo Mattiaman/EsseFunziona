@@ -9,22 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import model.Admin;
+import model.Corso;
+import model.CorsoDiLaurea;
 import model.Materiale;
 import model.Professore;
 import persistence.DatabaseManager;
-import persistence.dao.AdminDAO;
+import persistence.dao.CorsoDAO;
+import persistence.dao.CorsoDiLaureaDAO;
 import persistence.dao.MaterialeDAO;
 import persistence.dao.ProfessoreDAO;
 
-public class addBandi extends HttpServlet{
-
+public class addCorsoDiLaurea extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		RequestDispatcher dispacher = 
-				req.getRequestDispatcher("aggiuntaBandi.jsp");
+				req.getRequestDispatcher("aggiuntaCorsiDiLaurea.jsp");
 		dispacher.forward(req, resp);
 	}
 	
@@ -32,24 +32,16 @@ public class addBandi extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String contenutoBando = req.getParameter("contenutoBando");
-		String nomeUtente = req.getParameter("nomeUtente");
-	
-		File f= new File(contenutoBando);
+		String nomeCdl = req.getParameter("nomecdl");
+
+		CorsoDiLaurea cdl= new CorsoDiLaurea(nomeCdl);
 		
-		Materiale bnd = new Materiale(f);
+		CorsoDiLaureaDAO cdlDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
+		cdlDAO.save(cdl);
 
-		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
+		req.setAttribute("corsoDL", cdl);
 
-		Professore prf = professoreDAO.findByPrimaryKey(nomeUtente);
-		bnd.setProfessore(prf);
-
-		MaterialeDAO materialeDAO = DatabaseManager.getInstance().getDaoFactory().getMaterialeDAO();
-		materialeDAO.save(bnd);
-
-		req.setAttribute("bando", bnd);
-
-		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaBandi.jsp");
+		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaCorsi.jsp");
 		dispacher.forward(req, resp);
 	
 	}

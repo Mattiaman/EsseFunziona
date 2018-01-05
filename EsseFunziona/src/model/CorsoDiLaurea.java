@@ -20,6 +20,14 @@ public class CorsoDiLaurea {
 		this.nome = nome;
 	}
 
+	
+	
+	public CorsoDiLaurea(long id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
+	}
+
 	public CorsoDiLaurea() {
 		// TODO Auto-generated constructor stub
 	}
