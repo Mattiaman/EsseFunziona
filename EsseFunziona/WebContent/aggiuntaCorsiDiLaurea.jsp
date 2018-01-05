@@ -66,7 +66,7 @@
 		<p>${corsoDL.id}</p>
 		<p>${corsoDL.nome}</p>
 	</c:if>
-	<c:if test="${bando == null}">
+	<c:if test="${corsoDL == null}">
 		<h3>Aggiungi un Corso di Laurea</h3>
 		<h4>Compila il seguente form per aggiungere un Corso di Laurea</h4>
 	

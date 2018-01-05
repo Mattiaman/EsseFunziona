@@ -23,16 +23,6 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 	@Override
 	public void save(CorsoDiLaurea corsoDiLaurea) {
 
-		if ( (corsoDiLaurea.getCorsi() == null) 
-				|| corsoDiLaurea.getCorsi().isEmpty()){
-			try {
-				throw new SQLException("Corso di laurea non memorizzato: un corso di laurea deve avere almeno un corso");
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
 		Connection connection = this.databaseData.getConnection();
 		
 		try {
