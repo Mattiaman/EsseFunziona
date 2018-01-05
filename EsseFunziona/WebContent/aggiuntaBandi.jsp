@@ -59,26 +59,44 @@
   		</div>
 	</nav>
 	
+	
+	<c:if test="${materiale != null}">
+		<h1>Ho caricato il seguente Bando</h1>
+		<p>${materiale.id}</p>
+		<p>${materiale.contenuto}</p>
+		<p>${materiale.nomeUtenteProfessore}</p>
+	</c:if>
+	<c:if test="${materiale == null}">
+		<h3>Aggiungi un Bando</h3>
+		<h4>Compila i seguente form per aggiungere un bando</h4>
+	
 	<br><section class="moduloBando" class="row">
-		<div class="col-lg-3">
+		<div>
 		
 			<form class="form-horizontal" method="post" action="aggiuntaBando">
 			  <div class="form-group">
-			    <label class="control-label col-sm-5" for="idBando">IDBando:</label>
-			    <div class="col-sm-7">
+			    <label class="control-label col-sm-2" for="idBando">IDBando:</label>
+			    <div class="col-sm-10">
 			     <input name="idBando" type="text" class="form-control" /> 
 			    </div> 
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-5" for="contenutoBando">ContenutoBando:</label>
-			    	<div class="col-sm-7"> 
+			    <label class="control-label col-sm-2" for="contenutoBando">ContenutoBando:</label>
+			    	<div class="col-sm-10"> 
 			      <input name="contenutoBando" type="file" class="form-control" />
 			    </div>
+			  </div>
+			  <div class="form-group"> 
+			    	<div class="col-sm-offset-2 col-sm-10">
+						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
+						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>
+						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
+					</div>
 			  </div>
 			 </form>		
 		</div>
 	</section>
-	
+	</c:if>
 	
 	
 	
