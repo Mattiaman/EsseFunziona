@@ -67,7 +67,6 @@
 		<p>${studente.dataDiNascita}</p>
 		<p>${studente.email}</p>
 		<p>${studente.corsoDiLaurea}</p>
-		<p>${studente.pianoDiStudi}</p>
 	</c:if>
 	<c:if test="${studente == null}">
 		<h3>Iscrivi un nuovo Studente</h3>
@@ -125,14 +124,7 @@
 					<div class="col-sm-3">
 						<input name="corsoDiLaurea" class="control-label col-sm-3"  type="text" class="form-control" />
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="control-label col-sm-2" for="pianoDiStudi">Piano Di Studi:</label>
-					<div class="col-sm-3">
-						<input name="pianoDiStudi" class="control-label col-sm-3"  type="text" class="form-control" />
-					</div>
-				</div>
-				
+				</div>				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-6">
 						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>

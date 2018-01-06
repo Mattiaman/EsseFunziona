@@ -35,7 +35,9 @@ public class PianoDiStudiJDBC implements PianoDiStudiDAO {
 			statement.setLong(3, pianoDiStudi.getCorsoDiLaurea().getId());
 			statement.executeUpdate();
 			
-			this.mappaCorsi(pianoDiStudi, connection);
+			if(pianoDiStudi.getCorsi()!=null)
+				if(!(pianoDiStudi.getCorsi().isEmpty()))
+					this.mappaCorsi(pianoDiStudi, connection);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -127,7 +129,9 @@ public class PianoDiStudiJDBC implements PianoDiStudiDAO {
 			statement.setLong(2, pianoDiStudi.getCorsoDiLaurea().getId());
 			statement.setLong(3, pianoDiStudi.getId());
 			statement.executeUpdate();
-			this.mappaCorsi(pianoDiStudi, connection);
+			if(pianoDiStudi.getCorsi()!=null)
+				if(!(pianoDiStudi.getCorsi().isEmpty()))
+					this.mappaCorsi(pianoDiStudi, connection);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

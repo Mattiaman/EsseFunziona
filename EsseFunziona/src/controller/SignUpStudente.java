@@ -59,7 +59,7 @@ public class SignUpStudente extends HttpServlet{
 			stud.setCorsoDiLaurea(cdl);
 			
 			PianoDiStudi pds = new PianoDiStudi();
-			pds.setNome("Piano di "+nome);
+			pds.setNome("Piano di "+nome+" "+cognome);
 			pds.setCorsoDiLaurea(cdl);
 			pds.setCorsi(cdl.getCorsi());
 			PianoDiStudiDAO pianoDiStudiDAO = DatabaseManager.getInstance().getDaoFactory().getPianoDiStudiDAO();
