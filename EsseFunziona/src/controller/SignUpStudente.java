@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Corso;
 import model.CorsoDiLaurea;
 import model.PianoDiStudi;
 import model.Studente;
@@ -57,8 +58,12 @@ public class SignUpStudente extends HttpServlet{
 			CorsoDiLaurea cdl = corsoDiLaureaDAO.findByPrimaryKey(Long.parseLong(corsoDiLaurea));
 			stud.setCorsoDiLaurea(cdl);
 			
+			PianoDiStudi pds = new PianoDiStudi();
+			pds.setNome("Piano di "+nome);
+			pds.setCorsoDiLaurea(cdl);
+			pds.setCorsi(cdl.getCorsi());
 			PianoDiStudiDAO pianoDiStudiDAO = DatabaseManager.getInstance().getDaoFactory().getPianoDiStudiDAO();
-			PianoDiStudi pds = pianoDiStudiDAO.findByPrimaryKey(Long.parseLong(pianoDiStudi));
+			pianoDiStudiDAO.save(pds);
 			stud.setPianoDiStudi(pds);
 
 			StudenteDAO studenteDao = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
