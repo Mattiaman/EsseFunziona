@@ -28,7 +28,7 @@ public class takeStudenti extends HttpServlet{
 		PrintWriter out=resp.getWriter();
 		Gson gson=new Gson();
 		for(Studente s:studs) {
-			out.println(gson.toJson(s));
+			out.print(gson.toJson(s));
 		}
 		out.close();
 	}
