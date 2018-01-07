@@ -30,6 +30,15 @@
   </servlet-mapping>  
   
   <servlet>
+    <servlet-name>takeProfessoriServlet</servlet-name>
+    <servlet-class>controller.takeProfessori</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeProfessoriServlet</servlet-name>
+    <url-pattern>/professori</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
     <servlet-name>addTaxServlet</servlet-name>
     <servlet-class>controller.addTax</servlet-class>
   </servlet>
