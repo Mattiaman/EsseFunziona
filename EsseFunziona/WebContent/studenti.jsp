@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
@@ -64,7 +64,7 @@
 	<br>
 	<div class="container">
 	  <div class="table-responsive">          
-		  <table class="table">
+		  <table class="table" id="tabellaStudenti">
 		    <caption>Nominativo degli studenti iscritti</caption>
 			<thead>
 			<tr>
@@ -72,20 +72,11 @@
 				<th>Nome</th>
 				<th>Cognome</th>
 				<th>Data di Nascita</th>
+				<th>Email</th>
 			</tr>
 			</thead>
-			<tbody>
-			<c:forEach var="studente" items="${studenti}">
-			<tr>
-				<td>${studente.matricola}</td>
-				<td>${studente.nome}</td>
-				<td>${studente.cognome}</td>
-				<td><time>${studente.dataDiNascita}</time></td>
-				<td>${studente.email}</td>
-				<td>${studente.corsoDiLaurea}</td>
-				<td>${studente.pianoDiStudi}</td>
-			</tr>			
-			</c:forEach>
+			<tbody id="listaStudenti">
+			
 			</tbody>
 		</table>
 	  </div>

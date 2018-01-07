@@ -5,11 +5,14 @@ function caricaStudenti(){
 	xhr.onload=function(){
 		var jsonStringQuotes = xhr.responseText;
 		var studenti=JSON.parse(jsonStringQuotes);
-		console.log(studenti[1]);
+		for(var i in studenti){
+			var s = $('<tr>  <th>'+studenti[i].matricola+'</th> <th>'+studenti[i].nome+'</th> <th>'+studenti[i].cognome+'</th> <th>'+studenti[i].dataDiNascita+'</th> <th>'+studenti[i].email+'</th>  </tr>');
+			$("#listaStudenti").append(s);
+		}
 	};
 	xhr.send(null)
 }
 
-window.onload=function(){
-	caricaStudenti();
-};
+$(document).ready(function() {
+	caricaStudenti();	
+});
