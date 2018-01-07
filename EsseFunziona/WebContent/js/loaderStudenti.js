@@ -4,8 +4,8 @@ function caricaStudenti(){
 	xhr.open('get',"studenti",true);
 	xhr.onload=function(){
 		var jsonStringQuotes = xhr.responseText;
-		var studenti=jsonStringQuotes;
-		console.log(studenti);
+		var studenti=JSON.parse(jsonStringQuotes);
+		console.log(studenti[1]);
 	};
 	xhr.send(null)
 }

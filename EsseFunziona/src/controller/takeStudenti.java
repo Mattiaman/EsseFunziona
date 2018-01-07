@@ -27,9 +27,16 @@ public class takeStudenti extends HttpServlet{
 		List<Studente> studs = studenteDAO.findAll();
 		PrintWriter out=resp.getWriter();
 		Gson gson=new Gson();
-		for(Studente s:studs) {
+		boolean first=false;
+		out.println("[");
+		for(Studente s:studs){
+			if(first)
+				out.print(",");
+			else
+				first=true;
 			out.print(gson.toJson(s));
 		}
+		out.print("]");
 		out.close();
 	}
 
