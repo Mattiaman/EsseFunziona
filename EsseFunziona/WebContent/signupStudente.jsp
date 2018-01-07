@@ -26,7 +26,7 @@
   		<nav class="vertical">
     		<div >
     			<a>Amministratore</a>
-      			<a href="#">EsseFunziona</a>
+      			<a href="adminMenu.html">EsseFunziona</a>
     		</div>
     		<ul>
      			<li>
