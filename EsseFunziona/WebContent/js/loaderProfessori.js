@@ -6,7 +6,7 @@ function caricaStudenti(){
 		var jsonStringQuotes = xhr.responseText;
 		var professori=JSON.parse(jsonStringQuotes);
 		for(var i in professori){
-			var p = $('<tr>  <th>'+professori[i].nomeUtente+'</th> <th>'+professori[i].nome+'</th> <th>'+professori[i].cognome+'</th> <th>'+professori[i].dataDiNascita+'</th> <th>'+professori.email+'</th>  </tr>');
+			var p = $('<tr>  <th>'+professori[i].nomeUtente+'</th> <th>'+professori[i].nome+'</th> <th>'+professori[i].cognome+'</th> <th>'+professori[i].dataDiNascita+'</th> <th>'+professori[i].email+'</th>  </tr>');
 			$("#listaProfessori").append(p);
 		}
 	};

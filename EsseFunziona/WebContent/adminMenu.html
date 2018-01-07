@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+<LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
   
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
@@ -15,33 +17,42 @@
 		<figcaption>Servizi online per lo studente</figcaption>		
 	</figure>
 
-	<h3>Amministratore</h3>
 
-	<nav class="menu" style="background: darkblue" >
-  		<div class="container-fluid">
-    		<div class="navbar-header">
-      			<a class="navbar-brand" href="#">EsseFunziona</a>
+	<section class="col-sm-2">
+	<div class="wrapper">
+  		<nav class="vertical">
+    		<div >
+    			<a>Amministratore</a>
+      			<a href="#">EsseFunziona</a>
     		</div>
-    		<ul class="nav navbar-nav">
-     			<li class="dropdown">
-        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Home<span class="caret"></span></a>
-		        	<ul class="dropdown-menu">
+    		<ul>
+     			<li>
+					<label for="home">Home</label>
+       				<input type="radio" name="verticalMenu" id="home" />
+        			<div>
+		        	<ul>
 		          		<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>
 		          		<li><a href="corsi.html">Corsi</a></li>
 		          		<li><a href="documentiCorsi.html">Documenti corsi</a></li>
 		          		<li><a href="bandiNews.html">Bandi/News</a></li>
 		        	</ul>
+		        	</div>
 		        </li>	
-		        <li class="dropdown">
-        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Utenti<span class="caret"></span></a>
-		        	<ul class="dropdown-menu">
+		        <li>
+		        	<label for="blog">Utenti</label>
+       				<input type="radio" name="verticalMenu" id="blog" />
+        			<div>
+        			<ul>
 		          		<li><a href="studenti.html">Studenti</a></li>
 		          		<li><a href="professori.html">Professori</a></li>
 		        	</ul>
+		        	</div>
 		        </li>	
-      			<li class="dropdown">
-        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Segreteria<span class="caret"></span></a>
-		        	<ul class="dropdown-menu">
+      			<li>
+        			<label for="work">Segreteria</label>
+       				<input type="radio" name="verticalMenu" id="work" />
+		        	<div>
+		        	<ul>
 		          		<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>
 		          		<li><a href="aggiuntaBandi.jsp">Pubblicare Bandi/News</a></li>
 		          		<li><a href="aggiuntaCorsi.jsp">Aggiungere Corsi</a></li>
@@ -49,17 +60,20 @@
 		          		<li><a href="signupStudente.jsp">Registra Studente</a></li>
 		          		<li><a href="signupProfessore.jsp">Registra Professore</a></li>        		
 		        	</ul>
+		        	</div>
       			</li>
     		</ul>
-  		</div>
-	</nav>
+  		</nav>
+	</div>
+	</section>
 	
 	
+	<div class="col-sm-10">
 	<hgroup>
 	<h4>Benvenuti nella vostra area personale della paittaforma web EsseFunziona</h4>
 	<h5>Utilizzando il menu qui sopra potrete usufruire di tutti i servizi forniti dal sistema</h5>
 	</hgroup>
-	
+	</div>
 	
 	
 	
