@@ -12,10 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import model.Bando;
-import model.Materiale;
 import persistence.DatabaseManager;
 import persistence.dao.BandoDAO;
-import persistence.dao.MaterialeDAO;
 
 public class takeBandi extends HttpServlet{
 
