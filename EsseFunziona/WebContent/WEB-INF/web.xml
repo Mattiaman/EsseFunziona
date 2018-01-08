@@ -39,6 +39,24 @@
   </servlet-mapping>  
   
   <servlet>
+    <servlet-name>takeCorsiServlet</servlet-name>
+    <servlet-class>controller.takeCorsi</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeCorsiServlet</servlet-name>
+    <url-pattern>/corsi</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+    <servlet-name>takeCdlServlet</servlet-name>
+    <servlet-class>controller.takeCdl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeCdlServlet</servlet-name>
+    <url-pattern>/cdl</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
     <servlet-name>addTaxServlet</servlet-name>
     <servlet-class>controller.addTax</servlet-class>
   </servlet>

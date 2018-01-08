@@ -5,15 +5,18 @@
 <title>Area Professore</title>
 </head>
 
-<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
-<script src="../js/jquery-3.2.1.min.js"></script>
-<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
-<LINK rel="stylesheet" href="../css/tableStyle.css" type="text/css">
+<script src="js/loaderCdl.js"></script>
+
+
+<LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
   
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
-		<a href="../images/logo_unical.png"><img class="img-responsive" src="../images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
+		<a href="images/logo_unical.png"><img class="img-responsive" src="images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
 		<figcaption>Servizi online per lo studente</figcaption>		
 	</figure>
 
@@ -62,20 +65,14 @@
 	
 	<br><div class="container">
 	  <div class="table-responsive">          
-	  <table class="table">
+	  <table class="table" id="tabellaCdl">
 	    <thead>
 	      <tr>
-	        <th>IDCdL</th>
-	        <th>NomeCdL</th>
-	        <th>Corso</th>
+	        <th>ID CdL</th>
+	        <th>Nome CdL</th>
 	      </tr>
 	    </thead>
-	    <tbody>
-	      <tr>
-	        <td>232</td>
-	        <td>Informatica</td>
-	        <td>Programmazione ad Oggetti</td>
-	      </tr>
+	    <tbody id="listaCdl">
 	    </tbody>
 	  </table>
 	  </div>
