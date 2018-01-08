@@ -74,6 +74,24 @@
     <url-pattern>/corsi</url-pattern>
   </servlet-mapping>  
   
+   <servlet>
+    <servlet-name>takeBandiServlet</servlet-name>
+    <servlet-class>controller.takeBandi</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeBandiServlet</servlet-name>
+    <url-pattern>/bandiNews</url-pattern>
+  </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>takeDocumentiServlet</servlet-name>
+    <servlet-class>controller.takeDocumenti</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeDocumentiServlet</servlet-name>
+    <url-pattern>/documentiCorsi</url-pattern>
+  </servlet-mapping>
+  
   <servlet>
     <servlet-name>takeCdlServlet</servlet-name>
     <servlet-class>controller.takeCdl</servlet-class>
