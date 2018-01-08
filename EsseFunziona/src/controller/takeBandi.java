@@ -11,29 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import model.*;
-import persistence.DatabaseManager;
-import persistence.dao.*;
 
-public class takeCorsi extends HttpServlet{
-	
+import model.Materiale;
+import persistence.DatabaseManager;
+import persistence.dao.MaterialeDAO;
+
+public class takeBandi extends HttpServlet{
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
 		resp.setContentType("application/json");
-		CorsoDAO corsoDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDAO();
-		List<Corso> corsi = corsoDAO.findAll();
+		MaterialeDAO materialeDAO = DatabaseManager.getInstance().getDaoFactory().getMaterialeDAO();
+		List<Materiale> bandi = materialeDAO.findAll();
 		PrintWriter out=resp.getWriter();
 		Gson gson=new Gson();
 		boolean first=false;
 		out.println("[");
-		for(Corso c:corsi){
+		for(Materiale m:bandi){
 			if(first)
 				out.print(",");
 			else
 				first=true;
-			out.print(gson.toJson(c));
+			out.print(gson.toJson(m));
 		}
 		out.print("]");
 		out.close();
@@ -44,7 +45,5 @@ public class takeCorsi extends HttpServlet{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 	
 }
