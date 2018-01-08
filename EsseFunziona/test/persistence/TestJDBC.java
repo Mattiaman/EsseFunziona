@@ -30,6 +30,7 @@ public class TestJDBC {
 		PianoDiStudiDAO pianoDiStudiDAO=factory.getPianoDiStudiDAO();
 		CorsoDAO corsoDAO=factory.getCorsoDAO();
 		MaterialeDAO materialeDAO=factory.getMaterialeDAO();
+		BandoDAO bandoDAO=factory.getBandoDAO();
 		AppelloDAO appelloDAO=factory.getAppelloDAO();
 		TassaDAO tassaDAO=factory.getTassaDAO();
 		
@@ -98,6 +99,11 @@ public class TestJDBC {
 		materiale.setContenuto(file);
 		materiale.setProfessore(prof1);
 		
+		//Creazione materiale
+		Bando bando=new Bando();
+		bando.setContenuto(file);
+		bando.setAdmin(admin1);
+		
 		//Creazione appello
 		Appello appello=new Appello();
 		appello.setCorso(programmazioneAdOggetti);
@@ -130,7 +136,9 @@ public class TestJDBC {
 		professoreDAO.save(prof1);
 		
 		materialeDAO.save(materiale);
-
+		
+		bandoDAO.save(bando);
+		
 		appelloDAO.save(appello);
 		
 		//find
