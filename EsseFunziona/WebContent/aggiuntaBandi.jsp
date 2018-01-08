@@ -76,8 +76,7 @@
 	<c:if test="${bando != null}">
 		<h1>Ho caricato il seguente Bando</h1>
 		<h3>${bando.contenuto}</h3>
-		<h3>${bando.id}</h3>
-		<h3>${bando.professore.nomeUtente}</h3>
+		<h3>${bando.admin.nomeUtente}</h3>
 	</c:if>
 	<c:if test="${bando == null}">
 		<h3>Aggiungi un Bando</h3>
