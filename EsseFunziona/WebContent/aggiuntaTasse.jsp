@@ -80,7 +80,7 @@
 		<h3>${tassa.importo}</h3>
 		<h3>${tassa.nome}</h3>
 		<h3>${tassa.descrizione}</h3>
-		<h3>${tassa.admin}</h3>
+		<h3>${tassa.admin.nomeUtente}</h3>
 	</c:if>
 	<c:if test="${tassa == null}">
 		<h3>Aggiungi una tassa</h3>

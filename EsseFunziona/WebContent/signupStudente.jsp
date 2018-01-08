@@ -78,7 +78,7 @@
 		<h3>${studente.cognome}</h3>
 		<h3>${studente.dataDiNascita}</h3>
 		<h3>${studente.email}</h3>
-		<h3>${studente.corsoDiLaurea}</h3>
+		<h3>${studente.corsoDiLaurea.nome}</h3>
 	</c:if>
 	<c:if test="${studente == null}">
 		<h3>Iscrivi un nuovo Studente</h3>
