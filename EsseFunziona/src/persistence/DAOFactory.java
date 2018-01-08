@@ -2,6 +2,7 @@ package persistence;
 
 import persistence.dao.AdminDAO;
 import persistence.dao.AppelloDAO;
+import persistence.dao.BandoDAO;
 import persistence.dao.CorsoDAO;
 import persistence.dao.CorsoDiLaureaDAO;
 import persistence.dao.MaterialeDAO;
@@ -17,6 +18,8 @@ public interface DAOFactory {
 	public abstract AppelloDAO getAppelloDAO();
 
 	public abstract MaterialeDAO getMaterialeDAO();
+	
+	public abstract BandoDAO getBandoDAO();
 	
 	public abstract PianoDiStudiDAO getPianoDiStudiDAO();
 

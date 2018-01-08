@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import persistence.dao.AdminDAO;
 import persistence.dao.AppelloDAO;
+import persistence.dao.BandoDAO;
 import persistence.dao.CorsoDAO;
 import persistence.dao.CorsoDiLaureaDAO;
 import persistence.dao.MaterialeDAO;
@@ -80,6 +81,11 @@ public class PostgresDAOFactory implements DAOFactory {
 	@Override
 	public UtilityJDBC getUtilityJDBC() {
 		return new UtilityJDBC(databaseData);
+	}
+
+	@Override
+	public BandoDAO getBandoDAO() {
+		return new BandoJDBC(databaseData);
 	}
 
 }

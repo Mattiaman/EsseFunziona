@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import model.Admin;
+import model.Bando;
 import model.Materiale;
 import model.Professore;
 import persistence.DatabaseManager;
 import persistence.dao.AdminDAO;
+import persistence.dao.BandoDAO;
 import persistence.dao.MaterialeDAO;
 import persistence.dao.ProfessoreDAO;
 
@@ -37,15 +39,15 @@ public class addBandi extends HttpServlet{
 	
 		File f= new File(contenutoBando);
 		
-		Materiale bnd = new Materiale(f);
+		Bando bnd = new Bando(f);
 
-		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
+		AdminDAO adminDAO = DatabaseManager.getInstance().getDaoFactory().getAdminDAO();
 
-		Professore prf = professoreDAO.findByPrimaryKey(nomeUtente);
-		bnd.setProfessore(prf);
+		Admin prf = adminDAO.findByPrimaryKey(nomeUtente);
+		bnd.setAdmin(prf);
 
-		MaterialeDAO materialeDAO = DatabaseManager.getInstance().getDaoFactory().getMaterialeDAO();
-		materialeDAO.save(bnd);
+		BandoDAO bandoDAO = DatabaseManager.getInstance().getDaoFactory().getBandoDAO();
+		bandoDAO.save(bnd);
 
 		req.setAttribute("bando", bnd);
 

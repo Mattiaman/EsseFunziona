@@ -11,9 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-
+import model.Bando;
 import model.Materiale;
 import persistence.DatabaseManager;
+import persistence.dao.BandoDAO;
 import persistence.dao.MaterialeDAO;
 
 public class takeBandi extends HttpServlet{
@@ -23,18 +24,18 @@ public class takeBandi extends HttpServlet{
 			throws ServletException, IOException {
 		
 		resp.setContentType("application/json");
-		MaterialeDAO materialeDAO = DatabaseManager.getInstance().getDaoFactory().getMaterialeDAO();
-		List<Materiale> bandi = materialeDAO.findAll();
+		BandoDAO bandoDAO = DatabaseManager.getInstance().getDaoFactory().getBandoDAO();
+		List<Bando> bandi = bandoDAO.findAll();
 		PrintWriter out=resp.getWriter();
 		Gson gson=new Gson();
 		boolean first=false;
 		out.println("[");
-		for(Materiale m:bandi){
+		for(Bando b:bandi){
 			if(first)
 				out.print(",");
 			else
 				first=true;
-			out.print(gson.toJson(m));
+			out.print(gson.toJson(b));
 		}
 		out.print("]");
 		out.close();

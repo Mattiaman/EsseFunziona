@@ -25,6 +25,7 @@ public class UtilityJDBC {
 					"create table tassa(\"id\" bigint primary key, \"importo\" real, nome VARCHAR(255), descrizione VARCHAR(255), nomeUtenteAdmin VARCHAR(20) REFERENCES admin(\"nomeUtente\"));"+
 					"create table corso(\"id\" bigint primary key, nome VARCHAR(255));"+
 					"create table materiale(\"id\" bigint primary key, contenuto bytea, nomeUtenteProfessore VARCHAR(20) REFERENCES professore(\"nomeUtente\"));"+
+					"create table bando(\"id\" bigint primary key, contenuto bytea, nomeUtenteAdmin VARCHAR(20) REFERENCES admin(\"nomeUtente\"));"+
 					"create table appello(\"id\" bigint primary key, dataAppello DATE, nomeUtenteProfessore VARCHAR(20) REFERENCES professore(\"nomeUtente\"), corsoId bigint REFERENCES corso(\"id\"));"+
 					"create table devePagare(\"id\" bigint primary key, matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"), idTassa bigint REFERENCES tassa(\"id\"), pagata boolean);"+
 					"create table appartieneA(\"id\" bigint primary key, idCorso bigint REFERENCES corso(\"id\"), idCorsoDiLaurea bigint REFERENCES corsoDiLaurea(\"id\"));"+
@@ -62,6 +63,7 @@ public class UtilityJDBC {
 					"drop table if exists pianoDiStudi CASCADE;"+
 					"drop table if exists corso CASCADE;"+
 					"drop table if exists materiale CASCADE;"+
+					"drop table if exists bando CASCADE;"+
 					"drop table if exists appello CASCADE;"+
 					"drop table if exists devePagare CASCADE;"+
 					"drop table if exists appartienea CASCADE;"+
@@ -120,6 +122,10 @@ public class UtilityJDBC {
 			statement.executeUpdate();
 			
 			delete="delete FROM materiale";
+			statement=connection.prepareStatement(delete);
+			statement.executeUpdate();
+			
+			delete="delete FROM bando";
 			statement=connection.prepareStatement(delete);
 			statement.executeUpdate();
 			

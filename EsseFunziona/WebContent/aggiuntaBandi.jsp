@@ -1,6 +1,6 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<jsp:useBean id="bnd" class="model.Materiale" scope="request" />
+<jsp:useBean id="bnd" class="model.Bando" scope="request" />
 <jsp:setProperty name="bnd" property="id" value="1"/>
 
 
