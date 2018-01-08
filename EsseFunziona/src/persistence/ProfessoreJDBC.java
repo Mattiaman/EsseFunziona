@@ -246,4 +246,19 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		
 	}
 
+	@Override
+	public DatiProfessore findByPrimaryKeyData(String nomeUtente) {
+		// TODO Auto-generated method stub
+		Professore s=findByPrimaryKey(nomeUtente);
+		DatiProfessore data=new DatiProfessore(databaseData);
+		if(s!=null) {
+			data.setNome(s.getNome());
+			data.setCognome(s.getCognome());
+			data.setDataDiNascita(s.getDataDiNascita());
+			data.setEmail(s.getEmail());
+			data.setNomeUtente(s.getNomeUtente());
+		}
+		return data;
+	}
+
 }

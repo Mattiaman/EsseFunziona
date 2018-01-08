@@ -3,6 +3,7 @@ package persistence.dao;
 import java.util.List;
 
 import model.Studente;
+import persistence.DatiStudente;
 
 public interface StudenteDAO {
 
@@ -11,6 +12,7 @@ public interface StudenteDAO {
 	public List<Studente> findAll();       
 	public void update(Studente studente);
 	public void delete(Studente studente);	
+	public DatiStudente findByPrimaryKeyData(String matricola);
 	
 	public void setPassword(Studente studente, String password);
 

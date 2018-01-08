@@ -242,4 +242,19 @@ public class StudenteJDBC implements StudenteDAO {
 		}
 	}
 
+	@Override
+	public DatiStudente findByPrimaryKeyData(String matricola) {
+		// TODO Auto-generated method stub
+		Studente s=findByPrimaryKey(matricola);
+		DatiStudente data=new DatiStudente(databaseData);
+		if(s!=null) {
+			data.setNome(s.getNome());
+			data.setCognome(s.getCognome());
+			data.setDataDiNascita(s.getDataDiNascita());
+			data.setEmail(s.getEmail());
+			data.setMatricola(matricola);
+		}
+		return data;
+	}
+
 }

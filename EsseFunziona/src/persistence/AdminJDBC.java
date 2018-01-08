@@ -10,6 +10,7 @@ import java.util.List;
 
 import model.Admin;
 import model.CorsoDiLaurea;
+import model.Professore;
 import model.Studente;
 import persistence.dao.AdminDAO;
 
@@ -191,6 +192,21 @@ public class AdminJDBC implements AdminDAO {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public DatiAdmin findByPrimaryKeyData(String nomeUtente) {
+		// TODO Auto-generated method stub
+		Admin s=findByPrimaryKey(nomeUtente);
+		DatiAdmin data=new DatiAdmin(databaseData);
+		if(s!=null) {
+			data.setNome(s.getNome());
+			data.setCognome(s.getCognome());
+			data.setDataDiNascita(s.getDataDiNascita());
+			data.setEmail(s.getEmail());
+			data.setNomeUtente(s.getNomeUtente());
+		}
+		return data;
 	}
 	
 

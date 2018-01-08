@@ -30,6 +30,33 @@
   </servlet-mapping>  
   
   <servlet>
+    <servlet-name>loginStudenteServlet</servlet-name>
+    <servlet-class>controller.LoginStudente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loginStudenteServlet</servlet-name>
+    <url-pattern>/loginStudente</url-pattern>
+  </servlet-mapping>  
+
+  <servlet>
+    <servlet-name>loginProfessoreServlet</servlet-name>
+    <servlet-class>controller.LoginProfessore</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loginProfessoreServlet</servlet-name>
+    <url-pattern>/loginProfessore</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
+    <servlet-name>loginAdminServlet</servlet-name>
+    <servlet-class>controller.LoginAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>loginAdminServlet</servlet-name>
+    <url-pattern>/loginAdmin</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet>
     <servlet-name>takeProfessoriServlet</servlet-name>
     <servlet-class>controller.takeProfessori</servlet-class>
   </servlet>
