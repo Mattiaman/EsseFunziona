@@ -1,6 +1,6 @@
 function caricaDocumetni(){
 	var xhr= new XMLHttpRequest();
-	xhr.open('get',"documentiCorsi",true);
+	xhr.open('get',"documenti",true);
 	xhr.onload=function(){
 		var jsonStringQuotes = xhr.responseText;
 		var documenti=JSON.parse(jsonStringQuotes);

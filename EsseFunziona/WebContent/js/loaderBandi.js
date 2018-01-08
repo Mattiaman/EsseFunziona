@@ -1,6 +1,6 @@
 function caricaBandi(){
 	var xhr= new XMLHttpRequest();
-	xhr.open('get',"bandiNews",true);
+	xhr.open('get',"bandi",true);
 	xhr.onload=function(){
 		var jsonStringQuotes = xhr.responseText;
 		var bandi=JSON.parse(jsonStringQuotes);
