@@ -21,6 +21,12 @@ public class Appello {
 		this.studentiIscritti = studentiIscritti;
 	}
 
+	public Appello(long id, Date data) {
+		super();
+		this.id = id;
+		this.data = data;
+	}
+	
 	public Appello() {
 		// TODO Auto-generated constructor stub
 	}

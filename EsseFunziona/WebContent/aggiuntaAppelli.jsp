@@ -75,8 +75,20 @@
 	</div>
 	</section>	
 	
-	<br>
 	<div class="col-sm-10">
+	<c:if test="${appello != null}">
+		<h1>Ho caricato il seguente studente</h1>
+		<h3>${appello.id}</h3>
+		<h3><time>${appello.data}</time></h3>
+		<h3>${appello.professore.nomeUtente}</h3>
+		<h3>${appello.corso.id}</h3>
+	</c:if>
+	<c:if test="${appello == null}">
+		<h3>Iscrivi un nuovo appello</h3>
+		<h4>Compila i seguente form per registrare un nuovo appello</h4>
+	
+	<br>
+	<div>
 		
 			<form class="form-horizontal" method="post" action="aggiuntaAppello">
 			  <div class="form-group">
@@ -92,11 +104,16 @@
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="corsoAppello">Corso:</label>    	
-			    <select name="indirizzo" class="control-label col-sm-4" class="form-control"  >
-						<option value="1">Fondamenti Informatica</option>
-						<option value="2">Programmazione ad oggetti</option>		
-				</select>
+			    <label class="control-label col-sm-2" for="corsoAppello">ID Corso:</label>    	
+			    	<div class="col-sm-4"> 
+			      	<input name="corsoAppello" type="text" class="form-control" />
+			      	</div>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="nomeUtente">Nome Utente:</label>
+			    	<div class="col-sm-4"> 
+			      <input name="nomeUtente" type="text" class="form-control" />
+			    	</div>
 			  </div>
 			  <div class="form-group"> 
 			    <div class="col-sm-offset-2 col-sm-10">
@@ -107,7 +124,8 @@
 			
 	</div>
 	
-	
+	</c:if>
+	</div>
 	
 	
 </body>
