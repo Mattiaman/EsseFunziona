@@ -77,7 +77,7 @@
 	
 	<div class="col-sm-10">
 	<c:if test="${appello != null}">
-		<h1>Ho caricato il seguente studente</h1>
+		<h1>Ho caricato il seguente ${appello.data}</h1>
 		<h3>${appello.id}</h3>
 		<h3><time>${appello.data}</time></h3>
 		<h3>${appello.professore.nomeUtente}</h3>
