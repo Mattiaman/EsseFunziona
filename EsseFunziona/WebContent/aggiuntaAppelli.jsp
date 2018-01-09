@@ -90,35 +90,31 @@
 	<br>
 	<div>
 		
-			<form class="form-horizontal" method="post" action="aggiuntaAppello">
+			<form class="form-horizontal" method="post" action="aggiuntaAppelli">
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="idAppello">IDAppello:</label>
-			    <div class="col-sm-4">
-			     <input name="idAppello" type="text" class="form-control" /> 
-			    </div> 
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="dataAppello">dataAppello:</label>
-			    	<div class="col-sm-4"> 
+			    <label class="control-label col-sm-3" for="dataAppello">dataAppello:</label>
+			    	<div class="col-sm-5"> 
 			      <input name="dataAppello" type="date" class="form-control" />
 			    </div>
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="corsoAppello">ID Corso:</label>    	
-			    	<div class="col-sm-4"> 
+			    <label class="control-label col-sm-3" for="corsoAppello">ID Corso:</label>    	
+			    	<div class="col-sm-5"> 
 			      	<input name="corsoAppello" type="text" class="form-control" />
 			      	</div>
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="nomeUtente">Nome Utente:</label>
-			    	<div class="col-sm-4"> 
+			    <label class="control-label col-sm-3" for="nomeUtente">Nome Utente:</label>
+			    	<div class="col-sm-5"> 
 			      <input name="nomeUtente" type="text" class="form-control" />
 			    	</div>
 			  </div>
 			  <div class="form-group"> 
-			    <div class="col-sm-offset-2 col-sm-10">
-			      <button type="submit" class="btn btn-default">Submit</button>
-			    </div>
+			    	<div class="col-sm-offset-3 col-sm-5">
+						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
+						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>
+						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
+					</div>
 			  </div>
 			</form>
 			

@@ -21,9 +21,8 @@ public class Appello {
 		this.studentiIscritti = studentiIscritti;
 	}
 
-	public Appello(long id, Date data) {
+	public Appello(Date data) {
 		super();
-		this.id = id;
 		this.data = data;
 	}
 	

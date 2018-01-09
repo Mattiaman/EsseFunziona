@@ -37,7 +37,6 @@ public class addAppello extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		String idAppello = req.getParameter("idAppello");
 		String dataAppello = req.getParameter("dataAppello");
 		String corsoAppello = req.getParameter("corsoAppello");
 		String nomeUtente = req.getParameter("nomeUtente");
@@ -46,7 +45,7 @@ public class addAppello extends HttpServlet{
 		Date date;
 		try {
 			date = format.parse(dataAppello);
-			Appello appello=new Appello(Long.parseLong(idAppello),date);
+			Appello appello=new Appello(date);
 			
 			CorsoDAO corsoDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDAO();
 			Corso c = corsoDAO.findByPrimaryKey(Long.parseLong(corsoAppello));
