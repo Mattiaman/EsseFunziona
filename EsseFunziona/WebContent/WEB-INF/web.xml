@@ -74,6 +74,15 @@
     <url-pattern>/corsi</url-pattern>
   </servlet-mapping>  
   
+  <servlet>
+    <servlet-name>takeAppelliServlet</servlet-name>
+    <servlet-class>controller.takeAppelli</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeAppelliServlet</servlet-name>
+    <url-pattern>/appelli</url-pattern>
+  </servlet-mapping>  
+  
    <servlet>
     <servlet-name>takeBandiServlet</servlet-name>
     <servlet-class>controller.takeBandi</servlet-class>

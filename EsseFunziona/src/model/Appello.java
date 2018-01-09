@@ -11,6 +11,7 @@ public class Appello {
 	private Professore professore;
 	private Corso corso;
 	private Set<Studente> studentiIscritti;
+	private int nStudentiIscritti;
 	
 	public Appello(long id, Date data, Professore professore, Corso corso, Set<Studente> studentiIscritti) {
 		super();
@@ -19,6 +20,7 @@ public class Appello {
 		this.professore = professore;
 		this.corso = corso;
 		this.studentiIscritti = studentiIscritti;
+		this.nStudentiIscritti=studentiIscritti.size();
 	}
 
 	public Appello() {
@@ -63,6 +65,7 @@ public class Appello {
 
 	public void setStudentiIscritti(Set<Studente> studentiIscritti) {
 		this.studentiIscritti = studentiIscritti;
+		nStudentiIscritti=studentiIscritti.size();
 	}
 	
 	public void addStudente(Studente studente) {
@@ -70,5 +73,15 @@ public class Appello {
 			studentiIscritti=new HashSet<Studente>();
 		}
 		studentiIscritti.add(studente);
+		nStudentiIscritti=studentiIscritti.size();
 	}
+
+	public int getnStudentiIscritti() {
+		return nStudentiIscritti;
+	}
+
+	public void setnStudentiIscritti(int nStudentiIscritti) {
+		this.nStudentiIscritti = nStudentiIscritti;
+	}
+	
 }
