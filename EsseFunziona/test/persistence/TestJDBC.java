@@ -99,6 +99,10 @@ public class TestJDBC {
 		materiale.setContenuto(file);
 		materiale.setProfessore(prof1);
 		
+		Materiale materiale1=new Materiale();
+		materiale1.setContenuto(file);
+		materiale1.setProfessore(prof1);
+		
 		//Creazione materiale
 		Bando bando=new Bando();
 		bando.setContenuto(file);
@@ -136,6 +140,7 @@ public class TestJDBC {
 		professoreDAO.save(prof1);
 		
 		materialeDAO.save(materiale);
+		materialeDAO.save(materiale1);
 		
 		bandoDAO.save(bando);
 		
@@ -244,6 +249,31 @@ public class TestJDBC {
 
 		System.out.println("\n");
 		
+		Bando bandoTrovato=bandoDAO.findByPrimaryKey(25);
+		if(bandoTrovato!=null) {
+			System.out.println("Id: "+bandoTrovato.getId());
+			System.out.println("File: "+bandoTrovato.getContenuto().getName());
+			System.out.println("Caricato da "+bandoTrovato.getAdmin().getNome());
+			File content=bandoTrovato.getContenuto();
+			String text="Il contenuto è:\n";
+			try {
+				BufferedReader reader=new BufferedReader(new FileReader(file));
+				String line=null;
+				while((line=reader.readLine())!=null) {
+					text+=line;
+					text+="\n";
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(text);
+		}else {
+			System.out.println("Materiale non trovato");
+		}
+
+		System.out.println("\n");
+		
 		Appello appelloTrovato=appelloDAO.findByPrimaryKey(24);
 		if(appelloTrovato!=null) {
 			System.out.println("Id: "+appelloTrovato.getId());
@@ -328,6 +358,28 @@ public class TestJDBC {
 			System.out.println("File: "+mtl.getContenuto().getName());
 			System.out.println("Caricato da "+mtl.getProfessore().getNome());
 			File content=materialeTrovato.getContenuto();
+			String text="Il contenuto è:\n";
+			try {
+				BufferedReader reader=new BufferedReader(new FileReader(file));
+				String line=null;
+				while((line=reader.readLine())!=null) {
+					text+=line;
+					text+="\n";
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(text);
+		}
+	
+		System.out.println("\n");
+		
+		List<Bando> bandi=bandoDAO.findAll();
+		for(Bando bnd:bandi) {
+			System.out.println("File: "+bnd.getContenuto().getName());
+			System.out.println("Caricato da "+bnd.getAdmin().getNome());
+			File content=bandoTrovato.getContenuto();
 			String text="Il contenuto è:\n";
 			try {
 				BufferedReader reader=new BufferedReader(new FileReader(file));
