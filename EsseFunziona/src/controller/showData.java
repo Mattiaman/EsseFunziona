@@ -47,10 +47,10 @@ public class showData extends HttpServlet{
 		Studente stud=studenteDAO.findByPrimaryKey(matricola);
 		
 		AdminDAO adminDAO=DatabaseManager.getInstance().getDaoFactory().getAdminDAO();
-		Admin adm=adminDAO.findByPrimaryKeyData(nomeUtenteAdmin);
+		Admin adm=adminDAO.findByPrimaryKey(nomeUtenteAdmin);
 		
 		ProfessoreDAO professoreDAO=DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
-		Professore prof=professoreDAO.findByPrimaryKeyData(nomeUtenteProfessore);
+		Professore prof=professoreDAO.findByPrimaryKey(nomeUtenteProfessore);
 
 		
 		req.setAttribute("professore", prof);
