@@ -118,6 +118,15 @@
     <servlet-name>addBandiServlet</servlet-name>
     <url-pattern>/aggiuntaBandi</url-pattern>
    </servlet-mapping>  
+   
+   <servlet>
+    <servlet-name>addMaterialeServlet</servlet-name>
+    <servlet-class>controller.addMateriale</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addMaterialeServlet</servlet-name>
+    <url-pattern>/aggiuntaMateriale</url-pattern>
+   </servlet-mapping> 
 
   <servlet>
     <servlet-name>addCorsoServlet</servlet-name>

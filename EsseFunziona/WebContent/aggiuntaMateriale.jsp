@@ -77,14 +77,14 @@
 	<c:if test="${materiale != null}">
 		<h1>Ho caricato il seguente materiale</h1>
 		<h3>${materiale.contenuto}</h3>
-		<h3>${materiale.admin.nomeUtente}</h3>
+		<h3>${materiale.professore.nomeUtente}</h3>
 	</c:if>
 	<c:if test="${materiale == null}">
 		<h3>Aggiungi un materiale</h3>
 		<h4>Compila il seguente form per aggiungere un materiale</h4>
 	
 		<div>
-			<form class="form-horizontal" method="post" action="aggiunta">
+			<form class="form-horizontal" method="post" action="aggiuntaMateriale">
 			  <div class="form-group">
 			    <label class="control-label col-sm-3" for="contenutoMateriale">ContenutoMateriale:</label>
 			    	<div class="col-sm-5"> 
