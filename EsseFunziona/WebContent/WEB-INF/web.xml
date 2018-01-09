@@ -19,6 +19,15 @@
     <servlet-name>SignUpStudenteServlet</servlet-name>
     <url-pattern>/signupStudente</url-pattern>
   </servlet-mapping>  
+ 
+  <servlet>
+    <servlet-name>addAppelloServlet</servlet-name>
+    <servlet-class>controller.addAppello</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addAppelloServlet</servlet-name>
+    <url-pattern>/aggiuntaAppelli</url-pattern>
+  </servlet-mapping>  
   
   <servlet>
     <servlet-name>takeStudentiServlet</servlet-name>
