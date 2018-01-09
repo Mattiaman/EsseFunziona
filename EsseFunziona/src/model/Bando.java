@@ -1,18 +1,26 @@
 package model;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Bando {
 	
 	private File contenuto;
 	private long id;
 	private Admin admin;
+	private String absolutePath;
 	
 	public Bando(File contenuto, long id, Admin admin) {
 		super();
 		this.contenuto = contenuto;
 		this.id = id;
 		this.admin=admin;
+		try {
+			this.absolutePath=contenuto.getCanonicalPath();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public Bando() {
@@ -31,6 +39,12 @@ public class Bando {
 
 	public void setContenuto(File contenuto) {
 		this.contenuto = contenuto;
+		try {
+			this.absolutePath=contenuto.getCanonicalPath();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public long getId() {
@@ -48,5 +62,14 @@ public class Bando {
 	public void setAdmin(Admin admin) {
 		this.admin = admin;
 	}
+
+	public String getAbsolutePath() {
+		return absolutePath;
+	}
+
+	public void setAbsolutePath(String absolutePath) {
+		this.absolutePath = absolutePath;
+	}
+	
 	
 }

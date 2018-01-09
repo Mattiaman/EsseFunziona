@@ -5,8 +5,13 @@ function caricaBandi(){
 		var jsonStringQuotes = xhr.responseText;
 		var bandi=JSON.parse(jsonStringQuotes);
 		for(var i in bandi){
-			var p = $('<tr>  <th>'+bandi[i].id+'</th> <th>'+bandi[i].contenuto+'</th>  <th>'+bandi[i].professore+'</th> </tr>');
+			var p = $('<tr>  <th>'+bandi[i].id+'</th> <th id=\''+bandi[i].id+'\'>content</th>  <th>'+bandi[i].admin.nome+' '+bandi[i].admin.cognome+'</th> </tr>');
 			$("#listaBandi").append(p);
+			$('#'+bandi[i].id+'').on('click', function(){
+				var xhrFile= new XMLHttpRequest();
+				xhrFile.open('get',bandi[i].absolutePath,true)
+				xhrFile.send(null);
+			});
 		}
 	};
 	xhr.send(null)

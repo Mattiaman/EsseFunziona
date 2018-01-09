@@ -89,7 +89,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>takeBandiServlet</servlet-name>
-    <url-pattern>/bandiNews</url-pattern>
+    <url-pattern>/bandi</url-pattern>
   </servlet-mapping>
   
    <servlet>
