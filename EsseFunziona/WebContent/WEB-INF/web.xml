@@ -166,4 +166,14 @@
   </servlet-mapping>  
   
   
+  <servlet>
+    <servlet-name>showDataServlet</servlet-name>
+    <servlet-class>controller.showData</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>showDataServlet</servlet-name>
+    <url-pattern>/datiAnagrafici</url-pattern>
+  </servlet-mapping>  
+  
+  
 </web-app>

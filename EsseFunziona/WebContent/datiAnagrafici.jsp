@@ -73,14 +73,39 @@
 	</section>	
 
 	<br>
+	<c:if test="${user == studente}">
 	<div class="col-sm-10">
-		<label class="control-label col-sm-2" for="nome">Nome</label><label class="control-label col-sm-10">Ciccio</label>
-		<label class="control-label col-sm-2" for="cognome">Cognome</label><label class="control-label col-sm-10">Pasticcio</label>
-		<label class="control-label col-sm-2" for="datadiNascita">Data di Nascita</label><label class="control-label col-sm-10">01/01/01</label>
-		<label class="control-label col-sm-2" for="e-mail">E-mail</label><label class="control-label col-sm-10">ciccio@unical.it</label>
-		<label class="control-label col-sm-2" for="nomeUtente">Nome Utente</label><label class="control-label col-sm-10">Ciccio Pasticcio</label>
-		<label class="control-label col-sm-2" for="cdl">CdL</label><label class="control-label col-sm-10">Informatica</label>
+		<label class="control-label col-sm-2" for="nome">Nome</label>
+				<label class="control-label col-sm-10">${user.nome}</label>
+		<label class="control-label col-sm-2" for="cognome">Cognome</label>
+				<label class="control-label col-sm-10">${user.cognome}</label>
+		<label class="control-label col-sm-2" for="datadiNascita">Data di Nascita</label>
+				<label class="control-label col-sm-10">${user.dataDinascita}</label>
+		<label class="control-label col-sm-2" for="e-mail">E-mail</label>
+				<label class="control-label col-sm-10">${user.email}</label>
+		<label class="control-label col-sm-2" for="matricola">Matricola</label>
+				<label class="control-label col-sm-10">${user.matricola}</label>
+		<label class="control-label col-sm-2" for="cdl">CdL</label>
+				<label class="control-label col-sm-10">${user.corsoDiLaurea.id}</label>
 	</div>
+	</c:if>
+	<c:if test="${user == professore}">
+	<div class="col-sm-10">
+		<label class="control-label col-sm-2" for="nome">Nome</label>
+				<label class="control-label col-sm-10">${user.nome}</label>
+		<label class="control-label col-sm-2" for="cognome">Cognome</label>
+				<label class="control-label col-sm-10">${user.cognome}</label>
+		<label class="control-label col-sm-2" for="datadiNascita">Data di Nascita</label>
+				<label class="control-label col-sm-10">${user.dataDinascita}</label>
+		<label class="control-label col-sm-2" for="e-mail">E-mail</label>
+				<label class="control-label col-sm-10">${user.email}</label>
+		<label class="control-label col-sm-2" for="nomeUtente">Nome Utente</label>
+				<label class="control-label col-sm-10">${user.nomeUtente}</label>
+		<label class="control-label col-sm-2" for="cdl">CdL</label>
+				<label class="control-label col-sm-10">${user.corsoDiLaurea.id}</label>
+	</div>
+	</c:if>
+	
 
 </body>
 </html>
