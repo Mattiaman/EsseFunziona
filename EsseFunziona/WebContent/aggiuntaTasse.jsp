@@ -45,7 +45,7 @@
 		        </li>	
 		        <li>
 		        	<label for="blog">Utenti</label>
-       				<input type="radio" name="verticalMenu" id="blog" />
+       				<input type="radio" name="verticalMenu" id="blog"/>
         			<div>
         			<ul>
 		          		<li><a href="studenti.html">Studenti</a></li>
