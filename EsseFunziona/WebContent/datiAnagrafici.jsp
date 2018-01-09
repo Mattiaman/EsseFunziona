@@ -1,5 +1,9 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+<jsp:useBean id="studente" class="model.Studente" scope="request" />
+<jsp:useBean id="professore" class="model.Professore" scope="request" />
+<jsp:useBean id="admin" class="model.Admin" scope="request" />
+
 
 <html>
 <head>
@@ -73,39 +77,61 @@
 	</section>	
 
 	<br>
-	<c:if test="${user == studente}">
+	<c:if test="${utente == studente}">
 	<div class="col-sm-10">
 		<label class="control-label col-sm-2" for="nome">Nome</label>
-				<label class="control-label col-sm-10">${user.nome}</label>
+				<label class="control-label col-sm-10">${utente.nome}</label>
 		<label class="control-label col-sm-2" for="cognome">Cognome</label>
-				<label class="control-label col-sm-10">${user.cognome}</label>
+				<label class="control-label col-sm-10">${utente.cognome}</label>
 		<label class="control-label col-sm-2" for="datadiNascita">Data di Nascita</label>
-				<label class="control-label col-sm-10">${user.dataDinascita}</label>
+				<label class="control-label col-sm-10">${utente.dataDinascita}</label>
 		<label class="control-label col-sm-2" for="e-mail">E-mail</label>
-				<label class="control-label col-sm-10">${user.email}</label>
+				<label class="control-label col-sm-10">${utente.email}</label>
 		<label class="control-label col-sm-2" for="matricola">Matricola</label>
-				<label class="control-label col-sm-10">${user.matricola}</label>
+				<label class="control-label col-sm-10">${utente.matricola}</label>
 		<label class="control-label col-sm-2" for="cdl">CdL</label>
-				<label class="control-label col-sm-10">${user.corsoDiLaurea.id}</label>
+				<label class="control-label col-sm-10">${utente.corsoDiLaurea.id}</label>
 	</div>
 	</c:if>
-	<c:if test="${user == professore}">
+	<c:if test="${utente == professore}">
 	<div class="col-sm-10">
 		<label class="control-label col-sm-2" for="nome">Nome</label>
-				<label class="control-label col-sm-10">${user.nome}</label>
+				<label class="control-label col-sm-10">${utente.nome}</label>
 		<label class="control-label col-sm-2" for="cognome">Cognome</label>
-				<label class="control-label col-sm-10">${user.cognome}</label>
+				<label class="control-label col-sm-10">${utente.cognome}</label>
 		<label class="control-label col-sm-2" for="datadiNascita">Data di Nascita</label>
-				<label class="control-label col-sm-10">${user.dataDinascita}</label>
+				<label class="control-label col-sm-10">${utente.dataDinascita}</label>
 		<label class="control-label col-sm-2" for="e-mail">E-mail</label>
-				<label class="control-label col-sm-10">${user.email}</label>
+				<label class="control-label col-sm-10">${utente.email}</label>
 		<label class="control-label col-sm-2" for="nomeUtente">Nome Utente</label>
-				<label class="control-label col-sm-10">${user.nomeUtente}</label>
+				<label class="control-label col-sm-10">${utente.nomeUtente}</label>
 		<label class="control-label col-sm-2" for="cdl">CdL</label>
-				<label class="control-label col-sm-10">${user.corsoDiLaurea.id}</label>
+				<label class="control-label col-sm-10">${utente.corsoDiLaurea.id}</label>
 	</div>
 	</c:if>
-	
-
+	<c:if test="${utente == admin}">
+	<div class="col-sm-10">
+		<label class="control-label col-sm-2" for="nome">Nome</label>
+				<label class="control-label col-sm-10">${utente.nome}</label>
+		<label class="control-label col-sm-2" for="cognome">Cognome</label>
+				<label class="control-label col-sm-10">${utente.cognome}</label>
+		<label class="control-label col-sm-2" for="datadiNascita">Data di Nascita</label>
+				<label class="control-label col-sm-10">${utente.dataDinascita}</label>
+		<label class="control-label col-sm-2" for="e-mail">E-mail</label>
+				<label class="control-label col-sm-10">${utente.email}</label>
+		<label class="control-label col-sm-2" for="nomeUtente">Nome Utente</label>
+				<label class="control-label col-sm-10">${utente.nomeUtente}</label>
+	</div>
+	</c:if>
+	<c:if test="${utente != studente}">
+		<c:if test="${utente != professore}">
+			<c:if test="${utente != admin}">
+				<h1>Prima dovresti loggarti</h1>
+				<a href="loginProfessore.html">Come Professore</a>
+				<a href="loginAdmin.html">Come Admin</a>
+				<a href="loginStudente.html">Come Studente</a>
+			</c:if>
+		</c:if>
+	</c:if>
 </body>
 </html>

@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -46,6 +47,8 @@ public class LoginProfessore extends HttpServlet{
 		else {
 			if(password.equals(datiProfessore.getPassword())){
 				session.setAttribute("nomeUtenteProfessore",nomeUtente);
+				RequestDispatcher dispacher = req.getRequestDispatcher("profMenu.html");
+				dispacher.forward(req, resp);
 			}
 			else {
 				out.println("<html>");
