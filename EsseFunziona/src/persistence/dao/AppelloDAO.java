@@ -10,6 +10,8 @@ public interface AppelloDAO {
 	public Appello findByPrimaryKey(long id);
 	public List<Appello> findAll();       
 	public void update(Appello appello);
-	public void delete(Appello appello);	
+	public void delete(Appello appello);
+	Appello findByPrimaryKeyProxy(long id);
+	List<Appello> findAllProxy();	
 
 }

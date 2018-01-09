@@ -92,6 +92,39 @@ public class AppelloJDBC implements AppelloDAO {
 		}
 		return appello;
 	}
+	
+	@Override
+	public Appello findByPrimaryKeyProxy(long id) {
+		Connection connection=this.databaseData.getConnection();
+		Appello appello=null;
+		try {
+			PreparedStatement statement;
+			String query="SELECT * FROM appello WHERE id=?";
+			statement=connection.prepareStatement(query);
+			statement.setLong(1,id);
+			ResultSet result=statement.executeQuery();
+			if(result.next()) {
+				appello=new AppelloProxy(databaseData);
+				appello.setId(result.getLong("id"));
+				appello.setData(result.getDate("dataAppello"));
+				CorsoDAO corsoDAO=new CorsoJDBC(this.databaseData);
+				appello.setCorso(corsoDAO.findByPrimaryKey(result.getLong("corsoId")));
+				ProfessoreDAO professoreDAO=new ProfessoreJDBC(this.databaseData);
+				appello.setProfessore(professoreDAO.findByPrimaryKey(result.getString("nomeUtenteProfessore")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return appello;
+	}
 
 	@Override
 	public List<Appello> findAll() {
@@ -105,6 +138,34 @@ public class AppelloJDBC implements AppelloDAO {
 			ResultSet result=statement.executeQuery();
 			while(result.next()) {
 				appello=findByPrimaryKey(result.getLong("id"));
+				appelli.add(appello);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return appelli;
+	}
+	
+	@Override
+	public List<Appello> findAllProxy() {
+		Connection connection=this.databaseData.getConnection();
+		List<Appello> appelli=new ArrayList<>();
+		try {
+			Appello appello;
+			PreparedStatement statement;
+			String query="SELECT * FROM appello";
+			statement=connection.prepareStatement(query);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				appello=findByPrimaryKeyProxy(result.getLong("id"));
 				appelli.add(appello);
 			}
 		} catch (SQLException e) {
