@@ -1,14 +1,18 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<jsp:useBean id="studente" class="model.Studente" scope="request" />
-<jsp:useBean id="professore" class="model.Professore" scope="request" />
-<jsp:useBean id="admin" class="model.Admin" scope="request" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<jsp:useBean id="stud" class="model.Studente" scope="request" />
+<jsp:setProperty name="stud" property="nome" value="un Nome"/>
+<jsp:useBean id="prof" class="model.Professore" scope="request" />
+<jsp:setProperty name="prof" property="nome" value="un Nome"/>
+<jsp:useBean id="adm" class="model.Admin" scope="request" />
+<jsp:setProperty name="adm" property="nome" value="un Nome"/>
 
 
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Area Professore</title>
+<title>EsseFunziona</title>
 </head>
 
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -17,6 +21,12 @@
 
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
 <LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
+  
+<script type="text/javascript">
+$(document).ready(function() {
+	console.log(studente)
+});
+</script>  
   
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
@@ -28,7 +38,9 @@
 	<div class="wrapper">
   		<nav class="vertical">
     		<div>
-    			<a>Professore</a>
+    			<a>${studente.matricola}</a>
+    			<a>${professore.nomeUtente}</a>
+    			<a>${admin.nomeUtente}</a>
       			<a href="profMenu.html">EsseFunziona</a>
     		</div>
     		<ul>
@@ -77,55 +89,55 @@
 	</section>	
 
 	<br>
-	<c:if test="${utente == studente}">
+	<c:if test="${studente != null}">
 	<div class="col-sm-10">
 		<label class="control-label col-sm-2" for="nome">Nome</label>
-				<label class="control-label col-sm-10">${utente.nome}</label>
+				<label class="control-label col-sm-10">${studente.nome}</label>
 		<label class="control-label col-sm-2" for="cognome">Cognome</label>
-				<label class="control-label col-sm-10">${utente.cognome}</label>
+				<label class="control-label col-sm-10">${studente.cognome}</label>
 		<label class="control-label col-sm-2" for="datadiNascita">Data di Nascita</label>
-				<label class="control-label col-sm-10">${utente.dataDinascita}</label>
+				<label class="control-label col-sm-10">${studente.dataDinascita}</label>
 		<label class="control-label col-sm-2" for="e-mail">E-mail</label>
-				<label class="control-label col-sm-10">${utente.email}</label>
+				<label class="control-label col-sm-10">${studente.email}</label>
 		<label class="control-label col-sm-2" for="matricola">Matricola</label>
-				<label class="control-label col-sm-10">${utente.matricola}</label>
+				<label class="control-label col-sm-10">${studente.matricola}</label>
 		<label class="control-label col-sm-2" for="cdl">CdL</label>
-				<label class="control-label col-sm-10">${utente.corsoDiLaurea.id}</label>
+				<label class="control-label col-sm-10">${studente.corsoDiLaurea.nome}</label>
 	</div>
 	</c:if>
-	<c:if test="${utente == professore}">
+	<c:if test="${professore != null}">
 	<div class="col-sm-10">
 		<label class="control-label col-sm-2" for="nome">Nome</label>
-				<label class="control-label col-sm-10">${utente.nome}</label>
+				<label class="control-label col-sm-10">${professore.nome}</label>
 		<label class="control-label col-sm-2" for="cognome">Cognome</label>
-				<label class="control-label col-sm-10">${utente.cognome}</label>
+				<label class="control-label col-sm-10">${professore.cognome}</label>
 		<label class="control-label col-sm-2" for="datadiNascita">Data di Nascita</label>
-				<label class="control-label col-sm-10">${utente.dataDinascita}</label>
+				<label class="control-label col-sm-10">${professore.dataDinascita}</label>
 		<label class="control-label col-sm-2" for="e-mail">E-mail</label>
-				<label class="control-label col-sm-10">${utente.email}</label>
+				<label class="control-label col-sm-10">${professore.email}</label>
 		<label class="control-label col-sm-2" for="nomeUtente">Nome Utente</label>
-				<label class="control-label col-sm-10">${utente.nomeUtente}</label>
+				<label class="control-label col-sm-10">${professore.nomeUtente}</label>
 		<label class="control-label col-sm-2" for="cdl">CdL</label>
-				<label class="control-label col-sm-10">${utente.corsoDiLaurea.id}</label>
+				<label class="control-label col-sm-10">${professore.corsoDiLaurea.id}</label>
 	</div>
 	</c:if>
-	<c:if test="${utente == admin}">
+	<c:if test="${admin != null}">
 	<div class="col-sm-10">
 		<label class="control-label col-sm-2" for="nome">Nome</label>
-				<label class="control-label col-sm-10">${utente.nome}</label>
+				<label class="control-label col-sm-10">${admin.nome}</label>
 		<label class="control-label col-sm-2" for="cognome">Cognome</label>
-				<label class="control-label col-sm-10">${utente.cognome}</label>
+				<label class="control-label col-sm-10">${admin.cognome}</label>
 		<label class="control-label col-sm-2" for="datadiNascita">Data di Nascita</label>
-				<label class="control-label col-sm-10">${utente.dataDinascita}</label>
+				<label class="control-label col-sm-10">${admin.dataDinascita}</label>
 		<label class="control-label col-sm-2" for="e-mail">E-mail</label>
-				<label class="control-label col-sm-10">${utente.email}</label>
+				<label class="control-label col-sm-10">${admin.email}</label>
 		<label class="control-label col-sm-2" for="nomeUtente">Nome Utente</label>
-				<label class="control-label col-sm-10">${utente.nomeUtente}</label>
+				<label class="control-label col-sm-10">${admin.nomeUtente}</label>
 	</div>
 	</c:if>
-	<c:if test="${utente != studente}">
-		<c:if test="${utente != professore}">
-			<c:if test="${utente != admin}">
+	<c:if test="${studente == null}">
+		<c:if test="${professore == null}">
+			<c:if test="${admin == null}">
 				<h1>Prima dovresti loggarti</h1>
 				<a href="loginProfessore.html">Come Professore</a>
 				<a href="loginAdmin.html">Come Admin</a>
