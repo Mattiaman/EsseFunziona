@@ -1,8 +1,11 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Area Studenti</title>
+<title>Area Studente</title>
 </head>
 
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -17,7 +20,7 @@
 		<a href="images/logo_unical.png"><img class="img-responsive" src="images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
 		<figcaption>Servizi online per lo studente</figcaption>		
 	</figure>
-	
+
 	<section class="col-sm-2">
 	<div class="wrapper">
   		<nav class="vertical">
@@ -68,15 +71,33 @@
   		</nav>
 	</div>
 	</section>	
-	
-	
+
+
+	<br>
+		<div class="col-sm-10">
 		
-	<hgroup>
-	<h4>Benvenuti nella vostra area personale della paittaforma web EsseFunziona</h4>
-	<h5>Utilizzando il menu qui sopra potrete usufruire di tutti i servizi forniti dal sistema</h5>
-	</hgroup>
-	
-	
-	
+			<form class="form-horizontal" method="post" action="richiestaRicevimento">
+			  <div class="form-group">
+				<label class="control-label col-sm-2" for="professoreRicevimento">Professore:</label>
+				<select name="indirizzo" class="control-label col-sm-4" class="form-control"  >
+					<option value="0"></option>
+					<option value="1">Ricca Francesco</option>
+					<option value="2">Grasso Giovanni</option>	
+				</select>
+			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="dataRicevimento">Data:</label>
+			    <div class="col-sm-4">
+			     <input name="idMateriale" type="date" class="form-control" /> 
+			    </div> 
+			  </div>
+			  </form>	
+			  <div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default">Submit</button>
+					</div>
+			  </div>
+		</div>
+
 </body>
 </html>
