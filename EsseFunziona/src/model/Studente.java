@@ -16,7 +16,7 @@ public class Studente extends Utente {
 	}
 	
 	public Studente(String matricola, String nome, String cognome, Date dataDiNascita, String email) {
-		super(nome, cognome, dataDiNascita, email);
+		super(nome, cognome, dataDiNascita, email, "studente");
 		this.matricola=matricola;
 	}
 

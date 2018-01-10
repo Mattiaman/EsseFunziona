@@ -7,16 +7,18 @@ public abstract class Utente {
 	private String cognome;
 	private Date dataDiNascita;
 	private String email;
+	private String tipo;
 	
 	public Utente() {
 		
 	}
 	
-	public Utente(String nome, String cognome, Date dataDiNascita, String email) {
+	public Utente(String nome, String cognome, Date dataDiNascita, String email, String tipo) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
 		this.email = email;
+		this.tipo = tipo;
 	}
 
 	public Utente(String nome, String cognome, Date dataDiNascita) {
@@ -24,6 +26,7 @@ public abstract class Utente {
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
 		this.email = "";
+		this.tipo = "";
 	}
 
 	public String getNome() {
@@ -57,5 +60,15 @@ public abstract class Utente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+	
+	
 	
 }

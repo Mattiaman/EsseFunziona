@@ -10,13 +10,13 @@ public class Professore extends Utente {
 	List<Studente> studentiRicevimento;
 
 	public Professore(String nome, String cognome, Date dataDiNascita, String email, String nomeUtente) {
-		super(nome, cognome, dataDiNascita, email);
+		super(nome, cognome, dataDiNascita, email, "professore");
 		this.nomeUtente = nomeUtente;
 	}
 
 	public Professore(String nome, String cognome, Date dataDiNascita, String email, String nomeUtente,
 			List<Studente> studentiRicevimento) {
-		super(nome, cognome, dataDiNascita, email);
+		super(nome, cognome, dataDiNascita, email, "professore");
 		this.nomeUtente = nomeUtente;
 		this.studentiRicevimento = studentiRicevimento;
 	}

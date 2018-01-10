@@ -5,9 +5,6 @@ $(document).ready(function() {
 		var jsonStringQuotes = xhr.responseText;
 		var datiAnagrafici=JSON.parse(jsonStringQuotes);
 		
-		console.log(datiAnagrafici);
-
-		
 		var s ='';
 		if(datiAnagrafici.matricola!=null){
 			s = $('<label class="control-label col-sm-4" for="nome">Nome</label><label class="control-label col-sm-8">'+datiAnagrafici.nome+
