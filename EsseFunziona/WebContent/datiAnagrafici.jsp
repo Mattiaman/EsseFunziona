@@ -24,7 +24,37 @@
   
 <script type="text/javascript">
 $(document).ready(function() {
-	console.log(studente)
+	var xhr= new XMLHttpRequest();
+	xhr.open('get',"datiAnagrafici",true);
+	xhr.onload=function(){
+		var jsonStringQuotes = xhr.responseText;
+		var datiAnagrafici=JSON.parse(jsonStringQuotes);
+		
+		console.log(datiAnagrafici);
+
+		
+		var s ='';
+		if(datiAnagrafici.matricola!=null){
+			s = $('<label class="control-label col-sm-4" for="nome">Nome</label><label class="control-label col-sm-8">'+datiAnagrafici.nome+
+					'</label><label class="control-label col-sm-4" for="cognome">Cognome</label><label class="control-label col-sm-8">'+datiAnagrafici.cognome+
+					'</label><label class="control-label col-sm-4" for="datadiNascita">Data Di Nascita</label><label class="control-label col-sm-8">'+datiAnagrafici.dataDiNascita+
+					'</label><label class="control-label col-sm-4" for="email">Email</label><label class="control-label col-sm-8">'+datiAnagrafici.email+
+					'</label><label class="control-label col-sm-4" for="matricola">Matricola</label><label class="control-label col-sm-8">'+datiAnagrafici.matricola+
+					'</label>');	
+		}
+		else if(datiAnagrafici.nomeUtente!=null){
+			s = $('<label class="control-label col-sm-4" for="nome">Nome</label><label class="control-label col-sm-8">'+datiAnagrafici.nome+
+					'</label><label class="control-label col-sm-4" for="cognome">Cognome</label><label class="control-label col-sm-8">'+datiAnagrafici.cognome+
+					'</label><label class="control-label col-sm-4" for="datadiNascita">Data Di Nascita</label><label class="control-label col-sm-8">'+datiAnagrafici.dataDiNascita+
+					'</label><label class="control-label col-sm-4" for="email">Email</label><label class="control-label col-sm-8">'+datiAnagrafici.email+
+					'</label><label class="control-label col-sm-4" for="nomeUtente">Nome utente</label><label class="control-label col-sm-8">'+datiAnagrafici.nomeUtente+
+					'</label>');	
+		}
+		
+		$("#utenteRegistrato").append(s);
+	}
+	xhr.send(null);
+	
 });
 </script>  
   
@@ -37,10 +67,7 @@ $(document).ready(function() {
 	<section class="col-sm-2">
 	<div class="wrapper">
   		<nav class="vertical">
-    		<div>
-    			<a>${studente.matricola}</a>
-    			<a>${professore.nomeUtente}</a>
-    			<a>${admin.nomeUtente}</a>
+    		<div id="ut">
       			<a href="profMenu.html">EsseFunziona</a>
     		</div>
     		<ul>
@@ -89,61 +116,9 @@ $(document).ready(function() {
 	</section>	
 
 	<br>
-	<c:if test="${studente != null}">
-	<div class="col-sm-10">
-		<label class="control-label col-sm-2" for="nome">Nome</label>
-				<label class="control-label col-sm-10">${studente.nome}</label>
-		<label class="control-label col-sm-2" for="cognome">Cognome</label>
-				<label class="control-label col-sm-10">${studente.cognome}</label>
-		<label class="control-label col-sm-2" for="datadiNascita">Data di Nascita</label>
-				<label class="control-label col-sm-10">${studente.dataDinascita}</label>
-		<label class="control-label col-sm-2" for="e-mail">E-mail</label>
-				<label class="control-label col-sm-10">${studente.email}</label>
-		<label class="control-label col-sm-2" for="matricola">Matricola</label>
-				<label class="control-label col-sm-10">${studente.matricola}</label>
-		<label class="control-label col-sm-2" for="cdl">CdL</label>
-				<label class="control-label col-sm-10">${studente.corsoDiLaurea.nome}</label>
+	
+	<div class="col-sm-10" id="utenteRegistrato">
+
 	</div>
-	</c:if>
-	<c:if test="${professore != null}">
-	<div class="col-sm-10">
-		<label class="control-label col-sm-2" for="nome">Nome</label>
-				<label class="control-label col-sm-10">${professore.nome}</label>
-		<label class="control-label col-sm-2" for="cognome">Cognome</label>
-				<label class="control-label col-sm-10">${professore.cognome}</label>
-		<label class="control-label col-sm-2" for="datadiNascita">Data di Nascita</label>
-				<label class="control-label col-sm-10">${professore.dataDinascita}</label>
-		<label class="control-label col-sm-2" for="e-mail">E-mail</label>
-				<label class="control-label col-sm-10">${professore.email}</label>
-		<label class="control-label col-sm-2" for="nomeUtente">Nome Utente</label>
-				<label class="control-label col-sm-10">${professore.nomeUtente}</label>
-		<label class="control-label col-sm-2" for="cdl">CdL</label>
-				<label class="control-label col-sm-10">${professore.corsoDiLaurea.id}</label>
-	</div>
-	</c:if>
-	<c:if test="${admin != null}">
-	<div class="col-sm-10">
-		<label class="control-label col-sm-2" for="nome">Nome</label>
-				<label class="control-label col-sm-10">${admin.nome}</label>
-		<label class="control-label col-sm-2" for="cognome">Cognome</label>
-				<label class="control-label col-sm-10">${admin.cognome}</label>
-		<label class="control-label col-sm-2" for="datadiNascita">Data di Nascita</label>
-				<label class="control-label col-sm-10">${admin.dataDinascita}</label>
-		<label class="control-label col-sm-2" for="e-mail">E-mail</label>
-				<label class="control-label col-sm-10">${admin.email}</label>
-		<label class="control-label col-sm-2" for="nomeUtente">Nome Utente</label>
-				<label class="control-label col-sm-10">${admin.nomeUtente}</label>
-	</div>
-	</c:if>
-	<c:if test="${studente == null}">
-		<c:if test="${professore == null}">
-			<c:if test="${admin == null}">
-				<h1>Prima dovresti loggarti</h1>
-				<a href="loginProfessore.html">Come Professore</a>
-				<a href="loginAdmin.html">Come Admin</a>
-				<a href="loginStudente.html">Come Studente</a>
-			</c:if>
-		</c:if>
-	</c:if>
 </body>
 </html>

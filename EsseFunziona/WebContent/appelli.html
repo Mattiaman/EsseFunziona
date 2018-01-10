@@ -11,6 +11,7 @@
 
 <script src="js/loaderAppelli.js"></script>
 
+<LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
 <LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
   
 <body style="background: lightblue">
@@ -19,48 +20,57 @@
 		<figcaption>Servizi online per lo studente</figcaption>		
 	</figure>
 
-	<h3>Professore</h3>
-	<nav class="menu" style="background: darkblue" >
-  		<div class="container-fluid">
-    		<div class="navbar-header">
-      			<a class="navbar-brand" href="profMenu.html">EsseFunziona</a>
+	<section class="col-sm-2">
+	<div class="wrapper">
+  		<nav class="vertical">
+    		<div>
+    			<a>Professore</a>
+      			<a href="profMenu.html">EsseFunziona</a>
     		</div>
-    		<ul class="nav navbar-nav">
-     			<li class="dropdown">
-        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Home<span class="caret"></span></a>
-		        	<ul class="dropdown-menu">
-		          		<li><a href="datiAnagrafici.html">Dati anagrafici</a></li>
-		          		<li><a href="email.html">E-mail</a></li>
+    		<ul>
+     			<li>
+        			<label for="home">Home</label>
+       				<input type="radio" name="verticalMenu" id="home" />
+        			<div>
+        			<ul>
+		          		<li><a href="datiAnagrafici.jsp">Dati anagrafici</a></li>
+		          		<li><a href="email.jsp">E-mail</a></li>
 		          		<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>
 		          		<li><a href="corsi.html">Corsi</a></li>
 		          		<li><a href="documentiCorsi.html">Documenti corsi</a></li>
 		          		<li><a href="bandiNews.html">Bandi/News</a></li>
-		        	</ul>
+		          	</ul>
+		        	</div>
 		        </li>
-      			<li class="dropdown">
-        			<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="background: darkblue">Studenti<span class="caret"></span></a>
-		        	<ul class="dropdown-menu">
+      			<li>
+      				<label for="studenti">Studenti</label>
+       				<input type="radio" name="verticalMenu" id="studenti" />
+        			<div>
+        			<ul>
 		          		<li><a href="pianoDiStudio.html">Piano Carriera</a></li>
-		          		<li><a href="richiesteRicevimento.html">Richieste Ricevimento</a></li>
-		        	</ul>
+		          		<li><a href="richiesteRicevimento.jsp">Richieste Ricevimento</a></li>
+		          	</ul>
+		        	</div>
       			</li>
-      			<li class="dropdown">
-        			<a class="dropdown-toggle" data-toggle="dropdown" href="#"  style="background: darkblue">Esami<span class="caret"></span></a>
-		        	<ul class="dropdown-menu">
+      			<li>
+      				<label for="esami">Esami</label>
+       				<input type="radio" name="verticalMenu" id="esami" />
+        			<div>
+        			<ul>
 		          		<li><a href="appelli.html">Appelli</a></li>
-		          		<li><a href="aggiuntaAppelli.html">Aggiunta Appelli</a></li>
-		          		<li><a href="aggiuntaMateriale.html">Aggiunta Documenti corsi</a></li>
+		          		<li><a href="aggiuntaAppelli.jsp">Aggiunta Appelli</a></li>
+		          		<li><a href="aggiuntaEsiti.jsp">Aggiunta Esiti</a></li>
+		          		<li><a href="aggiuntaMateriale.jsp">Aggiunta Documenti corsi</a></li>
 		          		<li><a href="verbalizzareEsami.html">Verbalizzare</a></li>
 		          		<li><a href="esiti.html">Bacheca Esiti</a></li>
 		          		<li><a href="prenotazioni.html">Bacheca Prenotazioni</a></li>
-		        	</ul>
+		          	</ul>
+		        	</div>
       			</li>
     		</ul>
-  		</div>
-	</nav>	
-
-
-
+  		</nav>
+	</div>
+	</section>		
 	
 	<br><div class="container">
 	  <div class="table-responsive">          

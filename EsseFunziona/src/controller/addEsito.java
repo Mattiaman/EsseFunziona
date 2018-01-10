@@ -12,8 +12,10 @@ public class addEsito extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispacher = 
-				req.getRequestDispatcher(".jsp");
+		
+		
+		
+		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaEsiti.jsp");
 		dispacher.forward(req, resp);
 	}
 	
@@ -22,7 +24,13 @@ public class addEsito extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		RequestDispatcher dispacher = req.getRequestDispatcher(".jsp");
+		
+		
+		
+		
+		
+		
+		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaEsiti.jsp");
 		dispacher.forward(req, resp);
 	
 	}
