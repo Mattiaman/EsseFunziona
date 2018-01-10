@@ -47,8 +47,7 @@ $(document).ready(function() {
 					'</ul></div></li>'+
 					'<li><label for="studenti">Studenti</label><input type="radio" name="verticalMenu" id="studenti" />'+
 					'<div><ul>'+
-					'<li><a href="pianoDiStudio.html">Piano Carriera</a></li>'+
-					'<li><a href="modificaPiano.html">Modifica Piano</a></li>'+
+					'<li><a href="studenti.html">Studenti</a></li>'+
 					'</ul></div></li>'+
 					'<li><label for="esami">Esami</label><input type="radio" name="verticalMenu" id="esami" />'+
 					'<div><ul>'+

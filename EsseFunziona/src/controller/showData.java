@@ -57,17 +57,21 @@ public class showData extends HttpServlet{
 			out.print(gson.toJson(stud));
 			out.close();
 		}
-		if(prof!=null) {
+		else if(prof!=null) {
 			PrintWriter out=resp.getWriter();
 			Gson gson=new Gson();
 			out.print(gson.toJson(prof));
 			out.close();
 		}
-		if(adm!=null) {
+		else if(adm!=null) {
 			PrintWriter out=resp.getWriter();
 			Gson gson=new Gson();
 			out.print(gson.toJson(adm));
 			out.close();
+		}
+		else {
+			RequestDispatcher dispacher = req.getRequestDispatcher("startMenu.html");
+			dispacher.forward(req, resp);
 		}
 	}
 	
