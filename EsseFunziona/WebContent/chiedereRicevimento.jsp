@@ -15,59 +15,19 @@
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
 <LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
   
+
+<script type="text/javascript" src="js/loaderMenu.js"></script>
+  
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
 		<a href="images/logo_unical.png"><img class="img-responsive" src="images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
 		<figcaption>Servizi online per lo studente</figcaption>		
 	</figure>
-
+	
 	<section class="col-sm-2">
 	<div class="wrapper">
-  		<nav class="vertical">
-    		<div>
-    			<a>Studente</a>
-      			<a href="studentMenu.html">EsseFunziona</a>
-    		</div>
-    		<ul>
-     			<li>
-        			<label for="home">Home</label>
-       				<input type="radio" name="verticalMenu" id="home" />
-        			<div>
-        			<ul>
-		          		<li><a href="datiAnagrafici.html">Dati anagrafici</a></li>
-		          		<li><a href="email.html">E-mail</a></li>
-		          		<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>
-		          		<li><a href="corsi.html">Corsi</a></li>
-		          		<li><a href="documentiCorsi.html">Documenti corsi</a></li>
-		          		<li><a href="bandiNews.html">Bandi/News</a></li>
-		          	</ul>
-		        	</div>
-		        </li>
-      			<li>
-      				<label for="segreteria">Segreteria</label>
-       				<input type="radio" name="verticalMenu" id="segreteria" />
-        			<div>
-        			<ul>
-		          		<li><a href="tasse.html">Situazione Tasse</a></li>
-		          		<li><a href="libretto.html">Libretto</a></li>
-		          		<li><a href="pianoDiStudio.html">Piano Carriera</a></li>
-		          		<li><a href="modificaPiano.html">Modifica Piano</a></li>
-		          	</ul>
-		        	</div>
-      			</li>
-      			<li>
-      				<label for="esami">Esami</label>
-       				<input type="radio" name="verticalMenu" id="esami" />
-        			<div>
-        			<ul>
-		          		<li><a href="appelli.html">Appelli</a></li>
-		          		<li><a href="esiti.html">Bacheca Esiti</a></li>
-		          		<li><a href="prenotazioni.html">Bacheca Prenotazioni</a></li>
-		          		<li><a href="chiedereRicevimento.html">Chiedere un Ricevimento</a></li>
-		          	</ul>
-		        	</div>
-      			</li>
-    		</ul>
+  		<nav class="vertical" id="navMenu">
+    		
   		</nav>
 	</div>
 	</section>	

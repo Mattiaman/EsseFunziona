@@ -16,62 +16,22 @@
   
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
 
+
+<script type="text/javascript" src="js/loaderMenu.js"></script>
+  
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
 		<a href="images/logo_unical.png"><img class="img-responsive" src="images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
 		<figcaption>Servizi online per lo studente</figcaption>		
 	</figure>
-
+	
 	<section class="col-sm-2">
 	<div class="wrapper">
-  		<nav class="vertical">
-    		<div>
-    			<a>Professore</a>
-      			<a href="profMenu.html">EsseFunziona</a>
-    		</div>
-    		<ul>
-     			<li>
-        			<label for="home">Home</label>
-       				<input type="radio" name="verticalMenu" id="home" />
-        			<div>
-        			<ul>
-		          		<li><a href="datiAnagrafici.html">Dati anagrafici</a></li>
-		          		<li><a href="email.html">E-mail</a></li>
-		          		<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>
-		          		<li><a href="corsi.html">Corsi</a></li>
-		          		<li><a href="documentiCorsi.html">Documenti corsi</a></li>
-		          		<li><a href="bandiNews.html">Bandi/News</a></li>
-		          	</ul>
-		        	</div>
-		        </li>
-      			<li>
-      				<label for="studenti">Studenti</label>
-       				<input type="radio" name="verticalMenu" id="studenti" />
-        			<div>
-        			<ul>
-		          		<li><a href="pianoDiStudio.html">Piano Carriera</a></li>
-		          		<li><a href="richiesteRicevimento.html">Richieste Ricevimento</a></li>
-		          	</ul>
-		        	</div>
-      			</li>
-      			<li>
-      				<label for="esami">Esami</label>
-       				<input type="radio" name="verticalMenu" id="esami" />
-        			<div>
-        			<ul>
-		          		<li><a href="appelli.html">Appelli</a></li>
-		          		<li><a href="aggiuntaAppelli.html">Aggiunta Appelli</a></li>
-		          		<li><a href="aggiuntaMateriale.html">Aggiunta Documenti corsi</a></li>
-		          		<li><a href="verbalizzareEsami.html">Verbalizzare</a></li>
-		          		<li><a href="esiti.html">Bacheca Esiti</a></li>
-		          		<li><a href="prenotazioni.html">Bacheca Prenotazioni</a></li>
-		          	</ul>
-		        	</div>
-      			</li>
-    		</ul>
+  		<nav class="vertical" id="navMenu">
+    		
   		</nav>
 	</div>
-	</section>
+	</section>	
 	
 	<div class="col-sm-10">
 	<c:if test="${materiale != null}">
