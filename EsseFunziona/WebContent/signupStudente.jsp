@@ -13,6 +13,8 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
+<script src="js/loadDropDownStudenti.js"></script>
+
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
 
 <body style="background: lightblue">
@@ -133,7 +135,8 @@
 				<div class="form-group">
 					<label class="control-label col-sm-3" for="corsoDiLaurea">Corso di Laurea:</label>
 					<div class="col-sm-5">
-						<input name="corsoDiLaurea" class="control-label col-sm-3"  type="text" class="form-control" />
+						<select name="corsoDiLaurea" id="listaCdl">
+						</select>
 					</div>
 				</div>				
 				<div class="form-group">
