@@ -1,0 +1,94 @@
+$(document).ready(function() {
+	var xhr= new XMLHttpRequest();
+	xhr.open('get',"datiAnagrafici",true);
+	xhr.onload=function(){
+		var jsonStringQuotes = xhr.responseText;
+		var datiAnagrafici=JSON.parse(jsonStringQuotes);
+		
+		var s ='';
+		if(datiAnagrafici.tipo == "studente"){
+			s = $('<div><a>'+datiAnagrafici.matricola+' </a><a href="studentMenu.html">EsseFunziona</a></div>'+
+					'<ul><li>'+
+					'<label for="home">Home</label><input type="radio" name="verticalMenu" id="home" />'+
+					'<div><ul>'+
+					'<li><a href="datiAnagrafici.jsp">Dati anagrafici</a></li>'+
+					'<li><a href="email.jsp">E-mail</a></li>'+
+					'<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>'+
+					'<li><a href="corsi.html">Corsi</a></li>'+
+					'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+
+					'<li><a href="bandiNews.html">Bandi/News</a></li>'+
+					'</ul></div></li>'+
+					'<li><label for="segreteria">Segreteria</label><input type="radio" name="verticalMenu" id="segreteria" />'+
+					'<div><ul>'+
+					'<li><a href="tasse.html">Situazione Tasse</a></li>'+
+					'<li><a href="libretto.html">Libretto</a></li>'+
+					'<li><a href="pianoDiStudio.html">Piano Carriera</a></li>'+
+					'<li><a href="modificaPiano.html">Modifica Piano</a></li>'+
+					'</ul></div></li>'+
+					'<li><label for="esami">Esami</label><input type="radio" name="verticalMenu" id="esami" />'+
+					'<div><ul>'+
+					'<li><a href="appelli.html">Appelli</a></li>'+
+					'<li><a href="esiti.html">Bacheca Esiti</a></li>'+
+					'<li><a href="prenotazioni.html">Bacheca Prenotazioni</a></li>'+
+					'<li><a href="chiedereRicevimento.jsp=>Chiedere un Ricevimento</a></li>'+
+					'</ul></div></li></ul>');	
+		}
+		else if(datiAnagrafici.tipo == "professore"){
+			s = $('<div><a>'+datiAnagrafici.nomeUtente+' </a><a href="profMenu.html">EsseFunziona</a></div>'+
+					'<ul><li>'+
+					'<label for="home">Home</label><input type="radio" name="verticalMenu" id="home" />'+
+					'<div><ul>'+
+					'<li><a href="datiAnagrafici.jsp">Dati anagrafici</a></li>'+
+					'<li><a href="email.jsp">E-mail</a></li>'+
+					'<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>'+
+					'<li><a href="corsi.html">Corsi</a></li>'+
+					'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+
+					'<li><a href="bandiNews.html">Bandi/News</a></li>'+
+					'</ul></div></li>'+
+					'<li><label for="studenti">Studenti</label><input type="radio" name="verticalMenu" id="studenti" />'+
+					'<div><ul>'+
+					'<li><a href="pianoDiStudio.html">Piano Carriera</a></li>'+
+					'<li><a href="modificaPiano.html">Modifica Piano</a></li>'+
+					'</ul></div></li>'+
+					'<li><label for="esami">Esami</label><input type="radio" name="verticalMenu" id="esami" />'+
+					'<div><ul>'+
+					'<li><a href="appelli.html">Appelli</a></li>'+
+					'<li><a href="aggiuntaAppelli.jsp">Aggiunta Appelli</a></li>'+
+					'<li><a href="aggiuntaEsiti.jsp">Aggiunta Esiti</a></li>'+
+					'<li><a href="aggiuntaMateriale.jsp">Aggiunta Documenti corsi</a></li>'+
+					'<li><a href="verbalizzareEsami.html">Verbalizzare</a></li>'+
+					'<li><a href="esiti.html">Bacheca Esiti</a></li>'+
+					'<li><a href="prenotazioni.html">Bacheca Prenotazioni</a></li>'+
+					'</ul></div></li></ul>');
+		}
+		else if(datiAnagrafici.tipo == "admin"){
+			s = $('<div><a>'+datiAnagrafici.nomeUtente+' </a><a href="adminMenu.html">EsseFunziona</a></div>'+
+					'<ul><li>'+
+					'<label for="home">Home</label><input type="radio" name="verticalMenu" id="home" />'+
+					'<div><ul>'+
+					'<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>'+
+					'<li><a href="corsi.html">Corsi</a></li>'+
+					'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+
+					'<li><a href="bandiNews.html">Bandi/News</a></li></ul>'+
+					'</div></li>'+
+					'<li><label for="utenti">Utenti</label><input type="radio" name="verticalMenu" id="utenti" />'+
+					'<div><ul>'+
+					'<li><a href="studenti.html">Studenti</a></li>'+
+					'<li><a href="professori.html">Professori</a></li>'+
+					'</div></li>'+
+					'<li><label for="segreteria">Segreteria</label><input type="radio" name="verticalMenu" id="segreteria" />'+
+					'<div><ul>'+    		
+					'<li><a href="aggiuntaTasse.html">Aggiungere Tasse</a></li>'+
+					'<li><a href="aggiuntaBandi.html">Pubblicare Bandi/News</a></li>'+
+					'<li><a href="aggiuntaCorsi.html">Aggiungere Corsi</a></li>'+
+					'<li><a href="aggiuntaCorsiDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>'+
+					'<li><a href="signupStudente.html">Registra Studente</a></li>'+
+					'<li><a href="signupProfessore.jsp">Registra Professore</a></li>'+
+					'</ul></div></li></ul>');
+		}
+		
+		$("#navMenu").append(s);
+	}
+	xhr.send(null);
+	
+});

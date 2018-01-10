@@ -79,22 +79,22 @@
 			<form class="form-horizontal" method="post" action="richiestaRicevimento">
 			  <div class="form-group">
 				<label class="control-label col-sm-2" for="professoreRicevimento">Professore:</label>
-				<select name="indirizzo" class="control-label col-sm-4" class="form-control"  >
-					<option value="0"></option>
-					<option value="1">Ricca Francesco</option>
-					<option value="2">Grasso Giovanni</option>	
+				<select name="professoreRicevimento" class="control-label col-sm-4" class="form-control"  >
+					
 				</select>
 			  </div>
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="dataRicevimento">Data:</label>
 			    <div class="col-sm-4">
-			     <input name="idMateriale" type="date" class="form-control" /> 
+			     <input name="dataRicevimento" type="date" class="form-control" /> 
 			    </div> 
 			  </div>
 			  </form>	
 			  <div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-default">Submit</button>
+						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
+						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>
+						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
 					</div>
 			  </div>
 		</div>

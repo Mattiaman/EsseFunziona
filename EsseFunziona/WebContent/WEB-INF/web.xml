@@ -182,7 +182,7 @@
   <servlet-mapping>
     <servlet-name>showDataServlet</servlet-name>
     <url-pattern>/datiAnagrafici</url-pattern>
-  </servlet-mapping>  
+  </servlet-mapping>
   
   
 </web-app>
