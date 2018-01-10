@@ -77,6 +77,19 @@
 	<br><div class="col-sm-10">
 		
 			<form class="form-horizontal" method="post" action="aggiuntaEsiti">
+			
+			  <div class="form-group">
+			    <label class="control-label col-sm-2" for="Corso">IDCorso:</label>
+			    	<div class="col-sm-3"> 
+			      <input name="Corso" type="text" class="form-control" />
+			    </div>
+			  </div>
+			   <div class="form-group">
+			    <label class="control-label col-sm-2" for="appello">IDAppello:</label>
+			    	<div class="col-sm-3"> 
+			      <input name="appello" type="text" class="form-control" />
+			    </div>
+			  </div>
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="matricolaStudente">Matricola Studente:</label>
 			    	<div class="col-sm-3"> 
@@ -87,18 +100,6 @@
 			    <label class="control-label col-sm-2" for="voto">Voto:</label>
 			    	<div class="col-sm-3"> 
 			      <input name="voto" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="appello">IDAppello:</label>
-			    	<div class="col-sm-3"> 
-			      <input name="appello" type="text" class="form-control" />
-			    </div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="Corso">IDCorso:</label>
-			    	<div class="col-sm-3"> 
-			      <input name="Corso" type="text" class="form-control" />
 			    </div>
 			  </div>
 			  <div class="form-group"> 
