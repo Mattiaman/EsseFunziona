@@ -2,10 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,17 +13,9 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import model.Admin;
-import model.Appello;
-import model.Corso;
-import model.CorsoDiLaurea;
-import model.PianoDiStudi;
 import model.Professore;
 import model.Studente;
-import model.Utente;
 import persistence.DatabaseManager;
-import persistence.DatiAdmin;
-import persistence.DatiProfessore;
-import persistence.DatiStudente;
 import persistence.dao.AdminDAO;
 import persistence.dao.ProfessoreDAO;
 import persistence.dao.StudenteDAO;
@@ -68,10 +56,6 @@ public class showData extends HttpServlet{
 			Gson gson=new Gson();
 			out.print(gson.toJson(adm));
 			out.close();
-		}
-		else {
-			RequestDispatcher dispacher = req.getRequestDispatcher("startMenu.html");
-			dispacher.forward(req, resp);
 		}
 	}
 	
