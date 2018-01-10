@@ -28,13 +28,15 @@ public class addTax extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String idTassa = req.getParameter("idTassa");
 		String importoTassa = req.getParameter("importoTassa");
 		String nomeTassa = req.getParameter("nomeTassa");
 		String descrizioneTassa = req.getParameter("descrizioneTassa");
 		String adminTassa = req.getParameter("adminTassa");
 	
-		Tassa tax = new Tassa(Long.parseLong(idTassa), Float.parseFloat(importoTassa), nomeTassa, descrizioneTassa);
+		Tassa tax = new Tassa();
+		tax.setImporto(Float.parseFloat(importoTassa));
+		tax.setDescrizione(descrizioneTassa);
+		tax.setNome(nomeTassa);
 
 		AdminDAO adminDAO = DatabaseManager.getInstance().getDaoFactory().getAdminDAO();
 

@@ -2,14 +2,17 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Area Amministratore</title>
+<title>Area Admin</title>
 </head>
 
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
+<script src="js/loaderTasse.js"></script>
+
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
+<LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
   
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
@@ -17,8 +20,7 @@
 		<figcaption>Servizi online per lo studente</figcaption>		
 	</figure>
 
-
-	<section class="col-sm-2">
+<section class="col-sm-2">
 	<div class="wrapper">
   		<nav class="vertical">
     		<div >
@@ -68,16 +70,30 @@
 	</div>
 	</section>
 	
+
+
 	
-	<div class="col-sm-10">
-	<hgroup>
-	<h4>Benvenuti nella vostra area personale della paittaforma web EsseFunziona</h4>
-	<h5>Utilizzando il menu qui sopra potrete usufruire di tutti i servizi forniti dal sistema</h5>
-	</hgroup>
+	<br><div class="container">
+	  <div class="table-responsive">          
+	  <table class="table" id="tabellaTasse">
+	    <thead>
+	      <tr>
+	        <th>ID Tassa</th>
+	        <th>Importo Tassa</th>
+	        <th>Nome Tassa</th>
+	        <th>Descrizione Tassa</th>
+	        <th>Elimina Tassa</th>
+	      </tr>
+	    </thead>
+	    <tbody id="listaTasse">
+	      
+	    </tbody>
+	  </table>
+	  </div>
 	</div>
+
 	
-	
-	
-	
+
+
 </body>
 </html>

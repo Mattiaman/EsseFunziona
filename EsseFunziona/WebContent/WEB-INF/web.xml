@@ -84,6 +84,15 @@
   </servlet-mapping>  
   
   <servlet>
+    <servlet-name>takeTasseServlet</servlet-name>
+    <servlet-class>controller.takeTasse</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeTasseServlet</servlet-name>
+    <url-pattern>/tasse</url-pattern>
+  </servlet-mapping> 
+  
+  <servlet>
     <servlet-name>takeAppelliServlet</servlet-name>
     <servlet-class>controller.takeAppelli</servlet-class>
   </servlet>
