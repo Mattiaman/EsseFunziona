@@ -77,11 +77,11 @@ $(document).ready(function() {
 					'</div></li>'+
 					'<li><label for="segreteria">Segreteria</label><input type="radio" name="verticalMenu" id="segreteria" />'+
 					'<div><ul>'+    		
-					'<li><a href="aggiuntaTasse.html">Aggiungere Tasse</a></li>'+
-					'<li><a href="aggiuntaBandi.html">Pubblicare Bandi/News</a></li>'+
-					'<li><a href="aggiuntaCorsi.html">Aggiungere Corsi</a></li>'+
+					'<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>'+
+					'<li><a href="aggiuntaBandi.jsp">Pubblicare Bandi/News</a></li>'+
+					'<li><a href="aggiuntaCorsi.jsp">Aggiungere Corsi</a></li>'+
 					'<li><a href="aggiuntaCorsiDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>'+
-					'<li><a href="signupStudente.html">Registra Studente</a></li>'+
+					'<li><a href="signupStudente.jsp">Registra Studente</a></li>'+
 					'<li><a href="signupProfessore.jsp">Registra Professore</a></li>'+
 					'</ul></div></li></ul>');
 		}
