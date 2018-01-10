@@ -12,7 +12,7 @@ public class Admin extends Utente {
 	}
 
 	public Admin() {
-		// TODO Auto-generated constructor stub
+		super("admin");
 	}
 
 	public String getNomeUtente() {

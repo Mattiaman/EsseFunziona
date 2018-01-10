@@ -13,6 +13,10 @@ public abstract class Utente {
 		
 	}
 	
+	public Utente(String tipo) {
+		this.tipo = tipo;
+	}
+	
 	public Utente(String nome, String cognome, Date dataDiNascita, String email, String tipo) {
 		this.nome = nome;
 		this.cognome = cognome;

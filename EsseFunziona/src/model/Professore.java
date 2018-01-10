@@ -22,7 +22,7 @@ public class Professore extends Utente {
 	}
 
 	public Professore() {
-		// TODO Auto-generated constructor stub
+		super("professore");
 	}
 
 	public String getNomeUtente() {

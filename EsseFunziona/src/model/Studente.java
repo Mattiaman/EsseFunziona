@@ -12,7 +12,7 @@ public class Studente extends Utente {
 	private Set<Tassa> tasse;
 
 	public Studente() {
-		
+		super("studente");
 	}
 	
 	public Studente(String matricola, String nome, String cognome, Date dataDiNascita, String email) {
