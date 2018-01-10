@@ -6,7 +6,7 @@ $(document).ready(function() {
 		var datiAnagrafici=JSON.parse(jsonStringQuotes);
 		
 		var s ='';
-		if(datiAnagrafici.matricola!=null){
+		if(datiAnagrafici.tipo == "studente"){
 			s = $('<label class="control-label col-sm-4" for="nome">Nome</label><label class="control-label col-sm-8">'+datiAnagrafici.nome+
 					'</label><label class="control-label col-sm-4" for="cognome">Cognome</label><label class="control-label col-sm-8">'+datiAnagrafici.cognome+
 					'</label><label class="control-label col-sm-4" for="datadiNascita">Data Di Nascita</label><label class="control-label col-sm-8">'+datiAnagrafici.dataDiNascita+
@@ -14,7 +14,15 @@ $(document).ready(function() {
 					'</label><label class="control-label col-sm-4" for="matricola">Matricola</label><label class="control-label col-sm-8">'+datiAnagrafici.matricola+
 					'</label>');	
 		}
-		else if(datiAnagrafici.nomeUtente!=null){
+		else if(datiAnagrafici.tipo == "professore"){
+			s = $('<label class="control-label col-sm-4" for="nome">Nome</label><label class="control-label col-sm-8">'+datiAnagrafici.nome+
+					'</label><label class="control-label col-sm-4" for="cognome">Cognome</label><label class="control-label col-sm-8">'+datiAnagrafici.cognome+
+					'</label><label class="control-label col-sm-4" for="datadiNascita">Data Di Nascita</label><label class="control-label col-sm-8">'+datiAnagrafici.dataDiNascita+
+					'</label><label class="control-label col-sm-4" for="email">Email</label><label class="control-label col-sm-8">'+datiAnagrafici.email+
+					'</label><label class="control-label col-sm-4" for="nomeUtente">Nome utente</label><label class="control-label col-sm-8">'+datiAnagrafici.nomeUtente+
+					'</label>');	
+		}
+		else if(datiAnagrafici.tipo == "admin"){
 			s = $('<label class="control-label col-sm-4" for="nome">Nome</label><label class="control-label col-sm-8">'+datiAnagrafici.nome+
 					'</label><label class="control-label col-sm-4" for="cognome">Cognome</label><label class="control-label col-sm-8">'+datiAnagrafici.cognome+
 					'</label><label class="control-label col-sm-4" for="datadiNascita">Data Di Nascita</label><label class="control-label col-sm-8">'+datiAnagrafici.dataDiNascita+
