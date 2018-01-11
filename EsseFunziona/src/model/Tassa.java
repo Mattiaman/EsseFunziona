@@ -35,6 +35,7 @@ public class Tassa {
 		this.admin = admin;
 	}
 
+
 	public long getId() {
 		return id;
 	}

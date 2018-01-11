@@ -69,7 +69,8 @@ $(document).ready(function() {
 					'<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>'+
 					'<li><a href="corsi.html">Corsi</a></li>'+
 					'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+
-					'<li><a href="bandiNews.html">Bandi/News</a></li></ul>'+
+					'<li><a href="bandiNews.html">Bandi/News</a></li>'+
+					'<li><a href="tasseAdmin.html">Tasse</a></li></ul>'+
 					'</div></li>'+
 					'<li><label for="utenti">Utenti</label><input type="radio" name="verticalMenu" id="utenti" />'+
 					'<div><ul>'+
@@ -78,7 +79,7 @@ $(document).ready(function() {
 					'</div></li>'+
 					'<li><label for="segreteria">Segreteria</label><input type="radio" name="verticalMenu" id="segreteria" />'+
 					'<div><ul>'+    		
-					'<li><a href="aggiuntaTasse.html">Aggiungere Tasse</a></li>'+
+					'<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>'+
 					'<li><a href="aggiuntaBandi.html">Pubblicare Bandi/News</a></li>'+
 					'<li><a href="aggiuntaCorsi.html">Aggiungere Corsi</a></li>'+
 					'<li><a href="aggiuntaCorsiDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>'+
