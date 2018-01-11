@@ -17,6 +17,7 @@
   
 
 <script type="text/javascript" src="js/loaderMenu.js"></script>
+<script type="text/javascript" src="js/loaderProfessori2.js"></script>
   
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
@@ -33,31 +34,47 @@
 	</section>	
 
 
+<section class="col-sm-10">
+
 	<br>
-		<div class="col-sm-10">
+		
+
+<br>
+	<div class="container">
+	  <div class="table-responsive">          
+	  <table class="table" id="tabellaProfessori">
+	    <thead>
+	      <tr>
+	      	<th>Nome Utente</th>
+	        <th>Nome</th>
+	        <th>Cognome</th>
+	        <th>Data di Nascita</th>
+	        <th>E-mail</th>
+	      </tr>
+	    </thead>
+	    <tbody id="listaProfessori">
+	    </tbody>
+	  </table>
+	  </div>
+	</div>
+
+
+<div>
 		
 			<form class="form-horizontal" method="post" action="richiestaRicevimento">
 			  <div class="form-group">
 				<label class="control-label col-sm-2" for="professoreRicevimento">Professore:</label>
-				<select name="professoreRicevimento" class="control-label col-sm-4" class="form-control"  >
-					
+				<select name="professoreRicevimento" class="control-label col-sm-4" class="form-control" id="opzioniProfessori" >
 				</select>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="dataRicevimento">Data:</label>
-			    <div class="col-sm-4">
-			     <input name="dataRicevimento" type="date" class="form-control" /> 
-			    </div> 
 			  </div>
 			  </form>	
 			  <div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
-						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>
 						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
 					</div>
 			  </div>
 		</div>
 
+</section>
 </body>
 </html>
