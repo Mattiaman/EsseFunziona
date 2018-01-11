@@ -1,5 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="prof" class="model.Professore" scope="request" />
+<jsp:setProperty name="prof" property="nome" value="un Nome"/>
 
 
 <html>
@@ -60,21 +62,28 @@
 
 
 <div>
-		
-			<form class="form-horizontal" method="post" action="richiestaRicevimento">
-			  <div class="form-group">
-				<label class="control-label col-sm-2" for="professoreRicevimento">Professore:</label>
-				<select name="professoreRicevimento" class="control-label col-sm-4" class="form-control" id="opzioniProfessori" >
+		<c:if test="${professore != null }">
+			<h1>Ho chiesto il ricevimento al professore</h1>
+			<h3>${professore.nomeUtente}</h3>
+		</c:if>
+		<c:if test="${professore == null }">
+		<form class="form-horizontal" method="post" action="chiedereRicevimento">
+		  <div class="form-group">
+			<label class="control-label col-sm-2" for="professoreRicevimento">Professore:</label>
+			<div class="col-sm-5">
+				<select name="professoreRicevimento" id="opzioniProfessori">
 				</select>
-			  </div>
-			  </form>	
-			  <div class="form-group">
-					<div class="col-sm-offset-2 col-sm-10">
-						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
-					</div>
-			  </div>
-		</div>
+			</div>
+		  </div>
+		  </form>	
+		  <div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
+				</div>
+		  </div>
+		</c:if>
 
+</div>
 </section>
 </body>
 </html>

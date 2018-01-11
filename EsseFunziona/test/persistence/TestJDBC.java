@@ -16,6 +16,7 @@ import java.util.Set;
 import model.*;
 
 public class TestJDBC {
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		DAOFactory factory= new PostgresDAOFactory();
 		
@@ -515,7 +516,7 @@ public class TestJDBC {
 
 		appelloDAO.delete(appello);
 		System.out.println("delete "+(c++));
-		
+	
 	}
 	
 }	

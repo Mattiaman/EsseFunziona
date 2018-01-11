@@ -48,6 +48,7 @@ $(document).ready(function() {
 					'<li><label for="studenti">Studenti</label><input type="radio" name="verticalMenu" id="studenti" />'+
 					'<div><ul>'+
 					'<li><a href="studenti.html">Studenti</a></li>'+
+					'<li><a href="richiesteRicevimento.jsp">Richieste Ricevimenti</a></li>'+
 					'</ul></div></li>'+
 					'<li><label for="esami">Esami</label><input type="radio" name="verticalMenu" id="esami" />'+
 					'<div><ul>'+

@@ -1,7 +1,12 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,7 +21,7 @@ import persistence.DatabaseManager;
 import persistence.dao.ProfessoreDAO;
 import persistence.dao.StudenteDAO;
 
-public class askRicevimento extends HttpServlet{
+public class requestRicevimento  extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -29,23 +34,29 @@ public class askRicevimento extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 		HttpSession session = req.getSession();
-
-		String matricola = (String) session.getAttribute("matricola");
-		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();	
-		Studente studente = studenteDAO.findByPrimaryKey(matricola);	
+		String nomeUtenteProfessore = (String) session.getAttribute("nomeUtenteProfessore");
+		String matricola = req.getParameter("richiesteRicevimenti");
+		String dataRicevimento = req.getParameter("dataRicevimento");
 		
-		String nomeUtente = req.getParameter("professoreRicevimento");
+		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();		
+		Studente studente = studenteDAO.findByPrimaryKey(matricola);
+		
 		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();		
-		Professore professore = professoreDAO.findByPrimaryKey(nomeUtente);
+		Professore professore = professoreDAO.findByPrimaryKey(nomeUtenteProfessore);
+		professore.getStudentiRicevimento().remove(studente);
+		
 
-		professore.addStudente(studente);
+		DateFormat format = new SimpleDateFormat("dd-mm-yyyy", Locale.ITALIAN);
+		Date date;
+		try {
+			date = format.parse(dataRicevimento);
+			professoreDAO.creaRicevimento(matricola, nomeUtenteProfessore, date);
+		} catch (ParseException e) { e.printStackTrace();}
 		
-		professoreDAO.update(professore);
-		
-		req.setAttribute("professore", professore);
+		req.setAttribute("Studente", studente);
 		RequestDispatcher dispacher = req.getRequestDispatcher("chiedereRicevimento.jsp");
 		dispacher.forward(req, resp);
-	
 	}
 }

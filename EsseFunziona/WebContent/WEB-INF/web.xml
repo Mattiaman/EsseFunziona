@@ -202,5 +202,23 @@
     <url-pattern>/datiAnagrafici</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>askRicevimentoServlet</servlet-name>
+    <servlet-class>controller.askRicevimento</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>askRicevimentoServlet</servlet-name>
+    <url-pattern>/chiedereRicevimento</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>requestRicevimentoServlet</servlet-name>
+    <servlet-class>controller.requestRicevimento</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>requestRicevimentoServlet</servlet-name>
+    <url-pattern>/richiesteRicevimento</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>

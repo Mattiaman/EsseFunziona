@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Appello;
-import model.CorsoDiLaurea;
 import model.Professore;
 import model.Studente;
 import persistence.dao.ProfessoreDAO;
@@ -259,6 +257,28 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			data.setNomeUtente(s.getNomeUtente());
 		}
 		return data;
+	}
+
+	@Override
+	public void creaRicevimento(String matricola, String nomeUtenteProf, java.util.Date date) {
+		// TODO Auto-generated method stub
+		
+		Connection connection=this.databaseData.getConnection();
+		String insert="insert into riceve(id, matricola, nomeUtenteProfessore, dataRicevimento, accettato) values (?,?,?,?,?)";
+		try {
+			Long id=IdGenerator.getId(connection);
+			PreparedStatement statement = connection.prepareStatement(insert);
+			statement.setLong(1, id);
+			statement.setString(2, matricola);
+			statement.setString(3, nomeUtenteProf);
+			statement.setDate(4,  new Date(date.getTime()));
+			statement.setBoolean(5, true);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }

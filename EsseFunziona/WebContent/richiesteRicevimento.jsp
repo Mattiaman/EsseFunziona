@@ -17,7 +17,7 @@
 <LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
   
 
-<script type="text/javascript" src="js/loaderRicevimenti.js"></script>  
+<script type="text/javascript" src="js/loaderStudenti2.js"></script>  
   
 
 <script type="text/javascript" src="js/loaderMenu.js"></script>
@@ -37,9 +37,31 @@
 	</section>	
 
 	<div class="col-sm-10"><br>
+	
+	
+	
+		<div class="container">
+		  <div class="table-responsive">          
+		  <table class="table" id="tabellaStudenti">
+		    <thead>
+		      <tr>
+		      	<th>Nome Utente</th>
+		        <th>Nome</th>
+		        <th>Cognome</th>
+		        <th>Data di Nascita</th>
+		        <th>E-mail</th>
+		      </tr>
+		    </thead>
+		    <tbody id="listaStudenti">
+		    </tbody>
+		  </table>
+		  </div>
+		</div>
+		
+	
 		<form class="form-horizontal" method="post" action="CreazioneRicevimento">
 		  <div class="form-group">
-		    <label class="control-label col-sm-2" for="richiesteRicevimenti">Ricevimento:</label>
+		    <label class="control-label col-sm-2" for="richiesteRicevimenti">Studente:</label>
 		     <select name="richiesteRicevimenti" class="control-label col-sm-4" class="form-control" id="opzioniRicevimenti">
 			</select>
 		  </div>

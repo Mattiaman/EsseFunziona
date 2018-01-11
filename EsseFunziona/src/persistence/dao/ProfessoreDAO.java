@@ -1,10 +1,10 @@
 package persistence.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import model.Professore;
 import persistence.DatiProfessore;
-import persistence.DatiStudente;
 
 public interface ProfessoreDAO {
 
@@ -16,5 +16,6 @@ public interface ProfessoreDAO {
 	public DatiProfessore findByPrimaryKeyData(String nomeUtente);
 	
 	public void setPassword(Professore prof, String password);	
+	void creaRicevimento(String matricola, String nomeUtenteProf, Date date);
 
 }

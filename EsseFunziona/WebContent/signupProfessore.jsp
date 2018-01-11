@@ -17,6 +17,8 @@
 
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
 
+<script type="text/javascript" src="js/loaderMenu.js"></script>
+
 <body style="background: lightblue">
 	<figure style="text-align: left">
 		<a href="images/logo_unical.png"><img class="img-responsive" src="images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>

@@ -256,5 +256,6 @@ public class StudenteJDBC implements StudenteDAO {
 		}
 		return data;
 	}
+		
 
 }
