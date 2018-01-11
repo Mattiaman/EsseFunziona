@@ -1,5 +1,5 @@
 
-function caricaProfessori(){
+function caricaCorsi(){
 	var xhr= new XMLHttpRequest();
 	xhr.open('get',"corsi",true);
 	xhr.onload=function(){
@@ -14,5 +14,5 @@ function caricaProfessori(){
 }
 
 $(document).ready(function() {
-	caricaProfessori();	
+	caricaCorsi();	
 });

@@ -220,5 +220,14 @@
     <url-pattern>/richiesteRicevimento</url-pattern>
   </servlet-mapping>
   
+    <servlet>
+    <servlet-name>addEsitoServlet</servlet-name>
+    <servlet-class>controller.addEsito</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addEsitoServlet</servlet-name>
+    <url-pattern>/aggiuntaEsito</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>
