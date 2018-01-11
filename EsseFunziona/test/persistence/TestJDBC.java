@@ -19,7 +19,7 @@ public class TestJDBC {
 	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		DAOFactory factory= new PostgresDAOFactory();
-		
+
 		UtilityJDBC utility=factory.getUtilityJDBC();
 		utility.dropDatabase();
 		utility.createDatabase();
@@ -516,7 +516,7 @@ public class TestJDBC {
 
 		appelloDAO.delete(appello);
 		System.out.println("delete "+(c++));
-	
+
 	}
 	
 }	

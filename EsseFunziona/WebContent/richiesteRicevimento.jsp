@@ -59,7 +59,7 @@
 		</div>
 		
 	
-		<form class="form-horizontal" method="post" action="CreazioneRicevimento">
+		<form class="form-horizontal" method="post" action="richiesteRicevimento">
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="richiesteRicevimenti">Studente:</label>
 		     <select name="richiesteRicevimenti" class="control-label col-sm-4" class="form-control" id="opzioniRicevimenti">
