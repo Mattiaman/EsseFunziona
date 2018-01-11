@@ -162,6 +162,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			this.removeForeignKeyFromMateriale(professore, connection);
 			this.removeForeignKeyFromAppello(professore, connection);
 			statement.executeUpdate();
+			connection.commit();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

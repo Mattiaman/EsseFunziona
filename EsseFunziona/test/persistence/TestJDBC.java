@@ -515,8 +515,6 @@ public class TestJDBC {
 		System.out.println("delete "+(c++));
 
 		appelloDAO.delete(appello);
-		System.out.println("delete "+(c++));
-
-	}
+		System.out.println("delete "+(c++));	}
 	
 }	
