@@ -34,9 +34,9 @@ function deleteProfessore() {
 		var nomeUtente = $(this).parent().parent().find('#nomeUtenteProfessore').text();
 		console.log(nomeUtente);
 		$.ajax({
-			url : 'eliminaProfessore',
+			url : 'eliminaProf',
 			data : {
-				nomeUtente : nomeUtente
+				id : nomeUtente
 			},// $(this).parent().parent().find('#idTassa').serialize(),
 			type : 'POST'
 		});
