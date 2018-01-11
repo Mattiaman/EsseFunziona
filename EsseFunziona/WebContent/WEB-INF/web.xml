@@ -144,7 +144,34 @@
   <servlet-mapping>
     <servlet-name>deleteTaxServlet</servlet-name>
     <url-pattern>/eliminaTassa</url-pattern>
-   </servlet-mapping>   
+   </servlet-mapping>  
+   
+  <servlet>
+    <servlet-name>deleteCorsoServlet</servlet-name>
+    <servlet-class>controller.deleteCorso</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteCorsoServlet</servlet-name>
+    <url-pattern>/eliminaCorso</url-pattern>
+   </servlet-mapping> 
+   
+     <servlet>
+    <servlet-name>deleteAppelloServlet</servlet-name>
+    <servlet-class>controller.deleteAppello</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteAppelloServlet</servlet-name>
+    <url-pattern>/eliminaAppello</url-pattern>
+   </servlet-mapping> 
+
+  <servlet>
+    <servlet-name>logoutServlet</servlet-name>
+    <servlet-class>controller.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>logoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+   </servlet-mapping> 
 
   <servlet>
     <servlet-name>addBandiServlet</servlet-name>
