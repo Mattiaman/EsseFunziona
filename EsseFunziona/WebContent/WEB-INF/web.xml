@@ -138,6 +138,15 @@
    </servlet-mapping>   
    
   <servlet>
+    <servlet-name>deleteTaxServlet</servlet-name>
+    <servlet-class>controller.deleteTax</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteTaxServlet</servlet-name>
+    <url-pattern>/eliminaTassa</url-pattern>
+   </servlet-mapping>   
+
+  <servlet>
     <servlet-name>addBandiServlet</servlet-name>
     <servlet-class>controller.addBandi</servlet-class>
   </servlet>
