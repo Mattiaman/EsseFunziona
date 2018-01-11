@@ -264,5 +264,22 @@
     <url-pattern>/aggiuntaEsito</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>deleteStudenteServlet</servlet-name>
+    <servlet-class>controller.deleteStudente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteStudenteServlet</servlet-name>
+    <url-pattern>/eliminaStudente</url-pattern>
+   </servlet-mapping> 
+   
+  <servlet>
+    <servlet-name>deleteProfessoreServlet</servlet-name>
+    <servlet-class>controller.deleteProfessore</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteProfessoreServlet</servlet-name>
+    <url-pattern>/eliminaProfessore</url-pattern>
+   </servlet-mapping> 
   
 </web-app>
