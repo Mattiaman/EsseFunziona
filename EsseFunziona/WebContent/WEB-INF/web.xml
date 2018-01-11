@@ -145,6 +145,14 @@
     <servlet-name>deleteTaxServlet</servlet-name>
     <url-pattern>/eliminaTassa</url-pattern>
    </servlet-mapping>  
+     <servlet>
+    <servlet-name>deleteCdlServlet</servlet-name>
+    <servlet-class>controller.deleteCdl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deleteCdlServlet</servlet-name>
+    <url-pattern>/eliminaCdl</url-pattern>
+   </servlet-mapping>  
    
   <servlet>
     <servlet-name>deleteCorsoServlet</servlet-name>
