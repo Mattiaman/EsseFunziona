@@ -17,6 +17,7 @@ $(document).ready(function() {
 					'<li><a href="corsi.html">Corsi</a></li>'+
 					'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+
 					'<li><a href="bandiNews.html">Bandi/News</a></li>'+
+					'<li id="logout"><a href="startMenu.html">Logout</a></li>'+
 					'</ul></div></li>'+
 					'<li><label for="segreteria">Segreteria</label><input type="radio" name="verticalMenu" id="segreteria" />'+
 					'<div><ul>'+
@@ -44,6 +45,7 @@ $(document).ready(function() {
 					'<li><a href="corsi.html">Corsi</a></li>'+
 					'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+
 					'<li><a href="bandiNews.html">Bandi/News</a></li>'+
+					'<li id="logout"><a href="startMenu.html">Logout</a></li>'+
 					'</ul></div></li>'+
 					'<li><label for="studenti">Studenti</label><input type="radio" name="verticalMenu" id="studenti" />'+
 					'<div><ul>'+
@@ -70,7 +72,8 @@ $(document).ready(function() {
 					'<li><a href="corsi.html">Corsi</a></li>'+
 					'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+
 					'<li><a href="bandiNews.html">Bandi/News</a></li>'+
-					'<li><a href="tasseAdmin.html">Tasse</a></li></ul>'+
+					'<li><a href="tasseAdmin.html">Tasse</a></li>'+
+					'<li id="logout"><a href="startMenu.html">Logout</a></li></ul>'+
 					'</div></li>'+
 					'<li><label for="utenti">Utenti</label><input type="radio" name="verticalMenu" id="utenti" />'+
 					'<div><ul>'+
@@ -89,7 +92,22 @@ $(document).ready(function() {
 		}
 		
 		$("#navMenu").append(s);
+		$('#logout').on('click',function(){
+			$.ajax({
+				url : 'logout',
+				//data: {id:"000"},
+				type : 'POST'
+			});
+		})
+		//doLogout()
 	}
 	xhr.send(null);
-	
 });
+
+function doLogout(){
+	$('#logout').on('click',function(){
+		var xhrOut=new XMLHttpRequest();
+		xhrOut.open('get',"Logout",true)
+		xhrOut.send(null);
+	})
+}
