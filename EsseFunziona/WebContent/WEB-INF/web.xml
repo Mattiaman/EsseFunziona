@@ -11,6 +11,15 @@
   </welcome-file-list>
   
   
+   <servlet>
+    <servlet-name>EditCdlServlet</servlet-name>
+    <servlet-class>controller.EditCdl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditCdlServlet</servlet-name>
+    <url-pattern>/EditCdl</url-pattern>
+  </servlet-mapping>  
+  
   <servlet>
     <servlet-name>SignUpStudenteServlet</servlet-name>
     <servlet-class>controller.SignUpStudente</servlet-class>

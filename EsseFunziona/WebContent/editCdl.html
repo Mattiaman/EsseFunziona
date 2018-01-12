@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Area Professore</title>
 </head>
 
@@ -9,11 +9,11 @@
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
-<script src="js/loaderCorsi.js"></script>
-
 <LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
 
+<script src="js/loadDropDownStudenti.js"></script>
+<script src="js/changeCorsi.js"></script>
 
 <script type="text/javascript" src="js/loaderMenu.js"></script>
   
@@ -31,14 +31,31 @@
 	</div>
 	</section><br><br>	
 	<div>
-		<div><label class="control-label col-sm-3" for="nomecdl">Nome Corso di Laurea:</label><input type="text" id="nomeCdl"/></div>
-	<br><div class="container">
+		<div><div><label class="control-label col-sm-3" for="corsoDiLaurea">Corso di Laurea:</label><select name="corsoDiLaurea" id="listaCdl">
+		</select></div><br><div hidden="true" id="setNewName"><label class="control-label col-sm-3" for="newName">Nome Corso di Laurea:</label><input type="text" name="newName" id="newName"/></div></div>
+	<br><br><div class="container">
 	  <div class="table-responsive">          
+	  <table class="table" id="tabellaCorsiIn">
+	    <thead>
+	      <tr>
+	        <th>ID Corso</th>
+	        <th>Nome Corso</th>
+	        <th>Rimuovi</th>
+	      </tr>
+	    </thead>
+	    <tbody id="listaCorsiIn">
+	      
+	    </tbody>
+	  </table>
+<!-- 	  </div> -->
+	  
+<!-- 	  <div class="table-responsive">           -->
 	  <table class="table" id="tabellaCorsi">
 	    <thead>
 	      <tr>
 	        <th>ID Corso</th>
 	        <th>Nome Corso</th>
+	        <th>Aggungi</th>
 	      </tr>
 	    </thead>
 	    <tbody id="listaCorsi">
@@ -46,7 +63,9 @@
 	    </tbody>
 	  </table>
 	  </div>
+	  	  	<div align="right" ><button id="changeName">Cambia nome</button>  <button id="save">Salva</button></div>
 	</div>
+	
 </div>
 </body>
 </html>
