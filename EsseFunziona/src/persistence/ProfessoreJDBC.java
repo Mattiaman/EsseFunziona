@@ -265,7 +265,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		// TODO Auto-generated method stub
 		
 		Connection connection=this.databaseData.getConnection();
-		String insert="insert into riceve(id, matricola, nomeUtenteProfessore, dataRicevimento, accettato) values (?,?,?,?,?)";
+		String insert="insert into riceve(id, matricolaStudente, nomeUtenteProfessore, dataRicevimento, accettato) values (?,?,?,?,?)";
 		try {
 			Long id=IdGenerator.getId(connection);
 			PreparedStatement statement = connection.prepareStatement(insert);

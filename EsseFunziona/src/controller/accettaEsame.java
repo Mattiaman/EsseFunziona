@@ -1,22 +1,18 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Professore;
 import model.Studente;
 import persistence.DatabaseManager;
-import persistence.dao.ProfessoreDAO;
 import persistence.dao.StudenteDAO;
 
-public class askRicevimento extends HttpServlet{
+public class accettaEsame extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {}
 	
@@ -30,14 +26,8 @@ public class askRicevimento extends HttpServlet{
 		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();	
 		Studente studente = studenteDAO.findByPrimaryKey(matricola);	
 		
-		String nomeUtente = req.getParameter("professoreRicevimento");
-		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();		
-		Professore professore = professoreDAO.findByPrimaryKey(nomeUtente);
-	
-		req.setAttribute("professore", professore);
-		
-		RequestDispatcher dispacher = req.getRequestDispatcher("chiedereRicevimento.jsp");
-		dispacher.forward(req, resp);
+		String nomeUtente = req.getParameter("");
+
 	
 	}
 }
