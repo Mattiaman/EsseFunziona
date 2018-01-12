@@ -303,8 +303,27 @@ public class AppelloJDBC implements AppelloDAO {
 	
 	@Override
 	public void aggiungiVoto(String matricola, Long idAppello, Long voto) {
-		
-		
+		Connection connection=this.databaseData.getConnection();
+		String insert="insert into prenota(id, idAppello, matricolaStudente, voto) values (?,?,?,?)";
+		try {
+			Long id=IdGenerator.getId(connection);
+			PreparedStatement statement = connection.prepareStatement(insert);
+			statement.setLong(1, id);
+			statement.setLong(2, idAppello);
+			statement.setString(3, matricola);
+			statement.setLong(4, voto);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 	}
 	

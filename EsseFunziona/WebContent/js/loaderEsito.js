@@ -35,7 +35,8 @@ function caricaAppelli(crs){
 			for ( var i in appelli) {
 				var c;
 				if(appelli[i].corso.id == crs.value){
-					c = $('<option value=\"'+appelli[i].id+'\">'+ appelli[i].data + '</option>');
+					if(appelli[i].professore.nomeUtente == datiAnagrafici.nomeUtente)
+						c = $('<option value=\"'+appelli[i].id+'\">'+ appelli[i].data + '</option>');
 				}	
 				$("#listaAppelli").append(c);
 			}
