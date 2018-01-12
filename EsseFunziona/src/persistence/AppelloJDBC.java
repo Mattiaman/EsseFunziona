@@ -336,7 +336,7 @@ public class AppelloJDBC implements AppelloDAO {
 	@Override
 	public void aggiungiVoto(String matricola, long idAppello, long voto) {
 		Connection connection=this.databaseData.getConnection();
-		String insert="insert into prenota(id, idAppello, matricolaStudente, voto) values (?,?,?,?)";
+		String insert="insert into esame(id, idAppello, matricolaStudente, voto) values (?,?,?,?)";
 		try {
 			Long id=IdGenerator.getId(connection);
 			PreparedStatement statement = connection.prepareStatement(insert);

@@ -30,7 +30,8 @@ public class UtilityJDBC {
 					"create table devePagare(\"id\" bigint primary key, matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"), idTassa bigint REFERENCES tassa(\"id\"), pagata boolean);"+
 					"create table appartieneA(\"id\" bigint primary key, idCorso bigint REFERENCES corso(\"id\"), idCorsoDiLaurea bigint REFERENCES corsoDiLaurea(\"id\"));"+
 					"create table contiene(\"id\" bigint primary key, idCorso bigint REFERENCES corso(\"id\"), idPianoDiStudi bigint REFERENCES pianoDiStudi(\"id\"));"+
-					"create table prenota(\"id\" bigint primary key, idAppello bigint REFERENCES appello(\"id\"), matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"), voto bigint);"+
+					"create table prenota(\"id\" bigint primary key, idAppello bigint REFERENCES appello(\"id\"), matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"));"+
+					"create table esame(\"id\" bigint primary key, idAppello bigint REFERENCES appello(\"id\"), matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"), voto bigint);"+
 					"create table riceve(\"id\" bigint primary key, matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"), nomeUtenteProfessore VARCHAR(20) REFERENCES professore(\"nomeUtente\"), dataRicevimento DATE, accettato boolean);";
 				
 			PreparedStatement statement=connection.prepareStatement(create);
@@ -69,8 +70,8 @@ public class UtilityJDBC {
 					"drop table if exists appartienea CASCADE;"+
 					"drop table if exists contiene CASCADE;"+
 					"drop table if exists riceve CASCADE;"+
-					"drop table if exists prenota CASCADE;";
-		
+					"drop table if exists prenota CASCADE;"+
+					"drop table if exists esame CASCADE;";
 			PreparedStatement statement=connection.prepareStatement(drop);
 			statement.executeUpdate();
 			System.out.println("cancellato database");
@@ -148,6 +149,10 @@ public class UtilityJDBC {
 			delete="delete FROM prenota";
 			statement=connection.prepareStatement(delete);
 			statement.executeUpdate();
+			
+			delete="delete FROM esame";
+			statement=connection.prepareStatement(delete);
+			statement.executeUpdate();
 
 			delete="delete FROM riceve";
 			statement=connection.prepareStatement(delete);
@@ -166,4 +171,6 @@ public class UtilityJDBC {
 			}
 		}
 	}
+
+
 }
