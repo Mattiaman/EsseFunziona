@@ -14,7 +14,7 @@ var xhr = new XMLHttpRequest();
 				for( var j in appelli[i].studentiIscritti){
 					var c;
 					if (appelli[i].studentiIscritti[j].matricola == datiAnagrafici.matricola){
-						c = $('<tr> <th>' + appelli[i].corso.nome + '</th> <th>' + appelli[i].dataAppello + '</th> </tr>');
+						c = $('<tr> <th>' + appelli[i].corso.nome + '</th> <th>' + appelli[i].data + '</th> </tr>');
 		                $("#listaPrenotazioni").append(c);
 					}
 				}

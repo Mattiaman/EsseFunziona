@@ -1,14 +1,16 @@
 function caricaCorsi(){
 	var xhr= new XMLHttpRequest();
-	xhr.open('get',"corsi",true);
+	xhr.open('get',"datiAnagrafici",true);
 	xhr.onload=function(){
 		var jsonStringQuotes = xhr.responseText;
-		var corsi=JSON.parse(jsonStringQuotes);
+		var datiAnagrafici=JSON.parse(jsonStringQuotes);
 		var v = $('<option value=""></option>');
 		$("#listaCorsi").append(v);
-		for(var i in corsi){
-			var c = $('<option value=\"'+corsi[i].id+'\">'+corsi[i].nome+'</option>');
-			$("#listaCorsi").append(c);
+		if(datiAnagrafici.tipo == "studente"){ 
+			for(var i in datiAnagrafici.corsoDiLaurea.corsi){
+				var c = $('<option value=\"'+datiAnagrafici.corsoDiLaurea.corsi[i].id+'\">'+datiAnagrafici.corsoDiLaurea.corsi[i].nome+'</option>');
+				$("#listaCorsi").append(c);
+			}
 		}
 	};
 	xhr.send(null)

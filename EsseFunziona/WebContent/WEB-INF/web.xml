@@ -265,13 +265,22 @@
     <url-pattern>/richiesteRicevimento</url-pattern>
   </servlet-mapping>
   
-    <servlet>
+  <servlet>
     <servlet-name>addEsitoServlet</servlet-name>
     <servlet-class>controller.addEsito</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>addEsitoServlet</servlet-name>
     <url-pattern>/aggiuntaEsito</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>addPrenotazioneServlet</servlet-name>
+    <servlet-class>controller.addPrenotazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>addPrenotazioneServlet</servlet-name>
+    <url-pattern>/aggiuntaPrenotazione</url-pattern>
   </servlet-mapping>
   
   <servlet>

@@ -36,7 +36,14 @@
 	
 	<br><div class="col-sm-10">
 		
-			<form class="form-horizontal" method="post" action="aggiuntaEsiti">
+		 <c:if test="${appello != null}">
+			<h1>Ho effettuato la prenotazione al seguente appello</h1>
+			<h3>${appello.id}</h3>
+			<h3>${appello.corso.nome}</h3>
+		 </c:if>
+		
+		
+			<form class="form-horizontal" method="post" action="aggiuntaPrenotazione">
 			
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="Corso">IDCorso:</label>

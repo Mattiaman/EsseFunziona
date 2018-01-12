@@ -21,9 +21,6 @@ public class addEsito extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
-		
-		HttpSession session = req.getSession();
 		String matricola =req.getParameter("matricolaStudente");
 		String idAppello = req.getParameter("appello");
 		String voto = req.getParameter("voto");
