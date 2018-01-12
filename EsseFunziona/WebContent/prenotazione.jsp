@@ -16,7 +16,7 @@
   
 
 <script type="text/javascript" src="js/loaderMenu.js"></script>
-<script type="text/javascript" src="js/loaderEsito.js"></script>
+<script type="text/javascript" src="js/loaderPrenotazione.js"></script>
   
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
@@ -36,34 +36,28 @@
 	
 	<br><div class="col-sm-10">
 		
-			<form class="form-horizontal" method="post" action="aggiuntaEsiti">
+		 <c:if test="${appello != null}">
+			<h1>Ho effettuato la prenotazione al seguente appello</h1>
+			<h3>${appello.id}</h3>
+			<h3>${appello.corso.nome}</h3>
+		 </c:if>
+		
+		
+			<form class="form-horizontal" method="post" action="aggiuntaPrenotazione">
 			
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="Corso">Corso:</label>
+			    <label class="control-label col-sm-2" for="Corso">IDCorso:</label>
 			    	<div class="col-sm-5">
 						<select name="corso" id="listaCorsi" onchange="caricaAppelli(this);">
 						</select>
 					</div>
 			  </div>
 			   <div class="form-group">
-			    <label class="control-label col-sm-2" for="appello">Appello:</label>
+			    <label class="control-label col-sm-2" for="appello">IDAppello:</label>
 			    	<div class="col-sm-5">
-						<select name="appello" id="listaAppelli" onchange="caricaStudenti(this);">
+						<select name="appello" id="listaAppelli">
 						</select>
 					</div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="matricolaStudente">Studente:</label>
-			    	<div class="col-sm-5">
-						<select name="matricolaStudente" id="listaStudenti">
-						</select>
-					</div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="voto">Voto:</label>
-			    	<div class="col-sm-3"> 
-			      <input name="voto" type="text" class="form-control" />
-			    </div>
 			  </div>
 			  <div class="form-group"> 
 			    <div class="col-sm-offset-2 col-sm-10">

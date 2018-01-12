@@ -12,28 +12,32 @@ import javax.servlet.http.HttpSession;
 import model.Appello;
 import persistence.DatabaseManager;
 import persistence.dao.AppelloDAO;
+import persistence.dao.StudenteDAO;
 
-public class addEsito extends HttpServlet{
+public class addPrenotazione extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {}
+		// TODO Auto-generated method stub
+		
 	
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String matricola =req.getParameter("matricolaStudente");
+
+		HttpSession session = req.getSession();
+		String matricola = (String) session.getAttribute("matricola");
 		String idAppello = req.getParameter("appello");
-		String voto = req.getParameter("voto");
 		
 		
 		AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
 		Appello appello = appelloDAO.findByPrimaryKey(Long.parseLong(idAppello));
 		
-		appelloDAO.aggiungiVoto(matricola, Long.parseLong(idAppello), Long.parseLong(voto));
+		appelloDAO.aggiungiPrenotazione(matricola, Long.parseLong(idAppello));
 		
 		req.setAttribute("appello", appello);
 		
-		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaEsito.jsp");
+		RequestDispatcher dispacher = req.getRequestDispatcher("prenotazione.jsp");
 		dispacher.forward(req, resp);
 	
 	}

@@ -12,6 +12,8 @@ public interface AppelloDAO {
 	public void update(Appello appello);
 	public void delete(Appello appello);
 	Appello findByPrimaryKeyProxy(long id);
-	List<Appello> findAllProxy();	
+	List<Appello> findAllProxy();
+	void aggiungiPrenotazione(String matricola, Long idAppello);
+	void aggiungiVoto(String matricola, Long idAppello, Long voto);	
 
 }

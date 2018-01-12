@@ -19,6 +19,7 @@
   
 
 <script type="text/javascript" src="js/loaderMenu.js"></script>
+<script type="text/javascript" src="js/loaderCorsi2.js"></script>
   
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
@@ -59,14 +60,9 @@
 			  <div class="form-group">
 			    <label class="control-label col-sm-3" for="corsoAppello">ID Corso:</label>    	
 			    	<div class="col-sm-5"> 
-			      	<input name="corsoAppello" type="text" class="form-control" />
+			      	<select name="corsoAppello" id="listaCorsi">
+			      	</select>
 			      	</div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-3" for="nomeUtente">Nome Utente:</label>
-			    	<div class="col-sm-5"> 
-			      <input name="nomeUtente" type="text" class="form-control" />
-			    	</div>
 			  </div>
 			  <div class="form-group"> 
 			    	<div class="col-sm-offset-3 col-sm-5">
