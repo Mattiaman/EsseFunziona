@@ -15,34 +15,28 @@ import persistence.DatabaseManager;
 import persistence.dao.AppelloDAO;
 import persistence.dao.StudenteDAO;
 
-public class addEsito extends HttpServlet{
+public class deletePrenotazione  extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {}
+		// TODO Auto-generated method stub
+		
 	
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String matricola =req.getParameter("matricolaStudente");
-		String idAppello = req.getParameter("appello");
-		String voto = req.getParameter("voto");
+
+		HttpSession session = req.getSession();
+		String matricola = (String) session.getAttribute("matricola");
+		String idAppello = req.getParameter("idAppello");
 		
-		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
-		Studente studente = studenteDAO.findByPrimaryKey(matricola);
 		
 		AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
 		Appello appello = appelloDAO.findByPrimaryKey(Long.parseLong(idAppello));
 		
-		if(appelloDAO.controllaPrenotazione(matricola,Long.parseLong(idAppello))) {
-			appelloDAO.cancellaPrenotazione(matricola,Long.parseLong(idAppello));
-			appelloDAO.aggiungiVoto(matricola, Long.parseLong(idAppello), Long.parseLong(voto));
-		}
+		appelloDAO.cancellaPrenotazione(matricola, Long.parseLong(idAppello));
 		
-		req.setAttribute("appello", appello);
-		req.setAttribute("studente", studente);
 		
-		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaEsiti.jsp");
-		dispacher.forward(req, resp);
 	
 	}
 }

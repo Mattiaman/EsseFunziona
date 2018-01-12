@@ -275,16 +275,75 @@ public class AppelloJDBC implements AppelloDAO {
 		
 	}
 	
+	
+
+	public boolean controllaPrenotazione(String matricola, long idAppello) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM prenota";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getLong("idAppello") == idAppello) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						return true;	
+					}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+		
+		
+	}
+	
+	
 	@Override
-	public void aggiungiPrenotazione(String matricola, Long idAppello) {
+	public void aggiungiPrenotazione(String matricola, long idAppello) {
 		Connection connection=this.databaseData.getConnection();
 		String insert="insert into prenota(id, idAppello, matricolaStudente, voto) values (?,?,?,NULL)";
+			try {
+				Long id=IdGenerator.getId(connection);
+				PreparedStatement statement = connection.prepareStatement(insert);
+				statement.setLong(1, id);
+				statement.setLong(2, idAppello);
+				statement.setString(3, matricola);
+				statement.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		
+		
+	}
+	
+	
+	@Override
+	public void aggiungiVoto(String matricola, long idAppello, long voto) {
+		Connection connection=this.databaseData.getConnection();
+		String insert="insert into prenota(id, idAppello, matricolaStudente, voto) values (?,?,?,?)";
 		try {
 			Long id=IdGenerator.getId(connection);
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, id);
 			statement.setLong(2, idAppello);
 			statement.setString(3, matricola);
+			statement.setLong(4, voto);
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -299,20 +358,26 @@ public class AppelloJDBC implements AppelloDAO {
 		}
 		
 	}
-	
-	
+
 	@Override
-	public void aggiungiVoto(String matricola, Long idAppello, Long voto) {
+	public void cancellaPrenotazione(String matricola, long idAppello) {
 		Connection connection=this.databaseData.getConnection();
-		String insert="insert into prenota(id, idAppello, matricolaStudente, voto) values (?,?,?,?)";
+		String search="SELECT * FROM prenota";
 		try {
-			Long id=IdGenerator.getId(connection);
-			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setLong(1, id);
-			statement.setLong(2, idAppello);
-			statement.setString(3, matricola);
-			statement.setLong(4, voto);
-			statement.executeUpdate();
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getLong("idAppello") == idAppello) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						String delete="DELETE FROM prenota WHERE id=?";
+						PreparedStatement statementdelete=connection.prepareStatement(delete);
+						statementdelete.setLong(1, result.getLong("id"));
+						connection.setAutoCommit(false);
+						statementdelete.executeUpdate();
+						
+					}
+			}
+			connection.commit();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

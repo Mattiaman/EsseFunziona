@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import model.Appello;
+import model.Corso;
+import model.Studente;
 import persistence.DatabaseManager;
 import persistence.dao.AppelloDAO;
 import persistence.dao.StudenteDAO;
@@ -33,10 +35,12 @@ public class addPrenotazione extends HttpServlet{
 		AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
 		Appello appello = appelloDAO.findByPrimaryKey(Long.parseLong(idAppello));
 		
-		appelloDAO.aggiungiPrenotazione(matricola, Long.parseLong(idAppello));
 		
-		req.setAttribute("appello", appello);
 		
+		if(!appelloDAO.controllaPrenotazione(matricola,Long.parseLong(idAppello))) {
+			appelloDAO.aggiungiPrenotazione(matricola, Long.parseLong(idAppello));
+			req.setAttribute("appello", appello);
+	}
 		RequestDispatcher dispacher = req.getRequestDispatcher("prenotazione.jsp");
 		dispacher.forward(req, resp);
 	
