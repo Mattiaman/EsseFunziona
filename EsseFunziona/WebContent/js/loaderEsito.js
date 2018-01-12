@@ -16,6 +16,9 @@ function caricaCorsi(){
 }
 
 function caricaAppelli(crs){
+	$("#listaStudenti").empty();
+	$("#listaAppelli").empty();
+	
 	var xhr = new XMLHttpRequest();
 	xhr.open('get', "appelli", true);
 	xhr.onload = function() {
