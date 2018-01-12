@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Appello;
 import model.Corso;
@@ -36,10 +37,12 @@ public class addAppello extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		
+		HttpSession session = req.getSession();
+		String nomeUtente = (String) session.getAttribute("nomeUtenteProfessore");
 		String dataAppello = req.getParameter("dataAppello");
 		String corsoAppello = req.getParameter("corsoAppello");
-		String nomeUtente = req.getParameter("nomeUtente");
+		
 		
 		DateFormat format = new SimpleDateFormat("dd-mm-yyyy", Locale.ITALIAN);
 		Date date;

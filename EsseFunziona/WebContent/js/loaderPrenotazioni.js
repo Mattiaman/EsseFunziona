@@ -11,10 +11,10 @@ var xhr = new XMLHttpRequest();
 			var jsonStringQuotes = xhr.responseText;
 			var appelli = JSON.parse(jsonStringQuotes);
 			for ( var i in appelli) {
-				for( var j in appelli.studentiIscritti){
+				for( var j in appelli[i].studentiIscritti){
 					var c;
 					if (appelli[i].studentiIscritti[j].matricola == datiAnagrafici.matricola){
-						c = $('<tr>  <th>' + appelli[i].idAppello + '</th> <th>' + appelli[i].dataAppello + '</th> <th>' + appelli[i].corso.nome + '</th> </tr>');
+						c = $('<tr> <th>' + appelli[i].corso.nome + '</th> <th>' + appelli[i].dataAppello + '</th> </tr>');
 		                $("#listaPrenotazioni").append(c);
 					}
 				}

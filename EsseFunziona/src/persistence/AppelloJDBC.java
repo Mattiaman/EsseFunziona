@@ -275,6 +275,7 @@ public class AppelloJDBC implements AppelloDAO {
 		
 	}
 	
+	@Override
 	public void aggiungiPrenotazione(String matricola, Long idAppello) {
 		Connection connection=this.databaseData.getConnection();
 		String insert="insert into prenota(id, idAppello, matricolaStudente, voto) values (?,?,?,NULL)";
@@ -299,7 +300,9 @@ public class AppelloJDBC implements AppelloDAO {
 		
 	}
 	
-	public void aggiungiVoto(String matricola, Long idAppello, int voto) {
+	
+	@Override
+	public void aggiungiVoto(String matricola, Long idAppello, Long voto) {
 		
 		
 		

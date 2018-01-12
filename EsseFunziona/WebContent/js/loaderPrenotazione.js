@@ -20,6 +20,7 @@ function caricaAppelli(crs){
 	xhr.onload=function(){
 		var jsonStringQuotes = xhr.responseText;
 		var appelli=JSON.parse(jsonStringQuotes);
+		$("#listaAppelli").empty();
 		var v = $('<option value=""></option>');
 		$("#listaAppelli").append(v);
 		for(var i in appelli){
