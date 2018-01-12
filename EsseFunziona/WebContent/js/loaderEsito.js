@@ -16,34 +16,31 @@ function caricaCorsi(){
 }
 
 function caricaAppelli(crs){
-	var xhr= new XMLHttpRequest();
-	xhr.open('get',"appelli",true);
-	xhr.onload=function(){
-
+	var xhr = new XMLHttpRequest();
+	xhr.open('get', "appelli", true);
+	xhr.onload = function() {
 		var xhrA = new XMLHttpRequest();
 		xhrA.open('get', 'datiAnagrafici');
 		xhrA.onload = function() {
 			var jsonStringQuotesA = xhrA.responseText;
 			var datiAnagrafici = JSON.parse(jsonStringQuotesA);
 			var jsonStringQuotes = xhr.responseText;
-			var appelli=JSON.parse(jsonStringQuotes);
-			
+			var appelli = JSON.parse(jsonStringQuotes);
 			$("#listaAppelli").empty();
 			var v = $('<option value=""></option>');
 			$("#listaAppelli").append(v);
-			for(var i in appelli){
-				
+			for ( var i in appelli) {
+				var c;
 				if(appelli[i].corso.id == crs.value){
-					if(appelli[i].professore.nomeUtente == datiAnagrafici.nomeUtente){
-						var c = $('<option value=\"'+appelli[i].id+'\">'+appelli[i].data+'</option>');
-						$("#listaAppelli").append(c);
-					}
-				}
+					c = $('<option value=\"'+appelli[i].id+'\">'+ appelli[i].data + '</option>');
+				}	
+				$("#listaAppelli").append(c);
 			}
-			xhrA.send(null);
-		};
-		xhr.send(null)
-	}
+		}
+		xhrA.send(null)
+	};
+
+	xhr.send(null)
 }
 
 function caricaStudenti(app){
@@ -52,7 +49,7 @@ function caricaStudenti(app){
 	xhr.onload=function(){
 		var jsonStringQuotes = xhr.responseText;
 		var appelli=JSON.parse(jsonStringQuotes);
-		$("#listaAppelli").empty();
+		$("#listaStudenti").empty();
 		var v = $('<option value=""></option>');
 		$("#listaStudenti").append(v);
 		for(var i in appelli){
