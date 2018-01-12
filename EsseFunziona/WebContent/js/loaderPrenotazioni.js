@@ -13,6 +13,7 @@ $(document).ready(function() {
 			if (datiAnagrafici.tipo == "studente")
 				$('thead').find('tr').append('<th>Elimina</th>')
 			for ( var i in appelli) {
+				console.log(appelli)
 				for( var j in appelli[i].studentiIscritti){
 					var c;
 					if (appelli[i].studentiIscritti[j].matricola == datiAnagrafici.matricola){

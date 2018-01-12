@@ -45,18 +45,20 @@ public class requestRicevimento  extends HttpServlet{
 		
 		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();		
 		Professore professore = professoreDAO.findByPrimaryKey(nomeUtenteProfessore);
-		if(studente!=null && professore!=null) {
-			professore.getStudentiRicevimento().remove(studente);
-		}
+		professore.getStudentiRicevimento().remove(studente);
+		professoreDAO.update(professore);
 
 		DateFormat format = new SimpleDateFormat("dd-mm-yyyy", Locale.ITALIAN);
 		Date date;
 		try {
 			date = format.parse(dataRicevimento);
-			professoreDAO.creaRicevimento(matricola, nomeUtenteProfessore, date);
+			if(professoreDAO.controllaRicevimento(matricola, nomeUtenteProfessore)) {
+				professoreDAO.cancellaRicevimento(matricola, nomeUtenteProfessore);
+				professoreDAO.aggiungiData(matricola, nomeUtenteProfessore, date);
+			}
 		} catch (ParseException e) { e.printStackTrace();}
 		
-		req.setAttribute("Studente", studente);
+		req.setAttribute("studente", studente);
 		RequestDispatcher dispacher = req.getRequestDispatcher("richiesteRicevimento.jsp");
 		dispacher.forward(req, resp);
 	}

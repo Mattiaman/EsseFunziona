@@ -37,29 +37,14 @@
 	</section>	
 
 	<div class="col-sm-10"><br>
-	
-	
-	
-		<div class="container">
-		  <div class="table-responsive">          
-		  <table class="table" id="tabellaStudenti">
-		    <thead>
-		      <tr>
-		      	<th>Nome Utente</th>
-		        <th>Nome</th>
-		        <th>Cognome</th>
-		        <th>Data di Nascita</th>
-		        <th>E-mail</th>
-		      </tr>
-		    </thead>
-		    <tbody id="listaStudenti">
-		    </tbody>
-		  </table>
-		  </div>
-		</div>
-		
-	
-		<form class="form-horizontal" method="post" action="richiesteRicevimento">
+	<c:if test="${studente != null}">
+		<h1>Ho creato il ricevimento con il seguente studente</h1>
+		<h3>${studente.matricola}</h3>
+		<h3>${studente.nome}</h3>
+		<h3>${studente.cognome}</h3>
+	</c:if>
+	<c:if test="${studente == null}">
+			<form class="form-horizontal" method="post" action="richiesteRicevimento">
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="richiesteRicevimenti">Studente:</label>
 		     <select name="richiesteRicevimenti" class="control-label col-sm-4" class="form-control" id="opzioniRicevimenti">
@@ -77,7 +62,8 @@
 			</div>
 		  </div>	
 		</form>	
+	</c:if>	
 	</div>
-
+	
 </body>
 </html>

@@ -261,9 +261,35 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 	}
 
 	@Override
-	public void creaRicevimento(String matricola, String nomeUtenteProf, java.util.Date date) {
+	public void creaRicevimento(String matricola, String nomeUtenteProf) {
 		// TODO Auto-generated method stub
 		
+		Connection connection=this.databaseData.getConnection();
+		String insert="insert into riceve(id, matricolaStudente, nomeUtenteProfessore, dataRicevimento, accettato) values (?,?,?,NULL,NULL)";
+		try {
+			Long id=IdGenerator.getId(connection);
+			PreparedStatement statement = connection.prepareStatement(insert);
+			statement.setLong(1, id);
+			statement.setString(2, matricola);
+			statement.setString(3, nomeUtenteProf);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+
+	@Override
+	public void aggiungiData(String matricola, String nomeUtente, java.util.Date date) {
 		Connection connection=this.databaseData.getConnection();
 		String insert="insert into riceve(id, matricolaStudente, nomeUtenteProfessore, dataRicevimento, accettato) values (?,?,?,?,?)";
 		try {
@@ -271,8 +297,8 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, id);
 			statement.setString(2, matricola);
-			statement.setString(3, nomeUtenteProf);
-			statement.setDate(4,  new Date(date.getTime()));
+			statement.setString(3, nomeUtente);
+			statement.setDate(4, new Date(date.getTime()));
 			statement.setBoolean(5, true);
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -289,4 +315,65 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		
 	}
 
+	@Override
+	public void cancellaRicevimento(String matricola, String nomeUtente) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM riceve";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getString("nomeUtenteProfessore").equalsIgnoreCase(nomeUtente)) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						String delete="DELETE FROM riceve WHERE id=?";
+						PreparedStatement statementdelete=connection.prepareStatement(delete);
+						statementdelete.setLong(1, result.getLong("id"));
+						connection.setAutoCommit(false);
+						statementdelete.executeUpdate();		
+					}
+			}
+			connection.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	@Override
+	public boolean controllaRicevimento(String matricola, String nomeUtente) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM riceve";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getString("nomeUtenteProfessore").equalsIgnoreCase(nomeUtente)) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						return true;	
+					}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+		
+		
+	}
+	
 }

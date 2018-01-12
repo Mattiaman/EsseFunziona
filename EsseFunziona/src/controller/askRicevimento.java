@@ -25,19 +25,25 @@ public class askRicevimento extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
-
+		
 		String matricola = (String) session.getAttribute("matricola");
-		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();	
-		Studente studente = studenteDAO.findByPrimaryKey(matricola);	
+		String nomeUtenteProfessore = req.getParameter("professoreRicevimento");
 		
-		String nomeUtente = req.getParameter("professoreRicevimento");
-		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();		
-		Professore professore = professoreDAO.findByPrimaryKey(nomeUtente);
+		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
+		Professore professore = professoreDAO.findByPrimaryKey(nomeUtenteProfessore);
+		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();		
+		Studente studente = studenteDAO.findByPrimaryKey(matricola);
 	
-		req.setAttribute("professore", professore);
+		if(!professoreDAO.controllaRicevimento(matricola, nomeUtenteProfessore)) {
+			professore.addStudente(studente);
+			professoreDAO.creaRicevimento(matricola, nomeUtenteProfessore);
+			req.setAttribute("professore", professore);
+		}
 		
-		RequestDispatcher dispacher = req.getRequestDispatcher("chiedereRicevimento.jsp");
-		dispacher.forward(req, resp);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("chiedereRicevimento.jsp");
+		dispatcher.forward(req, resp);
+		
+
 	
 	}
 }

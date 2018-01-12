@@ -276,7 +276,7 @@ public class AppelloJDBC implements AppelloDAO {
 	}
 	
 	
-
+	@Override
 	public boolean controllaPrenotazione(String matricola, long idAppello) {
 		Connection connection=this.databaseData.getConnection();
 		String search="SELECT * FROM prenota";

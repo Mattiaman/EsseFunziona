@@ -2,20 +2,23 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Professore extends Utente {
 	
 	private String nomeUtente;
-	List<Studente> studentiRicevimento;
-
+	private Set<Studente> studentiRicevimento;
+	private int nStudentiRicevimento;
+	
 	public Professore(String nome, String cognome, Date dataDiNascita, String email, String nomeUtente) {
 		super(nome, cognome, dataDiNascita, email, "professore");
 		this.nomeUtente = nomeUtente;
 	}
 
 	public Professore(String nome, String cognome, Date dataDiNascita, String email, String nomeUtente,
-			List<Studente> studentiRicevimento) {
+			Set<Studente> studentiRicevimento) {
 		super(nome, cognome, dataDiNascita, email, "professore");
 		this.nomeUtente = nomeUtente;
 		this.studentiRicevimento = studentiRicevimento;
@@ -33,18 +36,28 @@ public class Professore extends Utente {
 		this.nomeUtente = nomeUtente;
 	}
 
-	public List<Studente> getStudentiRicevimento() {
+	public int getnStudentiRicevimento() {
+		return nStudentiRicevimento;
+	}
+
+	public void setnStudentiRicevimento(int nStudentiRicevimento) {
+		this.nStudentiRicevimento = nStudentiRicevimento;
+	}
+
+	public Set<Studente> getStudentiRicevimento() {
 		return studentiRicevimento;
 	}
 
-	public void setStudentiRicevimento(List<Studente> studentiRicevimento) {
+	public void setStudentiRicevimento(Set<Studente> studentiRicevimento) {
 		this.studentiRicevimento = studentiRicevimento;
+		nStudentiRicevimento=studentiRicevimento.size();
 	}
 	
 	public void addStudente(Studente studente) {
 		if(studentiRicevimento==null) {
-			studentiRicevimento=new ArrayList<Studente>();
+			studentiRicevimento=new HashSet<Studente>();
 		}
 		studentiRicevimento.add(studente);
+		nStudentiRicevimento=studentiRicevimento.size();
 	}
 }
