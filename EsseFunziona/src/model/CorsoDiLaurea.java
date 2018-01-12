@@ -61,4 +61,12 @@ public class CorsoDiLaurea {
 			corsi=new HashSet<Corso>();
 		corsi.add(corso);
 	}
+
+	public boolean esiste(Corso c) {
+		for(Corso x:corsi) {
+			if(x.getId()==c.getId())
+				return true;
+		}
+		return false;
+	}
 }

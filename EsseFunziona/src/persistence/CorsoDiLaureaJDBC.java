@@ -7,10 +7,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Appello;
 import model.Corso;
 import model.CorsoDiLaurea;
 import persistence.dao.CorsoDAO;
 import persistence.dao.CorsoDiLaureaDAO;
+import persistence.dao.ProfessoreDAO;
 
 public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 
@@ -78,6 +80,37 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 		}
 		return corsoDiLaurea;
 	}
+	
+	
+	@Override
+	public CorsoDiLaurea findByPrimaryKeyProxy(long id) {
+		Connection connection=this.databaseData.getConnection();
+		CorsoDiLaurea cdl=null;
+		try {
+			PreparedStatement statement;
+			String query="SELECT * FROM corsoDiLaurea WHERE id=?";
+			statement=connection.prepareStatement(query);
+			statement.setLong(1,id);
+			ResultSet result=statement.executeQuery();
+			if(result.next()) {
+				cdl=new CorsoDiLaureaProxy(databaseData);
+				cdl.setId(result.getLong("id"));
+				cdl.setNome(result.getString("nome"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return cdl;
+	}
+	
 
 	@Override
 	public List<CorsoDiLaurea> findAll() {

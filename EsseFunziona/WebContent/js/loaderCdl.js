@@ -23,6 +23,7 @@ function caricaCdl() {
 				$("#listaCdl").append(c);
 			}
 			deleteCdl()
+			goToEditor()
 		}
 		xhrA.send(null)
 	}
@@ -37,7 +38,7 @@ function deleteCdl() {
 			data : {
 				id : id
 			},
-			type : 'POST'
+			type : 'POST',
 		});
 		$(this).parent().parent().remove();
 	});
