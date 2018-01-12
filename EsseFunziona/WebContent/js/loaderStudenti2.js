@@ -1,5 +1,5 @@
 
-function caricaProfessori(){
+function caricaStudenti(){
 	var xhr= new XMLHttpRequest();
 	xhr.open('get',"datiAnagrafici",true);
 	xhr.onload=function(){
@@ -19,5 +19,5 @@ function caricaProfessori(){
 
 
 $(document).ready(function() {
-	caricaProfessori();	
+	caricaStudenti();	
 });

@@ -16,7 +16,7 @@
   
 
 <script type="text/javascript" src="js/loaderMenu.js"></script>
-<script type="text/javascript" src="js/loaderEsito.js"></script>
+<script type="text/javascript" src="js/loaderPrenotazione.js"></script>
   
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
@@ -48,22 +48,9 @@
 			   <div class="form-group">
 			    <label class="control-label col-sm-2" for="appello">IDAppello:</label>
 			    	<div class="col-sm-5">
-						<select name="appello" id="listaAppelli" onchange="caricaStudenti(this);">
+						<select name="appello" id="listaAppelli">
 						</select>
 					</div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="matricolaStudente">Matricola Studente:</label>
-			    	<div class="col-sm-5">
-						<select name="matricolaStudente" id="listaStudenti">
-						</select>
-					</div>
-			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="voto">Voto:</label>
-			    	<div class="col-sm-3"> 
-			      <input name="voto" type="text" class="form-control" />
-			    </div>
 			  </div>
 			  <div class="form-group"> 
 			    <div class="col-sm-offset-2 col-sm-10">

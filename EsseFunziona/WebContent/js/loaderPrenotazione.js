@@ -32,28 +32,7 @@ function caricaAppelli(crs){
 	xhr.send(null)
 }
 
-function caricaStudenti(app){
-	var xhr= new XMLHttpRequest();
-	xhr.open('get',"appelli",true);
-	xhr.onload=function(){
-		var jsonStringQuotes = xhr.responseText;
-		var appelli=JSON.parse(jsonStringQuotes);
-		var v = $('<option value=""></option>');
-		$("#listaStudenti").append(v);
-		for(var i in appelli){
-			if(appelli[i].id == app.value){
-				for(var j in appelli[i].studentiIscritti){
-					var s = $('<option value=\"'+appelli[i].studentiIscritti[j].matricola+'\">'+appelli[i].studentiIscritti[j].nome+' '+appelli[i].studentiIscritti[j].cognome+'</option>');
-					$("#listaStudenti").append(s);
-				}
-			}
-		}
-	};
-	xhr.send(null)
-}
-
 
 $(document).ready(function() {
 	caricaCorsi();
 });
-

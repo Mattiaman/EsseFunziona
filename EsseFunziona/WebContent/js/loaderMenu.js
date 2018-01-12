@@ -30,6 +30,7 @@ $(document).ready(function() {
 					'<div><ul>'+
 					'<li><a href="appelli.html">Appelli</a></li>'+
 					'<li><a href="esiti.html">Bacheca Esiti</a></li>'+
+					'<li><a href="prenotazione.jsp">Prenotazione</a></li>'+
 					'<li><a href="prenotazioni.html">Bacheca Prenotazioni</a></li>'+
 					'<li><a href="chiedereRicevimento.jsp"=>Chiedere un Ricevimento</a></li>'+
 					'</ul></div></li></ul>');	
