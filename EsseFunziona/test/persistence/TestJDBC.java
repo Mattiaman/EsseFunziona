@@ -505,8 +505,8 @@ public class TestJDBC {
 		tassaDAO.delete(tassa3);
 		System.out.println("delete "+(c++));
 		
-		professoreDAO.delete(prof1);
-		System.out.println("delete "+(c++));
+	//	professoreDAO.delete(prof1);
+	//	System.out.println("delete "+(c++));
 		
 		studenteDAO.delete(ciuskiScemo);
 		System.out.println("delete "+(c++));
@@ -515,6 +515,8 @@ public class TestJDBC {
 		System.out.println("delete "+(c++));
 
 		appelloDAO.delete(appello);
-		System.out.println("delete "+(c++));	}
+		System.out.println("delete "+(c++));
+		
+	}
 	
 }	
