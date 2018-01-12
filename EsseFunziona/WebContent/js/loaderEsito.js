@@ -4,6 +4,7 @@ function caricaCorsi(){
 	xhr.onload=function(){
 		var jsonStringQuotes = xhr.responseText;
 		var corsi=JSON.parse(jsonStringQuotes);
+		
 		var v = $('<option value=""></option>');
 		$("#listaCorsi").append(v);
 		for(var i in corsi){
@@ -26,10 +27,12 @@ function caricaAppelli(crs){
 			var datiAnagrafici = JSON.parse(jsonStringQuotesA);
 			var jsonStringQuotes = xhr.responseText;
 			var appelli=JSON.parse(jsonStringQuotes);
+			
 			$("#listaAppelli").empty();
 			var v = $('<option value=""></option>');
 			$("#listaAppelli").append(v);
 			for(var i in appelli){
+				
 				if(appelli[i].corso.id == crs.value){
 					if(appelli[i].professore.nomeUtente == datiAnagrafici.nomeUtente){
 						var c = $('<option value=\"'+appelli[i].id+'\">'+appelli[i].data+'</option>');

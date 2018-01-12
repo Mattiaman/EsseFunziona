@@ -271,7 +271,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>addEsitoServlet</servlet-name>
-    <url-pattern>/aggiuntaEsito</url-pattern>
+    <url-pattern>/aggiuntaEsiti</url-pattern>
   </servlet-mapping>
   
   <servlet>

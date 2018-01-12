@@ -39,21 +39,21 @@
 			<form class="form-horizontal" method="post" action="aggiuntaEsiti">
 			
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="Corso">IDCorso:</label>
+			    <label class="control-label col-sm-2" for="Corso">Corso:</label>
 			    	<div class="col-sm-5">
 						<select name="corso" id="listaCorsi" onchange="caricaAppelli(this);">
 						</select>
 					</div>
 			  </div>
 			   <div class="form-group">
-			    <label class="control-label col-sm-2" for="appello">IDAppello:</label>
+			    <label class="control-label col-sm-2" for="appello">Appello:</label>
 			    	<div class="col-sm-5">
 						<select name="appello" id="listaAppelli" onchange="caricaStudenti(this);">
 						</select>
 					</div>
 			  </div>
 			  <div class="form-group">
-			    <label class="control-label col-sm-2" for="matricolaStudente">Matricola Studente:</label>
+			    <label class="control-label col-sm-2" for="matricolaStudente">Studente:</label>
 			    	<div class="col-sm-5">
 						<select name="matricolaStudente" id="listaStudenti">
 						</select>
