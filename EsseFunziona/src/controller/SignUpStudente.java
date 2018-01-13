@@ -48,7 +48,7 @@ public class SignUpStudente extends HttpServlet{
 		String corsoDiLaurea = req.getParameter("corsoDiLaurea");
 		String pianoDiStudi = req.getParameter("pianoDiStudi");
 	
-		DateFormat format = new SimpleDateFormat("dd-mm-yyyy", Locale.ITALIAN);
+		DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
 		Date date;
 		try {
 			date = format.parse(dataNascita);
