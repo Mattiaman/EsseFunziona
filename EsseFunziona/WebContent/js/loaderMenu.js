@@ -71,6 +71,7 @@ $(document).ready(function() {
 					'<div><ul>'+
 					'<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>'+
 					'<li><a href="corsi.html">Corsi</a></li>'+
+					'<li><a href="editCdl.html">Modifica Corsi</a></li>'+
 					'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+
 					'<li><a href="bandiNews.html">Bandi/News</a></li>'+
 					'<li><a href="tasseAdmin.html">Tasse</a></li>'+

@@ -152,7 +152,6 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 			statement.executeUpdate();
 			
 			if(corsoDiLaurea.getCorsi()!=null)
-				if(!(corsoDiLaurea.getCorsi().isEmpty()))
 					this.mappaCorsi(corsoDiLaurea, connection);
 		} catch (SQLException e) {
 			if (connection != null) {
@@ -236,6 +235,11 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 
 	private void mappaCorsi(CorsoDiLaurea corsodilaurea, Connection connection) throws SQLException {
 		CorsoDAO corsodao = new CorsoJDBC(databaseData);
+		
+		String del="delete from appartieneA where idCorsoDiLaurea=?";
+		PreparedStatement stat=connection.prepareStatement(del);
+		stat.setLong(1, corsodilaurea.getId());
+		stat.executeUpdate();
 		for (Corso corso : corsodilaurea.getCorsi()) {
 			if (corsodao.findByPrimaryKey(corso.getId()) == null){
 				corsodao.save(corso);
