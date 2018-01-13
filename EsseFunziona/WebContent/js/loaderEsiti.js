@@ -20,8 +20,7 @@ $(document).ready(function() {
 				var c;
 				for ( var j in esiti[i].studentiIscritti){
 					if (esiti[i].studentiIscritti[j].matricola == datiAnagrafici.matricola){
-						c = $('<tr> <th id="idEsito">' + esiti[i].id + '</th> <th>' + esiti[i].corso.nome + '</th> <th>' + esiti[i].data + '</th><th>'+ esiti[i].voto + '</th> <th><button id=' + esiti[i].id+ 
-								'>Accetta</button></th>' + '</th> <th><button id=' + esiti[i].id+ '>Rifiuta</button></th> </tr>');
+						c = $('<tr> <th id="idEsito">' + esiti[i].id + '</th> <th>' + esiti[i].corso.nome + '</th> <th>' + esiti[i].data + '</th><th>'+ esiti[i].voto + '</th> <th><button id="accetta">Accetta</button></th>' + '</th> <th><button id="rifiuta">Rifiuta</button></th> </tr>');
 						$("#listaEsiti").append(c);
 					}
 				}
@@ -36,7 +35,7 @@ $(document).ready(function() {
 
 
 function rifiuta() {
-	$('button').on('click', function() {
+	$('#rifiuta').on('click', function() {
 		var id = $(this).parent().parent().find('#idEsito').text();
 		$.ajax({
 			url : 'rifiutaEsame',
@@ -50,7 +49,7 @@ function rifiuta() {
 }
 
 function accetta() {
-	$('button').on('click', function() {
+	$('#accetta').on('click', function() {
 		var id = $(this).parent().parent().find('#idEsito').text();
 		$.ajax({
 			url : 'accettaEsame',

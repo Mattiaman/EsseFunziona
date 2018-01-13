@@ -10,13 +10,18 @@ $(document).ready(function() {
 			var datiAnagrafici = JSON.parse(jsonStringQuotesA);
 			var jsonStringQuotes = xhr.responseText;
 			var esami = JSON.parse(jsonStringQuotes);
-			for ( var i in esiti) {
+			for ( var i in esami) {
 				var c;
-				if (esami[i].matricola == datiAnagrafici.matricola){
-					c = $('<tr> <th id="idEsami">' + esami[i].id + '</th> <th>' + esami[i].corso.nome + '</th> <th>' + esami[i].data + '</th> <th>'+ esami[i].voto + '</th> </tr>');
-					$("#listaEsami").append(c);
+				for ( var j in esami[i].studentiIscritti){
+					if (esami[i].studentiIscritti[j].matricola == datiAnagrafici.matricola){
+						if (esami[i].studentiIscritti[j].matricola == datiAnagrafici.matricola){
+							c = $('<tr> <th>' + esami[i].corso.nome + '</th> <th>' + esami[i].data + '</th><th>'+ esami[i].studentiIscritti[j].voto + '</th> </tr>');
+							$("#listaSuperati").append(c);
+						}
+					}
 				}
-			}
+						
+			}	
 		}
 		xhrA.send(null);
 	}
