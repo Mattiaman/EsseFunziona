@@ -19,6 +19,7 @@ public interface ProfessoreDAO {
 	public void cancellaRicevimento(String matricola, String nomeUtente);
 	public boolean controllaRicevimento(String matricola, String nomeUtente);
 	public void aggiungiData(String matricola, String nomeUtente, Date date);
-	public List<String> takeRicevimenti();
+	Professore findByPrimaryKeyProxy(String nomeUtente);
+	List<Professore> findAllProxy();
 
 }

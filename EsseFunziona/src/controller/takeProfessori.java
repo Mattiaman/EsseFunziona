@@ -24,12 +24,13 @@ public class takeProfessori extends HttpServlet{
 		
 		resp.setContentType("application/json");
 		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
-		List<Professore> profs = professoreDAO.findAll();
+		List<Professore> profs = professoreDAO.findAllProxy();
 		PrintWriter out=resp.getWriter();
 		Gson gson=new Gson();
 		boolean first=false;
 		out.println("[");
 		for(Professore p:profs){
+			p.getStudentiRicevimento();
 			if(first)
 				out.print(",");
 			else

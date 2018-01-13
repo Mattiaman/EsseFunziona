@@ -22,6 +22,7 @@ public class Professore extends Utente {
 		super(nome, cognome, dataDiNascita, email, "professore");
 		this.nomeUtente = nomeUtente;
 		this.studentiRicevimento = studentiRicevimento;
+		this.nStudentiRicevimento = studentiRicevimento.size();
 	}
 
 	public Professore() {

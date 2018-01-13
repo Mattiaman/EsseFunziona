@@ -10,10 +10,12 @@ function caricaProfessori(){
 			var datiAnagrafici = JSON.parse(jsonStringQuotesA)
 			var jsonStringQuotes = xhr.responseText;
 			var professori=JSON.parse(jsonStringQuotes);
+			
 			if (datiAnagrafici.tipo == "admin") {
 				$('thead').find('tr').append('<th>Elimina</th>')
 			}
 			for(var i in professori){
+				console.log(professori[i]);
 				var p;
 				if (datiAnagrafici.tipo != "admin")
 					p = $('<tr>  <th>'+professori[i].nomeUtente+'</th> <th>'+professori[i].nome+'</th> <th>'+professori[i].cognome+'</th> <th>'+professori[i].dataDiNascita+'</th> <th>'+professori[i].email+'</th>  </tr>');

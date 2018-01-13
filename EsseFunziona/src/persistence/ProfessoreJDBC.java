@@ -116,6 +116,69 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		
 		return professori;
 	}
+	
+	@Override
+	public Professore findByPrimaryKeyProxy(String nomeUtente) {
+		// TODO Auto-generated method stub
+		Connection connection=this.databaseData.getConnection();
+		Professore professore=null;
+		try {
+			String query="select * from professore where \"nomeUtente\"=?";
+			PreparedStatement statement=connection.prepareStatement(query);
+			statement.setString(1, nomeUtente);
+			ResultSet result=statement.executeQuery();
+			if(result.next()) {
+				professore=new ProfessoreProxy(databaseData);
+				professore.setNomeUtente(result.getString("nomeUtente"));
+				professore.setNome(result.getString("nome"));
+				professore.setCognome(result.getString("cognome"));
+				professore.setDataDiNascita(new java.util.Date(result.getDate("dataDiNascita").getTime()));
+				professore.setEmail(result.getString("email"));
+	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return professore;
+	}
+	
+	@Override
+	public List<Professore> findAllProxy() {
+		// TODO Auto-generated method stub
+		Connection connection=this.databaseData.getConnection();
+		List<Professore> professori=new ArrayList<Professore>();
+		Professore professore;
+		try {
+			String query="select * from professore";
+			PreparedStatement statement=connection.prepareStatement(query);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				professore=findByPrimaryKeyProxy(result.getString("nomeUtente"));
+				professori.add(professore);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return professori;
+	}
 
 	@Override
 	public void update(Professore professore) {
@@ -348,17 +411,6 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		
 	}
 
-	@Override
-	public List<String> takeRicevimenti() {
-
-		List<String> studenti = null;
-		
-	
-	
-		return studenti;
-	
-	}
-	
 	
 	
 }
