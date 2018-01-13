@@ -2,7 +2,10 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Reader;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
 import model.*;
 import persistence.DatabaseManager;
@@ -48,8 +55,23 @@ public class EditCdl extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		resp.getWriter().print("{\"location\": \"editCdl.html\"}");
+		System.out.println(req.getParameter("nuovoNome"));
+		System.out.println(req.getParameter("idCdl"));
+		JsonParser parser=new JsonParser();
+		JsonArray list=parser.parse(req.getParameter("lista")).getAsJsonArray();
+		CorsoDiLaureaDAO cdlDAO=DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
+		CorsoDiLaurea cdl=cdlDAO.findByPrimaryKey(Long.parseLong(req.getParameter("idCdl")));
+		CorsoDAO corsoDAO=DatabaseManager.getInstance().getDaoFactory().getCorsoDAO();
+		Set<Corso> corsi=new HashSet<Corso>();
+		for(JsonElement j:list) {
+			Corso c=corsoDAO.findByPrimaryKey(Long.parseLong(j.toString()));
+			if(c!=null)
+				corsi.add(c);
+		}
+		if(req.getParameter("nuovoNome")!="" && req.getParameter("nuovoNome")!=null)
+			cdl.setNome(req.getParameter("nuovoNome"));
+		cdl.setCorsi(corsi);
+		cdlDAO.update(cdl);
 	}
 
 	

@@ -80,7 +80,36 @@ function addClickListenerShow(){
 
 function addClickListenerSave(){
 	$('#save').on('click',function(){
-		
+		if($("#listaCdl").val()==-1){
+			console.log("eeee no")
+			return;
+		}
+		var list='[';
+		var hidden=$("#newName").val()
+		var first=true;
+		$('#listaCorsiIn tr').each(function(){
+			var id=$(this).find('.idCorso').text()
+			if(first==true){
+				list+=''+id+''
+				first=false;
+			}
+			else
+				list+=','+id+''
+		})
+		list+=']'
+		console.log(list);
+		$.ajax({
+			url: 'EditCdl',
+			type: 'POST',
+			data: {
+				idCdl: $("#listaCdl").val(),
+				nuovoNome: hidden,
+				lista: list
+			},
+			success: function(){
+				location.reload();
+			}
+		})
 	})
 }
 
@@ -88,4 +117,5 @@ $(document).ready(function() {
 	addChangeListener()
 	loadCorsiAll();
 	addClickListenerShow()
+	addClickListenerSave()
 });
