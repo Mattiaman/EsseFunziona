@@ -39,9 +39,7 @@ public class addPrenotazione extends HttpServlet{
 		
 		appello.addStudente(studente);
 		appelloDAO.update(appello);
-		
-		if(!appelloDAO.controllaPrenotazione(matricola, Long.parseLong(idAppello)))
-			req.setAttribute("appello", appello);
+		req.setAttribute("appello", appello);
 
 		RequestDispatcher dispacher = req.getRequestDispatcher("prenotazione.jsp");
 		dispacher.forward(req, resp);

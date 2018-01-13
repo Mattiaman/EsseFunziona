@@ -37,10 +37,7 @@ public class askRicevimento extends HttpServlet{
 		
 		professore.addStudente(studente);
 		professoreDAO.update(professore);
-		
-		if(!professoreDAO.controllaRicevimento(matricola, nomeUtenteProfessore))
-			req.setAttribute("professore", professore);
-		
+		req.setAttribute("professore", professore);		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("chiedereRicevimento.jsp");
 		dispatcher.forward(req, resp);
