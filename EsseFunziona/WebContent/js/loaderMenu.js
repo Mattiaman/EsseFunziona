@@ -23,8 +23,7 @@ $(document).ready(function() {
 					'<div><ul>'+
 					'<li><a href="tasse.html">Situazione Tasse</a></li>'+
 					'<li><a href="libretto.html">Libretto</a></li>'+
-					'<li><a href="pianoDiStudio.html">Piano Carriera</a></li>'+
-					'<li><a href="modificaPiano.html">Modifica Piano</a></li>'+
+					'<li><a href="editPds.html">Piano Carriera</a></li>'+
 					'</ul></div></li>'+
 					'<li><label for="esami">Esami</label><input type="radio" name="verticalMenu" id="esami" />'+
 					'<div><ul>'+
