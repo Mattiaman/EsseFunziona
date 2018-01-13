@@ -16,6 +16,10 @@ public interface ProfessoreDAO {
 	public DatiProfessore findByPrimaryKeyData(String nomeUtente);
 	
 	public void setPassword(Professore prof, String password);	
-	void creaRicevimento(String matricola, String nomeUtenteProf, Date date);
+	public void cancellaRicevimento(String matricola, String nomeUtente);
+	public boolean controllaRicevimento(String matricola, String nomeUtente);
+	public void aggiungiData(String matricola, String nomeUtente, Date date);
+	Professore findByPrimaryKeyProxy(String nomeUtente);
+	List<Professore> findAllProxy();
 
 }

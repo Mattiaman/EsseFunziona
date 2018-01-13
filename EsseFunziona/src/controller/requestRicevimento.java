@@ -26,7 +26,7 @@ public class requestRicevimento  extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		RequestDispatcher dispacher = 
-				req.getRequestDispatcher("chiedereRicevimento.jsp");
+				req.getRequestDispatcher("richiesteRicevimento.jsp");
 		dispacher.forward(req, resp);
 	}
 	
@@ -44,19 +44,20 @@ public class requestRicevimento  extends HttpServlet{
 		Studente studente = studenteDAO.findByPrimaryKey(matricola);
 		
 		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();		
-		Professore professore = professoreDAO.findByPrimaryKey(nomeUtenteProfessore);
-		professore.getStudentiRicevimento().remove(studente);
-		
-
-		DateFormat format = new SimpleDateFormat("dd-mm-yyyy", Locale.ITALIAN);
+		Professore professore = professoreDAO.findByPrimaryKeyProxy(nomeUtenteProfessore);
+	
+		DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
 		Date date;
 		try {
 			date = format.parse(dataRicevimento);
-			professoreDAO.creaRicevimento(matricola, nomeUtenteProfessore, date);
+			if(professoreDAO.controllaRicevimento(matricola, nomeUtenteProfessore)) {
+				professoreDAO.cancellaRicevimento(matricola, nomeUtenteProfessore);
+				professoreDAO.aggiungiData(matricola, nomeUtenteProfessore, date);
+			}
 		} catch (ParseException e) { e.printStackTrace();}
 		
-		req.setAttribute("Studente", studente);
-		RequestDispatcher dispacher = req.getRequestDispatcher("chiedereRicevimento.jsp");
+		req.setAttribute("studente", studente);
+		RequestDispatcher dispacher = req.getRequestDispatcher("richiesteRicevimento.jsp");
 		dispacher.forward(req, resp);
 	}
 }

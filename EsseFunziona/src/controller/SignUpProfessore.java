@@ -42,7 +42,7 @@ public class SignUpProfessore extends HttpServlet{
 		String password = req.getParameter("password");
 	
 		DateFormat format = new SimpleDateFormat
-							("dd-mm-yyyy", Locale.ITALIAN);
+							("yyyy-mm-dd", Locale.ITALIAN);
 		Date date;
 		try {
 			date = format.parse(dataNascita);

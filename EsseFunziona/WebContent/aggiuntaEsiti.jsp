@@ -36,6 +36,15 @@
 	
 	<br><div class="col-sm-10">
 		
+		<c:if test="${appello != null}">
+			<h1>Ho aggiunto il voto allo studente al seguente appello</h1>
+			<h3>${appello.id}</h3>
+			<h3>${appello.corso.nome}</h3>
+			<h3>${studente.matricola}</h3>
+		 </c:if>
+		
+		
+		
 			<form class="form-horizontal" method="post" action="aggiuntaEsiti">
 			
 			  <div class="form-group">

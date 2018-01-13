@@ -37,30 +37,7 @@
 
 
 <section class="col-sm-10">
-
-	<br>
-		
-
 <br>
-	<div class="container">
-	  <div class="table-responsive">          
-	  <table class="table" id="tabellaProfessori">
-	    <thead>
-	      <tr>
-	      	<th>Nome Utente</th>
-	        <th>Nome</th>
-	        <th>Cognome</th>
-	        <th>Data di Nascita</th>
-	        <th>E-mail</th>
-	      </tr>
-	    </thead>
-	    <tbody id="listaProfessori">
-	    </tbody>
-	  </table>
-	  </div>
-	</div>
-
-
 <div>
 		<c:if test="${professore != null }">
 			<h1>Ho chiesto il ricevimento al professore</h1>
@@ -75,12 +52,13 @@
 				</select>
 			</div>
 		  </div>
-		  </form>	
+		 	
 		  <div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
 				</div>
 		  </div>
+		   </form>
 		</c:if>
 
 </div>

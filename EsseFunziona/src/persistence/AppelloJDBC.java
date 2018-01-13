@@ -275,17 +275,109 @@ public class AppelloJDBC implements AppelloDAO {
 		
 	}
 	
+	
 	@Override
-	public void aggiungiPrenotazione(String matricola, Long idAppello) {
+	public boolean controllaPrenotazione(String matricola, long idAppello) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM prenota";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getLong("idAppello") == idAppello) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						return true;	
+					}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+		
+		
+	}
+	
+	
+	@Override
+	public void aggiungiPrenotazione(String matricola, long idAppello) {
 		Connection connection=this.databaseData.getConnection();
 		String insert="insert into prenota(id, idAppello, matricolaStudente, voto) values (?,?,?,NULL)";
+			try {
+				Long id=IdGenerator.getId(connection);
+				PreparedStatement statement = connection.prepareStatement(insert);
+				statement.setLong(1, id);
+				statement.setLong(2, idAppello);
+				statement.setString(3, matricola);
+				statement.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		
+		
+	}
+	
+	
+	@Override
+	public void aggiungiVoto(String matricola, long idAppello, long voto) {
+		Connection connection=this.databaseData.getConnection();
+		String insert="insert into esame(id, idAppello, matricolaStudente, voto) values (?,?,?,?)";
 		try {
 			Long id=IdGenerator.getId(connection);
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, id);
 			statement.setLong(2, idAppello);
 			statement.setString(3, matricola);
+			statement.setLong(4, voto);
 			statement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+
+	@Override
+	public void cancellaPrenotazione(String matricola, long idAppello) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM prenota";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getLong("idAppello") == idAppello) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						String delete="DELETE FROM prenota WHERE id=?";
+						PreparedStatement statementdelete=connection.prepareStatement(delete);
+						statementdelete.setLong(1, result.getLong("id"));
+						connection.setAutoCommit(false);
+						statementdelete.executeUpdate();
+						
+					}
+			}
+			connection.commit();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -302,12 +394,82 @@ public class AppelloJDBC implements AppelloDAO {
 	
 	
 	@Override
-	public void aggiungiVoto(String matricola, Long idAppello, Long voto) {
+	public void rifiuta(String matricola, long idAppello) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM esame";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getLong("idAppello") == idAppello) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						String delete="DELETE FROM esame WHERE id=?";
+						PreparedStatement statementdelete=connection.prepareStatement(delete);
+						statementdelete.setLong(1, result.getLong("id"));
+						connection.setAutoCommit(false);
+						statementdelete.executeUpdate();
+						
+					}
+			}
+			connection.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
+	}	
+	
+	
+	@Override
+	public void accetta(String matricola, long idAppello) {
 		
-		
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM esame";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getLong("idAppello") == idAppello) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						
+						
+						String delete="DELETE FROM esame WHERE id=?";
+						PreparedStatement statementdelete=connection.prepareStatement(delete);
+						statementdelete.setLong(1, result.getLong("id"));
+						connection.setAutoCommit(false);
+						statementdelete.executeUpdate();
+						
+						String insert="insert into libretto(id, idAppello, matricolaStudente, voto) values (?,?,?,?)";
+						PreparedStatement statement1 = connection.prepareStatement(insert);
+						Long id=IdGenerator.getId(connection);
+						statement1.setLong(1, id);
+						statement1.setLong(2, idAppello);
+						statement1.setString(3, matricola);
+						statement1.setLong(4, result.getLong("voto"));
+						statement1.executeUpdate();
+						
+					}
+			}
+			connection.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
 	}
-	
-	
-	
+		
 }

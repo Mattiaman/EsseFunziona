@@ -265,15 +265,7 @@
     <url-pattern>/datiAnagrafici</url-pattern>
   </servlet-mapping>
   
-  <servlet>
-    <servlet-name>askRicevimentoServlet</servlet-name>
-    <servlet-class>controller.askRicevimento</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>askRicevimentoServlet</servlet-name>
-    <url-pattern>/chiedereRicevimento</url-pattern>
-  </servlet-mapping>
-  
+
   <servlet>
     <servlet-name>requestRicevimentoServlet</servlet-name>
     <servlet-class>controller.requestRicevimento</servlet-class>
@@ -282,6 +274,17 @@
     <servlet-name>requestRicevimentoServlet</servlet-name>
     <url-pattern>/richiesteRicevimento</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+    <servlet-name>askRicevimentoServlet</servlet-name>
+    <servlet-class>controller.askRicevimento</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>askRicevimentoServlet</servlet-name>
+    <url-pattern>/chiedereRicevimento</url-pattern>
+  </servlet-mapping>
+    
   
   <servlet>
     <servlet-name>addEsitoServlet</servlet-name>
@@ -309,6 +312,53 @@
     <servlet-name>deleteStudenteServlet</servlet-name>
     <url-pattern>/eliminaStudente</url-pattern>
    </servlet-mapping> 
+ 
+  <servlet>
+    <servlet-name>accettaEsameServlet</servlet-name>
+    <servlet-class>controller.accettaEsame</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>accettaEsameServlet</servlet-name>
+    <url-pattern>/accettaEsame</url-pattern>
+   </servlet-mapping>  
+   
+  <servlet>
+    <servlet-name>takeEsitiServlet</servlet-name>
+    <servlet-class>controller.takeEsito</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeEsitiServlet</servlet-name>
+    <url-pattern>/esiti</url-pattern>
+  </servlet-mapping>
+  
+  
+    <servlet>
+    <servlet-name>takeEsameServlet</servlet-name>
+    <servlet-class>controller.takeEsame</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeEsameServlet</servlet-name>
+    <url-pattern>/esami</url-pattern>
+  </servlet-mapping>
+   
+   <servlet>
+    <servlet-name>rifiutaEsameServlet</servlet-name>
+    <servlet-class>controller.accettaEsame</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>rifiutaEsameServlet</servlet-name>
+    <url-pattern>/rifiutaEsame</url-pattern>
+   </servlet-mapping>  
+   
+   
+  <servlet>
+    <servlet-name>deletePrenotazioneServlet</servlet-name>
+    <servlet-class>controller.deletePrenotazione</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>deletePrenotazioneServlet</servlet-name>
+    <url-pattern>/eliminaPrenotazione</url-pattern>
+   </servlet-mapping>     
  
   
 </web-app>

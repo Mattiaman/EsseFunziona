@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,30 +11,30 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import model.*;
+import model.Appello;
 import persistence.DatabaseManager;
-import persistence.dao.*;
+import persistence.dao.AppelloDAO;
 
-public class takeProfessori extends HttpServlet{
+public class takeEsame extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
 		resp.setContentType("application/json");
-		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
-		List<Professore> profs = professoreDAO.findAllProxy();
+		AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
+		List<Appello> appelli = appelloDAO.findAllProxy();
 		PrintWriter out=resp.getWriter();
 		Gson gson=new Gson();
 		boolean first=false;
 		out.println("[");
-		for(Professore p:profs){
-			p.getStudentiRicevimento();
+		for(Appello c:appelli){
+			c.getStudentiIscrittiEsame();
 			if(first)
 				out.print(",");
 			else
 				first=true;
-			out.print(gson.toJson(p));
+			out.print(gson.toJson(c));
 		}
 		out.print("]");
 		out.close();
@@ -46,7 +45,5 @@ public class takeProfessori extends HttpServlet{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 	
 }

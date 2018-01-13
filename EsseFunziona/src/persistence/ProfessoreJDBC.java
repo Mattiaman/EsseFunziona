@@ -116,6 +116,69 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		
 		return professori;
 	}
+	
+	@Override
+	public Professore findByPrimaryKeyProxy(String nomeUtente) {
+		// TODO Auto-generated method stub
+		Connection connection=this.databaseData.getConnection();
+		Professore professore=null;
+		try {
+			String query="select * from professore where \"nomeUtente\"=?";
+			PreparedStatement statement=connection.prepareStatement(query);
+			statement.setString(1, nomeUtente);
+			ResultSet result=statement.executeQuery();
+			if(result.next()) {
+				professore=new ProfessoreProxy(databaseData);
+				professore.setNomeUtente(result.getString("nomeUtente"));
+				professore.setNome(result.getString("nome"));
+				professore.setCognome(result.getString("cognome"));
+				professore.setDataDiNascita(new java.util.Date(result.getDate("dataDiNascita").getTime()));
+				professore.setEmail(result.getString("email"));
+	
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return professore;
+	}
+	
+	@Override
+	public List<Professore> findAllProxy() {
+		// TODO Auto-generated method stub
+		Connection connection=this.databaseData.getConnection();
+		List<Professore> professori=new ArrayList<Professore>();
+		Professore professore;
+		try {
+			String query="select * from professore";
+			PreparedStatement statement=connection.prepareStatement(query);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				professore=findByPrimaryKeyProxy(result.getString("nomeUtente"));
+				professori.add(professore);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return professori;
+	}
 
 	@Override
 	public void update(Professore professore) {
@@ -261,18 +324,16 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 	}
 
 	@Override
-	public void creaRicevimento(String matricola, String nomeUtenteProf, java.util.Date date) {
-		// TODO Auto-generated method stub
-		
+	public void aggiungiData(String matricola, String nomeUtente, java.util.Date date) {
 		Connection connection=this.databaseData.getConnection();
-		String insert="insert into riceve(id, matricola, nomeUtenteProfessore, dataRicevimento, accettato) values (?,?,?,?,?)";
+		String insert="insert into riceve(id, matricolaStudente, nomeUtenteProfessore, dataRicevimento, accettato) values (?,?,?,?,?)";
 		try {
 			Long id=IdGenerator.getId(connection);
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, id);
 			statement.setString(2, matricola);
-			statement.setString(3, nomeUtenteProf);
-			statement.setDate(4,  new Date(date.getTime()));
+			statement.setString(3, nomeUtente);
+			statement.setDate(4, new Date(date.getTime()));
 			statement.setBoolean(5, true);
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -289,4 +350,67 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		
 	}
 
+	@Override
+	public void cancellaRicevimento(String matricola, String nomeUtente) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM riceve";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getString("nomeUtenteProfessore").equalsIgnoreCase(nomeUtente)) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						String delete="DELETE FROM riceve WHERE id=?";
+						PreparedStatement statementdelete=connection.prepareStatement(delete);
+						statementdelete.setLong(1, result.getLong("id"));
+						connection.setAutoCommit(false);
+						statementdelete.executeUpdate();		
+					}
+			}
+			connection.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	@Override
+	public boolean controllaRicevimento(String matricola, String nomeUtente) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM riceve";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getString("nomeUtenteProfessore").equalsIgnoreCase(nomeUtente)) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						return true;	
+					}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+		
+		
+	}
+
+	
+	
 }
