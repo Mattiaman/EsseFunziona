@@ -10,6 +10,7 @@ public interface PianoDiStudiDAO {
 	public PianoDiStudi findByPrimaryKey(long id);
 	public List<PianoDiStudi> findAll();       
 	public void update(PianoDiStudi pianoDiStudi);
-	public void delete(PianoDiStudi pianoDiStudi);	
+	public void delete(PianoDiStudi pianoDiStudi);
+	public PianoDiStudi findByPrimaryKeyProxy(long id);	
 
 }

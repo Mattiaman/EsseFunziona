@@ -81,6 +81,37 @@ public class PianoDiStudiJDBC implements PianoDiStudiDAO {
 		}
 		return pianoDiStudi;
 	}
+	
+	@Override
+	public PianoDiStudi findByPrimaryKeyProxy(long id) {
+		// TODO Auto-generated method stub
+		Connection connection=this.databaseData.getConnection();
+		PianoDiStudi pianoDiStudi=null;
+		try {
+			String query="select * from pianoDiStudi where id=?";
+			PreparedStatement statement=connection.prepareStatement(query);
+			statement.setLong(1, id);
+			ResultSet resultSet=statement.executeQuery();
+			if(resultSet.next()) {
+				pianoDiStudi=new PianoDiStudiProxy(databaseData);
+				pianoDiStudi.setId(resultSet.getLong("id"));
+				pianoDiStudi.setNome(resultSet.getString("nome"));
+				CorsoDiLaureaDAO cdlDAO=new CorsoDiLaureaJDBC(this.databaseData);
+				pianoDiStudi.setCorsoDiLaurea(cdlDAO.findByPrimaryKey(resultSet.getLong("corsoDiLaureaId")));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return pianoDiStudi;
+	}
 
 	@Override
 	public List<PianoDiStudi> findAll() {
@@ -188,6 +219,7 @@ public class PianoDiStudiJDBC implements PianoDiStudiDAO {
 	private void mappaCorsi(PianoDiStudi pianoDiStudi, Connection connection) throws SQLException {
 
 		CorsoJDBC corsoJDBC=new CorsoJDBC(databaseData);
+		pianoDiStudi.getCorsi().remove(null);
 		for(Corso corso:pianoDiStudi.getCorsi()) {
 			if(corsoJDBC.findByPrimaryKey(corso.getId())==null) {
 				corsoJDBC.save(corso);

@@ -55,12 +55,14 @@ public class SignUpStudente extends HttpServlet{
 			Studente stud = new Studente(matricola, nome, cognome, date, email);
 			
 			CorsoDiLaureaDAO corsoDiLaureaDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
-			CorsoDiLaurea cdl = corsoDiLaureaDAO.findByPrimaryKey(Long.parseLong(corsoDiLaurea));
+			CorsoDiLaurea cdl = corsoDiLaureaDAO.findByPrimaryKeyProxy(Long.parseLong(corsoDiLaurea));
 			stud.setCorsoDiLaurea(cdl);
 			
 			PianoDiStudi pds = new PianoDiStudi();
 			pds.setNome("Piano di "+nome+" "+cognome);
 			pds.setCorsoDiLaurea(cdl);
+			if(cdl==null)
+				System.out.println("00000");
 			pds.setCorsi(cdl.getCorsi());
 			PianoDiStudiDAO pianoDiStudiDAO = DatabaseManager.getInstance().getDaoFactory().getPianoDiStudiDAO();
 			pianoDiStudiDAO.save(pds);

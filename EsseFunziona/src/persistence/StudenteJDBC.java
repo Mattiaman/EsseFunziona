@@ -8,8 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.PianoDiStudi;
 import model.Studente;
 import model.Tassa;
+import persistence.dao.PianoDiStudiDAO;
 import persistence.dao.StudenteDAO;
 import persistence.dao.TassaDAO;
 
@@ -115,6 +117,34 @@ public class StudenteJDBC implements StudenteDAO {
 		return studenti;
 	}
 
+	@Override
+	public List<Studente> findAllRichiedentiModifica() {
+		Connection connection=this.databaseData.getConnection();
+		List<Studente> studenti=new ArrayList<>();
+		try {
+			Studente studente;
+			PreparedStatement statement;
+			String query="SELECT * FROM vuoleModificare";
+			statement=connection.prepareStatement(query);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				studente=findByPrimaryKey(result.getString("matricolaStudente"));
+				studenti.add(studente);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return studenti;
+	}
+	
 	@Override
 	public void update(Studente studente) {
 		Connection connection=this.databaseData.getConnection();
@@ -257,5 +287,63 @@ public class StudenteJDBC implements StudenteDAO {
 		return data;
 	}
 		
-
+	@Override
+	public void sendRichiestaModificaPds(Studente studente, PianoDiStudi pianoNuovo) {
+		Connection connection=databaseData.getConnection();
+		try {
+			String aggiungi="insert into vuoleModificare(id, idPianoDiStudi, matricolaStudente) values(?,?,?)";
+			PreparedStatement statement=connection.prepareStatement(aggiungi);
+			statement.setLong(1, IdGenerator.getId(connection));
+			statement.setLong(2, pianoNuovo.getId());
+			statement.setString(3, studente.getMatricola());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@Override
+	public PianoDiStudi getRichiestaModificaPds(Studente studente) {
+		Connection connection=databaseData.getConnection();
+		PianoDiStudiDAO pdsDAO=DatabaseManager.getInstance().getDaoFactory().getPianoDiStudiDAO();
+		PianoDiStudi pds = null;
+		try {
+			String query="select * from vuoleModificare where matricolaStudente=?";
+			PreparedStatement statement=connection.prepareStatement(query);
+			statement.setString(1, studente.getMatricola());
+			ResultSet result=statement.executeQuery();
+			if(result.next()) {
+				pds=pdsDAO.findByPrimaryKey(result.getLong("idPianoDiStudi"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return pds;
+	}
 }
+
+
+
+
+
+
+
+
+
+

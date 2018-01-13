@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -22,23 +23,27 @@ import model.*;
 import persistence.DatabaseManager;
 import persistence.dao.*;
 
-public class EditCdl extends HttpServlet {
+public class EditPds extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		resp.setContentType("application/json");
-		CorsoDiLaureaDAO cdlDAO=DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
-		CorsoDiLaurea cdl=cdlDAO.findByPrimaryKeyProxy(Long.parseLong(req.getParameter("id")));
-		
-		if (cdl!=null) {
-			if (cdl.getCorsi() != null) {
-				if (!cdl.getCorsi().isEmpty()) {
+		HttpSession session=req.getSession();
+		StudenteDAO studDAO=DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
+		PianoDiStudiDAO pdsDAO=DatabaseManager.getInstance().getDaoFactory().getPianoDiStudiDAO();
+		Studente s=studDAO.findByPrimaryKeyData((String) session.getAttribute("matricola"));
+		System.out.println(s.getMatricola());
+		PianoDiStudi pds=pdsDAO.findByPrimaryKeyProxy(s.getPianoDiStudi().getId());
+		System.out.println(pds.getId());
+		if (pds!=null) {
+			if (pds.getCorsi() != null) {
+				if (!pds.getCorsi().isEmpty()) {
 					PrintWriter out = resp.getWriter();
 					Gson gson = new Gson();
 					boolean first = false;
 					out.println("[");
-					for (Corso c : cdl.getCorsi()) {
+					for (Corso c : pds.getCorsi()) {
 						if (first)
 							out.print(",");
 						else
@@ -54,12 +59,15 @@ public class EditCdl extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(req.getParameter("nuovoNome"));
-		System.out.println(req.getParameter("idCdl"));
+
 		JsonParser parser=new JsonParser();
 		JsonArray list=parser.parse(req.getParameter("lista")).getAsJsonArray();
-		CorsoDiLaureaDAO cdlDAO=DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
-		CorsoDiLaurea cdl=cdlDAO.findByPrimaryKey(Long.parseLong(req.getParameter("idCdl")));
+		HttpSession session=req.getSession();
+		StudenteDAO studDAO=DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
+		PianoDiStudiDAO pdsDAO=DatabaseManager.getInstance().getDaoFactory().getPianoDiStudiDAO();
+		Studente s=studDAO.findByPrimaryKeyData((String) session.getAttribute("matricola"));
+		System.out.println(s.getMatricola());
+		PianoDiStudi pds=pdsDAO.findByPrimaryKeyProxy(s.getPianoDiStudi().getId());
 		CorsoDAO corsoDAO=DatabaseManager.getInstance().getDaoFactory().getCorsoDAO();
 		Set<Corso> corsi=new HashSet<Corso>();
 		for(JsonElement j:list) {
@@ -67,10 +75,10 @@ public class EditCdl extends HttpServlet {
 			if(c!=null)
 				corsi.add(c);
 		}
-		if(req.getParameter("nuovoNome")!="" && req.getParameter("nuovoNome")!=null)
-			cdl.setNome(req.getParameter("nuovoNome"));
-		cdl.setCorsi(corsi);
-		cdlDAO.update(cdl);
+
+		pds.setCorsi(corsi);
+		pdsDAO.save(pds);
+		studDAO.sendRichiestaModificaPds(s, pds);
 	}
 
 	
