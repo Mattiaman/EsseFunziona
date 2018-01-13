@@ -34,13 +34,15 @@ public class addPrenotazione extends HttpServlet{
 		
 		AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
 		Appello appello = appelloDAO.findByPrimaryKey(Long.parseLong(idAppello));
+		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();		
+		Studente studente = studenteDAO.findByPrimaryKey(matricola);
 		
+		appello.addStudente(studente);
+		appelloDAO.update(appello);
 		
-		
-		if(!appelloDAO.controllaPrenotazione(matricola,Long.parseLong(idAppello))) {
-			appelloDAO.aggiungiPrenotazione(matricola, Long.parseLong(idAppello));
+		if(!appelloDAO.controllaPrenotazione(matricola, Long.parseLong(idAppello)))
 			req.setAttribute("appello", appello);
-	}
+
 		RequestDispatcher dispacher = req.getRequestDispatcher("prenotazione.jsp");
 		dispacher.forward(req, resp);
 	

@@ -261,34 +261,6 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 	}
 
 	@Override
-	public void creaRicevimento(String matricola, String nomeUtenteProf) {
-		// TODO Auto-generated method stub
-		
-		Connection connection=this.databaseData.getConnection();
-		String insert="insert into riceve(id, matricolaStudente, nomeUtenteProfessore, dataRicevimento, accettato) values (?,?,?,NULL,NULL)";
-		try {
-			Long id=IdGenerator.getId(connection);
-			PreparedStatement statement = connection.prepareStatement(insert);
-			statement.setLong(1, id);
-			statement.setString(2, matricola);
-			statement.setString(3, nomeUtenteProf);
-			statement.executeUpdate();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-	}
-
-
-	@Override
 	public void aggiungiData(String matricola, String nomeUtente, java.util.Date date) {
 		Connection connection=this.databaseData.getConnection();
 		String insert="insert into riceve(id, matricolaStudente, nomeUtenteProfessore, dataRicevimento, accettato) values (?,?,?,?,?)";
@@ -375,5 +347,18 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		
 		
 	}
+
+	@Override
+	public List<String> takeRicevimenti() {
+
+		List<String> studenti = null;
+		
+	
+	
+		return studenti;
+	
+	}
+	
+	
 	
 }

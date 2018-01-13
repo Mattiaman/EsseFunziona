@@ -17,8 +17,8 @@ public interface ProfessoreDAO {
 	
 	public void setPassword(Professore prof, String password);	
 	public void cancellaRicevimento(String matricola, String nomeUtente);
-	public void creaRicevimento(String matricola, String nomeUtenteProf);
 	public boolean controllaRicevimento(String matricola, String nomeUtente);
 	public void aggiungiData(String matricola, String nomeUtente, Date date);
+	public List<String> takeRicevimenti();
 
 }

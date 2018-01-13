@@ -34,11 +34,13 @@ public class askRicevimento extends HttpServlet{
 		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();		
 		Studente studente = studenteDAO.findByPrimaryKey(matricola);
 	
-		if(!professoreDAO.controllaRicevimento(matricola, nomeUtenteProfessore)) {
-			professore.addStudente(studente);
-			professoreDAO.creaRicevimento(matricola, nomeUtenteProfessore);
+		
+		professore.addStudente(studente);
+		professoreDAO.update(professore);
+		
+		if(!professoreDAO.controllaRicevimento(matricola, nomeUtenteProfessore))
 			req.setAttribute("professore", professore);
-		}
+		
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("chiedereRicevimento.jsp");
 		dispatcher.forward(req, resp);

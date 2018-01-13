@@ -13,8 +13,9 @@ $(document).ready(function() {
 			if (datiAnagrafici.tipo == "studente")
 				$('thead').find('tr').append('<th>Elimina</th>')
 			for ( var i in appelli) {
-				console.log(appelli)
+				
 				for( var j in appelli[i].studentiIscritti){
+					console.log(appelli[i].studentiIscritti[j])
 					var c;
 					if (appelli[i].studentiIscritti[j].matricola == datiAnagrafici.matricola){
 						c = $('<tr> <th id="idAppello">' + appelli[i].id + '</th> <th>' + appelli[i].corso.nome + '</th> <th>' + appelli[i].data + '</th> <th><button id=' + appelli[i].id

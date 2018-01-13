@@ -42,7 +42,6 @@
 		<c:if test="${professore != null }">
 			<h1>Ho chiesto il ricevimento al professore</h1>
 			<h3>${professore.nomeUtente}</h3>
-			<h3>${professore.studentiRicevimento.size()}</h3>
 		</c:if>
 		<c:if test="${professore == null }">
 		<form class="form-horizontal" method="post" action="chiedereRicevimento">

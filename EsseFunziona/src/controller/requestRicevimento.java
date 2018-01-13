@@ -45,9 +45,7 @@ public class requestRicevimento  extends HttpServlet{
 		
 		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();		
 		Professore professore = professoreDAO.findByPrimaryKey(nomeUtenteProfessore);
-		professore.getStudentiRicevimento().remove(studente);
-		professoreDAO.update(professore);
-
+	
 		DateFormat format = new SimpleDateFormat("dd-mm-yyyy", Locale.ITALIAN);
 		Date date;
 		try {
