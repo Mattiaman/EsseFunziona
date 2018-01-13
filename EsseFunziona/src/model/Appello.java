@@ -67,6 +67,14 @@ public class Appello {
 	public Set<Studente> getStudentiIscritti() {
 		return studentiIscritti;
 	}
+	
+	public Set<Studente> getStudentiIscrittiEsame() {
+		return studentiIscritti;
+	}
+	
+	public Set<Studente> getStudentiIscrittiEsiti() {
+		return studentiIscritti;
+	}
 
 	public void setStudentiIscritti(Set<Studente> studentiIscritti) {
 		this.studentiIscritti = studentiIscritti;
@@ -88,5 +96,6 @@ public class Appello {
 	public void setnStudentiIscritti(int nStudentiIscritti) {
 		this.nStudentiIscritti = nStudentiIscritti;
 	}
+
 	
 }

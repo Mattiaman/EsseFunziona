@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.Appello;
 import model.Professore;
 import model.Studente;
 import persistence.DatabaseManager;
+import persistence.dao.AppelloDAO;
 import persistence.dao.ProfessoreDAO;
 import persistence.dao.StudenteDAO;
 
@@ -22,15 +24,10 @@ public class rifiutaEsame extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
-
 		String matricola = (String) session.getAttribute("matricola");
-		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();	
-		Studente studente = studenteDAO.findByPrimaryKey(matricola);	
-		
-		String nomeUtente = req.getParameter("professoreRicevimento");
-
-	
+		String idEsito = req.getParameter("idEsito");
+		AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();	
+		appelloDAO.rifiuta(matricola, Long.parseLong(idEsito));
 	}
 }

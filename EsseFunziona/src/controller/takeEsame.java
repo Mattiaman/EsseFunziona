@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +15,7 @@ import model.Appello;
 import persistence.DatabaseManager;
 import persistence.dao.AppelloDAO;
 
-public class takeEsito extends HttpServlet{
+public class takeEsame extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -30,7 +29,7 @@ public class takeEsito extends HttpServlet{
 		boolean first=false;
 		out.println("[");
 		for(Appello c:appelli){
-			c.getStudentiIscrittiEsiti();
+			c.getStudentiIscrittiEsame();
 			if(first)
 				out.print(",");
 			else

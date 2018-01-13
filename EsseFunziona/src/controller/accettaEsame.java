@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import model.Studente;
 import persistence.DatabaseManager;
+import persistence.dao.AppelloDAO;
 import persistence.dao.StudenteDAO;
 
 public class accettaEsame extends HttpServlet{
@@ -19,15 +20,10 @@ public class accettaEsame extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		HttpSession session = req.getSession();
-
 		String matricola = (String) session.getAttribute("matricola");
-		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();	
-		Studente studente = studenteDAO.findByPrimaryKey(matricola);	
-		
-		String nomeUtente = req.getParameter("");
-
-	
+		String idEsito = req.getParameter("idEsito");
+		AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();	
+		appelloDAO.accetta(matricola, Long.parseLong(idEsito));
 	}
 }
