@@ -17,8 +17,8 @@ $(document).ready(function() {
 			for ( var i in esiti) {
 				var c;
 				if (esiti[i].matricola == datiAnagrafici.matricola){
-					c = $('<tr> <th id="idEsito">' + esiti[i].id + '</th> <th>' + esiti[i].corso.nome + '</th> <th>' + esiti[i].data + '</th> <th><button id=' + esiti[i].id+ '>Accetta</button></th>' + 
-							'</th> <th><button id=' + esiti[i].id+ '>Rifiuta</button></th> </tr>');
+					c = $('<tr> <th id="idEsito">' + esiti[i].id + '</th> <th>' + esiti[i].corso.nome + '</th> <th>' + esiti[i].data + '</th><th>'+ esiti[i].voto + '</th> <th><button id=' + esiti[i].id+ 
+							'>Accetta</button></th>' + '</th> <th><button id=' + esiti[i].id+ '>Rifiuta</button></th> </tr>');
 					$("#listaEsiti").append(c);
 				}
 			}
