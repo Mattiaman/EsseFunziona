@@ -471,5 +471,119 @@ public class AppelloJDBC implements AppelloDAO {
 		}
 
 	}
+
+	@Override
+	public long trovaVotoEsito(String matricola, long idAppello) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM esame";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getLong("idAppello") == idAppello) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						return result.getLong("voto");	
+					}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
+	
+	@Override
+	public long trovaVotoLibretto(String matricola, long idAppello) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM libretto";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getLong("idAppello") == idAppello) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						return result.getLong("voto");	
+					}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return 0;
+	}
 		
+	
+	@Override
+	public boolean controllaEsame(String matricola, long idAppello) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM esame";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getLong("idAppello") == idAppello) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						return true;	
+					}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+		
+		
+	}
+	
+	
+	@Override
+	public boolean controllaLibretto(String matricola, long idAppello) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM libretto";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getLong("idAppello") == idAppello) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						return true;	
+					}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return false;
+		
+		
+	}
+	
 }
