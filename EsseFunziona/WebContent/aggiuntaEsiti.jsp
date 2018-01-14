@@ -36,6 +36,12 @@
 	
 	<br><div class="col-sm-10">
 		
+		
+		
+		
+		
+		
+		
 		<c:if test="${appello != null}">
 			<h1>Ho aggiunto il voto allo studente al seguente appello</h1>
 			<h3>${appello.id}</h3>

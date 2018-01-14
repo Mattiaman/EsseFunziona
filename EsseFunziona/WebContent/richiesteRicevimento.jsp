@@ -37,6 +37,24 @@
 	</section>	
 
 	<div class="col-sm-10"><br>
+	
+	<br><div class="container">
+	  <div class="table-responsive">          
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th>Nome Studente</th>
+	        <th>Data</th>
+	      </tr>
+	    </thead>
+	    <tbody id="listaRicevimenti">
+	      
+	    </tbody>
+	  </table>
+	  </div>
+	</div>
+	
+	
 	<c:if test="${studente != null}">
 		<h1>Ho creato il ricevimento con il seguente studente</h1>
 		<h3>${studente.matricola}</h3>
@@ -44,6 +62,7 @@
 		<h3>${studente.cognome}</h3>
 	</c:if>
 	<c:if test="${studente == null}">
+		<h3>Creare Ricevimento</h3>
 			<form class="form-horizontal" method="post" action="richiesteRicevimento">
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="richiesteRicevimenti">Studente:</label>

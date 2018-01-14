@@ -38,12 +38,29 @@
 
 <section class="col-sm-10">
 <br>
+	<div class="container">
+	  <div class="table-responsive">          
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th>Nome Professore</th>
+	        <th>Data</th>
+	      </tr>
+	    </thead>
+	    <tbody id="listaRicevimenti">
+	      
+	    </tbody>
+	  </table>
+	  </div>
+	</div>
+		
 <div>
 		<c:if test="${professore != null }">
 			<h1>Ho chiesto il ricevimento al professore</h1>
 			<h3>${professore.nomeUtente}</h3>
 		</c:if>
 		<c:if test="${professore == null }">
+		<h3>Richiedere Ricevimento</h3>
 		<form class="form-horizontal" method="post" action="chiedereRicevimento">
 		  <div class="form-group">
 			<label class="control-label col-sm-2" for="professoreRicevimento">Professore:</label>
@@ -58,7 +75,7 @@
 					<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
 				</div>
 		  </div>
-		   </form>
+		</form>
 		</c:if>
 
 </div>

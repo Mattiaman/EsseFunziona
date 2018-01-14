@@ -42,7 +42,7 @@
 			<h3>${appello.corso.nome}</h3>
 		 </c:if>
 		
-		
+			<h3>Effettuare Prenotazione</h3>
 			<form class="form-horizontal" method="post" action="aggiuntaPrenotazione">
 			
 			  <div class="form-group">
