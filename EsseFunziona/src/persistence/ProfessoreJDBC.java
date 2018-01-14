@@ -411,6 +411,33 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		
 	}
 
+	@Override
+	public Date trovaRicevimento(String matricola, String nomeUtente) {
+		Connection connection=this.databaseData.getConnection();
+		String search="SELECT * FROM riceve";
+		try {
+			PreparedStatement statement = connection.prepareStatement(search);
+			ResultSet result=statement.executeQuery();
+			while(result.next()) {
+				if(result.getString("nomeUtenteProfessore").equalsIgnoreCase(nomeUtente)) 
+					if (result.getString("matricolaStudente").equalsIgnoreCase(matricola)) {
+						return result.getDate("dataRicevimento");	
+					}
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
 	
 	
 }
