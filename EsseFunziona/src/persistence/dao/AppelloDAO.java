@@ -18,6 +18,8 @@ public interface AppelloDAO {
 	public boolean controllaPrenotazione(String matricola, long idAppello);
 	public void cancellaPrenotazione(String matricola, long parseLong);
 	public void rifiuta(String matricola, long idAppello);
-	public void accetta(String matricola, long parseLong);	
+	public void accetta(String matricola, long parseLong);
+	public boolean controllaEsame(String matricola, long idAppello);
+	public boolean controllaLibretto(String matricola, long idAppello);	
 
 }

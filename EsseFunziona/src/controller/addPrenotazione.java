@@ -37,10 +37,13 @@ public class addPrenotazione extends HttpServlet{
 		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();		
 		Studente studente = studenteDAO.findByPrimaryKey(matricola);
 		
-		appello.addStudente(studente);
-		appelloDAO.update(appello);
-		req.setAttribute("appello", appello);
-
+		if (!appelloDAO.controllaEsame(matricola, Long.parseLong(idAppello))) {
+			if (!appelloDAO.controllaLibretto(matricola, Long.parseLong(idAppello))) {
+				appello.addStudente(studente);
+				appelloDAO.update(appello);
+				req.setAttribute("appello", appello);
+			} 
+		}
 		RequestDispatcher dispacher = req.getRequestDispatcher("prenotazione.jsp");
 		dispacher.forward(req, resp);
 	
