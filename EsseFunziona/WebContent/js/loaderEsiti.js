@@ -14,14 +14,15 @@ $(document).ready(function() {
 				$('thead').find('tr').append('<th>Accetta</th>')
 				$('thead').find('tr').append('<th>Rifiuta</th>')
 			}
-			console.log(esiti)
-			console.log(datiAnagrafici)
+			var cont=0;
 			for ( var i in esiti) {
 				var c;
 				for ( var j in esiti[i].studentiIscritti){
 					if (esiti[i].studentiIscritti[j].matricola == datiAnagrafici.matricola){
-						c = $('<tr> <th id="idEsito">' + esiti[i].id + '</th> <th>' + esiti[i].corso.nome + '</th> <th>' + esiti[i].data + '</th><th>'+ esiti[i].voto + '</th> <th><button id="accetta">Accetta</button></th>' + '</th> <th><button id="rifiuta">Rifiuta</button></th> </tr>');
+						c = $('<tr> <th id="idEsito">' + esiti[i].id + '</th> <th>' + esiti[i].corso.nome + '</th> <th>' + esiti[i].data + '</th><th id="voto'+cont+'"></th> <th><button id="accetta">Accetta</button></th>' + '</th> <th><button id="rifiuta">Rifiuta</button></th> </tr>');
 						$("#listaEsiti").append(c);
+						trovaVoto(esiti[i].id,cont);
+						cont++;
 					}
 				}
 			}	
@@ -60,4 +61,19 @@ function accetta() {
 		});
 		$(this).parent().parent().remove();
 	});
+}
+
+function trovaVoto(id,cont) {
+	
+	$.ajax({
+		url : 'trovaVoto',
+		data : {
+			idEsito : id
+		},
+		type : 'get',
+		success: function(voto){
+			$('#voto'+cont+'').text(voto);	
+		}
+	});
+	
 }
