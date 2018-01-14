@@ -21,5 +21,6 @@ public interface ProfessoreDAO {
 	public void aggiungiData(String matricola, String nomeUtente, Date date);
 	Professore findByPrimaryKeyProxy(String nomeUtente);
 	List<Professore> findAllProxy();
+	public Date trovaRicevimento(String matricola, String nomeUtente);
 
 }

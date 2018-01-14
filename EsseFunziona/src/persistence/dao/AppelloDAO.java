@@ -20,6 +20,8 @@ public interface AppelloDAO {
 	public void rifiuta(String matricola, long idAppello);
 	public void accetta(String matricola, long parseLong);
 	public boolean controllaEsame(String matricola, long idAppello);
-	public boolean controllaLibretto(String matricola, long idAppello);	
+	public boolean controllaLibretto(String matricola, long idAppello);
+	long trovaVotoLibretto(String matricola, long idAppello);
+	long trovaVotoEsito(String matricola, long idAppello);	
 
 }
