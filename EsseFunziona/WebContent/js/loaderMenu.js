@@ -58,9 +58,6 @@ $(document).ready(function() {
 					'<li><a href="aggiuntaAppelli.jsp">Aggiunta Appelli</a></li>'+
 					'<li><a href="aggiuntaEsiti.jsp">Aggiunta Esiti</a></li>'+
 					'<li><a href="aggiuntaMateriale.jsp">Aggiunta Documenti corsi</a></li>'+
-					'<li><a href="verbalizzareEsami.html">Verbalizzare</a></li>'+
-					'<li><a href="esiti.html">Bacheca Esiti</a></li>'+
-					'<li><a href="prenotazioni.html">Bacheca Prenotazioni</a></li>'+
 					'</ul></div></li></ul>');
 		}
 		else if(datiAnagrafici.tipo == "admin"){
