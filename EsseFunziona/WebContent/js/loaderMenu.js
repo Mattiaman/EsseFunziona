@@ -32,6 +32,7 @@ $(document).ready(function() {
 					'<li><a href="prenotazione.jsp">Prenotazione</a></li>'+
 					'<li><a href="prenotazioni.html">Bacheca Prenotazioni</a></li>'+
 					'<li><a href="chiedereRicevimento.jsp"=>Chiedere un Ricevimento</a></li>'+
+					'<li><a href="editPds.html">PianoDiStudi</a></li>'+
 					'</ul></div></li></ul>');	
 		}
 		else if(datiAnagrafici.tipo == "professore"){
@@ -67,7 +68,6 @@ $(document).ready(function() {
 					'<div><ul>'+
 					'<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>'+
 					'<li><a href="corsi.html">Corsi</a></li>'+
-					'<li><a href="editCdl.html">Modifica Corsi</a></li>'+
 					'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+
 					'<li><a href="bandiNews.html">Bandi/News</a></li>'+
 					'<li><a href="tasseAdmin.html">Tasse</a></li>'+
@@ -84,6 +84,7 @@ $(document).ready(function() {
 					'<li><a href="aggiuntaBandi.jsp">Pubblicare Bandi/News</a></li>'+
 					'<li><a href="aggiuntaCorsi.jsp">Aggiungere Corsi</a></li>'+
 					'<li><a href="aggiuntaCorsiDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>'+
+					'<li><a href="editCdl.html">Modifica Corsi</a></li>'+
 					'<li><a href="signupStudente.jsp">Registra Studente</a></li>'+
 					'<li><a href="signupProfessore.jsp">Registra Professore</a></li>'+
 					'</ul></div></li></ul>');

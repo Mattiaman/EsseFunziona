@@ -10,6 +10,15 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+ 
+   <servlet>
+    <servlet-name>mostraPianoServlet</servlet-name>
+    <servlet-class>controller.mostraPiano</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mostraPianoServlet</servlet-name>
+    <url-pattern>/showPiano</url-pattern>
+  </servlet-mapping>  
   
    <servlet>
     <servlet-name>EditCdlServlet</servlet-name>
@@ -54,6 +63,15 @@
   <servlet-mapping>
     <servlet-name>takeStudentiServlet</servlet-name>
     <url-pattern>/studenti</url-pattern>
+  </servlet-mapping>  
+
+  <servlet>
+    <servlet-name>takeRichiestaServlet</servlet-name>
+    <servlet-class>controller.takeRichieste</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeRichiestaServlet</servlet-name>
+    <url-pattern>/studentiRichiesta</url-pattern>
   </servlet-mapping>  
   
   <servlet>
@@ -386,6 +404,5 @@
     <servlet-name>takeRicevimentoServlet</servlet-name>
     <url-pattern>/trovaRicevimento</url-pattern>
    </servlet-mapping>      
- 
   
 </web-app>

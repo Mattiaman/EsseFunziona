@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Area Professore</title>
+</head>
+
+<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+<LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
+<LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
+
+<script src="js/loadDropDownPds.js"></script>
+<script src="js/changeCorsi.js"></script>
+
+<script type="text/javascript" src="js/loaderMenu.js"></script>
+  
+<body style="background: lightblue">
+	<figure style=" text-align: left">		
+		<a href="images/logo_unical.png"><img class="img-responsive" src="images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
+		<figcaption>Servizi online per lo studente</figcaption>		
+	</figure>
+	
+	<section class="col-sm-2">
+	<div class="wrapper">
+  		<nav class="vertical" id="navMenu">
+    		
+  		</nav>
+	</div>
+	</section><br><br>	
+	<div>
+		<div><div><label class="control-label col-sm-3" for="studenti">Corso di Laurea:</label><select name="studenti" id="listaStudenti">
+		</select></div><br></div>
+	<br><br><div class="container">
+	  <div class="table-responsive">          
+	  <table class="table" id="tabellaCorsi">
+	    <thead>
+	      <tr>
+	        <th>ID Corso</th>
+	        <th>Nome Corso</th>
+	      </tr>
+	    </thead>
+	    <tbody id="listaCorsi">
+	      
+	    </tbody>
+	  </table>
+<!-- 	  </div> -->
+	  
+<!-- 	  <div class="table-responsive">           -->
+	  </div>
+	  	  	<div align="right" ><button id="changeName">Cambia nome</button>  <button id="save">Salva</button></div>
+	</div>
+	
+</div>
+</body>
+</html>
