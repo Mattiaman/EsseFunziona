@@ -15,8 +15,9 @@ $(document).ready(function() {
 				for ( var j in esami[i].studentiIscritti){
 					if (esami[i].studentiIscritti[j].matricola == datiAnagrafici.matricola){
 						if (esami[i].studentiIscritti[j].matricola == datiAnagrafici.matricola){
-							c = $('<tr> <th>' + esami[i].corso.nome + '</th> <th>' + esami[i].data + '</th><th>'+ esami[i].studentiIscritti[j].voto + '</th> </tr>');
+							c = $('<tr> <th>' + esami[i].corso.nome + '</th> <th>' + esami[i].data + '</th><th id="voto"></th> </tr>');
 							$("#listaSuperati").append(c);
+							trovaVoto(esami[i].id);
 						}
 					}
 				}
@@ -27,3 +28,20 @@ $(document).ready(function() {
 	}
 	xhr.send(null)
 });
+
+
+
+function trovaVoto(id) {
+
+		$.ajax({
+			url : 'trovaVotiLibretto',
+			data : {
+				idEsito : id
+			},
+			type : 'get',
+			success: function(voto){
+				$('#voto').text(voto);	
+			}
+		});
+	
+}

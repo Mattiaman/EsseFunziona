@@ -16,8 +16,10 @@ public interface AppelloDAO {
 	void aggiungiPrenotazione(String matricola, long idAppello);
 	void aggiungiVoto(String matricola, long idAppello, long voto);
 	public boolean controllaPrenotazione(String matricola, long idAppello);
-	public void cancellaPrenotazione(String matricola, long parseLong);
+	public void cancellaPrenotazione(String matricola, long idAppello);
 	public void rifiuta(String matricola, long idAppello);
-	public void accetta(String matricola, long parseLong);	
+	public void accetta(String matricola, long idAppello);
+	public long trovaVotoLibretto(String matricola, long idAppello);
+	public long trovaVotoEsito(String matricola, long idAppello);	
 
 }

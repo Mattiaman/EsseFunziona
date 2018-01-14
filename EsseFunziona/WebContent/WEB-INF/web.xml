@@ -359,6 +359,24 @@
     <servlet-name>deletePrenotazioneServlet</servlet-name>
     <url-pattern>/eliminaPrenotazione</url-pattern>
    </servlet-mapping>     
+   
+  <servlet>
+    <servlet-name>takeVotoServlet</servlet-name>
+    <servlet-class>controller.takeVoto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeVotoServlet</servlet-name>
+    <url-pattern>/trovaVoto</url-pattern>
+   </servlet-mapping>      
+   
+  <servlet>
+    <servlet-name>takeVotiLibrettoServlet</servlet-name>
+    <servlet-class>controller.takeVotiLibretto</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>takeVotiLibrettoServlet</servlet-name>
+    <url-pattern>/trovaVotiLibretto</url-pattern>
+   </servlet-mapping>      
  
   
 </web-app>
