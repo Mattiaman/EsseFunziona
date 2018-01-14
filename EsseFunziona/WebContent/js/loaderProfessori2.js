@@ -20,12 +20,11 @@ $(document).ready(function() {
 						var a = $('<tr> <th value=\"'+professori[i].nomeUtente+'\">'+professori[i].cognome+' '+professori[i].nome+'</th> <th id="data'+cont+'"></th> </tr>');
 						$("#listaRicevimenti").append(a);
 						trovaRicevimento(professori[i].nomeUtente,cont);
-						cont++;
-						var d = $('<option value=\"'+professori[i].nomeUtente+'\">'+professori[i].cognome+' '+professori[i].nome+'</option>');
-						$("#opzioniProfessori").append(d);
-					
+						cont++;					
 					}
 				}
+				var d = $('<option value=\"'+professori[i].nomeUtente+'\">'+professori[i].cognome+' '+professori[i].nome+'</option>');
+				$("#opzioniProfessori").append(d);
 			}
 		}
 		xhrA.send(null);
