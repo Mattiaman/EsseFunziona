@@ -359,10 +359,31 @@ public class StudenteJDBC implements StudenteDAO {
 		}
 		return pds;
 	}
+
+	@Override
+	public void deleteRichiestaStudente(Studente studente) {
+		Connection connection=this.databaseData.getConnection();
+		try {
+			String delete="DELETE FROM vuoleModificare WHERE matricolaStudente=?";
+			PreparedStatement statement=connection.prepareStatement(delete);
+			statement.setString(1, studente.getMatricola());
+			connection.setAutoCommit(false);
+			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
+			statement.executeUpdate();
+			connection.commit();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }
-
-
-
 
 
 

@@ -46,7 +46,7 @@ function addClickListenerAccept(){
 }
 
 function addClickListenerRefuse(){
-	$('#accetta').on('click',function(){
+	$('#rifiuta').on('click',function(){
 		if($("#listaStudenti").val()==-1){
 			console.log("eeee no")
 			return;
@@ -70,4 +70,5 @@ function addClickListenerRefuse(){
 $(document).ready(function() {
 	addChangeListener()
 	addClickListenerAccept()
+	addClickListenerRefuse()
 });
