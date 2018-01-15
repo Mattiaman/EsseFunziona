@@ -40,6 +40,7 @@ public class SignUpProfessore extends HttpServlet{
 		String email = req.getParameter("email");
 		String dataNascita = req.getParameter("dataNascita");
 		String password = req.getParameter("password");
+		String cdl = req.getParameter("corsoDiLaurea");
 	
 		DateFormat format = new SimpleDateFormat
 							("yyyy-mm-dd", Locale.ITALIAN);
@@ -48,9 +49,11 @@ public class SignUpProfessore extends HttpServlet{
 			date = format.parse(dataNascita);
 			Professore prof = new Professore(nome, cognome, date, email, nomeUtente);
 			
-			ProfessoreDAO professoreDAO = 
-					DatabaseManager.getInstance()
-					.getDaoFactory().getProfessoreDAO();
+			CorsoDiLaureaDAO corsoDiLaureaDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
+			CorsoDiLaurea corsoDiLaurea = corsoDiLaureaDAO.findByPrimaryKey(Long.parseLong(cdl));
+			prof.setCorsoDiLaurea(corsoDiLaurea);
+			
+			ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
 			professoreDAO.save(prof);
 			professoreDAO.setPassword(prof, password);
 			

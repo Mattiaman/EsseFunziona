@@ -8,8 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Corso;
+import model.CorsoDiLaurea;
 import model.Professore;
 import model.Studente;
+import persistence.dao.CorsoDAO;
 import persistence.dao.ProfessoreDAO;
 import persistence.dao.StudenteDAO;
 
@@ -26,19 +29,23 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		// TODO Auto-generated method stub
 		Connection connection=this.databaseData.getConnection();
 		try {		
-			String insert="insert into professore(\"nomeUtente\", nome, cognome, dataDiNascita, email) values (?,?,?,?,?)";
+			String insert="insert into professore(\"nomeUtente\", nome, cognome, dataDiNascita, email, corsoDiLaureaId) values (?,?,?,?,?,?)";
 			PreparedStatement statement=connection.prepareStatement(insert);
 			statement.setString(1, professore.getNomeUtente());
 			statement.setString(2, professore.getNome());
 			statement.setString(3, professore.getCognome());
 			statement.setDate(4, new Date(professore.getDataDiNascita().getTime()));
 			statement.setString(5, professore.getEmail());
+			statement.setLong(6, professore.getCorsoDiLaurea().getId());
 			statement.executeUpdate();
 			
 			
 			if(professore.getStudentiRicevimento()!=null)
 				if(!professore.getStudentiRicevimento().isEmpty()) 
 					this.mappaStudenti(professore, connection);
+			if(professore.getCorsiInsegnati()!=null)
+				if(!professore.getCorsiInsegnati().isEmpty()) 
+					this.mappaCorsi(professore, connection);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -71,7 +78,6 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 				professore.setCognome(result.getString("cognome"));
 				professore.setDataDiNascita(new java.util.Date(result.getDate("dataDiNascita").getTime()));
 				professore.setEmail(result.getString("email"));
-	
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -198,6 +204,9 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			if(professore.getStudentiRicevimento()!=null)
 				if(!professore.getStudentiRicevimento().isEmpty()) 
 					this.mappaStudenti(professore, connection);
+			if(professore.getCorsiInsegnati()!=null)
+				if(!professore.getCorsiInsegnati().isEmpty()) 
+					this.mappaCorsi(professore, connection);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -224,6 +233,8 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 			this.removeForeignKeyFromMateriale(professore, connection);
 			this.removeForeignKeyFromAppello(professore, connection);
+			this.removeForeignKeyFromInsegna(professore, connection);
+			this.removeForeignKeyFromCorso(professore, connection);
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -253,7 +264,21 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		statement.setString(1, professore.getNomeUtente());
 		statement.executeUpdate();	
 	}
-
+	
+	private void removeForeignKeyFromInsegna(Professore professore, Connection connection) throws SQLException {
+		String update = "update insegna SET nomeUtenteProfessore = NULL WHERE nomeUtenteProfessore = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setString(1,professore.getNomeUtente());
+		statement.executeUpdate();	
+	}
+	
+	private void removeForeignKeyFromCorso(Professore professore, Connection connection) throws SQLException {
+		String update = "update insegna SET nomeUtenteProfessore = NULL WHERE idCorso = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setString(1,professore.getNomeUtente());
+		statement.executeUpdate();	
+	}
+	
 	public void setPassword(Professore professore, String password) {
 		Connection connection = this.databaseData.getConnection();
 		try {
@@ -308,6 +333,41 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		
 	}
 
+	private void mappaCorsi(Professore professore, Connection connection) throws SQLException {
+		CorsoDAO corsodao = new CorsoJDBC(databaseData);
+		
+		String del="delete from insegna where idCorsoDiLaurea=?";
+		PreparedStatement stat=connection.prepareStatement(del);
+		stat.setString(1, professore.getNomeUtente());
+		stat.executeUpdate();
+		for (Corso corso : professore.getCorsiInsegnati()) {
+			if (corsodao.findByPrimaryKey(corso.getId()) == null){
+				corsodao.save(corso);
+			}
+			String insegna = "select id from insegna where idCorso=? AND nomeUtenteProfessore=?";
+			PreparedStatement statementInsegna = connection.prepareStatement(insegna);
+			statementInsegna.setLong(1, corso.getId());
+			statementInsegna.setString(2, professore.getNomeUtente());
+			ResultSet result = statementInsegna.executeQuery();
+			if(result.next()){
+				String update = "update insegna SET nomeUtenteProfessore = ? WHERE id = ?";
+				PreparedStatement statement = connection.prepareStatement(update);
+				statement.setString(1, professore.getNomeUtente());
+				statement.setLong(2, result.getLong("id"));
+				statement.executeUpdate();
+			}else{			
+				String aggiungi = "insert into insegna(id, idCorso, nomeUtenteProfessore) values (?,?,?)";
+				PreparedStatement statementAggiungi = connection.prepareStatement(aggiungi);
+				Long id = IdGenerator.getId(connection);
+				statementAggiungi.setLong(1, id);
+				statementAggiungi.setLong(2, corso.getId());
+				statementAggiungi.setString(3, professore.getNomeUtente());
+				statementAggiungi.executeUpdate();
+			}
+		}
+	}
+	
+	
 	@Override
 	public DatiProfessore findByPrimaryKeyData(String nomeUtente) {
 		// TODO Auto-generated method stub

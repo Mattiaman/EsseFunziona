@@ -16,7 +16,7 @@
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
-
+<script src="js/loadDropDownProfessori.js"></script>
 <script type="text/javascript" src="js/loaderMenu.js"></script>
 
 <body style="background: lightblue">
@@ -92,6 +92,13 @@
 						<input name="confermapassword" type="password" class="form-control" />
 					</div>
 				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="corsoDiLaurea">Corso di Laurea:</label>
+					<div class="col-sm-5">
+						<select name="corsoDiLaurea" id="listaCdl">
+						</select>
+					</div>
+				</div>	
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-5">
 						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>

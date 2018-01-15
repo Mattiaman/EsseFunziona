@@ -42,8 +42,6 @@ function trovaRicevimento(nM,cont) {
 		type : 'get',
 		success: function(data){
 			$('#data'+cont+'').text(data);
-			if(data == null)
-				$('#data'+cont+'').parent().remove();
 		}
 	});
 	

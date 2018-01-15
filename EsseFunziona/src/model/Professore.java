@@ -9,20 +9,26 @@ import java.util.Set;
 public class Professore extends Utente {
 	
 	private String nomeUtente;
+	private CorsoDiLaurea corsoDiLaurea;
 	private Set<Studente> studentiRicevimento;
 	private int nStudentiRicevimento;
+	private Set<Corso> corsiInsegnati;
+	private int nCorsiInsegnati;
 	
 	public Professore(String nome, String cognome, Date dataDiNascita, String email, String nomeUtente) {
 		super(nome, cognome, dataDiNascita, email, "professore");
 		this.nomeUtente = nomeUtente;
 	}
 
-	public Professore(String nome, String cognome, Date dataDiNascita, String email, String nomeUtente,
-			Set<Studente> studentiRicevimento) {
+	public Professore(String nome, String cognome, Date dataDiNascita, String email, String nomeUtente, CorsoDiLaurea corsoDiLaurea,
+			Set<Studente> studentiRicevimento, Set<Corso> corsiInsegnati) {
 		super(nome, cognome, dataDiNascita, email, "professore");
 		this.nomeUtente = nomeUtente;
+		this.corsoDiLaurea = corsoDiLaurea;
 		this.studentiRicevimento = studentiRicevimento;
 		this.nStudentiRicevimento = studentiRicevimento.size();
+		this.corsiInsegnati = corsiInsegnati;
+		this.nCorsiInsegnati = corsiInsegnati.size();
 	}
 
 	public Professore() {
@@ -35,6 +41,14 @@ public class Professore extends Utente {
 
 	public void setNomeUtente(String nomeUtente) {
 		this.nomeUtente = nomeUtente;
+	}
+
+	public CorsoDiLaurea getCorsoDiLaurea() {
+		return corsoDiLaurea;
+	}
+
+	public void setCorsoDiLaurea(CorsoDiLaurea corsoDiLaurea) {
+		this.corsoDiLaurea = corsoDiLaurea;
 	}
 
 	public int getnStudentiRicevimento() {
@@ -60,5 +74,29 @@ public class Professore extends Utente {
 		}
 		studentiRicevimento.add(studente);
 		nStudentiRicevimento=studentiRicevimento.size();
+	}
+
+	public Set<Corso> getCorsiInsegnati() {
+		return corsiInsegnati;
+	}
+
+	public void setCorsiInsegnati(Set<Corso> corsiInsegnati) {
+		this.corsiInsegnati = corsiInsegnati;
+	}
+
+	public int getnCorsiInsegnati() {
+		return nCorsiInsegnati;
+	}
+
+	public void setnCorsiInsegnati(int nCorsiInsegnati) {
+		this.nCorsiInsegnati = nCorsiInsegnati;
+	}
+	
+	public void addCorso(Corso corso) {
+		if(corsiInsegnati==null) {
+			corsiInsegnati=new HashSet<Corso>();
+		}
+		corsiInsegnati.add(corso);
+		nCorsiInsegnati=corsiInsegnati.size();
 	}
 }
