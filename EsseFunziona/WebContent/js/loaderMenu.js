@@ -87,6 +87,7 @@ $(document).ready(function() {
 						'<li><a href="aggiuntaCorsi.jsp">Aggiungere Corsi</a></li>'+
 						'<li><a href="aggiuntaCorsiDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>'+
 						'<li><a href="editCdl.html">Modifica Corsi</a></li>'+
+						'<li><a href="editProf.html">Modifica Professori</a></li>'+
 						'<li><a href="signupStudente.jsp">Registra Studente</a></li>'+
 						'<li><a href="signupProfessore.jsp">Registra Professore</a></li>'+
 						'<li><a href="accettaPiani.html">Visiona Piani di Studio</a></li>'+

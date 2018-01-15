@@ -205,11 +205,15 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 				if(!professore.getStudentiRicevimento().isEmpty()) 
 					this.mappaStudenti(professore, connection);
 			if(professore.getCorsiInsegnati()!=null)
-				if(!professore.getCorsiInsegnati().isEmpty()) 
 					this.mappaCorsi(professore, connection);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			if (connection != null) {
+				try {
+					connection.rollback();
+				} catch(SQLException excep) {
+					e.printStackTrace();
+				}
+			}
 		}finally {
 			try {
 				connection.close();
@@ -335,8 +339,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 
 	private void mappaCorsi(Professore professore, Connection connection) throws SQLException {
 		CorsoDAO corsodao = new CorsoJDBC(databaseData);
-		
-		String del="delete from insegna where idCorsoDiLaurea=?";
+		String del="delete from insegna where nomeUtenteProfessore=?";
 		PreparedStatement stat=connection.prepareStatement(del);
 		stat.setString(1, professore.getNomeUtente());
 		stat.executeUpdate();
@@ -355,7 +358,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 				statement.setString(1, professore.getNomeUtente());
 				statement.setLong(2, result.getLong("id"));
 				statement.executeUpdate();
-			}else{			
+			}else{		
 				String aggiungi = "insert into insegna(id, idCorso, nomeUtenteProfessore) values (?,?,?)";
 				PreparedStatement statementAggiungi = connection.prepareStatement(aggiungi);
 				Long id = IdGenerator.getId(connection);

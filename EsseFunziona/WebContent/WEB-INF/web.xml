@@ -28,6 +28,15 @@
     <servlet-name>EditCdlServlet</servlet-name>
     <url-pattern>/EditCdl</url-pattern>
   </servlet-mapping>  
+  
+  <servlet>
+    <servlet-name>EditCorsiProfServlet</servlet-name>
+    <servlet-class>controller.EditCorsiProf</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditCorsiProfServlet</servlet-name>
+    <url-pattern>/EditCorsiProf</url-pattern>
+  </servlet-mapping> 
     
   <servlet>
     <servlet-name>SignUpStudenteServlet</servlet-name>

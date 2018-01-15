@@ -82,6 +82,7 @@ public class Professore extends Utente {
 
 	public void setCorsiInsegnati(Set<Corso> corsiInsegnati) {
 		this.corsiInsegnati = corsiInsegnati;
+		nCorsiInsegnati=corsiInsegnati.size();
 	}
 
 	public int getnCorsiInsegnati() {
