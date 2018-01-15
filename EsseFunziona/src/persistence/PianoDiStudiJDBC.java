@@ -35,9 +35,15 @@ public class PianoDiStudiJDBC implements PianoDiStudiDAO {
 			statement.setLong(3, pianoDiStudi.getCorsoDiLaurea().getId());
 			statement.executeUpdate();
 			
-			if(pianoDiStudi.getCorsi()!=null)
-				if(!(pianoDiStudi.getCorsi().isEmpty()))
+			System.out.println("dim "+pianoDiStudi.getCorsi().size());
+			
+			if(pianoDiStudi.getCorsi()!=null) {
+				System.out.println("non nullo");
+				if(!(pianoDiStudi.getCorsi().isEmpty())) {
 					this.mappaCorsi(pianoDiStudi, connection);
+					System.out.println("mappato");
+				}
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -191,6 +197,7 @@ public class PianoDiStudiJDBC implements PianoDiStudiDAO {
 			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 			this.removeForeignKeyFromCorso(pianoDiStudi, connection);
 			this.removeForeignKeyFromStudente(pianoDiStudi, connection);
+			this.removeForeignKeyFromVuoleModificare(pianoDiStudi, connection);
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -198,6 +205,14 @@ public class PianoDiStudiJDBC implements PianoDiStudiDAO {
 			e.printStackTrace();
 		}
 
+	}
+
+	private void removeForeignKeyFromVuoleModificare(PianoDiStudi pianoDiStudi, Connection connection) throws SQLException {
+		// TODO Auto-generated method stub
+		String update = "update vuoleModificare SET idPianoDiStudi = NULL WHERE idPianoDiStudi = ?";
+		PreparedStatement statement = connection.prepareStatement(update);
+		statement.setLong(1, pianoDiStudi.getId());
+		statement.executeUpdate();		
 	}
 
 	private void removeForeignKeyFromCorso(PianoDiStudi pianoDiStudi, Connection connection) throws SQLException {
