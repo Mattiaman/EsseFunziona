@@ -1,5 +1,9 @@
 function addChangeListener(){
 	$("#listaStudenti").change(function(){
+		if($("#listaStudenti").val()==-1){
+			console.log("eeee no")
+			return;
+		}
 		$("#listaCorsi").children().remove();
 		var id=$(this).val()
 		$.ajax({
@@ -20,33 +24,19 @@ function addChangeListener(){
 }
 
 
-function addClickListenerSave(){
-	$('#save').on('click',function(){
-		if($("#listaCdl").val()==-1){
+function addClickListenerAccept(){
+	$('#accetta').on('click',function(){
+		if($("#listaStudenti").val()==-1){
 			console.log("eeee no")
 			return;
 		}
-		var list='[';
-		var hidden=$("#newName").val()
-		var first=true;
-		$('#listaCorsiIn tr').each(function(){
-			var id=$(this).find('.idCorso').text()
-			if(first==true){
-				list+=''+id+''
-				first=false;
-			}
-			else
-				list+=','+id+''
-		})
-		list+=']'
-		console.log(list);
+
 		$.ajax({
-			url: 'EditCdl',
+			url: 'showPiano',
 			type: 'POST',
 			data: {
-				idCdl: $("#listaCdl").val(),
-				nuovoNome: hidden,
-				lista: list
+				id: $("#listaStudenti").val(),
+				status: "1"
 			},
 			success: function(){
 				location.reload();
@@ -55,9 +45,29 @@ function addClickListenerSave(){
 	})
 }
 
+function addClickListenerRefuse(){
+	$('#accetta').on('click',function(){
+		if($("#listaStudenti").val()==-1){
+			console.log("eeee no")
+			return;
+		}
+
+		$.ajax({
+			url: 'showPiano',
+			type: 'POST',
+			data: {
+				id: $("#listaStudenti").val(),
+				status: "2"
+			},
+			success: function(){
+				location.reload();
+			}
+		})
+	})
+}
+
+
 $(document).ready(function() {
 	addChangeListener()
-	loadCorsiAll();
-	addClickListenerShow()
-	addClickListenerSave()
+	addClickListenerAccept()
 });

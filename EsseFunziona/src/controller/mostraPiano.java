@@ -20,6 +20,7 @@ import com.google.gson.reflect.TypeToken;
 
 import model.*;
 import persistence.DatabaseManager;
+import persistence.PianoDiStudiProxy;
 import persistence.dao.*;
 
 public class mostraPiano extends HttpServlet {
@@ -30,51 +31,52 @@ public class mostraPiano extends HttpServlet {
 		resp.setContentType("application/json");
 		StudenteDAO studDAO=DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
 		Studente stud=studDAO.findByPrimaryKeyData(req.getParameter("id"));
-		PianoDiStudiDAO pdsDAO=DatabaseManager.getInstance().getDaoFactory().getPianoDiStudiDAO();
 		PianoDiStudi pds=studDAO.getRichiestaModificaPds(stud);
 
 		System.out.println(pds.getId());
-		
-//		if (pds!=null) {
-//			if (pds.getCorsi() != null) {
-//				if (!pds.getCorsi().isEmpty()) {
-//					PrintWriter out = resp.getWriter();
-//					Gson gson = new Gson();
-//					boolean first = false;
-//					out.println("[");
-//					for (Corso c : pds.getCorsi()) {
-//						if (first)
-//							out.print(",");
-//						else
-//							first = true;
-//						out.print(gson.toJson(c));
-//					}
-//					out.print("]");
-//					out.close();
-//				}
-//			} 
-//		}
+		if(pds instanceof PianoDiStudiProxy)
+		if (pds!=null) {
+			if (pds.getCorsi() != null) {
+				if (!pds.getCorsi().isEmpty()) {
+					PrintWriter out = resp.getWriter();
+					Gson gson = new Gson();
+					boolean first = false;
+					out.println("[");
+					for (Corso c : pds.getCorsi()) {
+						if (first)
+							out.print(",");
+						else
+							first = true;
+						out.print(gson.toJson(c));
+					}
+					out.print("]");
+					out.close();
+				}
+			} 
+		}
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(req.getParameter("nuovoNome"));
-		System.out.println(req.getParameter("idCdl"));
-		JsonParser parser=new JsonParser();
-		JsonArray list=parser.parse(req.getParameter("lista")).getAsJsonArray();
-		CorsoDiLaureaDAO cdlDAO=DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
-		CorsoDiLaurea cdl=cdlDAO.findByPrimaryKey(Long.parseLong(req.getParameter("idCdl")));
-		CorsoDAO corsoDAO=DatabaseManager.getInstance().getDaoFactory().getCorsoDAO();
-		Set<Corso> corsi=new HashSet<Corso>();
-		for(JsonElement j:list) {
-			Corso c=corsoDAO.findByPrimaryKey(Long.parseLong(j.toString()));
-			if(c!=null)
-				corsi.add(c);
+		StudenteDAO studDAO=DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
+		PianoDiStudiDAO pdsDAO=DatabaseManager.getInstance().getDaoFactory().getPianoDiStudiDAO();
+		Studente stud=studDAO.findByPrimaryKeyData(req.getParameter("id"));
+		PianoDiStudi pdsVecchio=stud.getPianoDiStudi();
+		PianoDiStudi pdsNuovo=studDAO.getRichiestaModificaPds(stud);
+		
+		String s=req.getParameter("status");
+		System.out.println(s);
+		
+		if(s.equals("1")) {
+			pdsDAO.delete(pdsVecchio);
+			studDAO.setPianoDiStudi(stud,pdsNuovo);
+			System.out.println("aggiornato");
 		}
-		if(req.getParameter("nuovoNome")!="" && req.getParameter("nuovoNome")!=null)
-			cdl.setNome(req.getParameter("nuovoNome"));
-		cdl.setCorsi(corsi);
-		cdlDAO.update(cdl);
+		else {
+			System.out.println("bau");
+			pdsDAO.delete(pdsNuovo);
+		}
+
 	}
 
 	

@@ -242,6 +242,29 @@ public class StudenteJDBC implements StudenteDAO {
 		
 	}
 
+	@Override
+	public void setPianoDiStudi(Studente studente, PianoDiStudi pds) {
+		// TODO Auto-generated method stub
+		Connection connection = this.databaseData.getConnection();
+		try {
+			String update = "update studente SET pianoDIStudiId = ? WHERE matricola=?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setLong(1, pds.getId());
+			statement.setString(2, studente.getMatricola());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new PersistenceException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new PersistenceException(e.getMessage());
+			}
+		}
+		
+	}
+
+	
 	private void mappaTasse(Studente studente, Connection connection) throws SQLException {
 		TassaDAO tassaDAO=new TassaJDBC(databaseData);
 		for(Tassa tassa:studente.getTasse()) {
@@ -321,7 +344,7 @@ public class StudenteJDBC implements StudenteDAO {
 			statement.setString(1, studente.getMatricola());
 			ResultSet result=statement.executeQuery();
 			if(result.next()) {
-				pds=pdsDAO.findByPrimaryKey(result.getLong("idPianoDiStudi"));
+				pds=pdsDAO.findByPrimaryKeyProxy(result.getLong("idPianoDiStudi"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

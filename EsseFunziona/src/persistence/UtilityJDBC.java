@@ -32,7 +32,6 @@ public class UtilityJDBC {
 					"create table contiene(\"id\" bigint primary key, idCorso bigint REFERENCES corso(\"id\"), idPianoDiStudi bigint REFERENCES pianoDiStudi(\"id\"));"+
 					"create table prenota(\"id\" bigint primary key, idAppello bigint REFERENCES appello(\"id\"), matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"), voto int);"+
 					"create table vuoleModificare(\"id\" bigint primary key, idPianoDiStudi bigint REFERENCES pianoDiStudi(\"id\"), matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"));"+
-					"create table prenota(\"id\" bigint primary key, idAppello bigint REFERENCES appello(\"id\"), matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"));"+
 					"create table esame(\"id\" bigint primary key, idAppello bigint REFERENCES appello(\"id\"), matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"), voto bigint);"+
 					"create table libretto(\"id\" bigint primary key, idAppello bigint REFERENCES appello(\"id\"), matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"), voto bigint);"+
 					"create table riceve(\"id\" bigint primary key, matricolaStudente CHARACTER(6) REFERENCES studente(\"matricola\"), nomeUtenteProfessore VARCHAR(20) REFERENCES professore(\"nomeUtente\"), dataRicevimento DATE, accettato boolean);";

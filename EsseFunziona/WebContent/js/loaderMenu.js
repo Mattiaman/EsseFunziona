@@ -90,6 +90,7 @@ $(document).ready(function() {
 					'<li><a href="editCdl.html">Modifica Corsi</a></li>'+
 					'<li><a href="signupStudente.jsp">Registra Studente</a></li>'+
 					'<li><a href="signupProfessore.jsp">Registra Professore</a></li>'+
+					'<li><a href="accettaPiani.html">Visiona Piani di Studio</a></li>'+
 					'</ul></div></li></ul>');
 		}
 		

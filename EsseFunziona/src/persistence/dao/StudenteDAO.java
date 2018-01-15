@@ -19,5 +19,6 @@ public interface StudenteDAO {
 	public void sendRichiestaModificaPds(Studente studente, PianoDiStudi pianoNuovo);
 	public PianoDiStudi getRichiestaModificaPds(Studente studente);
 	public List<Studente> findAllRichiedentiModifica();
+	public void setPianoDiStudi(Studente studente, PianoDiStudi pds);
 
 }

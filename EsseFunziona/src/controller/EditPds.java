@@ -67,16 +67,19 @@ public class EditPds extends HttpServlet {
 		PianoDiStudiDAO pdsDAO=DatabaseManager.getInstance().getDaoFactory().getPianoDiStudiDAO();
 		Studente s=studDAO.findByPrimaryKeyData((String) session.getAttribute("matricola"));
 		System.out.println(s.getMatricola());
-		PianoDiStudi pds=pdsDAO.findByPrimaryKeyProxy(s.getPianoDiStudi().getId());
+		PianoDiStudi pds=pdsDAO.findByPrimaryKey(s.getPianoDiStudi().getId());
 		CorsoDAO corsoDAO=DatabaseManager.getInstance().getDaoFactory().getCorsoDAO();
 		Set<Corso> corsi=new HashSet<Corso>();
 		for(JsonElement j:list) {
 			Corso c=corsoDAO.findByPrimaryKey(Long.parseLong(j.toString()));
-			if(c!=null)
-				corsi.add(c);
+			if(c!=null) {
+				pds.addCorso(c);
+				System.out.println("added "+c.getNome());
+			}
 		}
 
-		pds.setCorsi(corsi);
+		//pds.setCorsi(corsi);
+		System.out.println("aaaaaa "+ pds.getCorsi().size());
 		pdsDAO.save(pds);
 		studDAO.sendRichiestaModificaPds(s, pds);
 	}
