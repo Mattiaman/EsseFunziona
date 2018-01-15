@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Area Studente</title>
+<meta charset="utf-8">
+<title>Area Professore</title>
 </head>
 
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -11,6 +11,10 @@
 
 <LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
+
+<script src="js/loadDropDownTasse.js"></script>
+<script src="js/LoaderTasseStudenteAdmin.js"></script>
+
 <script type="text/javascript" src="js/loaderMenu.js"></script>
   
 <body style="background: lightblue">
@@ -25,36 +29,33 @@
     		
   		</nav>
 	</div>
-	</section>	
-
-	
-	<br><div class="container">
+	</section><br><br>	
+	<div>
+		<div><div><label class="control-label col-sm-3" for="studenti">Corso di Laurea:</label><select name="studenti" id="listaStudenti">
+		</select></div><br></div>
+	<br><br><div class="container">
 	  <div class="table-responsive">          
-	  <table class="table">
+	  <table class="table" id="tabellaTasse">
 	    <thead>
 	      <tr>
-	        <th>IDTassa</th>
-	        <th>Importo Tassa</th>
+	        <th>ID Tassa</th>
+	       	<th>Importo Tassa</th>
 	        <th>Nome Tassa</th>
-	        <th>Descrizione Tassa</th>
-	        <th>Situazione</th>
+	        <th>Descrizione</th>
+	        <th>Stato</th>
+	        <th>Modifica</th>
 	      </tr>
 	    </thead>
-	    <tbody>
-	      <tr>
-	        <td>123</td>
-	        <td>1000</td>
-	        <td>Tassa semestrale</td>
-	        <td>1 Rata</td>
-	        <td>pagata</td>
-	      </tr>
+	    <tbody id="listaTasse">
+	      
 	    </tbody>
 	  </table>
+<!-- 	  </div> -->
+	  
+<!-- 	  <div class="table-responsive">           -->
 	  </div>
 	</div>
-
 	
-
-
+</div>
 </body>
 </html>

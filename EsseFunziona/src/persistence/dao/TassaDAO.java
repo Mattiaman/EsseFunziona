@@ -13,6 +13,7 @@ public interface TassaDAO {
 	public void update(Tassa tassa);
 	public void delete(Tassa tassa);
 	public void inoltraTassa(Tassa tassa, Studente studente);
-	public boolean getStatoTassa(Tassa tassa, Studente studente);	
+	public boolean getStatoTassa(Tassa tassa, Studente studente);
+	public void setStatoTassa(Tassa tassa, Studente studente, boolean stato);	
 
 }

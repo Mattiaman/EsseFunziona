@@ -216,5 +216,28 @@ public class TassaJDBC implements TassaDAO {
 		}
 		return status;
 	}
+	
+	@Override
+	public void setStatoTassa(Tassa tassa, Studente studente, boolean stato) {
+		Connection connection=databaseData.getConnection();
+		try {
+			String query="update devePagare set pagata=? where matricolaStudente=? and idTassa=?";
+			PreparedStatement statement=connection.prepareStatement(query);
+			statement.setBoolean(1, stato);
+			statement.setString(2, studente.getMatricola());
+			statement.setLong(3, tassa.getId());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 
 }
