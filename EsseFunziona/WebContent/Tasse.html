@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
+<meta charset="utf-8">
 <title>Area Studente</title>
 </head>
 
@@ -11,7 +11,12 @@
 
 <LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
+
+
 <script type="text/javascript" src="js/loaderMenu.js"></script>
+
+<script src="js/loaderTasseStudente.js"></script>
+<script src="js/loadDropDownTasse.js"></script>
   
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
@@ -25,36 +30,30 @@
     		
   		</nav>
 	</div>
-	</section>	
-
-	
-	<br><div class="container">
+	</section><br><br>	
+	<div>
+	<br><br><div class="container">
 	  <div class="table-responsive">          
-	  <table class="table">
+	  <table class="table" id="tabellaTasse">
 	    <thead>
 	      <tr>
-	        <th>IDTassa</th>
-	        <th>Importo Tassa</th>
+	        <th>ID Tassa</th>
+	       	<th>Importo Tassa</th>
 	        <th>Nome Tassa</th>
-	        <th>Descrizione Tassa</th>
-	        <th>Situazione</th>
+	        <th>Descrizione</th>
+	        <th>Stato</th>
 	      </tr>
 	    </thead>
-	    <tbody>
-	      <tr>
-	        <td>123</td>
-	        <td>1000</td>
-	        <td>Tassa semestrale</td>
-	        <td>1 Rata</td>
-	        <td>pagata</td>
-	      </tr>
+	    <tbody id="listaTasse">
+	      
 	    </tbody>
 	  </table>
+<!-- 	  </div> -->
+	  
+<!-- 	  <div class="table-responsive">           -->
 	  </div>
 	</div>
-
 	
-
-
+</div>
 </body>
 </html>

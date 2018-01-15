@@ -34,7 +34,6 @@ public class mostraPiano extends HttpServlet {
 		PianoDiStudi pds=studDAO.getRichiestaModificaPds(stud);
 
 		System.out.println(pds.getId());
-		if(pds instanceof PianoDiStudiProxy)
 		if (pds!=null) {
 			if (pds.getCorsi() != null) {
 				if (!pds.getCorsi().isEmpty()) {
@@ -70,11 +69,13 @@ public class mostraPiano extends HttpServlet {
 		if(s.equals("1")) {
 			pdsDAO.delete(pdsVecchio);
 			studDAO.setPianoDiStudi(stud,pdsNuovo);
+			studDAO.deleteRichiestaStudente(stud);
 			System.out.println("aggiornato");
 		}
 		else {
 			System.out.println("bau");
 			pdsDAO.delete(pdsNuovo);
+			studDAO.deleteRichiestaStudente(stud);
 		}
 
 	}

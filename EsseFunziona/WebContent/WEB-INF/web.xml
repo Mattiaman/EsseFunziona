@@ -10,7 +10,24 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+   <servlet>
+    <servlet-name>tasseStudenteAdminServlet</servlet-name>
+    <servlet-class>controller.takeTasseStudenteAdmin</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>tasseStudenteAdminServlet</servlet-name>
+    <url-pattern>/tasseStudenteAdmin</url-pattern>
+  </servlet-mapping>
  
+  <servlet>
+    <servlet-name>tasseStudenteServlet</servlet-name>
+    <servlet-class>controller.takeTasseStudente</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>tasseStudenteServlet</servlet-name>
+    <url-pattern>/tasseStudente</url-pattern>
+  </servlet-mapping>
+  
    <servlet>
     <servlet-name>mostraPianoServlet</servlet-name>
     <servlet-class>controller.mostraPiano</servlet-class>

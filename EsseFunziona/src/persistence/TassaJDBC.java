@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import model.Studente;
 import model.Tassa;
 import persistence.dao.AdminDAO;
 import persistence.dao.TassaDAO;
@@ -24,9 +27,10 @@ public class TassaJDBC implements TassaDAO {
 		Connection connection=this.databaseData.getConnection();
 		try {
 			String insert="insert into tassa(id, importo, nome, descrizione, nomeUtenteAdmin) values(?,?,?,?,?)";
-			
+			long id=IdGenerator.getId(connection);
+			tassa.setId(id);
 			PreparedStatement statement=connection.prepareStatement(insert);
-			statement.setLong(1, IdGenerator.getId(connection));
+			statement.setLong(1, id);
 			statement.setFloat(2, tassa.getImporto());
 			statement.setString(3, tassa.getNome());
 			statement.setString(4, tassa.getDescrizione());
@@ -145,6 +149,83 @@ public class TassaJDBC implements TassaDAO {
 			String delete="delete FROM tassa WHERE id=?";
 			PreparedStatement statement=connection.prepareStatement(delete);
 			statement.setLong(1, tassa.getId());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	@Override
+	public void inoltraTassa(Tassa tassa, Studente studente) {
+		Connection connection = databaseData.getConnection();
+		try {
+			String check = "select from tassa where id=?";
+			PreparedStatement statement;
+			statement = connection.prepareStatement(check);
+			statement.setLong(1, tassa.getId());
+			ResultSet result = statement.executeQuery();
+			String inoltra = "insert into devePagare(id, matricolaStudente, idTassa, pagata) values(?,?,?,FALSE)";
+			PreparedStatement ins = connection.prepareStatement(inoltra);
+			ins.setLong(1, IdGenerator.getId(connection));
+			ins.setString(2, studente.getMatricola());
+			ins.setLong(3, tassa.getId());
+			ins.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	@Override
+	public boolean getStatoTassa(Tassa tassa, Studente studente) {
+		Connection connection=databaseData.getConnection();
+		boolean status=false;
+		try {
+			String query="select * from devePagare where matricolaStudente=? and idTassa=?";
+			PreparedStatement statement=connection.prepareStatement(query);
+			statement.setString(1, studente.getMatricola());
+			statement.setLong(2, tassa.getId());
+			ResultSet result=statement.executeQuery();
+			if(result.next()) {
+				status=result.getBoolean("pagata");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return status;
+	}
+	
+	@Override
+	public void setStatoTassa(Tassa tassa, Studente studente, boolean stato) {
+		Connection connection=databaseData.getConnection();
+		try {
+			String query="update devePagare set pagata=? where matricolaStudente=? and idTassa=?";
+			PreparedStatement statement=connection.prepareStatement(query);
+			statement.setBoolean(1, stato);
+			statement.setString(2, studente.getMatricola());
+			statement.setLong(3, tassa.getId());
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

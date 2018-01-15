@@ -21,7 +21,7 @@ $(document).ready(function() {
 						'</ul></div></li>'+
 						'<li><label for="segreteria">Segreteria</label><input type="radio" name="verticalMenu" id="segreteria" />'+
 						'<div><ul>'+
-						'<li><a href="tasse.html">Situazione Tasse</a></li>'+
+						'<li><a href="Tasse.html">Situazione Tasse</a></li>'+
 						'<li><a href="libretto.html">Libretto</a></li>'+
 						'<li><a href="editPds.html">Piano Carriera</a></li>'+
 						'</ul></div></li>'+
@@ -83,6 +83,7 @@ $(document).ready(function() {
 						'<li><label for="segreteria">Segreteria</label><input type="radio" name="verticalMenu" id="segreteria" />'+
 						'<div><ul>'+    		
 						'<li><a href="aggiuntaTasse.jsp">Aggiungere Tasse</a></li>'+
+						'<li><a href="modificaStatoTasse.html">Gestisci tasse</a></li>'+
 						'<li><a href="aggiuntaBandi.jsp">Pubblicare Bandi/News</a></li>'+
 						'<li><a href="aggiuntaCorsi.jsp">Aggiungere Corsi</a></li>'+
 						'<li><a href="aggiuntaCorsiDiLaurea.jsp">Aggiungere Corsi Di Laurea</a></li>'+
