@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Admin;
+import model.Studente;
 import model.Tassa;
 import persistence.DatabaseManager;
 import persistence.dao.AdminDAO;
+import persistence.dao.StudenteDAO;
 import persistence.dao.TassaDAO;
 
 public class addTax extends HttpServlet{
@@ -45,7 +48,13 @@ public class addTax extends HttpServlet{
 
 		TassaDAO tassaDAO = DatabaseManager.getInstance().getDaoFactory().getTassaDAO();
 		tassaDAO.save(tax);
-
+		
+		StudenteDAO studDAO=DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
+		List<Studente> studs=studDAO.findAll();
+		for(Studente s:studs) {
+			tassaDAO.inoltraTassa(tax, s);
+		}
+		
 		req.setAttribute("tassa", tax);
 
 		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaTasse.jsp");
