@@ -57,6 +57,12 @@ public class showData extends HttpServlet{
 			out.print(gson.toJson(adm));
 			out.close();
 		}
+		else {
+			PrintWriter out=resp.getWriter();
+			Gson gson=new Gson();
+			out.print(gson.toJson("notLogged"));
+			out.close();
+		}
 	}
 	
 	
