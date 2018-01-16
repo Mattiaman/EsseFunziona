@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Area Professore</title>
+<title>Esse Funziona</title>
 </head>
 
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -66,7 +66,7 @@
 			<form class="form-horizontal" method="post" action="richiesteRicevimento">
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="richiesteRicevimenti">Studente:</label>
-		     <select name="richiesteRicevimenti" class="control-label col-sm-4" class="form-control" id="opzioniRicevimenti">
+		     <select name="richiesteRicevimenti" class="control-label" class="form-control" id="opzioniRicevimenti">
 			</select>
 		  </div>
 		  <div class="form-group">

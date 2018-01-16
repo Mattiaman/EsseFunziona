@@ -1,18 +1,25 @@
 function caricaCorsi(){
-	var xhr= new XMLHttpRequest();
-	xhr.open('get',"corsi",true);
-	xhr.onload=function(){
+	$("#listaCorsi").append($('<option value=\"-1\">---</option>'))
+	var xhr = new XMLHttpRequest();
+	xhr.open('get', 'datiAnagrafici');
+	xhr.onload = function() {
 		var jsonStringQuotes = xhr.responseText;
-		var corsi=JSON.parse(jsonStringQuotes);
-		
-		var v = $('<option value=""></option>');
-		$("#listaCorsi").append(v);
-		for(var i in corsi){
-			var c = $('<option value=\"'+corsi[i].id+'\">'+corsi[i].nome+'</option>');
-			$("#listaCorsi").append(c);
-		}
-	};
-	xhr.send(null)
+		var datiAnagrafici = JSON.parse(jsonStringQuotes);
+		$.ajax({
+			url : 'EditCorsiProf',
+			type : 'GET',
+			data:{nomeUtente: datiAnagrafici.nomeUtente},
+			success: function(corsi){
+				if(corsi[0]!=null){
+					for(var i in corsi){
+						var	c = $('<option value=\"'+corsi[i].id+'\">'+corsi[i].nome+'</option>');
+						$('#listaCorsi').append(c);
+					}
+				}
+			}
+		});
+	}
+	xhr.send(null);
 }
 
 function caricaAppelli(crs){
@@ -30,7 +37,7 @@ function caricaAppelli(crs){
 			var jsonStringQuotes = xhr.responseText;
 			var appelli = JSON.parse(jsonStringQuotes);
 			$("#listaAppelli").empty();
-			var v = $('<option value=""></option>');
+			var v = $('<option value=\"-1\">---</option>');
 			$("#listaAppelli").append(v);
 			for ( var i in appelli) {
 				var c;
@@ -54,7 +61,7 @@ function caricaStudenti(app){
 		var jsonStringQuotes = xhr.responseText;
 		var appelli=JSON.parse(jsonStringQuotes);
 		$("#listaStudenti").empty();
-		var v = $('<option value=""></option>');
+		var v = $('<option value=\"-1\">---</option>');
 		$("#listaStudenti").append(v);
 		for(var i in appelli){
 			if(appelli[i].id == app.value){

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Area Studente</title>
+<title>Esse Funziona</title>
 </head>
 
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -64,7 +64,7 @@
 		<form class="form-horizontal" method="post" action="chiedereRicevimento">
 		  <div class="form-group">
 			<label class="control-label col-sm-2" for="professoreRicevimento">Professore:</label>
-			<div class="col-sm-5">
+			<div>
 				<select name="professoreRicevimento" id="opzioniProfessori">
 				</select>
 			</div>

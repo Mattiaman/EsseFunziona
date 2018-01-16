@@ -10,7 +10,7 @@ $(document).ready(function() {
 			var datiAnagrafici = JSON.parse(jsonStringQuotesA);
 			var jsonStringQuotes = xhr.responseText;
 			var professori=JSON.parse(jsonStringQuotes);
-			var v = $('<option value=""></option>');
+			var v = $('<option value=\"-1\">---</option>');
 			$("#opzioniProfessori").append(v);
 			var cont=0;
 			for(var i in professori){

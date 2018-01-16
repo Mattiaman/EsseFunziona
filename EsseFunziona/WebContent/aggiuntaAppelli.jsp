@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Area Professore</title>
+<title>Esse Funziona</title>
 </head>
 
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -59,7 +59,7 @@
 			  </div>
 			  <div class="form-group">
 			    <label class="control-label col-sm-3" for="corsoAppello">ID Corso:</label>    	
-			    	<div class="col-sm-5"> 
+			    	<div> 
 			      	<select name="corsoAppello" id="listaCorsi">
 			      	</select>
 			      	</div>

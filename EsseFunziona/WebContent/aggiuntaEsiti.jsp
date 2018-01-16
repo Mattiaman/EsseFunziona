@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Area Professore</title>
+<title>Esse Funziona</title>
 </head>
 
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -55,21 +55,21 @@
 			
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="Corso">Corso:</label>
-			    	<div class="col-sm-5">
+			    	<div>
 						<select name="corso" id="listaCorsi" onchange="caricaAppelli(this);">
 						</select>
 					</div>
 			  </div>
 			   <div class="form-group">
 			    <label class="control-label col-sm-2" for="appello">Appello:</label>
-			    	<div class="col-sm-5">
+			    	<div>
 						<select name="appello" id="listaAppelli" onchange="caricaStudenti(this);">
 						</select>
 					</div>
 			  </div>
 			  <div class="form-group">
 			    <label class="control-label col-sm-2" for="matricolaStudente">Studente:</label>
-			    	<div class="col-sm-5">
+			    	<div>
 						<select name="matricolaStudente" id="listaStudenti">
 						</select>
 					</div>

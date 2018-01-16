@@ -4,7 +4,7 @@ function caricaCorsi(){
 	xhr.onload=function(){
 		var jsonStringQuotes = xhr.responseText;
 		var corsi=JSON.parse(jsonStringQuotes);
-		var v = $('<option value=""></option>');
+		var v = $('<option value=\"-1\">---</option>');
 		$("#listaCorsi").append(v);
 		for(var i in corsi){
 			var c = $('<option value=\"'+corsi[i].id+'\">'+corsi[i].nome+'</option>');
@@ -22,7 +22,7 @@ function caricaAppelli(crs){
 		var jsonStringQuotes = xhr.responseText;
 		var appelli=JSON.parse(jsonStringQuotes);
 		$("#listaAppelli").empty();
-		var v = $('<option value=""></option>');
+		var v = $('<option value=\"-1\">---</option>');
 		$("#listaAppelli").append(v);
 		for(var i in appelli){
 			if(appelli[i].corso.id == crs.value){

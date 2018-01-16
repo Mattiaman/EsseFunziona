@@ -8,7 +8,7 @@
 <html>
 <head lang="it">
 <meta charset="utf-8">
-<title>SignUp Professore</title>
+<title>Esse Funziona</title>
 </head>
 
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">

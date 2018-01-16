@@ -17,13 +17,13 @@ function caricaProfessori() {
 				if(datiAnagrafici.tipo!="professore")
 					c = $('<tr>  <th>' + appelli[i].id + '</th> <th>'
 							+ appelli[i].data + '</th> <th>'
-							+ appelli[i].professore.nome + '</th> <th>'
+							+ appelli[i].professore.nome + ' '+appelli[i].professore.cognome+ '</th> <th>'
 							+ appelli[i].corso.nome + '</th> <th>'
 							+ appelli[i].nStudentiIscritti + '</th> </tr>');
 				else
 					c = $('<tr>  <th id="idAppello">' + appelli[i].id + '</th> <th>'
 							+ appelli[i].data + '</th> <th>'
-							+ appelli[i].professore.nome + '</th> <th>'
+							+ appelli[i].professore.nome + ' '+appelli[i].professore.cognome+ '</th> <th>'
 							+ appelli[i].corso.nome + '</th> <th>'
 							+ appelli[i].nStudentiIscritti + '</th><th><button id='
 							+ appelli[i].id + '>Elimina</button></th></tr>');
