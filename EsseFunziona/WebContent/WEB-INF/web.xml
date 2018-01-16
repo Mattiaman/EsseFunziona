@@ -9,7 +9,9 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
+
+
+
    <servlet>
     <servlet-name>tasseStudenteAdminServlet</servlet-name>
     <servlet-class>controller.takeTasseStudenteAdmin</servlet-class>
@@ -45,6 +47,16 @@
     <servlet-name>EditCdlServlet</servlet-name>
     <url-pattern>/EditCdl</url-pattern>
   </servlet-mapping>  
+  
+     <servlet>
+    <servlet-name>downloaderServlet</servlet-name>
+    <servlet-class>controller.downloader</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>downloaderServlet</servlet-name>
+    <url-pattern>/downloader</url-pattern>
+  </servlet-mapping>
+    
   
   <servlet>
     <servlet-name>EditCorsiProfServlet</servlet-name>
