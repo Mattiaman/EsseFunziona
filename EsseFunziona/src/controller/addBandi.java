@@ -8,7 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 import model.Admin;
 import model.Bando;
@@ -34,8 +34,11 @@ public class addBandi extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = req.getSession();
+		
+		String nomeUtente = (String) session.getAttribute("nomeUtenteAdmin");
+		
 		String contenutoBando = req.getParameter("contenutoBando");
-		String nomeUtente = req.getParameter("nomeUtente");
 	
 		File f= new File(contenutoBando);
 		

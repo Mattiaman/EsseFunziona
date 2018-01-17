@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -10,7 +12,6 @@
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
-
 
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
@@ -29,13 +30,13 @@
 					<a href="startMenu.html">Home</a>
 				</li>
 				<li>
-					<a href="loginStudente.html">Login Studente</a>
+					<a href="loginStudente.jsp">Login Studente</a>
 				</li>
 				<li>
-					<a href="loginProfessore.html">Login Prof</a>
+					<a href="loginProfessore.jsp">Login Prof</a>
 				</li>
 				<li>
-					<a href="loginAdmin.html">Login Admin</a>
+					<a href="loginAdmin.jsp">Login Admin</a>
 				</li>
     		</ul>
   		</nav>
@@ -43,14 +44,20 @@
 	</section>
 
 	
-	<div class="intestazione">Accedi come Admin</div>
+	<div class="intestazione">Accedi come Studente</div>
 	<div class="col-sm-10">
 		
-			<form class="form-horizontal" method="post" action="loginAdmin">
+		
+			
+			<c:if test="${password != null }">
+				<h3>Matricola o Password Errati</h3>
+			</c:if>	
+		
+			<form class="form-horizontal" method="post" action="loginStudente">
 			  <div class="form-group">
-			    <label class="control-label col-sm-1" for="nomeUtente">UserID:</label>
+			    <label class="control-label col-sm-1" for="matricola">Matricola:</label>
 			    <div class="col-sm-offset-1 col-sm-5">
-			     <input name="nomeUtente" type="text" class="form-control" /> 
+			     <input name="matricola" type="text" class="form-control" /> 
 			    </div> 
 			  </div>
 			  <div class="form-group">
@@ -66,7 +73,7 @@
 			  </div>
 			</form>
 			
-	</div>
+		</div>
 	
 </body>
 

@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+
+
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -29,13 +32,13 @@
 					<a href="startMenu.html">Home</a>
 				</li>
 				<li>
-					<a href="loginStudente.html">Login Studente</a>
+					<a href="loginStudente.jsp">Login Studente</a>
 				</li>
 				<li>
-					<a href="loginProfessore.html">Login Prof</a>
+					<a href="loginProfessore.jsp">Login Prof</a>
 				</li>
 				<li>
-					<a href="loginAdmin.html">Login Admin</a>
+					<a href="loginAdmin.jsp">Login Admin</a>
 				</li>
     		</ul>
   		</nav>
@@ -45,6 +48,10 @@
 	
 	<div class="intestazione">Accedi come Professore</div>
 	<div class="col-sm-10">
+		
+			<c:if test="${password != null }">
+				<h3>Nome Utente o Password Errati</h3>
+			</c:if>	
 		
 			<form class="form-horizontal" method="post" action="loginProfessore">
 			  <div class="form-group">

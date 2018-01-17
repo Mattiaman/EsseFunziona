@@ -67,12 +67,6 @@
 			      <input name="descrizioneTassa" type="text" class="form-control" />
 			    </div>
 			  </div>
-			  <div class="form-group">
-			    <label class="control-label col-sm-3" for="adminTassa">Nome utente admin:</label>
-			    	<div class="col-sm-5"> 
-			      <input name="adminTassa" type="text" class="form-control" />
-			    </div>
-			  </div>
 			  <div class="form-group"> 
 			    	<div class="col-sm-offset-3 col-sm-5">
 						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>

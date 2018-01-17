@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.Admin;
 import model.Studente;
@@ -31,10 +32,14 @@ public class addTax extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		HttpSession session = req.getSession();
+		
+		String adminTassa = (String) session.getAttribute("nomeUtenteAdmin");
+		
 		String importoTassa = req.getParameter("importoTassa");
 		String nomeTassa = req.getParameter("nomeTassa");
 		String descrizioneTassa = req.getParameter("descrizioneTassa");
-		String adminTassa = req.getParameter("adminTassa");
 	
 		Tassa tax = new Tassa();
 		tax.setImporto(Float.parseFloat(importoTassa));

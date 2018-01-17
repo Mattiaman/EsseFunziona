@@ -52,13 +52,10 @@ public class LoginAdmin extends HttpServlet{
 				RequestDispatcher dispacher = req.getRequestDispatcher("adminMenu.html");
 				dispacher.forward(req, resp);
 			}
-			else {
-				out.println("<html>");
-				out.println("<head><title>Login</title></head>");
-				out.println("<body>");
-				out.println("<h1>Matricola o password errati</h1>");			
-				out.println("</body>");
-				out.println("</html>");				
+			else {	
+				req.setAttribute("password", password);
+				RequestDispatcher dispacher = req.getRequestDispatcher("loginAdmin.jsp");
+				dispacher.forward(req, resp);
 			}
 		}
 	}

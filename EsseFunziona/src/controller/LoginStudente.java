@@ -49,12 +49,9 @@ public class LoginStudente extends HttpServlet{
 				dispacher.forward(req, resp);
 			}
 			else {
-				out.println("<html>");
-				out.println("<head><title>Login</title></head>");
-				out.println("<body>");
-				out.println("<h1>Matricola o password errati</h1>");			
-				out.println("</body>");
-				out.println("</html>");				
+				req.setAttribute("password", password);
+				RequestDispatcher dispacher = req.getRequestDispatcher("loginStudente.jsp");
+				dispacher.forward(req, resp);		
 			}
 		}
 	}
