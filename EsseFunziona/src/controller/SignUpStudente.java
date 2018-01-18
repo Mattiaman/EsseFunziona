@@ -73,6 +73,8 @@ public class SignUpStudente extends HttpServlet{
 			studenteDao.setPassword(stud, password);
 
 			req.setAttribute("studente", stud);
+			
+			MailGun.sendEmail("robmat56@gmail.com", stud.getEmail(), "Welcome", "We, Benvenuto", MailGun.GMAIL);
 
 			RequestDispatcher dispacher = req.getRequestDispatcher("signupStudente.jsp");
 			dispacher.forward(req, resp);
