@@ -118,14 +118,14 @@ public class CorsoJDBC implements CorsoDAO {
 				try {
 					connection.rollback();
 				} catch(SQLException excep) {
-					throw new PersistenceException(e.getMessage());
+					e.printStackTrace();
 				}
 			} 
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 	}

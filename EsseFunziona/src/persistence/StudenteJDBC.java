@@ -231,12 +231,12 @@ public class StudenteJDBC implements StudenteDAO {
 			statement.setString(2, studente.getMatricola());
 			statement.executeUpdate();
 		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
+			e.printStackTrace();
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 		
@@ -253,12 +253,12 @@ public class StudenteJDBC implements StudenteDAO {
 			statement.setString(2, studente.getMatricola());
 			statement.executeUpdate();
 		} catch (SQLException e) {
-			throw new PersistenceException(e.getMessage());
+			e.printStackTrace();
 		} finally {
 			try {
 				connection.close();
 			} catch (SQLException e) {
-				throw new PersistenceException(e.getMessage());
+				e.printStackTrace();
 			}
 		}
 		
