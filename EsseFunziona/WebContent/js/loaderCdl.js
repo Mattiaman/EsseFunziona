@@ -9,21 +9,22 @@ function caricaCdl() {
 			var datiAnagrafici = JSON.parse(jsonStringQuotesA);
 			var jsonStringQuotes = xhr.responseText;
 			var cdl = JSON.parse(jsonStringQuotes);
+			$('thead').find('tr').append('<th>Info</th>');
 			if (datiAnagrafici.tipo == "admin")
 				$('thead').find('tr').append('<th>Elimina</th>');
 			for ( var i in cdl) {
 				var c;
 				if (datiAnagrafici.tipo != "admin")
 					c = $('<tr>  <th>' + cdl[i].id + '</th> <th>' + cdl[i].nome
-							+ '</th>  </tr>');
+							+ '</th>  <th class=\"info\"><a href=\"cdl?id='+cdl[i].id+'\">content</a></th></tr>');
 				else
-					c = $('<tr>  <th id="idCdl">' + cdl[i].id + '</th> <th>' + cdl[i].nome
-							+ '</th> <th><button id=' + cdl[i].id
-							+ '>Elimina</button></th> </tr>');
+					c = $('<tr>  <th id="idCdl">' + cdl[i].id + '</th> <th>' + cdl[i].nome+
+							'</th> <th class=\"info\"><a href=\"cdl?id='+cdl[i].id+'\">content</a></th>'+
+							'<th><button id=' + cdl[i].id+'>Elimina</button></th> </tr>');
+				
 				$("#listaCdl").append(c);
 			}
 			deleteCdl()
-			goToEditor()
 		}
 		xhrA.send(null)
 	}

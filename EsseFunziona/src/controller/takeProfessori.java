@@ -22,8 +22,16 @@ public class takeProfessori extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
+		ProfessoreDAO professoreDAO=DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
+		if(req.getParameter("nomeUtente") != null) {
+			Professore professore=professoreDAO.findByPrimaryKey(req.getParameter("nomeUtente"));
+			req.setAttribute("professore", professore);
+			RequestDispatcher dispatcher=req.getRequestDispatcher("infoProf.jsp");
+			dispatcher.forward(req, resp);
+		}
+		
+		
 		resp.setContentType("application/json");
-		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
 		List<Professore> profs = professoreDAO.findAllProxy();
 		PrintWriter out=resp.getWriter();
 		Gson gson=new Gson();
@@ -44,7 +52,7 @@ public class takeProfessori extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 	}
 	
 	

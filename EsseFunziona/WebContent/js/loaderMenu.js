@@ -17,13 +17,13 @@ $(document).ready(function() {
 						'<li><a href="corsi.html">Corsi</a></li>'+
 						'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+
 						'<li><a href="bandiNews.html">Bandi/News</a></li>'+
+						'<li><a href="professori.html">Professori</a></li>'+
 						'<li id="logout"><a href="startMenu.html">Logout</a></li>'+
 						'</ul></div></li>'+
 						'<li><label for="segreteria">Segreteria</label><input type="radio" name="verticalMenu" id="segreteria" />'+
 						'<div><ul>'+
 						'<li><a href="tasse.html">Situazione Tasse</a></li>'+
 						'<li><a href="libretto.html">Libretto</a></li>'+
-						'<li><a href="editPds.html">Piano Carriera</a></li>'+
 						'</ul></div></li>'+
 						'<li><label for="esami">Esami</label><input type="radio" name="verticalMenu" id="esami" />'+
 						'<div><ul>'+

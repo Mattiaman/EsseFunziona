@@ -22,8 +22,15 @@ public class takeCdl extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		resp.setContentType("application/json");
+		
 		CorsoDiLaureaDAO corsoDiLaureaDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
+		if(req.getParameter("id") != null) {
+			CorsoDiLaurea corsoDiLaurea=corsoDiLaureaDAO.findByPrimaryKey(Long.parseLong(req.getParameter("id")));
+			req.setAttribute("corsoDiLaurea", corsoDiLaurea);
+			RequestDispatcher dispatcher=req.getRequestDispatcher("infoCDL.jsp");
+			dispatcher.forward(req, resp);
+		}
+		resp.setContentType("application/json");
 		List<CorsoDiLaurea> cdls = corsoDiLaureaDAO.findAll();
 		PrintWriter out=resp.getWriter();
 		Gson gson=new Gson();
@@ -43,9 +50,8 @@ public class takeCdl extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
-	
+
 	
 }
