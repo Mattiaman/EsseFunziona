@@ -27,7 +27,7 @@ public class addEsito extends HttpServlet{
 		String idAppello = req.getParameter("appello");
 		String voto = req.getParameter("voto");
 		
-		if (!matricola.isEmpty() && !idAppello.isEmpty() && !voto.isEmpty()) {
+		if(!voto.isEmpty()) {
 			StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
 			Studente studente = studenteDAO.findByPrimaryKey(matricola);
 			AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
