@@ -46,6 +46,7 @@ $(document).ready(function() {
 						'<li><a href="corsi.html">Corsi</a></li>'+
 						'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+
 						'<li><a href="bandiNews.html">Bandi/News</a></li>'+
+						'<li><a href="professori.html">Professori</a></li>'+
 						'<li id="logout"><a href="startMenu.html">Logout</a></li>'+
 						'</ul></div></li>'+
 						'<li><label for="studenti">Studenti</label><input type="radio" name="verticalMenu" id="studenti" />'+

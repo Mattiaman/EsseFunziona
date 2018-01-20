@@ -47,6 +47,7 @@
 		 		<label class="control-label col-sm-4" >Nome: </label><label class="control-label col-sm-8" >${corsoDiLaurea.nome}</label>
 		 		
 		</div>
+		<h3>Corsi</h3>
 		<div>
 			<table class="table" id="tabellaCorsi">
 			    <thead>

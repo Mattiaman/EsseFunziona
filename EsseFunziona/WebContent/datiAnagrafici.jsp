@@ -43,8 +43,23 @@
 
 	<br>
 	
-	<div class="col-sm-10" id="utenteRegistrato">
-
+	<div class="col-sm-10" >
+		<div id="utenteRegistrato">
+		</div>
+		<h3>Corsi</h3>
+		<div>
+			<table class="table" id="tabellaCorsi">
+			    <thead>
+			      <tr>
+			        <th>ID Corso</th>
+			        <th>Nome Corso</th>
+			      </tr>
+			    </thead>
+		   		<tbody id="listaCorsi">
+	     
+	    		</tbody>
+	  		</table>
+		</div>
 	</div>
 </body>
 </html>

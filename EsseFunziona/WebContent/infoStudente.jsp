@@ -49,6 +49,7 @@
 		 	<label class="control-label col-sm-4" >E-Mail: </label><label class="control-label col-sm-8" >${studente.email}</label>
 		
 		</div>
+		<h3>Piano di Studi</h3>
 		<div>
 			<table class="table" id="tabellaCorsi">
 			    <thead>

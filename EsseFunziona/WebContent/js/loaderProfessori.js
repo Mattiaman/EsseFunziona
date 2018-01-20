@@ -16,12 +16,19 @@ function caricaProfessori(){
 			for(var i in professori){
 				console.log(professori[i]);
 				var p;
-				if (datiAnagrafici.tipo != "admin")
-					p = $('<tr>  <th>'+professori[i].nomeUtente+'</th> <th>'+professori[i].nome+'</th> <th>'+professori[i].cognome+'</th> <th>'+professori[i].dataDiNascita+
-							'</th> <th>'+professori[i].email+'</th>  <th class=\"info\"><a href=\"professori?nomeUtente='+professori[i].nomeUtente+'\">content</a></th>   </tr>');
-				else
+				if(datiAnagrafici.tipo == "professore"){
+					if(professori[i].nomeUtente != datiAnagrafici.nomeUtente)
+						p = $('<tr>  <th>'+professori[i].nomeUtente+'</th> <th>'+professori[i].nome+'</th> <th>'+professori[i].cognome+'</th> <th>'+professori[i].dataDiNascita+
+								'</th> <th>'+professori[i].email+'</th>  <th class=\"info\"><a href=\"professori?nomeUtente='+professori[i].nomeUtente+'\">content</a></th>   </tr>');
+				}
+				else if(datiAnagrafici.tipo == "studente"){
+						p = $('<tr>  <th>'+professori[i].nomeUtente+'</th> <th>'+professori[i].nome+'</th> <th>'+professori[i].cognome+'</th> <th>'+professori[i].dataDiNascita+
+								'</th> <th>'+professori[i].email+'</th>  <th class=\"info\"><a href=\"professori?nomeUtente='+professori[i].nomeUtente+'\">content</a></th>   </tr>');
+				}
+				else if(datiAnagrafici.tipo == "admin"){
 					p = $('<tr>  <th id=\"nomeUtenteProfessore\">'+professori[i].nomeUtente+'</th> <th>'+professori[i].nome+'</th> <th>'+professori[i].cognome+'</th> <th>'+professori[i].dataDiNascita+
 							'</th> <th>'+professori[i].email+'</th> <th class=\"info\"><a href=\"professori?nomeUtente='+professori[i].nomeUtente+'\">content</a></th>   <th><button id='+ professori[i].nomeUtente + '>Elimina</button></th>  </tr>' );
+				}
 				$("#listaProfessori").append(p);
 			}
 			deleteProfessore();
