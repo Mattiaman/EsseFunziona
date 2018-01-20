@@ -29,16 +29,15 @@ public class askRicevimento extends HttpServlet{
 		String matricola = (String) session.getAttribute("matricola");
 		String nomeUtenteProfessore = req.getParameter("professoreRicevimento");
 		
-		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
-		Professore professore = professoreDAO.findByPrimaryKey(nomeUtenteProfessore);
-		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();		
-		Studente studente = studenteDAO.findByPrimaryKey(matricola);
-	
-		
-		professore.addStudente(studente);
-		professoreDAO.update(professore);
-		req.setAttribute("professore", professore);		
-		
+		if (matricola!=null && nomeUtenteProfessore!=null) {
+			ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
+			Professore professore = professoreDAO.findByPrimaryKey(nomeUtenteProfessore);
+			StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
+			Studente studente = studenteDAO.findByPrimaryKey(matricola);
+			professore.addStudente(studente);
+			professoreDAO.update(professore);
+			req.setAttribute("professore", professore);
+		}
 		RequestDispatcher dispatcher = req.getRequestDispatcher("chiedereRicevimento.jsp");
 		dispatcher.forward(req, resp);
 		

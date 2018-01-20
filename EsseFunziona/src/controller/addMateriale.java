@@ -39,21 +39,16 @@ public class addMateriale extends HttpServlet{
 		String nomeUtente = (String) session.getAttribute("nomeUtenteProfessore");
 		
 		String contenutoMateriale = req.getParameter("contenutoMateriale");
-	
-		File f= new File(contenutoMateriale);
-		
-		Materiale mtl = new Materiale(f);
-
-		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
-
-		Professore prf = professoreDAO.findByPrimaryKey(nomeUtente);
-		mtl.setProfessore(prf);
-
-		MaterialeDAO materialeDAO = DatabaseManager.getInstance().getDaoFactory().getMaterialeDAO();
-		materialeDAO.save(mtl);
-
-		req.setAttribute("materiale", mtl);
-
+		if (nomeUtente != null && contenutoMateriale != null) {
+			File f = new File(contenutoMateriale);
+			Materiale mtl = new Materiale(f);
+			ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
+			Professore prf = professoreDAO.findByPrimaryKey(nomeUtente);
+			mtl.setProfessore(prf);
+			MaterialeDAO materialeDAO = DatabaseManager.getInstance().getDaoFactory().getMaterialeDAO();
+			materialeDAO.save(mtl);
+			req.setAttribute("materiale", mtl);
+		}
 		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaMateriale.jsp");
 		dispacher.forward(req, resp);
 	

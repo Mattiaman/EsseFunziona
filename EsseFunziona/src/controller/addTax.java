@@ -41,27 +41,23 @@ public class addTax extends HttpServlet{
 		String nomeTassa = req.getParameter("nomeTassa");
 		String descrizioneTassa = req.getParameter("descrizioneTassa");
 	
-		Tassa tax = new Tassa();
-		tax.setImporto(Float.parseFloat(importoTassa));
-		tax.setDescrizione(descrizioneTassa);
-		tax.setNome(nomeTassa);
-
-		AdminDAO adminDAO = DatabaseManager.getInstance().getDaoFactory().getAdminDAO();
-
-		Admin adm = adminDAO.findByPrimaryKey(adminTassa);
-		tax.setAdmin(adm);
-
-		TassaDAO tassaDAO = DatabaseManager.getInstance().getDaoFactory().getTassaDAO();
-		tassaDAO.save(tax);
-		
-		StudenteDAO studDAO=DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
-		List<Studente> studs=studDAO.findAll();
-		for(Studente s:studs) {
-			tassaDAO.inoltraTassa(tax, s);
+		if (adminTassa!=null && importoTassa!=null && nomeTassa!=null && descrizioneTassa!=null) {
+			Tassa tax = new Tassa();
+			tax.setImporto(Float.parseFloat(importoTassa));
+			tax.setDescrizione(descrizioneTassa);
+			tax.setNome(nomeTassa);
+			AdminDAO adminDAO = DatabaseManager.getInstance().getDaoFactory().getAdminDAO();
+			Admin adm = adminDAO.findByPrimaryKey(adminTassa);
+			tax.setAdmin(adm);
+			TassaDAO tassaDAO = DatabaseManager.getInstance().getDaoFactory().getTassaDAO();
+			tassaDAO.save(tax);
+			StudenteDAO studDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
+			List<Studente> studs = studDAO.findAll();
+			for (Studente s : studs) {
+				tassaDAO.inoltraTassa(tax, s);
+			}
+			req.setAttribute("tassa", tax);
 		}
-		
-		req.setAttribute("tassa", tax);
-
 		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaTasse.jsp");
 		dispacher.forward(req, resp);
 	

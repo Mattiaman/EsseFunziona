@@ -40,20 +40,16 @@ public class addBandi extends HttpServlet{
 		
 		String contenutoBando = req.getParameter("contenutoBando");
 	
-		File f= new File(contenutoBando);
-		
-		Bando bnd = new Bando(f);
-
-		AdminDAO adminDAO = DatabaseManager.getInstance().getDaoFactory().getAdminDAO();
-
-		Admin adm = adminDAO.findByPrimaryKey(nomeUtente);
-		bnd.setAdmin(adm);
-
-		BandoDAO bandoDAO = DatabaseManager.getInstance().getDaoFactory().getBandoDAO();
-		bandoDAO.save(bnd);
-
-		req.setAttribute("bando", bnd);
-
+		if (nomeUtente!=null && contenutoBando!=null) {
+			File f = new File(contenutoBando);
+			Bando bnd = new Bando(f);
+			AdminDAO adminDAO = DatabaseManager.getInstance().getDaoFactory().getAdminDAO();
+			Admin adm = adminDAO.findByPrimaryKey(nomeUtente);
+			bnd.setAdmin(adm);
+			BandoDAO bandoDAO = DatabaseManager.getInstance().getDaoFactory().getBandoDAO();
+			bandoDAO.save(bnd);
+			req.setAttribute("bando", bnd);
+		}
 		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaBandi.jsp");
 		dispacher.forward(req, resp);
 	

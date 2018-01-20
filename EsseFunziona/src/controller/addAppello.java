@@ -44,33 +44,33 @@ public class addAppello extends HttpServlet{
 		String corsoAppello = req.getParameter("corsoAppello");
 		
 		
-		DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
-		Date date;
-		try {
-			date = format.parse(dataAppello);
-			Appello appello=new Appello(date);
-			
-			CorsoDAO corsoDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDAO();
-			Corso c = corsoDAO.findByPrimaryKey(Long.parseLong(corsoAppello));
-			appello.setCorso(c);
-			
-			ProfessoreDAO profDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
-			Professore p = profDAO.findByPrimaryKey(nomeUtente);
-			appello.setProfessore(p);
-			
-			AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
-			appelloDAO.save(appello);
-			
-			req.setAttribute("appello", appello);
-			
-			RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaAppelli.jsp");
-			dispacher.forward(req, resp);
-			
-		} catch (Exception e) {
-			// TODO: handle exception
+		if (nomeUtente!=null && dataAppello!=null && corsoAppello!=null) {
+			DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
+			Date date;
+			try {
+				date = format.parse(dataAppello);
+				Appello appello = new Appello(date);
+
+				CorsoDAO corsoDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDAO();
+				Corso c = corsoDAO.findByPrimaryKey(Long.parseLong(corsoAppello));
+				appello.setCorso(c);
+
+				ProfessoreDAO profDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
+				Professore p = profDAO.findByPrimaryKey(nomeUtente);
+				appello.setProfessore(p);
+
+				AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
+				appelloDAO.save(appello);
+
+				req.setAttribute("appello", appello);
+
+			} catch (Exception e) {
+				// TODO: handle exception
+			} 
 		}
 		
-
+		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaAppelli.jsp");
+		dispacher.forward(req, resp);
 	
 	}
 	

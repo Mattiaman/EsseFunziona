@@ -40,23 +40,24 @@ public class requestRicevimento  extends HttpServlet{
 		String matricola = req.getParameter("richiesteRicevimenti");
 		String dataRicevimento = req.getParameter("dataRicevimento");
 		
-		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();		
-		Studente studente = studenteDAO.findByPrimaryKey(matricola);
-		
-		ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();		
-		Professore professore = professoreDAO.findByPrimaryKeyProxy(nomeUtenteProfessore);
-	
-		DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
-		Date date;
-		try {
-			date = format.parse(dataRicevimento);
-			if(professoreDAO.controllaRicevimento(matricola, nomeUtenteProfessore)) {
-				professoreDAO.cancellaRicevimento(matricola, nomeUtenteProfessore);
-				professoreDAO.aggiungiData(matricola, nomeUtenteProfessore, date);
+		if (nomeUtenteProfessore!=null && matricola!=null && dataRicevimento!=null) {
+			StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
+			Studente studente = studenteDAO.findByPrimaryKey(matricola);
+			ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
+			Professore professore = professoreDAO.findByPrimaryKeyProxy(nomeUtenteProfessore);
+			DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
+			Date date;
+			try {
+				date = format.parse(dataRicevimento);
+				if (professoreDAO.controllaRicevimento(matricola, nomeUtenteProfessore)) {
+					professoreDAO.cancellaRicevimento(matricola, nomeUtenteProfessore);
+					professoreDAO.aggiungiData(matricola, nomeUtenteProfessore, date);
+				}
+			} catch (ParseException e) {
+				e.printStackTrace();
 			}
-		} catch (ParseException e) { e.printStackTrace();}
-		
-		req.setAttribute("studente", studente);
+			req.setAttribute("studente", studente);
+		}
 		RequestDispatcher dispacher = req.getRequestDispatcher("richiesteRicevimento.jsp");
 		dispacher.forward(req, resp);
 	}

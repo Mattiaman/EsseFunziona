@@ -32,16 +32,17 @@ public class addPrenotazione extends HttpServlet{
 		String idAppello = req.getParameter("appello");
 		
 		
-		AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
-		Appello appello = appelloDAO.findByPrimaryKey(Long.parseLong(idAppello));
-		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();		
-		Studente studente = studenteDAO.findByPrimaryKey(matricola);
-		
-		if (!appelloDAO.controllaEsame(matricola, Long.parseLong(idAppello))) {
-			if (!appelloDAO.controllaLibretto(matricola, Long.parseLong(idAppello))) {
-				appello.addStudente(studente);
-				appelloDAO.update(appello);
-				req.setAttribute("appello", appello);
+		if (matricola!=null && idAppello!=null) {
+			AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
+			Appello appello = appelloDAO.findByPrimaryKey(Long.parseLong(idAppello));
+			StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
+			Studente studente = studenteDAO.findByPrimaryKey(matricola);
+			if (!appelloDAO.controllaEsame(matricola, Long.parseLong(idAppello))) {
+				if (!appelloDAO.controllaLibretto(matricola, Long.parseLong(idAppello))) {
+					appello.addStudente(studente);
+					appelloDAO.update(appello);
+					req.setAttribute("appello", appello);
+				}
 			} 
 		}
 		RequestDispatcher dispacher = req.getRequestDispatcher("prenotazione.jsp");

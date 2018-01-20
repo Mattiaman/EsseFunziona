@@ -42,33 +42,30 @@ public class SignUpProfessore extends HttpServlet{
 		String password = req.getParameter("password");
 		String cdl = req.getParameter("corsoDiLaurea");
 	
-		DateFormat format = new SimpleDateFormat
-							("yyyy-mm-dd", Locale.ITALIAN);
-		Date date;
-		try {
-			date = format.parse(dataNascita);
-			Professore prof = new Professore(nome, cognome, date, email, nomeUtente);
-			
-			CorsoDiLaureaDAO corsoDiLaureaDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
-			CorsoDiLaurea corsoDiLaurea = corsoDiLaureaDAO.findByPrimaryKey(Long.parseLong(cdl));
-			prof.setCorsoDiLaurea(corsoDiLaurea);
-			
-			ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
-			professoreDAO.save(prof);
-			professoreDAO.setPassword(prof, password);
-			
-			req.setAttribute("professore", prof);
-			
-			RequestDispatcher dispacher = 
-					req.getRequestDispatcher("signupProfessore.jsp");
-			dispacher.forward(req, resp);
-			
+		if (nomeUtente!=null && nome!=null && cognome!=null && email!=null && dataNascita!=null && password!=null && cdl!=null) {
+			DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
+			Date date;
+			try {
+				date = format.parse(dataNascita);
+				Professore prof = new Professore(nome, cognome, date, email, nomeUtente);
 
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				CorsoDiLaureaDAO corsoDiLaureaDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
+				CorsoDiLaurea corsoDiLaurea = corsoDiLaureaDAO.findByPrimaryKey(Long.parseLong(cdl));
+				prof.setCorsoDiLaurea(corsoDiLaurea);
+
+				ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
+				professoreDAO.save(prof);
+				professoreDAO.setPassword(prof, password);
+
+				req.setAttribute("professore", prof);
+
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
 		}
-			
+		RequestDispatcher dispacher = req.getRequestDispatcher("signupProfessore.jsp");
+		dispacher.forward(req, resp);	
 	
 	
 	}

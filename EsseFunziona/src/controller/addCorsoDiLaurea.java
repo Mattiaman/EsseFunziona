@@ -34,13 +34,12 @@ public class addCorsoDiLaurea extends HttpServlet{
 		// TODO Auto-generated method stub
 		String nomeCdl = req.getParameter("nomecdl");
 
-		CorsoDiLaurea cdl= new CorsoDiLaurea(nomeCdl);
-		
-		CorsoDiLaureaDAO cdlDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
-		cdlDAO.save(cdl);
-
-		req.setAttribute("corsoDL", cdl);
-
+		if (nomeCdl!=null) {
+			CorsoDiLaurea cdl = new CorsoDiLaurea(nomeCdl);
+			CorsoDiLaureaDAO cdlDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
+			cdlDAO.save(cdl);
+			req.setAttribute("corsoDL", cdl);
+		}
 		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaCorsiDiLaurea.jsp");
 		dispacher.forward(req, resp);
 	

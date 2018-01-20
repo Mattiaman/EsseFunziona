@@ -27,20 +27,18 @@ public class addEsito extends HttpServlet{
 		String idAppello = req.getParameter("appello");
 		String voto = req.getParameter("voto");
 		
-		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
-		Studente studente = studenteDAO.findByPrimaryKey(matricola);
-		
-		AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
-		Appello appello = appelloDAO.findByPrimaryKey(Long.parseLong(idAppello));
-		
-		if(appelloDAO.controllaPrenotazione(matricola,Long.parseLong(idAppello))) {
-			appelloDAO.cancellaPrenotazione(matricola,Long.parseLong(idAppello));
-			appelloDAO.aggiungiVoto(matricola, Long.parseLong(idAppello), Long.parseLong(voto));
+		if (matricola!=null && idAppello!=null && voto!=null) {
+			StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
+			Studente studente = studenteDAO.findByPrimaryKey(matricola);
+			AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
+			Appello appello = appelloDAO.findByPrimaryKey(Long.parseLong(idAppello));
+			if (appelloDAO.controllaPrenotazione(matricola, Long.parseLong(idAppello))) {
+				appelloDAO.cancellaPrenotazione(matricola, Long.parseLong(idAppello));
+				appelloDAO.aggiungiVoto(matricola, Long.parseLong(idAppello), Long.parseLong(voto));
+			}
+			req.setAttribute("appello", appello);
+			req.setAttribute("studente", studente);
 		}
-		
-		req.setAttribute("appello", appello);
-		req.setAttribute("studente", studente);
-		
 		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaEsiti.jsp");
 		dispacher.forward(req, resp);
 	

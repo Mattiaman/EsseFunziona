@@ -28,12 +28,15 @@ public class addCorso extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String nomeCorso = req.getParameter("nomeCorso");
-		Corso crs= new Corso(nomeCorso);
+		Corso crs;
 		
-		CorsoDAO corsoDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDAO();
-		corsoDAO.save(crs);
-
-		req.setAttribute("corso", crs);
+		if (nomeCorso!=null) {
+			crs = new Corso(nomeCorso);
+			CorsoDAO corsoDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDAO();
+			corsoDAO.save(crs);
+			req.setAttribute("corso", crs);
+		}
+		
 
 		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaCorsi.jsp");
 		dispacher.forward(req, resp);
