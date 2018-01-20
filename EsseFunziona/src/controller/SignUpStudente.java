@@ -47,7 +47,7 @@ public class SignUpStudente extends HttpServlet{
 		String password = req.getParameter("password");
 		String corsoDiLaurea = req.getParameter("corsoDiLaurea");
 	
-		if (matricola!=null && nome!=null && cognome!=null && email!=null && dataNascita!=null && password!=null && corsoDiLaurea!=null) {
+		if (!matricola.isEmpty() && !nome.isEmpty() && !cognome.isEmpty() && !email.isEmpty() && !dataNascita.isEmpty() && !password.isEmpty() && !corsoDiLaurea.isEmpty()) {
 			DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
 			Date date;
 			try {

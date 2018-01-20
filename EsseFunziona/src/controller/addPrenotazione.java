@@ -32,7 +32,7 @@ public class addPrenotazione extends HttpServlet{
 		String idAppello = req.getParameter("appello");
 		
 		
-		if (matricola!=null && idAppello!=null) {
+		if (!matricola.isEmpty() && !idAppello.isEmpty()) {
 			AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
 			Appello appello = appelloDAO.findByPrimaryKey(Long.parseLong(idAppello));
 			StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();

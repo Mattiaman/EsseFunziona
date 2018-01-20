@@ -29,7 +29,7 @@ public class askRicevimento extends HttpServlet{
 		String matricola = (String) session.getAttribute("matricola");
 		String nomeUtenteProfessore = req.getParameter("professoreRicevimento");
 		
-		if (matricola!=null && nomeUtenteProfessore!=null) {
+		if (!nomeUtenteProfessore.isEmpty() && !matricola.isEmpty()) {
 			ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
 			Professore professore = professoreDAO.findByPrimaryKey(nomeUtenteProfessore);
 			StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();

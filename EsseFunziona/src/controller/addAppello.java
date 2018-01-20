@@ -44,7 +44,7 @@ public class addAppello extends HttpServlet{
 		String corsoAppello = req.getParameter("corsoAppello");
 		
 		
-		if (nomeUtente!=null && dataAppello!=null && corsoAppello!=null) {
+		if (!nomeUtente.isEmpty() && !dataAppello.isEmpty() && !corsoAppello.isEmpty()) {
 			DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
 			Date date;
 			try {

@@ -40,7 +40,7 @@ public class addBandi extends HttpServlet{
 		
 		String contenutoBando = req.getParameter("contenutoBando");
 	
-		if (nomeUtente!=null && contenutoBando!=null) {
+		if (!nomeUtente.isEmpty() && !contenutoBando.isEmpty()) {
 			File f = new File(contenutoBando);
 			Bando bnd = new Bando(f);
 			AdminDAO adminDAO = DatabaseManager.getInstance().getDaoFactory().getAdminDAO();

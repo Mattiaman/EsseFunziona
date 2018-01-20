@@ -34,7 +34,7 @@ public class addCorsoDiLaurea extends HttpServlet{
 		// TODO Auto-generated method stub
 		String nomeCdl = req.getParameter("nomecdl");
 
-		if (nomeCdl!=null) {
+		if (!nomeCdl.isEmpty()) {
 			CorsoDiLaurea cdl = new CorsoDiLaurea(nomeCdl);
 			CorsoDiLaureaDAO cdlDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
 			cdlDAO.save(cdl);

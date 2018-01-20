@@ -40,7 +40,7 @@ public class requestRicevimento  extends HttpServlet{
 		String matricola = req.getParameter("richiesteRicevimenti");
 		String dataRicevimento = req.getParameter("dataRicevimento");
 		
-		if (nomeUtenteProfessore!=null && matricola!=null && dataRicevimento!=null) {
+		if (!nomeUtenteProfessore.isEmpty() && !matricola.isEmpty() && !dataRicevimento.isEmpty()) {
 			StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
 			Studente studente = studenteDAO.findByPrimaryKey(matricola);
 			ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();

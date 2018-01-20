@@ -39,7 +39,7 @@ public class addMateriale extends HttpServlet{
 		String nomeUtente = (String) session.getAttribute("nomeUtenteProfessore");
 		
 		String contenutoMateriale = req.getParameter("contenutoMateriale");
-		if (nomeUtente != null && contenutoMateriale != null) {
+		if (!nomeUtente.isEmpty() && !contenutoMateriale.isEmpty()) {
 			File f = new File(contenutoMateriale);
 			Materiale mtl = new Materiale(f);
 			ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();

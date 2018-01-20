@@ -41,7 +41,7 @@ public class addTax extends HttpServlet{
 		String nomeTassa = req.getParameter("nomeTassa");
 		String descrizioneTassa = req.getParameter("descrizioneTassa");
 	
-		if (adminTassa!=null && importoTassa!=null && nomeTassa!=null && descrizioneTassa!=null) {
+		if (!adminTassa.isEmpty() && !importoTassa.isEmpty() && !nomeTassa.isEmpty() && !descrizioneTassa.isEmpty()) {
 			Tassa tax = new Tassa();
 			tax.setImporto(Float.parseFloat(importoTassa));
 			tax.setDescrizione(descrizioneTassa);

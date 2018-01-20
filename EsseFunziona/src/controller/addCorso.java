@@ -30,7 +30,7 @@ public class addCorso extends HttpServlet{
 		String nomeCorso = req.getParameter("nomeCorso");
 		Corso crs;
 		
-		if (nomeCorso!=null) {
+		if (!nomeCorso.isEmpty()) {
 			crs = new Corso(nomeCorso);
 			CorsoDAO corsoDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDAO();
 			corsoDAO.save(crs);
