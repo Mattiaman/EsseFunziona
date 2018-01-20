@@ -33,6 +33,8 @@ public class EditPds extends HttpServlet {
 		StudenteDAO studDAO=DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
 		PianoDiStudiDAO pdsDAO=DatabaseManager.getInstance().getDaoFactory().getPianoDiStudiDAO();
 		Studente s=studDAO.findByPrimaryKeyData((String) session.getAttribute("matricola"));
+		if(req.getParameter("matricola")!=null)
+			s=studDAO.findByPrimaryKeyData(req.getParameter("matricola"));	
 		System.out.println(s.getMatricola());
 		PianoDiStudi pds=pdsDAO.findByPrimaryKeyProxy(s.getPianoDiStudi().getId());
 		System.out.println(pds.getId());

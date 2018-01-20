@@ -1,7 +1,7 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
-<jsp:useBean id="cdl" class="model.CorsoDiLaurea" scope="request" />
-<jsp:setProperty name="cdl" property="nome" value="un Nome"/>
+<jsp:useBean id="stud" class="model.Studente" scope="request" />
+<jsp:setProperty name="stud" property="nome" value="un Nome"/>
 
 <html>
 <head>
@@ -14,8 +14,8 @@
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
-<LINK rel="stylesheet" href="css/tableStyle.css" type="text/css"> 
-  
+<LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
+
 <script type="text/javascript" src="js/loaderMenu.js"></script>
 <script type="text/javascript" src="js/loaderInfo.js"></script>
   
@@ -37,15 +37,17 @@
 	
 	<div class="col-sm-10">
 
+		<br>	
+		<c:if test="${studente!=null }">
+		<div>	
 		
-		<br>
-		<c:if test="${corsoDiLaurea!=null }">
-		<div>
+		 	<h3>Studente</h3>
+		 	<label class="control-label col-sm-4" >Matricola: </label><label class="control-label col-sm-8" >${studente.matricola}</label>
+		 	<label class="control-label col-sm-4" >Nome: </label><label class="control-label col-sm-8" >${studente.nome}</label>
+		 	<label class="control-label col-sm-4" >Cognome: </label><label class="control-label col-sm-8" >${studente.cognome}</label>
+		 	<label class="control-label col-sm-4" >Data di Nascita: </label><label class="control-label col-sm-8" >${studente.dataDiNascita}</label>
+		 	<label class="control-label col-sm-4" >E-Mail: </label><label class="control-label col-sm-8" >${studente.email}</label>
 		
-		 		<h3>Corso Di Laurea</h3>
-		 		<label class="control-label col-sm-4" >ID: </label><label class="control-label col-sm-8" >${corsoDiLaurea.id}</label>
-		 		<label class="control-label col-sm-4" >Nome: </label><label class="control-label col-sm-8" >${corsoDiLaurea.nome}</label>
-		 		
 		</div>
 		<div>
 			<table class="table" id="tabellaCorsi">
@@ -55,17 +57,13 @@
 			        <th>Nome Corso</th>
 			      </tr>
 			    </thead>
-		   		<tbody id="listaCorsi">
-	     
+		   		<tbody id="listaCorsi">	     		
 	    		</tbody>
 	  		</table>
 		</div>
 		<script type="text/javascript">
-			caricaCorsiCDL(${corsoDiLaurea.id})
+			caricaPDS(${studente.matricola})
 		</script>
-		<div id="maps">
-		</div>
-		
 		</c:if>
 	</div>
 </body>

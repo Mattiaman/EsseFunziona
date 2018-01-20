@@ -22,7 +22,6 @@ $(document).ready(function() {
 						'</ul></div></li>'+
 						'<li><label for="segreteria">Segreteria</label><input type="radio" name="verticalMenu" id="segreteria" />'+
 						'<div><ul>'+
-						'<li><a href="tasse.html">Situazione Tasse</a></li>'+
 						'<li><a href="libretto.html">Libretto</a></li>'+
 						'</ul></div></li>'+
 						'<li><label for="esami">Esami</label><input type="radio" name="verticalMenu" id="esami" />'+

@@ -17,6 +17,7 @@
 <LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
 
 <script type="text/javascript" src="js/loaderMenu.js"></script>
+<script type="text/javascript" src="js/loaderInfo.js"></script>
   
 <body style="background: lightblue">
 	<figure style=" text-align: left">		
@@ -41,13 +42,29 @@
 		<div>	
 		
 		 	<h3>Professore</h3>
-		 	<label class="control-label col-sm-4" >NomeUtente: </label><label class="control-label col-sm-8" >${professore.nomeUtente}</label>
+		 	<label class="control-label col-sm-4" >NomeUtente: </label><label class="control-label col-sm-8"  id="nm">${professore.nomeUtente}</label>
 		 	<label class="control-label col-sm-4" >Nome: </label><label class="control-label col-sm-8" >${professore.nome}</label>
 		 	<label class="control-label col-sm-4" >Cognome: </label><label class="control-label col-sm-8" >${professore.cognome}</label>
 		 	<label class="control-label col-sm-4" >Data di Nascita: </label><label class="control-label col-sm-8" >${professore.dataDiNascita}</label>
 		 	<label class="control-label col-sm-4" >E-Mail: </label><label class="control-label col-sm-8" >${professore.email}</label>
 		
 		</div>
+		<div>
+			<table class="table" id="tabellaCorsi">
+			    <thead>
+			      <tr>
+			        <th>ID Corso</th>
+			        <th>Nome Corso</th>
+			      </tr>
+			    </thead>
+		   		<tbody id="listaCorsi">
+	     
+	    		</tbody>
+	  		</table>
+		</div>
+		<script type="text/javascript">
+			caricaCorsiProf()
+		</script>
 		<div id="maps">
 		</div>
 		

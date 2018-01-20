@@ -16,9 +16,9 @@ function caricaStudenti(){
 			for(var i in studenti){
 				var s;
 				if (datiAnagrafici.tipo != "admin")
-					s = $('<tr>  <th>'+studenti[i].matricola+'</th> <th>'+studenti[i].nome+'</th> <th>'+studenti[i].cognome+'</th> <th>'+studenti[i].dataDiNascita+'</th> <th>'+studenti[i].email+'</th>  </tr>');
+					s = $('<tr>  <th>'+studenti[i].matricola+'</th> <th>'+studenti[i].nome+'</th> <th>'+studenti[i].cognome+'</th> <th>'+studenti[i].dataDiNascita+'</th> <th>'+studenti[i].email+'</th>  <th class=\"info\"><a href=\"studenti?matricola='+studenti[i].matricola+'\">content</a></th>  </tr>');
 				else
-					s = $('<tr>  <th id=\"matricolaStudente\">'+studenti[i].matricola+'</th> <th>'+studenti[i].nome+'</th> <th>'+studenti[i].cognome+'</th> <th>'+studenti[i].dataDiNascita+'</th> <th>'+studenti[i].email+'</th> <th><button id='+ studenti[i].matricola + '>Elimina</button></th>  </tr>' );
+					s = $('<tr>  <th id=\"matricolaStudente\">'+studenti[i].matricola+'</th> <th>'+studenti[i].nome+'</th> <th>'+studenti[i].cognome+'</th> <th>'+studenti[i].dataDiNascita+'</th> <th>'+studenti[i].email+'</th>  <th class=\"info\"><a href=\"studenti?matricola='+studenti[i].matricola+'\">content</a></th> <th><button id='+ studenti[i].matricola + '>Elimina</button></th>  </tr>' );
 				$("#listaStudenti").append(s);
 			}
 			deleteStudente();

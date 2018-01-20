@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
+import model.Professore;
 import model.Studente;
 import persistence.DatabaseManager;
+import persistence.dao.ProfessoreDAO;
 import persistence.dao.StudenteDAO;
 
 public class takeStudenti extends HttpServlet{
@@ -22,8 +24,15 @@ public class takeStudenti extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		resp.setContentType("application/json");
 		StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
+		if(req.getParameter("matricola") != null) {
+			Studente studente=studenteDAO.findByPrimaryKey(req.getParameter("matricola"));
+			req.setAttribute("studente", studente);
+			RequestDispatcher dispatcher=req.getRequestDispatcher("infoStudente.jsp");
+			dispatcher.forward(req, resp);
+		}
+		
+		resp.setContentType("application/json");
 		List<Studente> studs = studenteDAO.findAll();
 		PrintWriter out=resp.getWriter();
 		Gson gson=new Gson();
