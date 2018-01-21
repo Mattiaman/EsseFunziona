@@ -14,6 +14,7 @@ public class Professore extends Utente {
 	private int nStudentiRicevimento;
 	private Set<Corso> corsiInsegnati;
 	private int nCorsiInsegnati;
+	private Studio studio;
 	
 	public Professore(String nome, String cognome, Date dataDiNascita, String email, String nomeUtente) {
 		super(nome, cognome, dataDiNascita, email, "professore");
@@ -100,4 +101,14 @@ public class Professore extends Utente {
 		corsiInsegnati.add(corso);
 		nCorsiInsegnati=corsiInsegnati.size();
 	}
+
+	public Studio getStudio() {
+		return studio;
+	}
+
+	public void setStudio(Studio studio) {
+		this.studio = studio;
+	}
+	
+	
 }
