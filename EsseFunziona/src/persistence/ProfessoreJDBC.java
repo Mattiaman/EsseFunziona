@@ -29,7 +29,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		// TODO Auto-generated method stub
 		Connection connection=this.databaseData.getConnection();
 		try {		
-			String insert="insert into professore(\"nomeUtente\", nome, cognome, dataDiNascita, email, corsoDiLaureaId) values (?,?,?,?,?,?)";
+			String insert="insert into professore(\"nomeUtente\", nome, cognome, dataDiNascita, email, corsoDiLaureaId, studioId) values (?,?,?,?,?,?,?)";
 			PreparedStatement statement=connection.prepareStatement(insert);
 			statement.setString(1, professore.getNomeUtente());
 			statement.setString(2, professore.getNome());
@@ -37,6 +37,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			statement.setDate(4, new Date(professore.getDataDiNascita().getTime()));
 			statement.setString(5, professore.getEmail());
 			statement.setLong(6, professore.getCorsoDiLaurea().getId());
+			statement.setLong(7, professore.getStudio().getId());
 			statement.executeUpdate();
 			
 			
@@ -78,6 +79,8 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 				professore.setCognome(result.getString("cognome"));
 				professore.setDataDiNascita(new java.util.Date(result.getDate("dataDiNascita").getTime()));
 				professore.setEmail(result.getString("email"));
+				StudioJDBC studioJDBC=new StudioJDBC(databaseData);
+				professore.setStudio(studioJDBC.findByPrimaryKey(result.getLong("studioId")));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -140,6 +143,8 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 				professore.setCognome(result.getString("cognome"));
 				professore.setDataDiNascita(new java.util.Date(result.getDate("dataDiNascita").getTime()));
 				professore.setEmail(result.getString("email"));
+				StudioJDBC studioJDBC=new StudioJDBC(databaseData);
+				professore.setStudio(studioJDBC.findByPrimaryKey(result.getLong("studioId")));
 	
 			}
 		} catch (SQLException e) {

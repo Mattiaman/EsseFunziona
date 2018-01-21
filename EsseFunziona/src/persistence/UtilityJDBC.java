@@ -21,7 +21,8 @@ public class UtilityJDBC {
 					"create table pianoDiStudi(\"id\" bigint primary key, nome VARCHAR(255), corsoDiLaureaId bigint REFERENCES CorsoDiLaurea(\"id\"));"+
 					"create table studente (\"matricola\" CHARACTER(6) primary key, nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), corsoDiLaureaId bigint REFERENCES corsoDiLaurea(\"id\"), pianoDiStudiId bigint REFERENCES pianoDiStudi(\"id\"), password VARCHAR(20));"+
 					"create table admin (\"nomeUtente\" VARCHAR(20) primary key, nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), password VARCHAR(20));"+
-					"create table professore (\"nomeUtente\" VARCHAR(20) primary key, nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), corsoDiLaureaId bigint REFERENCES corsoDiLaurea(\"id\"), password VARCHAR(20));"+
+					"create table studio(\"id\" bigint primary key, cubo VARCHAR(255), piano VARCHAR(255), lat bigint, lon bigint);"+
+					"create table professore (\"nomeUtente\" VARCHAR(20) primary key, nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), corsoDiLaureaId bigint REFERENCES corsoDiLaurea(\"id\"), studioId bigint REFERENCES studio(\"id\"), password VARCHAR(20));"+
 					"create table tassa(\"id\" bigint primary key, \"importo\" real, nome VARCHAR(255), descrizione VARCHAR(255), nomeUtenteAdmin VARCHAR(20) REFERENCES admin(\"nomeUtente\"));"+
 					"create table corso(\"id\" bigint primary key, nome VARCHAR(255));"+
 					"create table materiale(\"id\" bigint primary key, contenuto bytea, nomeUtenteProfessore VARCHAR(20) REFERENCES professore(\"nomeUtente\"));"+
@@ -60,6 +61,7 @@ public class UtilityJDBC {
 			String drop=
 					"drop SEQUENCE if EXISTS idSequenza CASCADE;"+
 					"drop table if exists studente CASCADE;"+
+					"drop table if exists studio CASCADE;"+
 					"drop table if exists professore CASCADE;"+
 					"drop table if exists admin CASCADE;"+
 					"drop table if exists tassa CASCADE;"+
@@ -105,10 +107,14 @@ public class UtilityJDBC {
 			statement=connection.prepareStatement(delete);
 			statement.executeUpdate();
 			
+			delete="delete FROM studio";
+			statement=connection.prepareStatement(delete);
+			statement.executeUpdate();
+
 			delete="delete FROM professore";
 			statement=connection.prepareStatement(delete);
 			statement.executeUpdate();			
-			
+
 			delete="delete FROM admin";
 			statement=connection.prepareStatement(delete);
 			statement.executeUpdate();
