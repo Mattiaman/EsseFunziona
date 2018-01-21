@@ -55,6 +55,7 @@ public class addTax extends HttpServlet{
 			List<Studente> studs = studDAO.findAll();
 			for (Studente s : studs) {
 				tassaDAO.inoltraTassa(tax, s);
+				MailGun.sendEmail("robmat56@gmail.com", s.getEmail(), "Tassa", "La tassa "+tax.getNome()+" "+tax.getDescrizione()+" di importo: "+tax.getImporto()+" è stata aggiunta", MailGun.GMAIL);
 			}
 			req.setAttribute("tassa", tax);
 		}

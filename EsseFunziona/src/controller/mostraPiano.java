@@ -71,13 +71,14 @@ public class mostraPiano extends HttpServlet {
 			studDAO.setPianoDiStudi(stud,pdsNuovo);
 			studDAO.deleteRichiestaStudente(stud);
 			System.out.println("aggiornato");
+			MailGun.sendEmail("robmat56@gmail.com", stud.getEmail(), "Piano di studi", "Il piano di studi è stato accettato", MailGun.GMAIL);
 		}
 		else {
 			System.out.println("bau");
 			pdsDAO.delete(pdsNuovo);
 			studDAO.deleteRichiestaStudente(stud);
+			MailGun.sendEmail("robmat56@gmail.com", stud.getEmail(), "Piano di studi", "Il piano di studi è stato rifiutato", MailGun.GMAIL);
 		}
-
 	}
 
 	

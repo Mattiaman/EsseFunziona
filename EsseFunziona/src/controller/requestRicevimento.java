@@ -52,11 +52,14 @@ public class requestRicevimento  extends HttpServlet{
 				if (professoreDAO.controllaRicevimento(matricola, nomeUtenteProfessore)) {
 					professoreDAO.cancellaRicevimento(matricola, nomeUtenteProfessore);
 					professoreDAO.aggiungiData(matricola, nomeUtenteProfessore, date);
+					req.setAttribute("studente", studente);			
+					MailGun.sendEmail("robmat56@gmail.com", professore.getEmail(), "Ricevimento", "Ricevimento Stabilito con il prof: "+ professore.getNome()+" "+professore.getCognome()+" il giorno: "+date , MailGun.GMAIL);
 				}
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
-			req.setAttribute("studente", studente);
+
+			
 		}
 		RequestDispatcher dispacher = req.getRequestDispatcher("richiesteRicevimento.jsp");
 		dispacher.forward(req, resp);

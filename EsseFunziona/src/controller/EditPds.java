@@ -65,6 +65,8 @@ public class EditPds extends HttpServlet {
 		JsonParser parser=new JsonParser();
 		JsonArray list=parser.parse(req.getParameter("lista")).getAsJsonArray();
 		HttpSession session=req.getSession();
+		AdminDAO adminDAO=DatabaseManager.getInstance().getDaoFactory().getAdminDAO();
+		Admin admin = adminDAO.findByPrimaryKey("baubau");
 		StudenteDAO studDAO=DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
 		PianoDiStudiDAO pdsDAO=DatabaseManager.getInstance().getDaoFactory().getPianoDiStudiDAO();
 		Studente s=studDAO.findByPrimaryKeyData((String) session.getAttribute("matricola"));
@@ -84,6 +86,7 @@ public class EditPds extends HttpServlet {
 		System.out.println("aaaaaa "+ pds.getCorsi().size());
 		pdsDAO.save(pds);
 		studDAO.sendRichiestaModificaPds(s, pds);
+		MailGun.sendEmail("robmat56@gmail.com", admin.getEmail(), "Piano di studi", "C'è una nuova richiesta di cambiamento piano da: "+s.getNome()+" "+s.getCognome(), MailGun.GMAIL);
 	}
 
 	

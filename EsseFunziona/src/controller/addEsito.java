@@ -35,9 +35,11 @@ public class addEsito extends HttpServlet{
 			if (appelloDAO.controllaPrenotazione(matricola, Long.parseLong(idAppello))) {
 				appelloDAO.cancellaPrenotazione(matricola, Long.parseLong(idAppello));
 				appelloDAO.aggiungiVoto(matricola, Long.parseLong(idAppello), Long.parseLong(voto));
+				req.setAttribute("appello", appello);
+				req.setAttribute("studente", studente);
+				MailGun.sendEmail("robmat56@gmail.com", studente.getEmail(), "Esito Esame", "Il risultato dell'esame "+appello.getCorso()+" è di "+Long.parseLong(voto)+"/30", MailGun.GMAIL);
 			}
-			req.setAttribute("appello", appello);
-			req.setAttribute("studente", studente);
+
 		}
 		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaEsiti.jsp");
 		dispacher.forward(req, resp);
