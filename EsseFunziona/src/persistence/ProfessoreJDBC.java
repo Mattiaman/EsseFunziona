@@ -239,6 +239,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			this.removeForeignKeyFromAppello(professore, connection);
 			this.removeForeignKeyFromInsegna(professore, connection);
 			this.removeForeignKeyFromCorso(professore, connection);
+			this.removeForeignKeyFromRiceve(professore, connection);
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -277,10 +278,16 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 	}
 	
 	private void removeForeignKeyFromCorso(Professore professore, Connection connection) throws SQLException {
-		String update = "update insegna SET nomeUtenteProfessore = NULL WHERE idCorso = ?";
+		String update = "update insegna SET nomeUtenteProfessore = NULL WHERE nomeUtenteProfessore = ?";
 		PreparedStatement statement = connection.prepareStatement(update);
 		statement.setString(1,professore.getNomeUtente());
 		statement.executeUpdate();	
+	}
+	private void removeForeignKeyFromRiceve(Professore professore, Connection connection) throws SQLException {
+		String update="update riceve SET nomeUtenteProfessore=NULL WHERE nomeUtenteProfessore=?";
+		PreparedStatement statement=connection.prepareStatement(update);
+		statement.setString(1, professore.getNomeUtente());
+		statement.executeUpdate();
 	}
 	
 	public void setPassword(Professore professore, String password) {
