@@ -30,7 +30,7 @@ public class MailGun {
 	public static void sendEmail(String from,String to, String subject, String message, String host) {
 		if(host==null)
 			host=GMAIL;
-        boolean sessionDebug = true;
+        boolean sessionDebug = false;
 
         Properties props = System.getProperties();
 
