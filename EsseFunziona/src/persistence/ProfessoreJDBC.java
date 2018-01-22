@@ -29,7 +29,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		// TODO Auto-generated method stub
 		Connection connection=this.databaseData.getConnection();
 		try {		
-			String insert="insert into professore(nomeUtente, nome, cognome, dataDiNascita, email, corsoDiLaureaId, studioId) values (?,?,?,?,?,?,?)";
+			String insert="insert into professore(\"nomeUtente\", nome, cognome, dataDiNascita, email, corsoDiLaureaId, studioId) values (?,?,?,?,?,?,?)";
 			PreparedStatement statement=connection.prepareStatement(insert);
 			statement.setString(1, professore.getNomeUtente());
 			statement.setString(2, professore.getNome());
@@ -68,7 +68,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		Connection connection=this.databaseData.getConnection();
 		Professore professore=null;
 		try {
-			String query="select * from professore where nomeUtente=?";
+			String query="select * from professore where \"nomeUtente\"=?";
 			PreparedStatement statement=connection.prepareStatement(query);
 			statement.setString(1, nomeUtente);
 			ResultSet result=statement.executeQuery();
@@ -132,7 +132,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		Connection connection=this.databaseData.getConnection();
 		Professore professore=null;
 		try {
-			String query="select * from professore where nomeUtente=?";
+			String query="select * from professore where \"nomeUtente\"=?";
 			PreparedStatement statement=connection.prepareStatement(query);
 			statement.setString(1, nomeUtente);
 			ResultSet result=statement.executeQuery();
@@ -197,7 +197,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		Connection connection=this.databaseData.getConnection();
 		
 		try {
-			String update="update professore SET nome=?, cognome=?, dataDiNascita=?, email=? where nomeUtente=?";
+			String update="update professore SET nome=?, cognome=?, dataDiNascita=?, email=? where \"nomeUtente\"=?";
 			PreparedStatement statement=connection.prepareStatement(update);
 			statement.setString(1, professore.getNome());
 			statement.setString(2, professore.getCognome());
@@ -235,7 +235,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 		// TODO Auto-generated method stub
 		Connection connection=this.databaseData.getConnection();
 		try {
-			String delete="delete from professore where nomeUtente=?";
+			String delete="delete from professore where \"nomeUtente\"=?";
 			PreparedStatement statement=connection.prepareStatement(delete);
 			statement.setString(1, professore.getNomeUtente());
 			connection.setAutoCommit(false);
@@ -244,7 +244,6 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 			this.removeForeignKeyFromAppello(professore, connection);
 			this.removeForeignKeyFromInsegna(professore, connection);
 			this.removeForeignKeyFromCorso(professore, connection);
-			this.removeForeignKeyFromRiceve(professore, connection);
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -283,22 +282,16 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 	}
 	
 	private void removeForeignKeyFromCorso(Professore professore, Connection connection) throws SQLException {
-		String update = "update insegna SET nomeUtenteProfessore = NULL WHERE nomeUtenteProfessore = ?";
+		String update = "update insegna SET nomeUtenteProfessore = NULL WHERE idCorso = ?";
 		PreparedStatement statement = connection.prepareStatement(update);
 		statement.setString(1,professore.getNomeUtente());
 		statement.executeUpdate();	
-	}
-	private void removeForeignKeyFromRiceve(Professore professore, Connection connection) throws SQLException {
-		String update="update riceve SET nomeUtenteProfessore=NULL WHERE nomeUtenteProfessore=?";
-		PreparedStatement statement=connection.prepareStatement(update);
-		statement.setString(1, professore.getNomeUtente());
-		statement.executeUpdate();
 	}
 	
 	public void setPassword(Professore professore, String password) {
 		Connection connection = this.databaseData.getConnection();
 		try {
-			String update = "update professore SET password = ? WHERE nomeUtente=?";
+			String update = "update professore SET password = ? WHERE \"nomeUtente\"=?";
 			PreparedStatement statement;
 			statement = connection.prepareStatement(update);
 			statement.setString(1, password);
