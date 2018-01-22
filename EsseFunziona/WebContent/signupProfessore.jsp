@@ -9,6 +9,13 @@
 <head lang="it">
 <meta charset="utf-8">
 <title>Esse Funziona</title>
+<style>
+ #map {
+   width: 100%;
+   height: 400px;
+   background-color: grey;
+ }
+</style>
 </head>
 
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -17,7 +24,12 @@
 
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
 <script src="js/loadDropDownProfessori.js"></script>
+<script src="js/loadMap.js"></script>
 <script type="text/javascript" src="js/loaderMenu.js"></script>
+
+	<script async defer
+    	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA1yoVKK5yWPjUXR8WKuI3ilRVb2DJRqM&callback=initMap">
+    </script>
 
 <body style="background: lightblue">
 	<figure style="text-align: left">
@@ -98,7 +110,34 @@
 						<select name="corsoDiLaurea" id="listaCdl">
 						</select>
 					</div>
-				</div>	
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="cuboStudio">Cubo studio:</label>
+					<div class="col-sm-5">
+						<input name="cuboStudio" type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="pianoStudio">Piano studio:</label>
+					<div class="col-sm-5">
+						<input name="pianoStudio" type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="latStudio">Latitudine studio:</label>
+					<div class="col-sm-5">
+						<input id="lat" name="latStudio" type="text" class="form-control" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-sm-3" for="lonStudio">longitudine studio:</label>
+					<div class="col-sm-5">
+						<input id="lng" name="lonStudio" type="text" class="form-control" />
+					</div>
+				</div>
+				<div id="map">
+					
+				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-5">
 						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
