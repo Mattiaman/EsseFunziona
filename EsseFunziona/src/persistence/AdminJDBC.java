@@ -28,7 +28,7 @@ public class AdminJDBC implements AdminDAO {
 	
 		Connection connection=this.databaseData.getConnection();
 		
-		String insert="insert into admin (\"nomeUtente\", nome, cognome, dataDiNascita, email) values (?,?,?,?,?)";
+		String insert="insert into admin (nomeUtente, nome, cognome, dataDiNascita, email) values (?,?,?,?,?)";
 		try {			
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setString(1, admin.getNomeUtente());	
@@ -56,7 +56,7 @@ public class AdminJDBC implements AdminDAO {
 		Admin admin=null;
 		try {
 			PreparedStatement statement;
-			String find="SELECT * FROM admin WHERE \"nomeUtente\"=?";
+			String find="SELECT * FROM admin WHERE nomeUtente=?";
 			statement=connection.prepareStatement(find);
 			statement.setString(1,nomeUtente);
 			ResultSet result=statement.executeQuery();
@@ -114,7 +114,7 @@ public class AdminJDBC implements AdminDAO {
 	public void update(Admin admin) {
 		Connection connection=this.databaseData.getConnection();
 		try {	
-			String update="UPDATE admin SET nome=?, cognome=?, email=?, dataDiNascita=? WHERE \"nomeUtente\"=?";
+			String update="UPDATE admin SET nome=?, cognome=?, email=?, dataDiNascita=? WHERE nomeUtente=?";
 			PreparedStatement statement=connection.prepareStatement(update);
 			statement.setString(5, admin.getNomeUtente());
 			statement.setString(1, admin.getNome());
@@ -140,7 +140,7 @@ public class AdminJDBC implements AdminDAO {
 	public void delete(Admin admin) {
 		Connection connection=this.databaseData.getConnection();
 		try {
-			String delete="DELETE FROM admin WHERE \"nomeUtente\"=?";
+			String delete="DELETE FROM admin WHERE nomeUtente=?";
 			PreparedStatement statement=connection.prepareStatement(delete);
 			statement.setString(1, admin.getNomeUtente());
 			connection.setAutoCommit(false);
@@ -175,7 +175,7 @@ public class AdminJDBC implements AdminDAO {
 		// TODO Auto-generated method stub
 		Connection connection = this.databaseData.getConnection();
 		try {
-			String update = "update admin SET password = ? WHERE \"nomeUtente\"=?";
+			String update = "update admin SET password = ? WHERE nomeUtente=?";
 			PreparedStatement statement;
 			statement = connection.prepareStatement(update);
 			statement.setString(1, password);
