@@ -64,8 +64,7 @@
 		<script type="text/javascript">
 			caricaCorsiCDL(${corsoDiLaurea.id})
 		</script>
-		<div id="maps">
-		</div>
+
 		
 		</c:if>
 	</div>
