@@ -7,11 +7,19 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Esse Funziona</title>
+<style>
+ #map {
+   width: 100%;
+   height: 400px;
+   background-color: grey;
+ }
+</style>
 </head>
 
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
 
 <LINK rel="stylesheet" href="css/navStyle.css" type="text/css">
 <LINK rel="stylesheet" href="css/tableStyle.css" type="text/css">
@@ -20,6 +28,9 @@
 <script type="text/javascript" src="js/loaderInfo.js"></script>
   
 <body style="background: lightblue">
+	<script async defer
+    	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAA1yoVKK5yWPjUXR8WKuI3ilRVb2DJRqM&callback=initMap">
+    </script>
 	<figure style=" text-align: left">		
 		<a href="images/logo_unical.png"><img class="img-responsive" src="images/logo_unical.png" alt="Sito Unical" width="460" height="345"/></a>
 		<figcaption>Servizi online per lo studente</figcaption>		
@@ -66,7 +77,7 @@
 		<script type="text/javascript">
 			caricaCorsiProf()
 		</script>
-		<div id="maps">
+		<div id="map">
 		</div>
 		
 		</c:if>

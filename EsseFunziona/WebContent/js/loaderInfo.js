@@ -51,3 +51,33 @@ function caricaCorsiCDL(id){
 	});	
 	
 }
+
+function initMap() {
+	var nomeUtente = $('#nm').text();
+	$.ajax({
+		url : 'professori',
+		type : 'GET',
+		success: function(prof){
+			var p;
+			for(var i in prof){
+
+				if(prof[i].nomeUtente==nomeUtente){
+					p=prof[i];
+
+					break;
+				}
+			}
+			console.log(p)
+				var stud={lat: p.studio.latitudine, lng: p.studio.longitudine}
+				var map = new google.maps.Map(document.getElementById('map'), {
+				    zoom: 4,
+				    center: stud
+				});
+				var marker = new google.maps.Marker({
+				      position: stud,
+				      map: map
+				});
+
+		}
+	});	
+ }

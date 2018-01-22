@@ -35,5 +35,7 @@ public interface DAOFactory {
 	
 	public abstract UtilityJDBC getUtilityJDBC();
 
+	public abstract StudioDAO getStudioDAO();
+
 	
 }

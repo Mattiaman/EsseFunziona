@@ -27,13 +27,13 @@ public class StudioJDBC implements StudioDAO {
 		try {
 			Long id = IdGenerator.getId(connection);
 			studio.setId(id); 
-			String insert = "insert into studio(id, cubo, pano, lat, lon) values (?,?,?,?,?)";
+			String insert = "insert into studio(id, cubo, piano, lat, lon) values (?,?,?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, studio.getId());
 			statement.setString(2, studio.getCubo());
 			statement.setString(3, studio.getPiano());
-			statement.setLong(4, studio.getLatitudine());
-			statement.setLong(5, studio.getLongitudine());
+			statement.setDouble(4, studio.getLatitudine());
+			statement.setDouble(5, studio.getLongitudine());
 
 			statement.executeUpdate();
 		} catch (SQLException e) {
@@ -69,8 +69,8 @@ public class StudioJDBC implements StudioDAO {
 				studio.setId(result.getLong("id"));				
 				studio.setCubo(result.getString("cubo"));
 				studio.setPiano(result.getString("piano"));
-				studio.setLatitudine(result.getLong("lat"));
-				studio.setLongitudine(result.getLong("lon"));
+				studio.setLatitudine(result.getDouble("lat"));
+				studio.setLongitudine(result.getDouble("lon"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -118,8 +118,8 @@ public class StudioJDBC implements StudioDAO {
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, studio.getCubo());
 			statement.setString(2, studio.getPiano());
-			statement.setLong(3, studio.getLatitudine());
-			statement.setLong(4, studio.getLongitudine());
+			statement.setDouble(3, studio.getLatitudine());
+			statement.setDouble(4, studio.getLongitudine());
 			statement.setLong(5, studio.getId());
 			statement.executeUpdate();
 		} catch (SQLException e) {

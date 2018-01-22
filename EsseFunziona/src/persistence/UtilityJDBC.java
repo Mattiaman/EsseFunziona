@@ -21,7 +21,7 @@ public class UtilityJDBC {
 					"create table pianoDiStudi(\"id\" bigint primary key, nome VARCHAR(255), corsoDiLaureaId bigint REFERENCES CorsoDiLaurea(\"id\"));"+
 					"create table studente (\"matricola\" CHARACTER(6) primary key, nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), corsoDiLaureaId bigint REFERENCES corsoDiLaurea(\"id\"), pianoDiStudiId bigint REFERENCES pianoDiStudi(\"id\"), password VARCHAR(20));"+
 					"create table admin (\"nomeUtente\" VARCHAR(20) primary key, nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), password VARCHAR(20));"+
-					"create table studio(\"id\" bigint primary key, cubo VARCHAR(255), piano VARCHAR(255), lat bigint, lon bigint);"+
+					"create table studio(\"id\" bigint primary key, cubo VARCHAR(255), piano VARCHAR(255), lat double precision, lon double precision);"+
 					"create table professore (\"nomeUtente\" VARCHAR(20) primary key, nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), corsoDiLaureaId bigint REFERENCES corsoDiLaurea(\"id\"), studioId bigint REFERENCES studio(\"id\"), password VARCHAR(20));"+
 					"create table tassa(\"id\" bigint primary key, \"importo\" real, nome VARCHAR(255), descrizione VARCHAR(255), nomeUtenteAdmin VARCHAR(20) REFERENCES admin(\"nomeUtente\"));"+
 					"create table corso(\"id\" bigint primary key, nome VARCHAR(255));"+

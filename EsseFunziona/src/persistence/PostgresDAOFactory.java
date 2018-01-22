@@ -77,7 +77,7 @@ public class PostgresDAOFactory implements DAOFactory {
 	public CorsoDiLaureaDAO getCorsoDiLaureaDAO() {
 		return new CorsoDiLaureaJDBC(databaseData);
 	}
-
+	
 	@Override
 	public UtilityJDBC getUtilityJDBC() {
 		return new UtilityJDBC(databaseData);
@@ -86,6 +86,11 @@ public class PostgresDAOFactory implements DAOFactory {
 	@Override
 	public BandoDAO getBandoDAO() {
 		return new BandoJDBC(databaseData);
+	}
+	
+	@Override
+	public StudioDAO getStudioDAO() {
+		return new StudioJDBC(databaseData);
 	}
 
 }

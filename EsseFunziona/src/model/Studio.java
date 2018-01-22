@@ -5,8 +5,8 @@ public class Studio {
 	private long id;
 	private String cubo;
 	private String piano;
-	private long latitudine;
-	private long longitudine;
+	private double latitudine;
+	private double longitudine;
 	
 	public Studio() {
 
@@ -30,16 +30,16 @@ public class Studio {
 	public void setPiano(String piano) {
 		this.piano = piano;
 	}
-	public long getLatitudine() {
+	public double getLatitudine() {
 		return latitudine;
 	}
-	public void setLatitudine(long latitudine) {
+	public void setLatitudine(double latitudine) {
 		this.latitudine = latitudine;
 	}
-	public long getLongitudine() {
+	public double getLongitudine() {
 		return longitudine;
 	}
-	public void setLongitudine(long longitudine) {
+	public void setLongitudine(double longitudine) {
 		this.longitudine = longitudine;
 	}
 	

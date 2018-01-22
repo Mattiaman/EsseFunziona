@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.CorsoDiLaurea;
 import model.Professore;
 import model.Studente;
+import model.Studio;
 import persistence.DatabaseManager;
 import persistence.dao.CorsoDiLaureaDAO;
 import persistence.dao.ProfessoreDAO;
@@ -41,7 +42,12 @@ public class SignUpProfessore extends HttpServlet{
 		String dataNascita = req.getParameter("dataNascita");
 		String password = req.getParameter("password");
 		String cdl = req.getParameter("corsoDiLaurea");
-	
+		String cuboStudio=req.getParameter("cuboStudio");
+		String pianoStudio=req.getParameter("pianoStudio");
+		double latStudio=Double.parseDouble(req.getParameter("latStudio"));
+		double lonStudio=Double.parseDouble(req.getParameter("lonStudio"));
+		
+		
 		if (!nomeUtente.isEmpty() && !nome.isEmpty() && !cognome.isEmpty() && !email.isEmpty() && !dataNascita.isEmpty() && !password.isEmpty() && !cdl.isEmpty()) {
 			DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
 			Date date;
@@ -52,6 +58,16 @@ public class SignUpProfessore extends HttpServlet{
 				CorsoDiLaureaDAO corsoDiLaureaDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
 				CorsoDiLaurea corsoDiLaurea = corsoDiLaureaDAO.findByPrimaryKey(Long.parseLong(cdl));
 				prof.setCorsoDiLaurea(corsoDiLaurea);
+				
+				Studio studio =new Studio();
+				studio.setCubo(cuboStudio);
+				studio.setPiano(pianoStudio);
+				studio.setLatitudine(latStudio);
+				studio.setLongitudine(lonStudio);
+				
+				DatabaseManager.getInstance().getDaoFactory().getStudioDAO().save(studio);
+				
+				prof.setStudio(studio);
 
 				ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
 				professoreDAO.save(prof);
