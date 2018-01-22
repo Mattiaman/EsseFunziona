@@ -282,7 +282,7 @@ public class ProfessoreJDBC implements ProfessoreDAO {
 	}
 	
 	private void removeForeignKeyFromCorso(Professore professore, Connection connection) throws SQLException {
-		String update = "update insegna SET nomeUtenteProfessore = NULL WHERE idCorso = ?";
+		String update = "update insegna SET nomeUtenteProfessore = NULL WHERE nomeUtenteProfessore = ?";
 		PreparedStatement statement = connection.prepareStatement(update);
 		statement.setString(1,professore.getNomeUtente());
 		statement.executeUpdate();	

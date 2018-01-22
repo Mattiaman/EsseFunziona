@@ -75,7 +75,7 @@ public class SignUpProfessore extends HttpServlet{
 
 				req.setAttribute("professore", prof);
 				
-				MailGun.sendEmail("robmat56@gmail.com", prof.getEmail(), "Welcome", "We, Benvenuto", MailGun.GMAIL);
+				//MailGun.sendEmail("robmat56@gmail.com", prof.getEmail(), "Welcome", "We, Benvenuto", MailGun.GMAIL);
 
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block

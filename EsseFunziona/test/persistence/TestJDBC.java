@@ -24,9 +24,16 @@ public class TestJDBC {
 		utility.dropDatabase();
 		utility.createDatabase();
 		
+		Calendar calendar1 = Calendar.getInstance();
+		calendar1.set(1990, Calendar.APRIL, 1);
+		Date date3 = calendar1.getTime();
+		
+		Admin admin1= new Admin ("admin","admin",date3,"robmat56@gmail.com","admin");
+		
 //		StudenteDAO studenteDAO=factory.getStudenteDAO();
 //		ProfessoreDAO professoreDAO=factory.getProfessoreDAO();
-//		AdminDAO adminDAO=factory.getAdminDAO();
+		AdminDAO adminDAO=factory.getAdminDAO();
+		adminDAO.save(admin1);
 //		CorsoDiLaureaDAO corsoDiLaureaDAO=factory.getCorsoDiLaureaDAO();
 //		PianoDiStudiDAO pianoDiStudiDAO=factory.getPianoDiStudiDAO();
 //		CorsoDAO corsoDAO=factory.getCorsoDAO();
