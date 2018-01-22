@@ -41,7 +41,7 @@
 			<h3>${appello.id}</h3>
 			<h3>${appello.corso.nome}</h3>
 		 </c:if>
-		
+		 <c:if test="${appello == null}">
 			<h3>Effettuare Prenotazione</h3>
 			<form class="form-horizontal" method="post" action="aggiuntaPrenotazione">
 			
@@ -67,7 +67,7 @@
 			    </div>
 			  </div>
 			</form>
-			
+		</c:if>	
 		</div>
 
 </body>

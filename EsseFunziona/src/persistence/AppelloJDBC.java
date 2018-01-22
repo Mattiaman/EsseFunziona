@@ -220,6 +220,8 @@ public class AppelloJDBC implements AppelloDAO {
 			connection.setAutoCommit(false);
 			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 			this.removeForeignKeyFromStudenti(appello, connection);
+			this.removeForeignKeyFromEsito(appello, connection);
+			this.removeForeignKeyFromLibretto(appello, connection);
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -241,6 +243,20 @@ public class AppelloJDBC implements AppelloDAO {
 			PreparedStatement statement=connection.prepareStatement(update);
 			statement.setLong(1, appello.getId());
 			statement.executeUpdate();
+	}
+	
+	private void removeForeignKeyFromEsito(Appello appello, Connection connection) throws SQLException {
+		String update="update esame SET idAppello=NULL WHERE idAppello=?";
+		PreparedStatement statement=connection.prepareStatement(update);
+		statement.setLong(1, appello.getId());
+		statement.executeUpdate();
+	}
+	
+	private void removeForeignKeyFromLibretto(Appello appello, Connection connection) throws SQLException {
+		String update="update libretto SET idAppello=NULL WHERE idAppello=?";
+		PreparedStatement statement=connection.prepareStatement(update);
+		statement.setLong(1, appello.getId());
+		statement.executeUpdate();
 	}
 
 	private void mappaStudenti(Appello appello, Connection connection) throws SQLException {

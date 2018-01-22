@@ -236,7 +236,7 @@
     <servlet-name>deleteCorsoServlet</servlet-name>
     <url-pattern>/eliminaCorso</url-pattern>
    </servlet-mapping> 
-   
+
      <servlet>
     <servlet-name>deleteAppelloServlet</servlet-name>
     <servlet-class>controller.deleteAppello</servlet-class>
@@ -399,7 +399,7 @@
    
    <servlet>
     <servlet-name>rifiutaEsameServlet</servlet-name>
-    <servlet-class>controller.accettaEsame</servlet-class>
+    <servlet-class>controller.rifiutaEsame</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>rifiutaEsameServlet</servlet-name>

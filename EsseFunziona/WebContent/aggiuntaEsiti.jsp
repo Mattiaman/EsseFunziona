@@ -50,7 +50,7 @@
 		 </c:if>
 		
 		
-		
+		<c:if test="${appello == null}">
 			<form class="form-horizontal" method="post" action="aggiuntaEsiti">
 			
 			  <div class="form-group">
@@ -88,7 +88,7 @@
 			    </div>
 			  </div>
 			</form>
-			
+		</c:if>	
 		</div>
 
 </body>

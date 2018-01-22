@@ -191,6 +191,9 @@ public class StudenteJDBC implements StudenteDAO {
 			connection.setTransactionIsolation(Connection.TRANSACTION_SERIALIZABLE);
 			this.removeForeignKeyFromDevePagare(studente, connection);
 			this.removeForeignKeyFromPrenota(studente, connection);
+			this.removeForeignKeyFromEsito(studente, connection);
+			this.removeForeignKeyFromLibretto(studente, connection);
+			this.removeForeignKeyFromRiceve(studente, connection);
 			statement.executeUpdate();
 			connection.commit();
 		} catch (SQLException e) {
@@ -218,7 +221,25 @@ public class StudenteJDBC implements StudenteDAO {
 		PreparedStatement statement=connection.prepareStatement(update);
 		statement.setString(1, studente.getMatricola());
 		statement.executeUpdate();
-}
+	}
+	private void removeForeignKeyFromEsito(Studente studente, Connection connection) throws SQLException {
+		String update="update esame SET matricolaStudente=NULL WHERE matricolaStudente=?";
+		PreparedStatement statement=connection.prepareStatement(update);
+		statement.setString(1, studente.getMatricola());
+		statement.executeUpdate();
+	}
+	private void removeForeignKeyFromLibretto(Studente studente, Connection connection) throws SQLException {
+		String update="update libretto SET matricolaStudente=NULL WHERE matricolaStudente=?";
+		PreparedStatement statement=connection.prepareStatement(update);
+		statement.setString(1, studente.getMatricola());
+		statement.executeUpdate();
+	}
+	private void removeForeignKeyFromRiceve(Studente studente, Connection connection) throws SQLException {
+		String update="update riceve SET matricolaStudente=NULL WHERE matricolaStudente=?";
+		PreparedStatement statement=connection.prepareStatement(update);
+		statement.setString(1, studente.getMatricola());
+		statement.executeUpdate();
+	}
 
 	@Override
 	public void setPassword(Studente studente, String password) {

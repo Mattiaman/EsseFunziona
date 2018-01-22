@@ -67,7 +67,7 @@ public class TestJDBC {
 //		calendar1.set(1990, Calendar.APRIL, 1);
 //		Date date3 = calendar1.getTime();
 //		
-//		Admin admin1= new Admin ("Snoopy","pecorella",date3,"baubau@sonofigo.it","baubau");
+//		Admin admin1= new Admin ("admin","admin",date3,"robmat56@gmail.com","admin");
 //		
 //	
 //		//Creazione Tasse	
@@ -76,7 +76,7 @@ public class TestJDBC {
 //		Tassa tassa3= new Tassa(300,"tassa3","tassaIscrizione3",admin1);
 //		
 //		//Creazione Professore
-//		Professore prof1= new Professore("francesco","ricca",date3,"ricca@unical.it","CiccioRicca");
+//		//Professore prof1= new Professore("francesco","ricca",date3,"ricca@unical.it","CiccioRicca");
 //		
 //		
 //		//Creazione studente
@@ -94,7 +94,7 @@ public class TestJDBC {
 //		ciuskiScemo.setCorsoDiLaurea(cdlStoria);
 //		ciuskiScemo.setPianoDiStudi(pianoDiStudi1);
 //		
-//		//Creazione materiale
+//		Creazione materiale
 //		Materiale materiale=new Materiale();
 //		File file=new File(TestJDBC.class.getResource("materialeaaa.txt").getPath());
 //		materiale.setContenuto(file);
@@ -138,7 +138,7 @@ public class TestJDBC {
 //		studenteDAO.save(mettiuFigo);
 //		studenteDAO.save(ciuskiScemo);
 //		
-////		professoreDAO.save(prof1);
+//		professoreDAO.save(prof1);
 //		
 //		materialeDAO.save(materiale);
 //		materialeDAO.save(materiale1);
@@ -146,7 +146,7 @@ public class TestJDBC {
 //		bandoDAO.save(bando);
 //		
 //		appelloDAO.save(appello);
-//		
+		
 //		//find
 //		Studente studenteTrovato=studenteDAO.findByPrimaryKey("000000");
 //		if(studenteTrovato!=null) {
@@ -354,47 +354,47 @@ public class TestJDBC {
 //		
 //		System.out.println("\n");
 //		
-//		List<Materiale> materiali=materialeDAO.findAll();
-//		for(Materiale mtl:materiali) {
-//			System.out.println("File: "+mtl.getContenuto().getName());
-//			System.out.println("Caricato da "+mtl.getProfessore().getNome());
-//			File content=materialeTrovato.getContenuto();
-//			String text="Il contenuto è:\n";
-//			try {
-//				BufferedReader reader=new BufferedReader(new FileReader(file));
-//				String line=null;
-//				while((line=reader.readLine())!=null) {
-//					text+=line;
-//					text+="\n";
-//				}
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			System.out.println(text);
-//		}
-//	
-//		System.out.println("\n");
-//		
-//		List<Bando> bandi=bandoDAO.findAll();
-//		for(Bando bnd:bandi) {
-//			System.out.println("File: "+bnd.getContenuto().getName());
-//			System.out.println("Caricato da "+bnd.getAdmin().getNome());
-//			File content=bandoTrovato.getContenuto();
-//			String text="Il contenuto è:\n";
-//			try {
-//				BufferedReader reader=new BufferedReader(new FileReader(file));
-//				String line=null;
-//				while((line=reader.readLine())!=null) {
-//					text+=line;
-//					text+="\n";
-//				}
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			System.out.println(text);
-//		}
+////		List<Materiale> materiali=materialeDAO.findAll();
+////		for(Materiale mtl:materiali) {
+////			System.out.println("File: "+mtl.getContenuto().getName());
+////			System.out.println("Caricato da "+mtl.getProfessore().getNome());
+////			File content=materialeTrovato.getContenuto();
+////			String text="Il contenuto è:\n";
+////			try {
+////				BufferedReader reader=new BufferedReader(new FileReader(file));
+////				String line=null;
+////				while((line=reader.readLine())!=null) {
+////					text+=line;
+////					text+="\n";
+////				}
+////			} catch (IOException e) {
+////				// TODO Auto-generated catch block
+////				e.printStackTrace();
+////			}
+////			System.out.println(text);
+////		}
+////	
+////		System.out.println("\n");
+////		
+////		List<Bando> bandi=bandoDAO.findAll();
+////		for(Bando bnd:bandi) {
+////			System.out.println("File: "+bnd.getContenuto().getName());
+////			System.out.println("Caricato da "+bnd.getAdmin().getNome());
+////			File content=bandoTrovato.getContenuto();
+////			String text="Il contenuto è:\n";
+////			try {
+////				BufferedReader reader=new BufferedReader(new FileReader(file));
+////				String line=null;
+////				while((line=reader.readLine())!=null) {
+////					text+=line;
+////					text+="\n";
+////				}
+////			} catch (IOException e) {
+////				// TODO Auto-generated catch block
+////				e.printStackTrace();
+////			}
+////			System.out.println(text);
+////		}
 //	
 //		System.out.println("\n");
 //		
@@ -410,8 +410,8 @@ public class TestJDBC {
 //		//Update
 //		
 //		String cdlpds=pianoDiStudi1.getCorsoDiLaurea().getNome();
-//		String profMtl=materiale.getProfessore().getCognome();
-//		String corsoApp=appello.getCorso().getNome();
+////		String profMtl=materiale.getProfessore().getCognome();
+////		String corsoApp=appello.getCorso().getNome();
 //		
 //		//Corsi
 //		System.out.println("Nome: "+fondamentiDiInformatica.getNome());

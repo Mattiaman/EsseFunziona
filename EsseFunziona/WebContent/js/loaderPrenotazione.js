@@ -1,18 +1,26 @@
-function caricaCorsi(){
+function caricaCorsi(){	
 	var xhr= new XMLHttpRequest();
-	xhr.open('get',"corsi",true);
+	xhr.open('get',"datiAnagrafici",true);
 	xhr.onload=function(){
 		var jsonStringQuotes = xhr.responseText;
-		var corsi=JSON.parse(jsonStringQuotes);
-		var v = $('<option value=\"-1\">---</option>');
-		$("#listaCorsi").append(v);
-		for(var i in corsi){
-			var c = $('<option value=\"'+corsi[i].id+'\">'+corsi[i].nome+'</option>');
-			$("#listaCorsi").append(c);
-		}
-		
-	};
-	xhr.send(null)
+		var datiAnagrafici=JSON.parse(jsonStringQuotes);
+		$.ajax({
+			url : 'EditPds',
+			type : 'GET',
+			data:{matricola: datiAnagrafici.matricola},
+			success: function(corsi){
+				var v = $('<option value=\"-1\">---</option>');
+				$("#listaCorsi").append(v);
+				if(corsi[0]!=null){
+					for(var i in corsi){
+						var c = $('<option value=\"'+corsi[i].id+'\">'+corsi[i].nome+'</option>');
+						$("#listaCorsi").append(c);
+					}
+				}
+			}
+		});
+	}
+	xhr.send(null);
 }
 
 function caricaAppelli(crs){

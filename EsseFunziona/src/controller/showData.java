@@ -27,34 +27,30 @@ public class showData extends HttpServlet{
 		String matricola = (String) session.getAttribute("matricola");
 		String nomeUtenteAdmin = (String) session.getAttribute("nomeUtenteAdmin");
 		String nomeUtenteProfessore = (String) session.getAttribute("nomeUtenteProfessore");
+			
 		
-		StudenteDAO studenteDAO=DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
-		Studente stud=studenteDAO.findByPrimaryKey(matricola);
-		
-		AdminDAO adminDAO=DatabaseManager.getInstance().getDaoFactory().getAdminDAO();
-		Admin adm=adminDAO.findByPrimaryKey(nomeUtenteAdmin);
-		
-		ProfessoreDAO professoreDAO=DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
-		Professore prof=professoreDAO.findByPrimaryKey(nomeUtenteProfessore);
-
-		
-		
-		if(stud!=null) {
+		if(matricola!=null) {
+			StudenteDAO studenteDAO=DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
+			Studente stud=studenteDAO.findByPrimaryKey(matricola);
 			PrintWriter out=resp.getWriter();
 			Gson gson=new Gson();
 			out.print(gson.toJson(stud));
 			out.close();
 		}
-		else if(prof!=null) {
-			PrintWriter out=resp.getWriter();
-			Gson gson=new Gson();
-			out.print(gson.toJson(prof));
-			out.close();
-		}
-		else if(adm!=null) {
+		else if(nomeUtenteAdmin!=null) {
+			AdminDAO adminDAO=DatabaseManager.getInstance().getDaoFactory().getAdminDAO();
+			Admin adm=adminDAO.findByPrimaryKey(nomeUtenteAdmin);
 			PrintWriter out=resp.getWriter();
 			Gson gson=new Gson();
 			out.print(gson.toJson(adm));
+			out.close();
+		}
+		else if(nomeUtenteProfessore!=null) {
+			ProfessoreDAO professoreDAO=DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
+			Professore prof=professoreDAO.findByPrimaryKey(nomeUtenteProfessore);
+			PrintWriter out=resp.getWriter();
+			Gson gson=new Gson();
+			out.print(gson.toJson(prof));
 			out.close();
 		}
 		else {
