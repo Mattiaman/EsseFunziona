@@ -38,7 +38,7 @@ Per entrare come professore usare come credenziali:
 
 Necessario essere autenticati nel sistema
 		
-### Menu Admin
+#### Menu Admin
 	
 Una volta acceduti come admin potete scegliendo l'opzione attraverso il menu:
 	Selezionando il menu Home:
@@ -57,7 +57,7 @@ Una volta acceduti come admin potete scegliendo l'opzione attraverso il menu:
 		Modificare i corsi dei corsi di laurea e dei professori.
 		Accettare le richieste di modifica piani di studi.	
 		
-### Menu Studente
+#### Menu Studente
 
 Una volta acceduti come studente potete scegliendo l'opzione attraverso il menu:
 	Selezionando il menu Home:
@@ -75,7 +75,7 @@ Una volta acceduti come studente potete scegliendo l'opzione attraverso il menu:
 		Chiedere un ricevimento.
 		Modificare il piano di studi.
 	
-### Menu Professore
+#### Menu Professore
 				
 Una volta acceduti come professore potete scegliendo l'opzione attraverso il menu:
 	Selezionando il menu Home:
@@ -90,11 +90,9 @@ Una volta acceduti come professore potete scegliendo l'opzione attraverso il men
 		Aggiungere degli appelli tra i propri corsi.
 		Aggiungere degli esiti per gli studnti prenotati ai propri appelli.
 		Aggiungere dei Documenti.
-		
-### Spiegazione Menu
 
-
-Per aggiungere entita al sistema riempire tutti i campi altrimenti non verr‡ aggiunta
+##### info
+Per aggiungere entita al sistema riempire tutti i campi altrimenti non verr√† aggiunta
 	
 	
 	
