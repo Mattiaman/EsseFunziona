@@ -10,10 +10,10 @@ Per entrare come admin usare come credenziali:
 		Nome utente:"admin" e Password:"admin"
 
 Per entrare come studente usare come credenziali:
-		Matricola:"stud00" e Password:"stud00"
-		Matricola:"stud01" e Password:"stud01"
-		Matricola:"stud02" e Password:"stud02"
-		Matricola:"stud03" e Password:"stud03"
+		Matricola:"stud00" e Password:"stud00"/n
+		Matricola:"stud01" e Password:"stud01"/n
+		Matricola:"stud02" e Password:"stud02"/n
+		Matricola:"stud03" e Password:"stud03"/n
 		Matricola:"stud04" e Password:"stud04"
 		Matricola:"stud05" e Password:"stud05"
 		Matricola:"stud06" e Password:"stud06"
