@@ -12,7 +12,6 @@ $(document).ready(function() {
 						'<label for="home">Home</label><input type="radio" name="verticalMenu" id="home" />'+
 						'<div><ul>'+
 						'<li><a href="datiAnagrafici.jsp">Dati anagrafici</a></li>'+
-						'<li><a href="email.jsp">E-mail</a></li>'+
 						'<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>'+
 						'<li><a href="corsi.html">Corsi</a></li>'+
 						'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+
@@ -41,7 +40,6 @@ $(document).ready(function() {
 						'<label for="home">Home</label><input type="radio" name="verticalMenu" id="home" />'+
 						'<div><ul>'+
 						'<li><a href="datiAnagrafici.jsp">Dati anagrafici</a></li>'+
-						'<li><a href="email.jsp">E-mail</a></li>'+
 						'<li><a href="corsiDiLaurea.html">Corsi Di Laurea</a></li>'+
 						'<li><a href="corsi.html">Corsi</a></li>'+
 						'<li><a href="documentiCorsi.html">Documenti corsi</a></li>'+

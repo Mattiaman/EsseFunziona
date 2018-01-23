@@ -10,8 +10,6 @@ function caricaProfessori() {
 			var datiAnagrafici = JSON.parse(jsonStringQuotesA);
 			var jsonStringQuotes = xhr.responseText;
 			var appelli = JSON.parse(jsonStringQuotes);
-			if(datiAnagrafici.tipo=="professore")
-				$('thead').find('tr').append('<th>Elimina</th>')
 			for ( var i in appelli) {
 				var c;
 				if(datiAnagrafici.tipo!="professore")
