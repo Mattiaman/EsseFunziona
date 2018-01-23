@@ -11,7 +11,6 @@ Per entrare come admin usare come credenziali:
 		
 		0. Nome utente:"admin" e Password:"admin"
 		
-		'''
 Per entrare come studente usare come credenziali:
 		'''
 		
@@ -25,9 +24,7 @@ Per entrare come studente usare come credenziali:
 		7. Matricola:"stud07" e Password:"stud07"
 		8. Matricola:"stud08" e Password:"stud08"
 		9. Matricola:"stud09" e Password:"stud09"
-		
-		'''
-	
+
 Per entrare come professore usare come credenziali:
 		'''
 		
@@ -42,8 +39,6 @@ Per entrare come professore usare come credenziali:
 		8. Nome utente:"prof08" e Password:"prof08"
 		9. Nome utente:"prof09" e Password:"prof09"
 		
-		'''
-		
 ### Menu
 
 Necessario essere autenticati nel sistema
@@ -51,13 +46,19 @@ Necessario essere autenticati nel sistema
 #### Menu Admin
 	
 Una volta acceduti come admin potete scegliendo l'opzione attraverso il menu:
+
 	Selezionando il menu Home:
+		
 		Visualizzare l'elenco corsi, corsi di laurea, bandi, documenti e tasse.
 		Cliccando content nell'elenco di corsi di laurea potete vedere le rispettive informazioni.
 		Effettuare il logout attraverso il menu home
+		
 	Selezionando il menu Utenti:
+		
 		Visualizzare l'elenco di professori e studenti, e cliccando content potete vedere le rispettive informazioni.
-	Selezionando il menu Segreteria:	
+		
+	Selezionando il menu Segreteria:
+		
 		Aggiungere Corsi.
 		Aggiungere Corsi di Laurea.
 		Aggiungere Professori.
@@ -70,32 +71,45 @@ Una volta acceduti come admin potete scegliendo l'opzione attraverso il menu:
 #### Menu Studente
 
 Una volta acceduti come studente potete scegliendo l'opzione attraverso il menu:
+
 	Selezionando il menu Home:
+	
 		Visualizzare i propri dati.
 		Visualizzare l'elenco corsi, corsi di laurea, bandi, documenti, tasse e professori.
 		Cliccando content nell'elenco di corsi di laurea e professori potete vedere le rispettive informazioni.
 		Effettuare il logout attraverso il menu home.
+		
 	Selezionando il menu Segreteria:
+	
 		Visualizzare gli esami superati.
-	Selezionando il menu Esami:	
+		
+	Selezionando il menu Esami:
+	
 		Visualizzare gli appelli.
 		Visualizzare gli esiti.
 		Prenotarsi agli appelli.
 		Visualizzare le prenotazioni.
 		Chiedere un ricevimento.
 		Modificare il piano di studi.
+		
 	
 #### Menu Professore
 				
 Una volta acceduti come professore potete scegliendo l'opzione attraverso il menu:
+
 	Selezionando il menu Home:
+	
 		Visualizzare i propri dati.
 		Visualizzare l'elenco corsi, corsi di laurea, bandi, documenti, tasse.
 		Cliccando content nell'elenco di corsi di laurea potete vedere le rispettive informazioni.
 		Effettuare il logout attraverso il menu home.
+		
 	Selezionando il menu Utenti:
+	
 		Visualizzare l'elenco di studenti, e cliccando content potete vedere le rispettive informazioni.
-	Selezionando il menu Segreteria:	
+		
+	Selezionando il menu Segreteria:
+	
 		Visualizzare gli appelli.
 		Aggiungere degli appelli tra i propri corsi.
 		Aggiungere degli esiti per gli studnti prenotati ai propri appelli.
