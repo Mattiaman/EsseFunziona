@@ -34,11 +34,9 @@ Per entrare come professore usare come credenziali:
 		Nome utente:"prof08" e Password:"prof08"
 		Nome utente:"prof09" e Password:"prof09"
 
-### Spiegazione Menu
+### Menu
 
 Necessario essere autenticati nel sistema
-
-
 		
 ### Menu Admin
 	
