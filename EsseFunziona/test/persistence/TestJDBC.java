@@ -54,7 +54,9 @@ public class TestJDBC {
 //		inf.add(programmazioneAdOggetti);
 //		inf.add(inglese);
 //		CorsoDiLaurea cdlInformatica=new CorsoDiLaurea("Corso di Laurea in Informatica", inf);
+//		cdlInformatica.setFacebook("");
 //		CorsoDiLaurea cdlStoria=new CorsoDiLaurea("Corso di Laurea in Storia");
+//		cdlStoria.setFacebook("");
 //		cdlStoria.addCorso(storiaRomana);
 //		cdlStoria.addCorso(inglese);
 //		

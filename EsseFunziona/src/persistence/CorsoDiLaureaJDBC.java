@@ -30,10 +30,11 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 		try {
 			Long id = IdGenerator.getId(connection);
 			corsoDiLaurea.setId(id);
-			String insert="insert into corsoDiLaurea(id, nome) values (?,?)";
+			String insert="insert into corsoDiLaurea(id, nome,facebook) values (?,?,?)";
 			PreparedStatement statement = connection.prepareStatement(insert);
 			statement.setLong(1, corsoDiLaurea.getId());
 			statement.setString(2, corsoDiLaurea.getNome());
+			statement.setString(3, corsoDiLaurea.getFacebook());
 			statement.executeUpdate();
 			
 			if(corsoDiLaurea.getCorsi()!=null)
@@ -68,6 +69,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 				corsoDiLaurea = new CorsoDiLaurea();
 				corsoDiLaurea.setId(resultSet.getLong("id"));
 				corsoDiLaurea.setNome(resultSet.getString("nome"));
+				corsoDiLaurea.setFacebook(resultSet.getString("facebook"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -96,6 +98,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 				cdl=new CorsoDiLaureaProxy(databaseData);
 				cdl.setId(result.getLong("id"));
 				cdl.setNome(result.getString("nome"));
+				cdl.setFacebook(result.getString("facebook"));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -144,10 +147,11 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 
 		Connection connection = this.databaseData.getConnection();
 		try {
-			String update = "update corsoDiLaurea SET nome = ? WHERE id = ?";
+			String update = "update corsoDiLaurea SET nome = ? AND facebook = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, corsoDiLaurea.getNome());
-			statement.setLong(2, corsoDiLaurea.getId());
+			statement.setString(2, corsoDiLaurea.getFacebook());
+			statement.setLong(3, corsoDiLaurea.getId());
 
 			statement.executeUpdate();
 			

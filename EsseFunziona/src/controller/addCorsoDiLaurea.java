@@ -33,9 +33,11 @@ public class addCorsoDiLaurea extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String nomeCdl = req.getParameter("nomecdl");
+		String pgfacebook = req.getParameter("pgfacebook");
 
 		if (!nomeCdl.isEmpty()) {
 			CorsoDiLaurea cdl = new CorsoDiLaurea(nomeCdl);
+			cdl.setFacebook(pgfacebook);
 			CorsoDiLaureaDAO cdlDAO = DatabaseManager.getInstance().getDaoFactory().getCorsoDiLaureaDAO();
 			cdlDAO.save(cdl);
 			req.setAttribute("corsoDL", cdl);

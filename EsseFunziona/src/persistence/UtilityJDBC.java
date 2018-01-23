@@ -17,7 +17,7 @@ public class UtilityJDBC {
 		try {
 			String create=
 					"create SEQUENCE idSequenza;"+
-					"create table corsoDiLaurea(\"id\" bigint primary key, nome VARCHAR(255));"+
+					"create table corsoDiLaurea(\"id\" bigint primary key, nome VARCHAR(255), facebook VARCHAR(255));"+
 					"create table pianoDiStudi(\"id\" bigint primary key, nome VARCHAR(255), corsoDiLaureaId bigint REFERENCES CorsoDiLaurea(\"id\"));"+
 					"create table studente (\"matricola\" CHARACTER(6) primary key, nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), corsoDiLaureaId bigint REFERENCES corsoDiLaurea(\"id\"), pianoDiStudiId bigint REFERENCES pianoDiStudi(\"id\"), password VARCHAR(20));"+
 					"create table admin (\"nomeUtente\" VARCHAR(20) primary key, nome VARCHAR(255), cognome VARCHAR(255), dataDiNascita DATE, email VARCHAR(255), password VARCHAR(20));"+

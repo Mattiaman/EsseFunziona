@@ -51,6 +51,12 @@
 			      <input name="nomecdl" type="text" class="form-control" />
 			    </div>
 			  </div>
+			  <div class="form-group">
+			    <label class="control-label col-sm-3" for="pgfacebook">Pagina Facebook Tag (@...):</label>
+			    	<div class="col-sm-5"> 
+			      <input name="pgfacebook" type="text" class="form-control" />
+			    </div>
+			  </div>
 			  <div class="form-group"> 
 			    	<div class="col-sm-offset-3 col-sm-5">
 						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>

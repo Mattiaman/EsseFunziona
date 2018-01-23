@@ -37,7 +37,6 @@
 	
 	<div class="col-sm-10">
 
-		
 		<br>
 		<c:if test="${corsoDiLaurea!=null }">
 		<div>
@@ -65,6 +64,19 @@
 			caricaCorsiCDL(${corsoDiLaurea.id})
 		</script>
 
+		<div class="fb-page" data-width="" data-height="">
+			<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2F${corsoDiLaurea.facebook}%2F&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" ></iframe>
+		</div>
+		<div id="fb-root"></div>
+		<script>
+		(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = 'https://connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.11';
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+		</script>
 		
 		</c:if>
 	</div>

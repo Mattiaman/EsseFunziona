@@ -8,6 +8,7 @@ public class CorsoDiLaurea {
 	private long id;
 	private String nome;
 	private Set<Corso> corsi;
+	private String facebook;
 	
 	public CorsoDiLaurea(String nome, Set<Corso> corsi) {
 		super();
@@ -69,4 +70,13 @@ public class CorsoDiLaurea {
 		}
 		return false;
 	}
+	
+	public String getFacebook() {
+		return facebook;
+	}
+
+	public void setFacebook(String facebook) {
+		this.facebook = facebook;
+	}
+
 }
