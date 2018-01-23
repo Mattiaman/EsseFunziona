@@ -55,7 +55,8 @@ Una volta acceduti come admin potete scegliendo l'opzione attraverso il menu:
 		
 	Selezionando il menu Utenti:
 		
-		Visualizzare l'elenco di professori e studenti, e cliccando content potete vedere le rispettive informazioni.
+		Visualizzare l'elenco di professori e studenti.
+		Cliccando content nell'elenco di professori e studenti potete vedere le rispettive informazioni.
 		
 	Selezionando il menu Segreteria:
 		
