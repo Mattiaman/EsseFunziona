@@ -2,7 +2,7 @@
 
 In questo README sono spiegati i vari menu degli utenti
 
-			/---/	
+## Getting Started
 
 Dalla pagina iniziale per accedere selzionare dal menu il tipo di utente con il quale si vuole accedere al sistema
 
@@ -33,8 +33,14 @@ Per entrare come professore usare come credenziali:
 		Nome utente:"prof07" e Password:"prof07"
 		Nome utente:"prof08" e Password:"prof08"
 		Nome utente:"prof09" e Password:"prof09"
+
+### Spiegazione Menu
+
+Necessario essere autenticati nel sistema
+
+
 		
-			/---/	
+### Menu Admin
 	
 Una volta acceduti come admin potete scegliendo l'opzione attraverso il menu:
 	Selezionando il menu Home:
@@ -53,7 +59,7 @@ Una volta acceduti come admin potete scegliendo l'opzione attraverso il menu:
 		Modificare i corsi dei corsi di laurea e dei professori.
 		Accettare le richieste di modifica piani di studi.	
 		
-			/---/	
+### Menu Studente
 
 Una volta acceduti come studente potete scegliendo l'opzione attraverso il menu:
 	Selezionando il menu Home:
@@ -71,7 +77,7 @@ Una volta acceduti come studente potete scegliendo l'opzione attraverso il menu:
 		Chiedere un ricevimento.
 		Modificare il piano di studi.
 	
-			/---/	
+### Menu Professore
 				
 Una volta acceduti come professore potete scegliendo l'opzione attraverso il menu:
 	Selezionando il menu Home:
@@ -87,7 +93,13 @@ Una volta acceduti come professore potete scegliendo l'opzione attraverso il men
 		Aggiungere degli esiti per gli studnti prenotati ai propri appelli.
 		Aggiungere dei Documenti.
 		
-			/---/	
+### Spiegazione Menu
+
 
 Per aggiungere entita al sistema riempire tutti i campi altrimenti non verrà aggiunta
+	
+	
+	
+	
+	
 	
