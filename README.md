@@ -7,33 +7,43 @@ In questo README sono spiegati i vari menu degli utenti
 Dalla pagina iniziale per accedere selzionare dal menu il tipo di utente con il quale si vuole accedere al sistema
 
 Per entrare come admin usare come credenziali:
-		Nome utente:"admin" e Password:"admin"
-
-Per entrare come studente usare come credenziali:
-		Matricola:"stud00" e Password:"stud00"
-		Matricola:"stud01" e Password:"stud01"
-		Matricola:"stud02" e Password:"stud02"
-		Matricola:"stud03" e Password:"stud03"
-		Matricola:"stud04" e Password:"stud04"
-		Matricola:"stud05" e Password:"stud05"
-		Matricola:"stud06" e Password:"stud06"
-		Matricola:"stud07" e Password:"stud07"
-		Matricola:"stud08" e Password:"stud08"
-		Matricola:"stud09" e Password:"stud09"
+		'''
 		
-
+		0. Nome utente:"admin" e Password:"admin"
+		
+		'''
+Per entrare come studente usare come credenziali:
+		'''
+		
+		0. Matricola:"stud00" e Password:"stud00"
+		1. Matricola:"stud01" e Password:"stud01"
+		2. Matricola:"stud02" e Password:"stud02"
+		3. Matricola:"stud03" e Password:"stud03"
+		4. Matricola:"stud04" e Password:"stud04"
+		5. Matricola:"stud05" e Password:"stud05"
+		6. Matricola:"stud06" e Password:"stud06"
+		7. Matricola:"stud07" e Password:"stud07"
+		8. Matricola:"stud08" e Password:"stud08"
+		9. Matricola:"stud09" e Password:"stud09"
+		
+		'''
+	
 Per entrare come professore usare come credenziali:
-		Nome utente:"prof00" e Password:"prof00"
-		Nome utente:"prof01" e Password:"prof01"
-		Nome utente:"prof02" e Password:"prof02"
-		Nome utente:"prof03" e Password:"prof03"
-		Nome utente:"prof04" e Password:"prof04"
-		Nome utente:"prof05" e Password:"prof05"
-		Nome utente:"prof06" e Password:"prof06"
-		Nome utente:"prof07" e Password:"prof07"
-		Nome utente:"prof08" e Password:"prof08"
-		Nome utente:"prof09" e Password:"prof09"
-
+		'''
+		
+		0. Nome utente:"prof00" e Password:"prof00"
+		1. Nome utente:"prof01" e Password:"prof01"
+		2. Nome utente:"prof02" e Password:"prof02"
+		3. Nome utente:"prof03" e Password:"prof03"
+		4. Nome utente:"prof04" e Password:"prof04"
+		5. Nome utente:"prof05" e Password:"prof05"
+		6. Nome utente:"prof06" e Password:"prof06"
+		7. Nome utente:"prof07" e Password:"prof07"
+		8. Nome utente:"prof08" e Password:"prof08"
+		9. Nome utente:"prof09" e Password:"prof09"
+		
+		'''
+		
 ### Menu
 
 Necessario essere autenticati nel sistema
