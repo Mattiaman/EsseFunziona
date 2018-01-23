@@ -103,7 +103,6 @@
 				</div>				
 				<div class="form-group">
 					<div class="col-sm-offset-3 col-sm-5">
-						<input name="validaDati" type="button" value="Valida Dati" class="btn btn-warning"/>
 						<input name="resetDati" type="reset" value="Reset Dati"  class="btn btn-warning"/>
 						<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
 					</div>

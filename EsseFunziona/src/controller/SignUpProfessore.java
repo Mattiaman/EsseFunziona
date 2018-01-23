@@ -48,7 +48,7 @@ public class SignUpProfessore extends HttpServlet{
 		double lonStudio=Double.parseDouble(req.getParameter("lonStudio"));
 		
 		
-		if (!nomeUtente.isEmpty() && !nome.isEmpty() && !cognome.isEmpty() && !email.isEmpty() && !dataNascita.isEmpty() && !password.isEmpty() && !cdl.isEmpty()) {
+		if (!nomeUtente.isEmpty() && !nome.isEmpty() && !cognome.isEmpty() && !email.isEmpty() && !dataNascita.isEmpty() && !password.isEmpty() && !cdl.isEmpty() && !cuboStudio.isEmpty() && !pianoStudio.isEmpty()) {
 			DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
 			Date date;
 			try {
@@ -75,7 +75,7 @@ public class SignUpProfessore extends HttpServlet{
 
 				req.setAttribute("professore", prof);
 				
-				//MailGun.sendEmail("robmat56@gmail.com", prof.getEmail(), "Welcome", "We, Benvenuto", MailGun.GMAIL);
+				MailGun.sendEmail("robmat56@gmail.com", prof.getEmail(), "Welcome", "We, Benvenuto", MailGun.GMAIL);
 
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block

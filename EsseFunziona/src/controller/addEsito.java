@@ -27,7 +27,7 @@ public class addEsito extends HttpServlet{
 		String idAppello = req.getParameter("appello");
 		String voto = req.getParameter("voto");
 		
-		if(!voto.isEmpty() && Long.parseLong(voto)<=30 && Long.parseLong(voto)>=0) {
+		if(!voto.isEmpty() && Long.parseLong(voto)<=30 && Long.parseLong(voto)>=18) {
 			StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
 			Studente studente = studenteDAO.findByPrimaryKey(matricola);
 			AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
@@ -37,9 +37,21 @@ public class addEsito extends HttpServlet{
 				appelloDAO.aggiungiVoto(matricola, Long.parseLong(idAppello), Long.parseLong(voto));
 				req.setAttribute("appello", appello);
 				req.setAttribute("studente", studente);
-				MailGun.sendEmail("robmat56@gmail.com", studente.getEmail(), "Esito Esame", "Il risultato dell'esame "+appello.getCorso()+" è di "+Long.parseLong(voto)+"/30", MailGun.GMAIL);
+				MailGun.sendEmail("robmat56@gmail.com", studente.getEmail(), "Esito Esame", "Il risultato dell'esame "+appello.getCorso().getNome()+" è di "+Long.parseLong(voto)+"/30", MailGun.GMAIL);
 			}
 
+		}
+		if(!voto.isEmpty() && Long.parseLong(voto)<=17 && Long.parseLong(voto)>=0) {
+			StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
+			Studente studente = studenteDAO.findByPrimaryKey(matricola);
+			AppelloDAO appelloDAO = DatabaseManager.getInstance().getDaoFactory().getAppelloDAO();
+			Appello appello = appelloDAO.findByPrimaryKey(Long.parseLong(idAppello));
+			if (appelloDAO.controllaPrenotazione(matricola, Long.parseLong(idAppello))) {
+				appelloDAO.cancellaPrenotazione(matricola, Long.parseLong(idAppello));
+				req.setAttribute("appello", appello);
+				req.setAttribute("studente", studente);
+				MailGun.sendEmail("robmat56@gmail.com", studente.getEmail(), "Esito Esame", "Il risultato dell'esame "+appello.getCorso().getNome()+" è: NON SUPERATO ", MailGun.GMAIL);
+			}
 		}
 		RequestDispatcher dispacher = req.getRequestDispatcher("aggiuntaEsiti.jsp");
 		dispacher.forward(req, resp);

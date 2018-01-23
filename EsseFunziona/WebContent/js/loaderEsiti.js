@@ -25,9 +25,10 @@ $(document).ready(function() {
 						cont++;
 					}
 				}
+				rifiuta(esiti[i].id);
+				accetta(esiti[i].id);
 			}	
-			rifiuta();
-			accetta();
+
 		}
 		xhrA.send(null);
 	}
@@ -35,9 +36,8 @@ $(document).ready(function() {
 });
 
 
-function rifiuta() {
+function rifiuta(id) {
 	$('#rifiuta').on('click', function() {
-		var id = $(this).parent().parent().find('#idEsito').text();
 		$.ajax({
 			url : 'rifiutaEsame',
 			data : {
@@ -49,9 +49,8 @@ function rifiuta() {
 	});
 }
 
-function accetta() {
+function accetta(id) {
 	$('#accetta').on('click', function() {
-		var id = $(this).parent().parent().find('#idEsito').text();
 		$.ajax({
 			url : 'accettaEsame',
 			data : {
