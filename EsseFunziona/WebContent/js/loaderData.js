@@ -61,5 +61,30 @@ $(document).ready(function() {
 		$("#utenteRegistrato").append(s);
 	}
 	xhr.send(null);
-	
+	addModifica();
 });
+
+
+
+function addModifica(){
+	var xhra= new XMLHttpRequest();
+	xhra.open('get',"datiAnagrafici",true);
+	xhra.onload=function(){
+		var jsonStringQuotes = xhra.responseText;
+		var datiAnagrafici=JSON.parse(jsonStringQuotes);
+		
+		b= $('<button id="modifica">Modifica</button>');
+		$('#modify').append(b);
+
+		$('#modifica').on('click',function(){
+			$('#modify').children().remove();
+			s = $('<form class="form-horizontal" method="post" action="datiAnagrafici"><div class="col-sm-12" class="form-group"><div class="col-sm-3"><label>Nome:</label></div><div class="col-sm-5"><input name="nome" type="text"class="form-control" /></div></div>'+
+					'<div class="col-sm-12" class="form-group"><div class="col-sm-3"><label>Cognome:</label></div><div class="col-sm-5"><input name="cognome" type="text"class="form-control" /></div></div>'+
+					'<div class="col-sm-12" class="form-group"><div class="col-sm-3"><label>Data di Nascita:</label></div><div class="col-sm-5"><input name="dataNascita" type="date" class="form-control" /></div></div>'+
+					'<div class="col-sm-12" class="form-group"><div class="col-sm-3"><label>Email:</label></div><div class="col-sm-5"><input name="email" type="email"class="form-control" /></div></div>'+
+					'<div class="col-sm-12" class="form-group"><input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/></div></form>');	
+			$('#modify').append(s);			
+		})
+	}
+	xhra.send(null);
+}

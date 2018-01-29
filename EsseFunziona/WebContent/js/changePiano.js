@@ -68,34 +68,36 @@ function addClickListenerAdd(){
 
 function addClickListenerSave(){
 	$('#save').on('click',function(){
-		if($("#listaCdl").val()==-1){
-			console.log("eeee no")
-			return;
+		if (confirm("Sicuro di voler salvare le modifiche")) {
+			if($("#listaCdl").val()==-1){
+				console.log("eeee no")
+				return;
+			}
+			var list='[';
+			var hidden=$("#newName").val()
+			var first=true;
+			$('#listaCorsiIn tr').each(function(){
+				var id=$(this).find('.idCorso').text()
+				if(first==true){
+					list+=''+id+''
+					first=false;
+				}
+				else
+					list+=','+id+''
+			})
+			list+=']'
+			console.log(list);
+			$.ajax({
+				url: 'EditPds',
+				type: 'POST',
+				data: {
+					lista: list
+				},
+				success: function(){
+					location.reload();
+				}
+			})
 		}
-		var list='[';
-		var hidden=$("#newName").val()
-		var first=true;
-		$('#listaCorsiIn tr').each(function(){
-			var id=$(this).find('.idCorso').text()
-			if(first==true){
-				list+=''+id+''
-				first=false;
-			}
-			else
-				list+=','+id+''
-		})
-		list+=']'
-		console.log(list);
-		$.ajax({
-			url: 'EditPds',
-			type: 'POST',
-			data: {
-				lista: list
-			},
-			success: function(){
-				location.reload();
-			}
-		})
 	})
 }
 

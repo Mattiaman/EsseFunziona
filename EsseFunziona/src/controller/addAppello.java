@@ -45,7 +45,7 @@ public class addAppello extends HttpServlet{
 		
 		
 		if (!nomeUtente.isEmpty() && !dataAppello.isEmpty() && !corsoAppello.isEmpty()) {
-			DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ITALIAN);
 			Date date;
 			try {
 				date = format.parse(dataAppello);

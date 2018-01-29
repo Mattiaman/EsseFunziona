@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,21 +40,27 @@ public class requestRicevimento  extends HttpServlet{
 		String nomeUtenteProfessore = (String) session.getAttribute("nomeUtenteProfessore");
 		String matricola = req.getParameter("richiesteRicevimenti");
 		String dataRicevimento = req.getParameter("dataRicevimento");
+		String oraRicevimento = req.getParameter("oraRicevimento");
 		
-		if (!nomeUtenteProfessore.isEmpty() && !matricola.isEmpty() && !dataRicevimento.isEmpty()) {
+		if (!nomeUtenteProfessore.isEmpty() && !matricola.isEmpty() && !dataRicevimento.isEmpty() && !oraRicevimento.isEmpty()) {
 			StudenteDAO studenteDAO = DatabaseManager.getInstance().getDaoFactory().getStudenteDAO();
 			Studente studente = studenteDAO.findByPrimaryKey(matricola);
 			ProfessoreDAO professoreDAO = DatabaseManager.getInstance().getDaoFactory().getProfessoreDAO();
 			Professore professore = professoreDAO.findByPrimaryKeyProxy(nomeUtenteProfessore);
-			DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
+			DateFormat formatHour = new SimpleDateFormat("HH:mm");
+			Date hour;
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ITALIAN);
 			Date date;
 			try {
+				hour = formatHour.parse(oraRicevimento);
 				date = format.parse(dataRicevimento);
+				date.setHours(hour.getHours());
+				date.setMinutes(hour.getMinutes());
 				if (professoreDAO.controllaRicevimento(matricola, nomeUtenteProfessore)) {
 					professoreDAO.cancellaRicevimento(matricola, nomeUtenteProfessore);
 					professoreDAO.aggiungiData(matricola, nomeUtenteProfessore, date);
 					req.setAttribute("studente", studente);			
-					MailGun.sendEmail("robmat56@gmail.com", professore.getEmail(), "Ricevimento", "Ricevimento Stabilito con il prof: "+ professore.getNome()+" "+professore.getCognome()+" il giorno: "+date , MailGun.GMAIL);
+					MailGun.sendEmail("robmat56@gmail.com", studente.getEmail(), "Ricevimento", "Ricevimento Stabilito con il prof: "+ professore.getNome()+" "+professore.getCognome()+" il giorno: "+date, MailGun.GMAIL);
 				}
 			} catch (ParseException e) {
 				e.printStackTrace();

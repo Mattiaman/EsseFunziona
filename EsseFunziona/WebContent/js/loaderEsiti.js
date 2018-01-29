@@ -23,10 +23,11 @@ $(document).ready(function() {
 						$("#listaEsiti").append(c);
 						trovaVoto(esiti[i].id,cont);
 						cont++;
+						rifiuta(esiti[i].id);
+						accetta(esiti[i].id);
 					}
 				}
-				rifiuta(esiti[i].id);
-				accetta(esiti[i].id);
+				
 			}	
 
 		}
@@ -38,27 +39,31 @@ $(document).ready(function() {
 
 function rifiuta(id) {
 	$('#rifiuta').on('click', function() {
-		$.ajax({
-			url : 'rifiutaEsame',
-			data : {
-				idEsito : id
-			},
-			type : 'POST'
-		});
-		$(this).parent().parent().remove();
+		if (confirm("Sei sicuro di voler rifiutare l'esito")) {
+			$.ajax({
+				url : 'rifiutaEsame',
+				data : {
+					idEsito : id
+				},
+				type : 'POST'
+			});
+			$(this).parent().parent().remove();
+		}
 	});
 }
 
 function accetta(id) {
 	$('#accetta').on('click', function() {
-		$.ajax({
-			url : 'accettaEsame',
-			data : {
-				idEsito : id
-			},
-			type : 'POST'
-		});
-		$(this).parent().parent().remove();
+		if (confirm("Sei sicuro di voler accettare l'esito")) {
+			$.ajax({
+				url : 'accettaEsame',
+				data : {
+					idEsito : id
+				},
+				type : 'POST'
+			});
+			$(this).parent().parent().remove();
+		}
 	});
 }
 

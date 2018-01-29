@@ -42,15 +42,17 @@ function caricaProfessori(){
 function deleteProfessore() {
 	$('button').on('click', function() {
 		var nomeUtente = $(this).parent().parent().find('#nomeUtenteProfessore').text();
-		console.log(nomeUtente);
-		$.ajax({
-			url : 'eliminaProf',
-			data : {
-				id : nomeUtente
-			},// $(this).parent().parent().find('#idTassa').serialize(),
-			type : 'POST'
-		});
-		$(this).parent().parent().remove();
+		if (confirm("Sei sicuro di voler eliminare il professore "+nomeUtente)) {
+			console.log(nomeUtente);
+			$.ajax({
+				url : 'eliminaProf',
+				data : {
+					id : nomeUtente
+				},// $(this).parent().parent().find('#idTassa').serialize(),
+				type : 'POST'
+			});
+			$(this).parent().parent().remove();
+		}
 	});
 }
 

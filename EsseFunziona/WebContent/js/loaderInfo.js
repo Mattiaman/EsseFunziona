@@ -1,5 +1,5 @@
-function caricaPDS(matricola){
-	
+function caricaPDS(){
+	var matricola = $('#m').text();
 	$.ajax({
 		url : 'EditPds',
 		type : 'GET',
@@ -34,8 +34,8 @@ function caricaCorsiProf(){
 		});	
 }
 
-function caricaCorsiCDL(id){
-	
+function caricaCorsiCDL(){
+	var id = $('#id').text();
 	$.ajax({
 		url : 'EditCdl',
 		type : 'GET',

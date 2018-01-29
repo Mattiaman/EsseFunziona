@@ -37,15 +37,17 @@ function caricaProfessori() {
 function deleteCorso() {
 	$('button').on('click', function() {
 		var id = $(this).parent().parent().find('#idCorso').text();
-		console.log(id);
-		$.ajax({
-			url : 'eliminaCorso',
-			data : {
-				id : id
-			},// $(this).parent().parent().find('#idTassa').serialize(),
-			type : 'POST'
-		});
-		$(this).parent().parent().remove();
+		if (confirm("Sicuro di voler eliminare il corso di laurea: "+id)) {
+			console.log(id);
+			$.ajax({
+				url : 'eliminaCorso',
+				data : {
+					id : id
+				},// $(this).parent().parent().find('#idTassa').serialize(),
+				type : 'POST'
+			});
+			$(this).parent().parent().remove();
+		}
 	});
 }
 

@@ -35,13 +35,15 @@ $(document).ready(function() {
 function deletePrenotazione() {
 	$('button').on('click', function() {
 		var id = $(this).parent().parent().find('#idAppello').text();
-		$.ajax({
-			url : 'eliminaPrenotazione',
-			data : {
-				idAppello : id
-			},
-			type : 'POST'
-		});
-		$(this).parent().parent().remove();
+		if (confirm("Sei sicuro di voler eliminare la prenotazione per l'appello "+id)) {
+			$.ajax({
+				url : 'eliminaPrenotazione',
+				data : {
+					idAppello : id
+				},
+				type : 'POST'
+			});
+			$(this).parent().parent().remove();
+		}
 	});
 }

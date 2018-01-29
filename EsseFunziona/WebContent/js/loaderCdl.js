@@ -32,16 +32,18 @@ function caricaCdl() {
 }
 
 function deleteCdl() {
-	$('button').on('click', function() {
+	$('button').on('click', function() {		
 		var id = $(this).parent().parent().find('#idCdl').text();
-		$.ajax({
-			url : 'eliminaCdl',
-			data : {
-				id : id
-			},
-			type : 'POST',
-		});
-		$(this).parent().parent().remove();
+		if (confirm("Sicuro di voler eliminare il corso di laurea: "+id)) {
+			$.ajax({
+				url : 'eliminaCdl',
+				data : {
+					id : id
+				},
+				type : 'POST',
+			});
+			$(this).parent().parent().remove();
+		}
 	});
 }
 

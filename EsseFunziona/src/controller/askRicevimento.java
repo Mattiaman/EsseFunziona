@@ -37,7 +37,7 @@ public class askRicevimento extends HttpServlet{
 			professore.addStudente(studente);
 			professoreDAO.update(professore);
 			req.setAttribute("professore", professore);
-			MailGun.sendEmail("robmat56@gmail.com", professore.getEmail(), "Ricevimento", "Salve Prof, Vorrei se possibile un ricevimento", MailGun.GMAIL);
+			MailGun.sendEmail("robmat56@gmail.com", professore.getEmail(), "Ricevimento", "Salve Prof, Sono "+studente.getNome() +" "+ studente.getCognome()+", matricola: "+studente.getMatricola()+", vorrei se possibile un ricevimento", MailGun.GMAIL);
 		}
 		RequestDispatcher dispatcher = req.getRequestDispatcher("chiedereRicevimento.jsp");
 		dispatcher.forward(req, resp);

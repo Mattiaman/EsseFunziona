@@ -147,7 +147,7 @@ public class CorsoDiLaureaJDBC implements CorsoDiLaureaDAO {
 
 		Connection connection = this.databaseData.getConnection();
 		try {
-			String update = "update corsoDiLaurea SET nome = ? AND facebook = ? WHERE id = ?";
+			String update = "update corsoDiLaurea SET nome = ?, facebook = ? WHERE id = ?";
 			PreparedStatement statement = connection.prepareStatement(update);
 			statement.setString(1, corsoDiLaurea.getNome());
 			statement.setString(2, corsoDiLaurea.getFacebook());

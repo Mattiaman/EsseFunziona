@@ -49,7 +49,7 @@ public class SignUpProfessore extends HttpServlet{
 		
 		
 		if (!nomeUtente.isEmpty() && !nome.isEmpty() && !cognome.isEmpty() && !email.isEmpty() && !dataNascita.isEmpty() && !password.isEmpty() && !cdl.isEmpty() && !cuboStudio.isEmpty() && !pianoStudio.isEmpty()) {
-			DateFormat format = new SimpleDateFormat("yyyy-mm-dd", Locale.ITALIAN);
+			DateFormat format = new SimpleDateFormat("yyyy-MM-dd", Locale.ITALIAN);
 			Date date;
 			try {
 				date = format.parse(dataNascita);

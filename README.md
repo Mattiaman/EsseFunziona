@@ -7,12 +7,12 @@ In questo README sono spiegati i vari menu degli utenti
 Dalla pagina iniziale per accedere selzionare dal menu il tipo di utente con il quale si vuole accedere al sistema
 
 Per entrare come admin usare come credenziali:
-		'''
+		
 		
 		Nome utente:"admin" e Password:"admin"
 		
 Per entrare come studente usare come credenziali:
-		'''
+		
 		
 		Matricola:"stud00" e Password:"stud00"
 		Matricola:"stud01" e Password:"stud01"
@@ -26,7 +26,7 @@ Per entrare come studente usare come credenziali:
 		Matricola:"stud09" e Password:"stud09"
 
 Per entrare come professore usare come credenziali:
-		'''
+		
 		
 		Nome utente:"prof00" e Password:"prof00"
 		Nome utente:"prof01" e Password:"prof01"
@@ -112,8 +112,9 @@ Una volta acceduti come professore potete scegliendo l'opzione attraverso il men
 		Aggiungere dei Documenti.
 
 ##### info
-Per aggiungere entita al sistema riempire tutti i campi altrimenti non verrà aggiunta
-	
+
+	Per aggiungere entita al sistema riempire tutti i campi altrimenti non verrà aggiunta
+	Il caricamento dei dati può rilevarsi un po lento a causa dell'hosting del database
 	
 	
 	

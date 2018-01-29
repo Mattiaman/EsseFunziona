@@ -32,15 +32,17 @@ function caricaStudenti(){
 function deleteStudente() {
 	$('button').on('click', function() {
 		var matricola = $(this).parent().parent().find('#matricolaStudente').text();
-		console.log(matricola);
-		$.ajax({
-			url : 'eliminaStudente',
-			data : {
-				matricola : matricola
-			},// $(this).parent().parent().find('#idTassa').serialize(),
-			type : 'POST'
-		});
-		$(this).parent().parent().remove();
+		if (confirm("Sei sicuro di voler eliminare lo studente "+matricola)) {
+			$.ajax({
+				url : 'eliminaStudente',
+				data : {
+					matricola : matricola
+				},// $(this).parent().parent().find('#idTassa').serialize(),
+				type : 'POST'
+			});
+			$(this).parent().parent().remove();
+		}
+		
 	});
 }
 
