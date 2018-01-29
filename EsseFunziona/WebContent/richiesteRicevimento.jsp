@@ -76,6 +76,12 @@
 		    </div> 
 		  </div>
 		  <div class="form-group">
+		    <label class="control-label col-sm-2" for="oraRicevimento">Ora:</label>
+		    <div class="col-sm-4">
+		     <input name="oraRicevimento" type="time" class="form-control" /> 
+		    </div> 
+		  </div>
+		  <div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 				<input name="inviaDati" type="submit" value="Invia Dati"  class="btn btn-warning"/>
 			</div>

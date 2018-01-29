@@ -42,7 +42,7 @@
 		<div>
 		
 		 		<h3>Corso Di Laurea</h3>
-		 		<label class="control-label col-sm-4" >ID: </label><label class="control-label col-sm-8" >${corsoDiLaurea.id}</label>
+		 		<label class="control-label col-sm-4" >ID: </label><label class="control-label col-sm-8" id="id">${corsoDiLaurea.id}</label>
 		 		<label class="control-label col-sm-4" >Nome: </label><label class="control-label col-sm-8" >${corsoDiLaurea.nome}</label>
 		 		
 		</div>
@@ -61,7 +61,7 @@
 	  		</table>
 		</div>
 		<script type="text/javascript">
-			caricaCorsiCDL(${corsoDiLaurea.id})
+			caricaCorsiCDL()
 		</script>
 
 		<div class="fb-page" data-width="" data-height="">

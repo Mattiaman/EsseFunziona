@@ -42,7 +42,7 @@
 		<div>	
 		
 		 	<h3>Studente</h3>
-		 	<label class="control-label col-sm-4" >Matricola: </label><label class="control-label col-sm-8" >${studente.matricola}</label>
+		 	<label class="control-label col-sm-4" >Matricola: </label><label class="control-label col-sm-8" id="m">${studente.matricola}</label>
 		 	<label class="control-label col-sm-4" >Nome: </label><label class="control-label col-sm-8" >${studente.nome}</label>
 		 	<label class="control-label col-sm-4" >Cognome: </label><label class="control-label col-sm-8" >${studente.cognome}</label>
 		 	<label class="control-label col-sm-4" >Data di Nascita: </label><label class="control-label col-sm-8" >${studente.dataDiNascita}</label>
@@ -63,7 +63,7 @@
 	  		</table>
 		</div>
 		<script type="text/javascript">
-			caricaPDS(${studente.matricola})
+			caricaPDS()
 		</script>
 		</c:if>
 	</div>

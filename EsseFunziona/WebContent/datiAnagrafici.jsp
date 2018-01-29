@@ -44,10 +44,12 @@
 	<br>
 	
 	<div class="col-sm-10" >
-		<div id="utenteRegistrato">
-		</div>
-		<h3>Corsi</h3>
+		<div id="utenteRegistrato"></div>
+		
+		<div id="modify"></div>
+
 		<div>
+		<h3>Corsi</h3>
 			<table class="table" id="tabellaCorsi">
 			    <thead>
 			      <tr>
